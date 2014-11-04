@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'QuarkBold';
+    src: url('../fonts/quark-bold.eot');
+    src: url('../fonts/quark-bold.eot') format('embedded-opentype'),
+         url('../fonts/quark-bold.woff') format('woff'),
+         url('../fonts/quark-bold.ttf') format('truetype'),
+         url('../fonts/quark-bold.svg#QuarkBold') format('svg');
+}

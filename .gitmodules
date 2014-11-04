@@ -1,0 +1,3 @@
+[submodule "wp-content/themes/sciserver"]
+	path = wp-content/themes/sciserver
+	url = git@bitbucket.org:idies/sciserver_wptheme.git
