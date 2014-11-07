@@ -1,5 +1,7 @@
 .htaccess
 wp-config.php
+index.html
+.gitignore
 
 # Compiled source #
 ###################
