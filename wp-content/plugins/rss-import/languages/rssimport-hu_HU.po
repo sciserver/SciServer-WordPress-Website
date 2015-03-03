@@ -1,0 +1,340 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-RSSImport v4.4.15\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-02 23:07+0100\n"
+"PO-Revision-Date: 2014-08-02 23:07+0100\n"
+"Last-Translator: Feriman <info@feriman.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: rssimport.php:156
+#: rssimport.php:168
+msgid "Error in file: "
+msgstr "Hiba a fájlban:"
+
+# @ rssimport
+#: rssimport.php:554
+#: rssimport.php:1059
+#: rssimport.php:1180
+msgid "No items, feed is empty."
+msgstr "Nincsenek lemeket, a feed üres."
+
+# @ rssimport
+#: rssimport.php:557
+#: rssimport.php:1062
+#: rssimport.php:1183
+msgid "Error: Feed has an error or is not valid"
+msgstr "Hiba: Feed hibás, vagy érvénytelen"
+
+# @ rssimport
+#: rssimport.php:560
+#: rssimport.php:1065
+#: rssimport.php:1186
+msgid "&laquo; Previous"
+msgstr "&laquo; Előző"
+
+# @ rssimport
+#: rssimport.php:561
+#: rssimport.php:1066
+#: rssimport.php:1187
+msgid "Next &raquo;"
+msgstr "Következő &raquo;"
+
+# @ rssimport
+#: rssimport.php:562
+#: rssimport.php:563
+#: rssimport.php:1067
+#: rssimport.php:1068
+#: rssimport.php:1188
+#: rssimport.php:1189
+msgid "more items"
+msgstr "További elemek"
+
+# @ rssimport
+#: rssimport.php:662
+#: rssimport.php:705
+#: rssimport.php:1024
+msgid "RSSImport"
+msgstr "RSSImport"
+
+# @ rssimport
+#: rssimport.php:673
+#: rssimport.php:706
+msgid "Import a feed with RSSImport"
+msgstr "Feed importálás az RSSImport-ba"
+
+# @ rssimport
+#: rssimport.php:1023
+msgid "Entries from any RSS or Atom feed"
+msgstr "Bejegyzés bármelyik RSS vagy Atom feed-ből"
+
+# @ rssimport
+#: rssimport.php:1237
+msgid "Title:"
+msgstr "Cím:"
+
+# @ rssimport
+#: rssimport.php:1240
+msgid "URL for Title (incl. http://):"
+msgstr "URL cím (beleértve a http://):"
+
+# @ rssimport
+#: rssimport.php:1243
+msgid "Display:"
+msgstr "Kijelző:"
+
+# @ rssimport
+#: rssimport.php:1246
+msgid "FeedURL:"
+msgstr "FeedURL:"
+
+# @ rssimport
+#: rssimport.php:1249
+msgid "Before Description:"
+msgstr "Előző Leírás:"
+
+# @ rssimport
+#: rssimport.php:1252
+msgid "Display Description:"
+msgstr "Megjelenített leírás:"
+
+# @ rssimport
+#: rssimport.php:1254
+#: rssimport.php:1267
+#: rssimport.php:1290
+#: rssimport.php:1308
+#: rssimport.php:1337
+#: rssimport.php:1347
+#: rssimport.php:1355
+#: rssimport.php:1381
+#: rssimport.php:1401
+#: rssimport.php:1409
+msgid "False"
+msgstr "Ne"
+
+# @ rssimport
+#: rssimport.php:1255
+#: rssimport.php:1268
+#: rssimport.php:1291
+#: rssimport.php:1309
+#: rssimport.php:1338
+#: rssimport.php:1348
+#: rssimport.php:1356
+#: rssimport.php:1382
+#: rssimport.php:1402
+#: rssimport.php:1410
+msgid "True"
+msgstr "Mehet"
+
+# @ rssimport
+#: rssimport.php:1260
+msgid "After Description:"
+msgstr "Következő leírás:"
+
+# @ rssimport
+#: rssimport.php:1261
+msgid "You can use the following strings to create custom links:"
+msgstr "Használhatod az alábbi egyéni linkeket:"
+
+# @ rssimport
+#: rssimport.php:1262
+msgid "Example:"
+msgstr "Példa:"
+
+# @ rssimport
+#: rssimport.php:1265
+msgid "HTML:"
+msgstr "HTML:"
+
+# @ rssimport
+#: rssimport.php:1273
+msgid "Truncate Description Char:"
+msgstr "Lerövidített leírás:"
+
+# @ rssimport
+#: rssimport.php:1276
+msgid "Truncate Description String (HTML):"
+msgstr "Lerövidített leírás (HTML):"
+
+# @ rssimport
+#: rssimport.php:1279
+msgid "Truncate Title Char:"
+msgstr "Lerövidített cím:"
+
+# @ rssimport
+#: rssimport.php:1282
+msgid "Truncate Title String (HTML):"
+msgstr "Lerövidített cím (HTML):"
+
+# @ rssimport
+#: rssimport.php:1285
+msgid "Before Date (HTML):"
+msgstr "Előző dátum (HTML):"
+
+# @ rssimport
+#: rssimport.php:1288
+msgid "Date:"
+msgstr "Dátum:"
+
+# @ rssimport
+#: rssimport.php:1296
+msgid "After Date (HTML):"
+msgstr "Következő dátum (HTML):"
+
+# @ rssimport
+#: rssimport.php:1299
+msgid "Date Formatting:"
+msgstr "Dátum formátum:"
+
+# @ rssimport
+#: rssimport.php:1300
+msgid "Leave empty for use the date format of your WordPress settings."
+msgstr "Hagyd üresen a WordPress dátum beállításokhoz."
+
+# @ rssimport
+#: rssimport.php:1300
+msgid "Documentation on date formatting"
+msgstr "Dokumentáció időpontban formázás"
+
+# @ rssimport
+#: rssimport.php:1303
+msgid "Before Creator (HTML):"
+msgstr "Előző készítő (HTML):"
+
+# @ rssimport
+#: rssimport.php:1306
+msgid "Creator:"
+msgstr "Készítő:"
+
+# @ rssimport
+#: rssimport.php:1314
+msgid "After Creator (HTML):"
+msgstr "Későbbi készítő (HTML):"
+
+# @ rssimport
+#: rssimport.php:1317
+msgid "Before Items (HTML):"
+msgstr "Előző tételek (HTML):"
+
+# @ rssimport
+#: rssimport.php:1320
+msgid "After Items (HTML):"
+msgstr "Következő tételek (HTML):"
+
+# @ rssimport
+#: rssimport.php:1323
+msgid "Before Item (HTML):"
+msgstr "Előző tétel (HTML):"
+
+# @ rssimport
+#: rssimport.php:1326
+msgid "After Item (HTML):"
+msgstr "Következő tétel (HTML):"
+
+# @ rssimport
+#: rssimport.php:1329
+msgid "Target Attribut:"
+msgstr "Cél Attribut:"
+
+# @ rssimport
+#: rssimport.php:1332
+msgid "Rel Attribut:"
+msgstr "Rel Attribut:"
+
+# @ rssimport
+#: rssimport.php:1335
+#, fuzzy
+msgid "Desc4Title:"
+msgstr "Cím:"
+
+#: rssimport.php:1342
+msgid "Description for title-Attribut on Title-Link"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1345
+msgid "Charsetscan:"
+msgstr "Karaktervizsgálat:"
+
+# @ rssimport
+#: rssimport.php:1353
+msgid "Debug mode:"
+msgstr "Fejlesztői mód:"
+
+# @ rssimport
+#: rssimport.php:1361
+msgid "Before <em>No</em> Items Message (HTML):"
+msgstr "Előzőnek <em>nincs</em> Tétel Üzenete (HTML):"
+
+# @ rssimport
+#: rssimport.php:1364
+msgid "<em>No</em> Items Message:"
+msgstr "<em>Nincs</em> Tétel Üzenet:"
+
+# @ rssimport
+#: rssimport.php:1367
+msgid "After <em>No</em> Items Message (HTML):"
+msgstr "Következőnek <em>Nincs</em>Tétel Üzenete (HTML):"
+
+# @ rssimport
+#: rssimport.php:1370
+msgid "Before Error Message (HTML):"
+msgstr "Előző hibaüzenet (HTML):"
+
+# @ rssimport
+#: rssimport.php:1373
+msgid "Error Message:"
+msgstr "Hiba üzenet:"
+
+# @ rssimport
+#: rssimport.php:1376
+msgid "After Error Message (HTML):"
+msgstr "Későbbi Hiba Üzenet (HTML):"
+
+# @ rssimport
+#: rssimport.php:1379
+msgid "Pagination:"
+msgstr "Lapszámozás:"
+
+# @ rssimport
+#: rssimport.php:1387
+msgid "Previous Pagination Link String:"
+msgstr "Előző oldalszámozási linksorozat"
+
+# @ rssimport
+#: rssimport.php:1390
+msgid "Next Pagination Link String:"
+msgstr "Következő oldalszámozási linksorozat"
+
+# @ rssimport
+#: rssimport.php:1393
+msgid "Previous Pagination Title String:"
+msgstr "Előző oldalszámozási címsorozat:"
+
+# @ rssimport
+#: rssimport.php:1396
+msgid "Next Pagination Title String:"
+msgstr "Következő oldalszámozási címsorozat:"
+
+# @ rssimport
+#: rssimport.php:1399
+msgid "Use SimplePie class:"
+msgstr "Használt SimplePie osztály:"
+
+# @ rssimport
+#: rssimport.php:1407
+msgid "Echo/Return:"
+msgstr "Vissza"
+

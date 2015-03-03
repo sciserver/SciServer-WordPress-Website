@@ -1,0 +1,338 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP-RSSImport\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-02 23:07+0100\n"
+"PO-Revision-Date: 2014-08-02 23:07+0100\n"
+"Last-Translator: Fat Cow <zhr@tut.by>\n"
+"Language-Team: Fat Cow <zhr@tut.by>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Russian\n"
+"X-Poedit-Country: RUSSIAN FEDERATION\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2\n"
+"X-Poedit-Basepath: ../\n"
+"X-Textdomain-Support: yes\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: rssimport.php:156
+#: rssimport.php:168
+msgid "Error in file: "
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:554
+#: rssimport.php:1059
+#: rssimport.php:1180
+msgid "No items, feed is empty."
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:557
+#: rssimport.php:1062
+#: rssimport.php:1183
+msgid "Error: Feed has an error or is not valid"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:560
+#: rssimport.php:1065
+#: rssimport.php:1186
+msgid "&laquo; Previous"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:561
+#: rssimport.php:1066
+#: rssimport.php:1187
+msgid "Next &raquo;"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:562
+#: rssimport.php:563
+#: rssimport.php:1067
+#: rssimport.php:1068
+#: rssimport.php:1188
+#: rssimport.php:1189
+msgid "more items"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:662
+#: rssimport.php:705
+#: rssimport.php:1024
+msgid "RSSImport"
+msgstr "Импорт RSS"
+
+# @ rssimport
+#: rssimport.php:673
+#: rssimport.php:706
+msgid "Import a feed with RSSImport"
+msgstr "Импортировать ленту с RSSImport"
+
+# @ rssimport
+#: rssimport.php:1023
+msgid "Entries from any RSS or Atom feed"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1237
+msgid "Title:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1240
+msgid "URL for Title (incl. http://):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1243
+msgid "Display:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1246
+msgid "FeedURL:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1249
+msgid "Before Description:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1252
+msgid "Display Description:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1254
+#: rssimport.php:1267
+#: rssimport.php:1290
+#: rssimport.php:1308
+#: rssimport.php:1337
+#: rssimport.php:1347
+#: rssimport.php:1355
+#: rssimport.php:1381
+#: rssimport.php:1401
+#: rssimport.php:1409
+msgid "False"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1255
+#: rssimport.php:1268
+#: rssimport.php:1291
+#: rssimport.php:1309
+#: rssimport.php:1338
+#: rssimport.php:1348
+#: rssimport.php:1356
+#: rssimport.php:1382
+#: rssimport.php:1402
+#: rssimport.php:1410
+msgid "True"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1260
+msgid "After Description:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1261
+msgid "You can use the following strings to create custom links:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1262
+msgid "Example:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1265
+msgid "HTML:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1273
+msgid "Truncate Description Char:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1276
+msgid "Truncate Description String (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1279
+msgid "Truncate Title Char:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1282
+msgid "Truncate Title String (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1285
+msgid "Before Date (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1288
+msgid "Date:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1296
+msgid "After Date (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1299
+msgid "Date Formatting:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1300
+msgid "Leave empty for use the date format of your WordPress settings."
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1300
+msgid "Documentation on date formatting"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1303
+msgid "Before Creator (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1306
+msgid "Creator:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1314
+msgid "After Creator (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1317
+msgid "Before Items (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1320
+msgid "After Items (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1323
+msgid "Before Item (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1326
+msgid "After Item (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1329
+msgid "Target Attribut:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1332
+msgid "Rel Attribut:"
+msgstr ""
+
+#: rssimport.php:1335
+msgid "Desc4Title:"
+msgstr ""
+
+#: rssimport.php:1342
+msgid "Description for title-Attribut on Title-Link"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1345
+msgid "Charsetscan:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1353
+msgid "Debug mode:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1361
+msgid "Before <em>No</em> Items Message (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1364
+msgid "<em>No</em> Items Message:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1367
+msgid "After <em>No</em> Items Message (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1370
+msgid "Before Error Message (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1373
+msgid "Error Message:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1376
+msgid "After Error Message (HTML):"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1379
+msgid "Pagination:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1387
+msgid "Previous Pagination Link String:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1390
+msgid "Next Pagination Link String:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1393
+msgid "Previous Pagination Title String:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1396
+msgid "Next Pagination Title String:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1399
+msgid "Use SimplePie class:"
+msgstr ""
+
+# @ rssimport
+#: rssimport.php:1407
+msgid "Echo/Return:"
+msgstr ""
+

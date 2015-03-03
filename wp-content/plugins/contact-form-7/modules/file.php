@@ -80,16 +80,12 @@ function wpcf7_file_validation_filter( $result, $tag ) {
 	$file = isset( $_FILES[$name] ) ? $_FILES[$name] : null;
 
 	if ( $file['error'] && UPLOAD_ERR_NO_FILE != $file['error'] ) {
-		$result['valid'] = false;
-		$result['reason'][$name] = wpcf7_get_message( 'upload_failed_php_error' );
-		$result['idref'][$name] = $id ? $id : null;
+		$result->invalidate( $tag, wpcf7_get_message( 'upload_failed_php_error' ) );
 		return $result;
 	}
 
 	if ( empty( $file['tmp_name'] ) && $tag->is_required() ) {
-		$result['valid'] = false;
-		$result['reason'][$name] = wpcf7_get_message( 'invalid_required' );
-		$result['idref'][$name] = $id ? $id : null;
+		$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
 		return $result;
 	}
 
@@ -148,18 +144,14 @@ function wpcf7_file_validation_filter( $result, $tag ) {
 	$file_type_pattern = '/\.' . $file_type_pattern . '$/i';
 
 	if ( ! preg_match( $file_type_pattern, $file['name'] ) ) {
-		$result['valid'] = false;
-		$result['reason'][$name] = wpcf7_get_message( 'upload_file_type_invalid' );
-		$result['idref'][$name] = $id ? $id : null;
+		$result->invalidate( $tag, wpcf7_get_message( 'upload_file_type_invalid' ) );
 		return $result;
 	}
 
 	/* File size validation */
 
 	if ( $file['size'] > $allowed_size ) {
-		$result['valid'] = false;
-		$result['reason'][$name] = wpcf7_get_message( 'upload_file_too_large' );
-		$result['idref'][$name] = $id ? $id : null;
+		$result->invalidate( $tag, wpcf7_get_message( 'upload_file_too_large' ) );
 		return $result;
 	}
 
@@ -168,15 +160,15 @@ function wpcf7_file_validation_filter( $result, $tag ) {
 	$uploads_dir = wpcf7_maybe_add_random_dir( $uploads_dir );
 
 	$filename = $file['name'];
+	$filename = wpcf7_canonicalize( $filename );
+	$filename = sanitize_file_name( $filename );
 	$filename = wpcf7_antiscript_file_name( $filename );
 	$filename = wp_unique_filename( $uploads_dir, $filename );
 
 	$new_file = trailingslashit( $uploads_dir ) . $filename;
 
 	if ( false === @move_uploaded_file( $file['tmp_name'], $new_file ) ) {
-		$result['valid'] = false;
-		$result['reason'][$name] = wpcf7_get_message( 'upload_failed' );
-		$result['idref'][$name] = $id ? $id : null;
+		$result->invalidate( $tag, wpcf7_get_message( 'upload_failed' ) );
 		return $result;
 	}
 
@@ -298,12 +290,13 @@ function wpcf7_file_display_warning_message() {
 
 function wpcf7_init_uploads() {
 	$dir = wpcf7_upload_tmp_dir();
-	wp_mkdir_p( trailingslashit( $dir ) );
-	@chmod( $dir, 0733 );
+	wp_mkdir_p( $dir );
 
 	$htaccess_file = trailingslashit( $dir ) . '.htaccess';
-	if ( file_exists( $htaccess_file ) )
+
+	if ( file_exists( $htaccess_file ) ) {
 		return;
+	}
 
 	if ( $handle = @fopen( $htaccess_file, 'w' ) ) {
 		fwrite( $handle, "Deny from all\n" );

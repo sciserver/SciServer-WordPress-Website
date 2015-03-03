@@ -1,3 +1,6 @@
 [submodule "wp-content/themes/sciserver"]
 	path = wp-content/themes/sciserver
 	url = git@bitbucket.org:idies/sciserver_wptheme.git
+[submodule "wp-content/plugins/idies-update-tracker"]
+	path = wp-content/plugins/idies-update-tracker
+	url = git@bitbucket.org:idies/idies-update-tracker.git
