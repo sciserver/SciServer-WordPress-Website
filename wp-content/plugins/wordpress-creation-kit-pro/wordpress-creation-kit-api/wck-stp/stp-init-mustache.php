@@ -386,7 +386,7 @@ function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0)
 				$j = 0;
 				foreach( $wp_object_terms as $term_key => $term_value ){
 					$object_terms['taxonomy_' . $object_tax][$j]['term_id'] = $term_value->term_id;
-					$object_terms['taxonomy_' . $object_tax][$j]['term_name'] = $term_value->name;
+					$object_terms['taxonomy_' . $object_tax][$j]['term_name'] = apply_filters( 'wck_stp_taxonomy_term_name', $term_value->name );
 					$object_terms['taxonomy_' . $object_tax][$j]['term_slug'] = $term_value->slug;
 					
 					$term_link = get_term_link( intval($term_value->term_id), $object_tax );

@@ -6,10 +6,10 @@
  * @return string $element input element html string. */
 
 
-$element .= '<input type="text" name="'. esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) ) .'" id="';
+$element .= '<input type="text" name="'. $single_prefix . esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'" id="';
 if( !empty( $frontend_prefix ) )
 	$element .=	$frontend_prefix;
-$element .=	esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) ) .'"';
+$element .=	esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'"';
 if( !empty( $details['readonly'] ) && $details['readonly'] )
 	$element .=	'readonly="readonly"';
 $element .=	' value="'. esc_attr( $value ) .'" class="mb-text-input mb-field"/>';

@@ -568,20 +568,13 @@ function wck_fep_change_form_labels(){
 }
 
 /* Show "Assign to user" row  */
-add_filter( "wck_element_class_wck_fep_args", 'wck_fep_dispaly_list_assign_user', 10, 4 );
-function wck_fep_dispaly_list_assign_user( $wck_element_class, $meta, $results, $element_id ){
-	$wck_element_class = '';	
-	if( $results[$element_id]['anonymous-posting'] == 'yes' )
-		$wck_element_class = " class='anonymous-posting-enabled'";	
-	return $wck_element_class;
-}
-
-
-add_filter("wck_update_container_class_wck_fep_args", 'wck_fep_update_form_assign_user', 10, 4 );
-function wck_fep_update_form_assign_user( $wck_update_container_css_class, $meta, $results, $element_id ){
-	if( $results[$element_id]['anonymous-posting'] == 'yes' )
-		$wck_update_container_css_class = " class='update_container_$meta anonymous-posting-enabled'";
-	return $wck_update_container_css_class;
+add_filter("wck_add_form_class_wck_fep_args", 'wck_fep_update_form_assign_user', 10, 3 );
+function wck_fep_update_form_assign_user( $wck_update_container_css_class, $meta, $results ){
+	if( !empty( $results ) ) {
+        if ($results[0]['anonymous-posting'] == 'yes')
+            $wck_update_container_css_class = "update_container_$meta anonymous-posting-enabled";
+        return $wck_update_container_css_class;
+    }
 }
 
 /* Contextual Help */
@@ -801,8 +794,8 @@ class Fep_Lilo_Shortcode {
 		/* print scripts */
 		add_action('wp_footer', array(__CLASS__, 'print_script'));
 		/* set up ajax hooks */
-		add_action( 'wp_ajax_wck_fep_register_user', array( &$this, 'wck_fep_register_user' ) );
-		add_action( 'wp_ajax_nopriv_wck_fep_register_user', array( &$this, 'wck_fep_register_user' ) );
+		add_action( 'wp_ajax_wck_fep_register_user', array( 'Fep_Lilo_Shortcode', 'wck_fep_register_user' ) );
+		add_action( 'wp_ajax_nopriv_wck_fep_register_user', array( 'Fep_Lilo_Shortcode', 'wck_fep_register_user' ) );
 	}
 	
 	/**

@@ -149,21 +149,11 @@ function wck_sas_quickintro($hook){
 	}
 }
 
-/* add refresh to page. Needed to display the serial notification. Need to refactor in the future so it works via ajax. */
-add_action("wck_refresh_list_wck_serial", "wck_serial_after_refresh_list");
-add_action("wck_refresh_entry_wck_serial", "wck_serial_after_refresh_list");
-add_action("wck_refresh_list_wck_tools", "wck_serial_after_refresh_list");
-add_action("wck_refresh_entry_wck_tools", "wck_serial_after_refresh_list");
-function wck_serial_after_refresh_list(){
-	echo '<script type="text/javascript">window.location="'. get_admin_url() . 'admin.php?page=sas-page&updated=true' .'";</script>';
-}
-
 /* Notify user of when he enters his serial number. 
  * Also Check if serial is valid on meta_name creation and update 
  */
-add_filter('wck_metabox_content_wck_serial', 'wck_sas_serial_notification', 10, 2);
-add_filter('wck_after_update_metabox_content_wck_serial', 'wck_sas_serial_notification', 10, 2);
-function wck_sas_serial_notification($list){
+add_action( "wck_after_add_form_wck_serial_element_0", 'wck_sas_serial_notification' );
+function wck_sas_serial_notification(){
 
 	wck_sas_check_serial_number();
 	$status = get_option('wck_serial_status');
@@ -177,8 +167,11 @@ function wck_sas_serial_notification($list){
 	if ( $status == 'found') $notif = '<p class="serial-notification green">' . __( 'Wohoo! Your serial number is valid and you have access to automatic updates.', 'wck' ) . ' </p>'; 
 	
 	if ( $status == 'expired') $notif = '<p class="serial-notification red">' . __( 'It seems your serial number has <strong>expired</strong>. To continue receiving access to product downloads, automatic updates and support please update your serial number for another year from <a href="http://www.cozmoslabs.com/account/?utm_source=WCK-sas&utm_medium=dashboard&utm_campaign=WCK-Renewal" target="_blank"><strong>your account page</strong></a>.', 'wck' ) . ' </p>';
-				
-	return $list . $notif; 
+
+    if ( strpos( $status, 'about' ) === 0 ) $notif = '<p class="serial-notification yellow">' . __( 'Your WordPress Creation Kit serial number is about to expire. To continue receiving access to product downloads, automatic updates and support please update your serial number for another year from <a href="http://www.cozmoslabs.com/account/?utm_source=WCK-sas&utm_medium=dashboard&utm_campaign=WCK-Renewal" target="_blank"><strong>your account page</strong></a>.', 'wck' ) . ' </p>';
+
+    if( !empty( $notif ) )
+	    echo $notif;
 }
 
 /* Check if serial is valid on Start and Settings page load. 
@@ -204,11 +197,11 @@ function wck_sas_check_serial_number(){
 		update_option( 'wck_serial_status', 'noserial' ); //server down
 	} else {
 		$response = wp_remote_get( 'http://updatemetadata.cozmoslabs.com/checkserial/?serialNumberSent='.$serial );
-		
+
 		if (is_wp_error($response)){
 			update_option( 'wck_serial_status', 'serverDown' ); //server down
-				
-		}elseif((trim($response['body']) != 'notFound') && (trim($response['body']) != 'found') && (trim($response['body']) != 'expired')){
+
+		}elseif( (trim($response['body']) != 'notFound') && (trim($response['body']) != 'found') && (trim($response['body']) != 'expired') && strpos( trim($response['body']), 'aboutToExpire') === false ){
 			update_option( 'wck_serial_status', 'serverDown' );  //unknown response parameter
 		}else{
 			update_option( 'wck_serial_status', trim($response['body']) ); //either found, notFound or expired
@@ -295,7 +288,7 @@ if (file_exists ($wck_premium_update . 'update-checker.php')) {
     } elseif ($wck_serial_status == 'expired') {
         new wck_add_serial_notices('wck_expired', sprintf(__('<p style="position:relative;">Your <strong>WordPress Creation Kit</strong> licence has expired. <br/>Please %1$sRenew Your Licence%2$s to continue receiving access to product downloads, automatic updates and support. %3$sRenew now and get 50&#37; off %4$s %5$sDismiss%6$s</p>', 'wck'), "<a href='http://www.cozmoslabs.com/downloads/wordpress-creation-kit-".$wck_version."-yearly-renewal/?utm_source=WCK&utm_medium=dashboard&utm_campaign=WCK-Renewal' target='_blank'>", "</a>", "<a href='http://www.cozmoslabs.com/downloads/wordpress-creation-kit-".$wck_version."-yearly-renewal/?utm_source=WCK&utm_medium=dashboard&utm_campaign=WCK-Renewal' target='_blank' class='button-primary'>", "</a>", "<a href='" . add_query_arg('wck_expired_dismiss_notification', '0') . "' class='wck-dismiss-notification' style='position:absolute; right:0px; top:50%; margin-top:-7px;'>", "</a>"), 'wck_serial_status');
     } elseif (strpos($wck_serial_status, 'aboutToExpire') === 0) {
-        $serial_status_parts = explode('#', $wppb_profile_builder_pro_hobbyist_serial_status);
+        $serial_status_parts = explode( '#', $wck_serial_status );
         $date = $serial_status_parts[1];
         new wck_add_serial_notices('wck_about_to_expire', sprintf(__('<p style="position:relative;">Your <strong>WordPress Creation Kit</strong> serial number is about to expire on %5$s. <br/>Please %1$sRenew Your Licence%2$s to continue receiving access to product downloads, automatic updates and support. %3$sRenew now and get 50&#37; off %4$s %6$sDismiss%7$s</p>', 'wck'), "<a href='http://www.cozmoslabs.com/downloads/wordpress-creation-kit-".$wck_version."-yearly-renewal/?utm_source=WCK&utm_medium=dashboard&utm_campaign=WCK-Renewal'>", "</a>", "<a href='http://www.cozmoslabs.com/downloads/wordpress-creation-kit-".$wck_version."-yearly-renewal/?utm_source=WCK&utm_medium=dashboard&utm_campaign=WCK-Renewal' target='_blank' class='button-primary'>", "</a>", $date, "<a href='" . add_query_arg('wck_about_to_expire_dismiss_notification', '0') . "' class='wck-dismiss-notification' style='position:absolute; right:0px; top:50%; margin-top:-7px;'>", "</a>"), 'wck_serial_status');
     }

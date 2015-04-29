@@ -8,7 +8,7 @@ add_action( 'init', 'wck_stp_create_swift_template_cpt', 20 );
 function wck_stp_create_swift_template_cpt(){
 	if( is_admin() && current_user_can( 'edit_theme_options' ) ){		
 		$labels = array(
-			'name' => _x( 'WCK Swift Templates (Beta)', 'post type general name'),
+			'name' => _x( 'WCK Swift Templates', 'post type general name'),
 			'singular_name' => _x( 'Swift Template', 'post type singular name'),
 			'add_new' => _x( 'Add New', 'Swift Template' ),
 			'add_new_item' => __( "Add New Swift Template", "wck" ),

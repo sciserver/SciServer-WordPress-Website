@@ -33,10 +33,21 @@ if( !empty( $details['options'] ) ){
 			}
 		}
 			
-		$element .= '<div><label><input type="checkbox" name="'. esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) ) .'" id="';
+		$element .= '<div><label><input type="checkbox" name="'. $single_prefix . esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) );
+        if( $this->args['single'] ) {
+            $element .= '[]';
+        }
+        $element .= '" id="';
 		if( !empty( $frontend_prefix ) )
 			$element .= $frontend_prefix;
-		$element .= esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] . '_' . $value_attr ) ) .'" value="'. esc_attr( $value_attr ) .'"  '. checked( $found, true, false ) .'class="mb-checkbox mb-field" />'. esc_html( $label ) .'</label></div>' ;
+
+        /* since the slug below is generated from the value as well we need to determine here if we have a slug or not and not let the wck_generate_slug() function do that */
+        if( !empty( $details['slug'] ) )
+            $slug_from = $details['slug'];
+        else
+            $slug_from = $details['title'];
+
+		$element .= esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $slug_from . '_' . $value_attr ) ) .'" value="'. esc_attr( $value_attr ) .'"  '. checked( $found, true, false ) .'class="mb-checkbox mb-field" />'. esc_html( $label ) .'</label></div>' ;
 	}
 	$element .= '</div>';
 } 

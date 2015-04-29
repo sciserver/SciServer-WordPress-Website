@@ -5,10 +5,10 @@
  * @param string $context Context where the function is used. Depending on it some actions are preformed.;
  * @return string $element input element html string. */
  
-$element .= '<select name="'. esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) ) .'"  id="';
+$element .= '<select name="'. $single_prefix . esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'"  id="';
 if( !empty( $frontend_prefix ) )
 	$element .= $frontend_prefix;
-$element .= esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) ) .'" class="mb-select mb-field" >';
+$element .= esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'" class="mb-select mb-field" >';
 			
 if( !empty( $details['default-option'] ) && $details['default-option'] )
 	$element .= '<option value="">'. __('...Chose', 'wck') .'</option>';

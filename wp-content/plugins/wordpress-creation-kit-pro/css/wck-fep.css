@@ -14,10 +14,10 @@
 	display:none;
 }
 
-#wck_fep_args .row-assign-to-user, #container_wck_fep_args .row-assign-to-user{
+#wck_fep_args .row-assign-to-user{
 	display:none;
 }
 
-#container_wck_fep_args .anonymous-posting-enabled .row-assign-to-user{
+#wck_fep_args.anonymous-posting-enabled .row-assign-to-user{
 	display:block;
 }

@@ -27,7 +27,7 @@ jQuery(document).ready(function(){
 			wp.media.controller.Library.prototype.defaults.contentUserSetting = false;
 			if( uploadInFront != true )
 				wp.media.controller.Library.prototype.defaults.router = false;			
-			wp.media.controller.Library.prototype.defaults.searchable = false;
+			wp.media.controller.Library.prototype.defaults.searchable = true;
 			wp.media.controller.Library.prototype.defaults.sortable = false;			
 						
 			// If the media frame already exists, reopen it.

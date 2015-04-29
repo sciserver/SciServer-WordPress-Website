@@ -58,7 +58,6 @@ function wck_opc_create_option_pages_cpt(){
 
 /* hook to create options field cpt */
 add_action( 'init', 'wck_opc_create_option_fields_cpt' );
-
 function wck_opc_create_option_fields_cpt(){	
 	if( is_admin() && current_user_can( 'edit_theme_options' ) ){		
 		$labels = array(
@@ -378,7 +377,6 @@ function wck_opc_create_pages(){
 
 /* hook to create option fields groups */
 add_action( 'init', 'wck_opc_create_option_pages_fields' );
-
 function wck_opc_create_pages_args(){
 	$args = array(
 		'post_type' => 'wck-option-field',
@@ -466,7 +464,6 @@ function wck_opc_create_option_pages_fields(){
 }
 
 
-
 /* Filter post update message */
 add_filter( 'post_updated_messages', 'wck_opc_filter_post_update_message' );
 function wck_opc_filter_post_update_message($messages){
@@ -533,39 +530,40 @@ function wck_opc_change_option_name( $meta, $id, $values, $element_id ){
 	global $wpdb;
 	if( $meta == 'wck_opc_field_args' ){
 		$wck_opc_field_args = get_post_meta( $id, 'wck_opc_field_args', true );		
-		
-		if( $wck_opc_field_args[0]['option-name'] != $values['option-name'] ){			
-			$wpdb->update( 
-				$wpdb->options, 
-				array( 'option_name' => $values['option-name'] ), 
-				array( 'option_name' => $wck_opc_field_args[0]['option-name'] )				
-			);
-		}
-		
+		if( !empty( $wck_opc_field_args ) ) {
+            if ($wck_opc_field_args[0]['option-name'] != $values['option-name']) {
+                $wpdb->update(
+                    $wpdb->options,
+                    array('option_name' => $values['option-name']),
+                    array('option_name' => $wck_opc_field_args[0]['option-name'])
+                );
+            }
+        }
 	}
 }
 
 /* Change Field Title in db if field changed */
 add_action( 'wck_before_update_meta', 'wck_opc_change_field_title', 10, 4 );
 function wck_opc_change_field_title( $meta, $id, $values, $element_id ){
-	if( $meta == 'wck_opc_fields' ){
-		$wck_opc_fields = get_post_meta( $id, 'wck_opc_fields', true );
-		
-		if( $wck_opc_fields[$element_id]['field-title'] != $values['field-title'] ){						
-			
-			$wck_opc_field_args = get_post_meta( $id, 'wck_opc_field_args', true );
-			$option_name = $wck_opc_field_args[0]['option-name'];					
-			
-			$results = get_option( $option_name );
-			if( !empty( $results ) ){
-				foreach( $results as $key => $result ){			
-					$results[$key][ Wordpress_Creation_Kit::wck_generate_slug( $values['field-title'] ) ] = $results[$key][ Wordpress_Creation_Kit::wck_generate_slug( $wck_opc_fields[$element_id]['field-title'] ) ];
-					unset( $results[$key][ Wordpress_Creation_Kit::wck_generate_slug( $wck_opc_fields[$element_id]['field-title'] ) ] );
-				}
-			}
-			update_option( $option_name, $results );
-			
-		}
+	if( $meta == 'wck_opc_fields' ) {
+        $wck_opc_fields = get_post_meta($id, 'wck_opc_fields', true);
+
+        if(!empty($wck_opc_fields)){
+            if ($wck_opc_fields[$element_id]['field-title'] != $values['field-title']) {
+
+                $wck_opc_field_args = get_post_meta($id, 'wck_opc_field_args', true);
+                $option_name = $wck_opc_field_args[0]['option-name'];
+
+                $results = get_option($option_name);
+                if (!empty($results)) {
+                    foreach ($results as $key => $result) {
+                        $results[$key][Wordpress_Creation_Kit::wck_generate_slug($values['field-title'])] = $results[$key][Wordpress_Creation_Kit::wck_generate_slug($wck_opc_fields[$element_id]['field-title'])];
+                        unset($results[$key][Wordpress_Creation_Kit::wck_generate_slug($wck_opc_fields[$element_id]['field-title'])]);
+                    }
+                }
+                update_option($option_name, $results);
+            }
+        }
 	}
 }
 
@@ -575,47 +573,43 @@ function wck_opc_change_option_page_arg( $meta, $id, $values, $element_id ){
 	global $wpdb;
 	if( $meta == 'wck_opc_args' ){
 		$wck_opc_args = get_post_meta( $id, 'wck_opc_args', true );
-		
-		if( $wck_opc_args[$element_id]['page-name-in-menu'] != $values['page-name-in-menu'] ){						
-			
-			/* Get all Option Fields */
-			$args = array(
-				'post_type' => 'wck-option-field',
-				'numberposts' => -1
-			);
-			
-			$all_option_fields = get_posts( $args );
-			if( !empty( $all_option_fields ) ){
-				foreach( $all_option_fields as $all_option_field ){
-					$option_field_args = get_post_meta( $all_option_field->ID, 'wck_opc_field_args', true );					
-					if( !empty( $option_field_args ) ){						
-						if( $option_field_args[0]['option-page'] == Wordpress_Creation_Kit::wck_generate_slug( $wck_opc_args[$element_id]['page-name-in-menu'] ) ){
-							$option_field_args[0]['option-page'] = Wordpress_Creation_Kit::wck_generate_slug( $values['page-name-in-menu'] );							
-							update_post_meta( $all_option_field->ID, 'wck_opc_field_args', $option_field_args );
-						}
-					}
-				}
-			}			
-		}
+		if( !empty( $wck_opc_args ) ){
+            if ($wck_opc_args[$element_id]['page-name-in-menu'] != $values['page-name-in-menu']) {
+
+                /* Get all Option Fields */
+                $args = array(
+                    'post_type' => 'wck-option-field',
+                    'numberposts' => -1
+                );
+
+                $all_option_fields = get_posts($args);
+                if (!empty($all_option_fields)) {
+                    foreach ($all_option_fields as $all_option_field) {
+                        $option_field_args = get_post_meta($all_option_field->ID, 'wck_opc_field_args', true);
+                        if (!empty($option_field_args)) {
+                            if ($option_field_args[0]['option-page'] == Wordpress_Creation_Kit::wck_generate_slug($wck_opc_args[$element_id]['page-name-in-menu'])) {
+                                $option_field_args[0]['option-page'] = Wordpress_Creation_Kit::wck_generate_slug($values['page-name-in-menu']);
+                                update_post_meta($all_option_field->ID, 'wck_opc_field_args', $option_field_args);
+                            }
+                        }
+                    }
+                }
+            }
+        }
 	}
 }
 
-/* save page title on adding or ipdating the option page */
+/* save page title on adding or updating the option page */
 add_action( 'wck_before_add_meta', 'wck_opc_update_page_title', 10, 3 );
 add_action( 'wck_before_update_meta', 'wck_opc_update_page_title', 10, 3 );
 function wck_opc_update_page_title( $meta, $id, $values ){
+    global $wpdb;
 	if( $meta == 'wck_opc_args' ){
-		$update_post['ID'] = $id;
-		$update_post['post_title'] = $values['page-name-in-menu'];
-		$update_post['post_status'] = 'publish';
-		wp_update_post( $update_post );
+        $wpdb->update( $wpdb->posts, array( 'post_title' =>  stripslashes( $values['page-name-in-menu'] ), 'post_status' => 'publish' ), array( 'ID' => $id ) );
 	}
 	
 	if( $meta == 'wck_opc_field_args' ){
-		$update_post['ID'] = $id;
-		$update_post['post_title'] = $values['group-title'];
-		$update_post['post_status'] = 'publish';
-		wp_update_post( $update_post );
+        $wpdb->update( $wpdb->posts, array( 'post_title' =>  stripslashes( $values['group-title'] ), 'post_status' => 'publish' ), array( 'ID' => $id ) );
 	}
 }
 

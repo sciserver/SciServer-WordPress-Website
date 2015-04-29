@@ -110,8 +110,18 @@ class Wordpress_Creation_Kit{
 		add_action("wp_ajax_wck_reorder_meta".$this->args['meta_name'], array( &$this, 'wck_reorder_meta') );		
 		add_action("wp_ajax_nopriv_wck_reorder_meta".$this->args['meta_name'], array( &$this, 'wck_reorder_meta') );		
 						
-		add_action('add_meta_boxes', array( &$this, 'wck_add_metabox') );	
-		
+		add_action('add_meta_boxes', array( &$this, 'wck_add_metabox') );
+
+        /* For single forms we save them the old fashion way */
+        if( $this->args['single'] ){
+            add_action('save_post', array($this, 'wck_save_single_metabox'), 10, 2);
+            /* wp_insert_post executes after save_post so at this point if we have the error global we can redirect the page
+             and add the error message and error fields urlencoded as $_GET */
+            add_action('wp_insert_post', array($this, 'wck_single_metabox_redirect_if_errors'), 10, 2);
+            /* if we have any $_GET errors alert them with js so we have consistency */
+            add_action('admin_print_footer_scripts', array($this, 'wck_single_metabox_errors_display') );
+        }
+
 		/* hook to add a side metabox with the Syncronize translation button */
 		add_action('add_meta_boxes', array( &$this, 'wck_add_sync_translation_metabox' ) );
 		
@@ -121,9 +131,6 @@ class Wordpress_Creation_Kit{
 		/* eache metabox executes the actions so this marks when they were executed at least once */
 		$wck_did_actions = true;
 	}
-	
-
-
 	
 	//add metabox using wordpress api
 
@@ -204,10 +211,12 @@ class Wordpress_Creation_Kit{
 				
 			}		
 		}
-		else if( $this->args['context'] == 'option' ){			
-			add_meta_box($this->args['metabox_id'], $this->args['metabox_title'], array( &$this, 'wck_content' ), $wck_pages_hooknames[$this->args['post_type']], $metabox_context, $metabox_priority,  array( 'meta_name' => $this->args['meta_name'], 'meta_array' => $this->args['meta_array']) );
-			/* add class to meta box */
-			add_filter( "postbox_classes_".$wck_pages_hooknames[$this->args['post_type']]."_".$this->args['metabox_id'], array( &$this, 'wck_add_metabox_classes' ) );
+		else if( $this->args['context'] == 'option' ){
+            if( !empty( $wck_pages_hooknames[$this->args['post_type']] ) ) {
+                add_meta_box($this->args['metabox_id'], $this->args['metabox_title'], array(&$this, 'wck_content'), $wck_pages_hooknames[$this->args['post_type']], $metabox_context, $metabox_priority, array('meta_name' => $this->args['meta_name'], 'meta_array' => $this->args['meta_array']));
+                /* add class to meta box */
+                add_filter("postbox_classes_" . $wck_pages_hooknames[$this->args['post_type']] . "_" . $this->args['metabox_id'], array(&$this, 'wck_add_metabox_classes'));
+            }
 		}
 	}	
 	
@@ -224,25 +233,11 @@ class Wordpress_Creation_Kit{
 			$post_id = '';
 			
 		//output the add form 
-		if( $this->args['single'] ){
-			
-			if( $this->args['context'] == 'post_meta' )
-				$meta_val = get_post_meta( $post_id, $metabox['args']['meta_name'], true );
-			else if ( $this->args['context'] == 'option' )
-				$meta_val = get_option( $metabox['args']['meta_name'] );			
-			
-			if( empty( $meta_val ) )
-				self::create_add_form($metabox['args']['meta_array'], $metabox['args']['meta_name'], $post);
-		}
-		else 
-			self::create_add_form($metabox['args']['meta_array'], $metabox['args']['meta_name'], $post);
-		
+		self::create_add_form($metabox['args']['meta_array'], $metabox['args']['meta_name'], $post);
 
-
-
-
-		//output the entries
-		echo self::wck_output_meta_content($metabox['args']['meta_name'], $post_id, $metabox['args']['meta_array']);
+		//output the entries only for repeater fields
+        if( !$this->args['single'] )
+		    echo self::wck_output_meta_content($metabox['args']['meta_name'], $post_id, $metabox['args']['meta_array']);
 	}
 	
 	/**
@@ -270,11 +265,19 @@ class Wordpress_Creation_Kit{
 			$frontend_prefix = 'fep-';
 		}
 		else{
-			if( isset( $details['default'] ) )
-				$value = apply_filters( "wck_default_value_{$meta}_". Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) , $details['default'] );
-		}		
-		
-		$element .= '<label for="'. esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) ) .'" class="field-label">'. apply_filters( "wck_label_{$meta}_". Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ), ucfirst($details['title']) ) .':';
+			if( isset( $details['default'] ) && !( $this->args['single'] == true && !is_null( $value ) ) ) {
+                $value = apply_filters("wck_default_value_{$meta}_" . Wordpress_Creation_Kit::wck_generate_slug($details['title'], $details ), $details['default']);
+            }
+		}
+
+        /* for single post meta metaboxes we need a prefix in the name attr of the input because in the case we have multiple single metaboxes on the same
+        post we need to prevent the fields from having the same name attr */
+        if( $this->args['context'] == 'post_meta' && $this->args['single'] && $context != 'fep' )
+            $single_prefix = $this->args['meta_name'].'_';
+        else
+            $single_prefix = '';
+
+            $element .= '<label for="'. $single_prefix . esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'" class="field-label">'. apply_filters( "wck_label_{$meta}_". Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details  ), ucfirst($details['title']) ) .':';
 		if( !empty( $details['required'] ) && $details['required'] )
 			$element .= '<span class="required">*</span>';
 		$element .= '</label>';
@@ -304,7 +307,7 @@ class Wordpress_Creation_Kit{
 		
 		$element .= '</div><!-- .mb-right-column -->';
 		
-		$element = apply_filters( "wck_output_form_field_{$meta}_" . Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ), $element ); 
+		$element = apply_filters( "wck_output_form_field_{$meta}_" . Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ), $element );
 		
 		return $element;
 				
@@ -329,9 +332,19 @@ class Wordpress_Creation_Kit{
 			$post_id = $post->ID;
 		else
 			$post_id = '';
-		
-		?>
-		<div id="<?php echo $meta ?>" style="padding:10px 0;" class="wck-add-form<?php if( $this->args['single'] ) echo ' single' ?>">
+
+        /* for single forms we need the values that are stored in the meta */
+        if( $this->args['single'] == true ) {
+            if ($this->args['context'] == 'post_meta')
+                $results = get_post_meta($post_id, $meta, true);
+            else if ($this->args['context'] == 'option')
+                $results = get_option($meta);
+
+            /* Filter primary used for CFC/OPC fields in order to show/hide fields based on type */
+            $wck_update_container_css_class = apply_filters("wck_add_form_class_{$meta}", '', $meta, $results );
+        }
+        ?>
+		<div id="<?php echo $meta ?>" style="padding:10px 0;" class="wck-add-form<?php if( $this->args['single'] ) echo ' single' ?> <?php if( !empty( $wck_update_container_css_class ) ) echo $wck_update_container_css_class; ?>">
 			<ul class="mb-list-entry-fields">
 				<?php
 				$element_id = 0;
@@ -339,10 +352,18 @@ class Wordpress_Creation_Kit{
 					foreach( $fields as $details ){
 						
 						do_action( "wck_before_add_form_{$meta}_element_{$element_id}" );
+
+                        /* set values in the case of single forms */
+                        $value = '';
+                        if( $this->args['single'] == true ) {
+                            $value = null;
+                            if( !empty( $results[0] ) && !empty( $results[0][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )] ) )
+                                $value = $results[0][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )];
+                        }
 						
 						?>
-							<li class="row-<?php echo esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) ) ?>">
-								<?php echo self::wck_output_form_field( $meta, $details, '', $context, $post_id ); ?>
+							<li class="row-<?php echo esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) ?>">
+								<?php echo self::wck_output_form_field( $meta, $details, $value, $context, $post_id ); ?>
 							</li>
 						<?php
 						
@@ -352,9 +373,13 @@ class Wordpress_Creation_Kit{
 					}
 				}
 				?>
-				<li style="overflow:visible;" class="add-entry-button">
-					<a href="javascript:void(0)" class="button-primary" onclick="addMeta('<?php echo esc_js($meta); ?>', '<?php echo esc_js( $post_id ); ?>', '<?php echo esc_js($nonce); ?>')"><span><?php _e( apply_filters( 'wck_add_entry_button', 'Add Entry', $meta, $post ), 'wck' ); ?></span></a>
-				</li>
+                <?php if( ! $this->args['single'] || $this->args['context'] == 'option' ){ ?>
+                    <li style="overflow:visible;" class="add-entry-button">
+                        <a href="javascript:void(0)" class="button-primary" onclick="addMeta('<?php echo esc_js($meta); ?>', '<?php echo esc_js( $post_id ); ?>', '<?php echo esc_js($nonce); ?>')"><span><?php if( $this->args['single'] ) echo apply_filters( 'wck_add_entry_button', __( 'Save', 'wck' ), $meta, $post ); else echo apply_filters( 'wck_add_entry_button', __( 'Add Entry', 'wck' ), $meta, $post ); ?></span></a>
+                    </li>
+                <?php }elseif($this->args['single'] && $this->args['context'] == 'post_meta' ){ ?>
+                    <input type="hidden" name="_wckmetaname_<?php echo $meta ?>#wck" value="true">
+                <?php } ?>
 			</ul>
 		</div>
 		<?php
@@ -393,14 +418,14 @@ class Wordpress_Creation_Kit{
 			if( !empty( $fields ) ){
 				foreach( $fields as $field ){				
 					$details = $field;
-					if( isset( $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'] )] ) )
-						$value = $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'] )];
+					if( isset( $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )] ) )
+						$value = $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )];
 					else 
 						$value = '';
 					
 					$form = apply_filters( "wck_before_update_form_{$meta}_element_{$i}", $form, $element_id, $value );
 					
-					$form .= '<li class="row-'. esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) ) .'">';
+					$form .= '<li class="row-'. esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'">';
 					
 					$form .= self::wck_output_form_field( $meta, $details, $value, 'edit_form', $id ); 
 					
@@ -488,16 +513,16 @@ class Wordpress_Creation_Kit{
 			foreach( $fields as $field ){
 				$details = $field;
 				
-				if( isset( $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'] )] ) )
-					$value = $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'] )];
+				if( isset( $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )] ) )
+					$value = $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )];
 				else
 					$value = '';
 					
 				/* filter display value */
 				/* keep this one for backwards compatibility */	
 				$value = apply_filters( "wck_displayed_value_{$meta}_element_{$j}", $value );
-				$value = apply_filters( "wck_displayed_value_{$meta}_".Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ), $value );
-				
+				$value = apply_filters( "wck_displayed_value_{$meta}_".Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ), $value );
+
 				/* display it differently based on field type*/
 				if( $details['type'] == 'upload' ){	
 					$display_value = self::wck_get_entry_field_upload($value);
@@ -505,7 +530,9 @@ class Wordpress_Creation_Kit{
 					$display_value = self::wck_get_entry_field_user_select( $value ) . '</pre>';
 				} elseif ( $details['type'] == 'cpt select' ){
 					$display_value = self::wck_get_entry_field_cpt_select( $value ) . '</pre>';
-				} else {
+				} elseif ( $details['type'] == 'checkbox' && is_array( $value ) ){
+                    $display_value = implode( ', ', $value );
+                } else {
 					$display_value = '<pre>'.htmlspecialchars( $value ) . '</pre>';
 				}
 				
@@ -515,7 +542,7 @@ class Wordpress_Creation_Kit{
 							if( strpos( $details['type'], 'CFC-') === 0 )
 									$details['type'] = 'nested-repeater';
 									
-				$list .= '<li class="row-'. esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) ) .'" data-type="'.$details['type'].'"><strong>'.$details['title'].': </strong>'.$display_value.' </li>';		
+				$list .= '<li class="row-'. esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'" data-type="'.$details['type'].'"><strong>'.$details['title'].': </strong>'.$display_value.' </li>';
 				
 				$list = apply_filters( "wck_after_listed_{$meta}_element_{$j}", $list, $element_id, $value );
 				
@@ -523,8 +550,8 @@ class Wordpress_Creation_Kit{
 				
 				/* In CFC/OPC we need the field title. Find it out and output it if found */
 				if ($meta == 'wck_cfc_fields') {
-					if( !empty( $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'] )] ) ){
-						$field_title = $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'] )];
+					if( !empty( $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )] ) ){
+						$field_title = $results[$element_id][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )];
 						if ($field_title == "Field Type") 
 							$cfc_field_type = $value;
 					}
@@ -552,17 +579,18 @@ class Wordpress_Creation_Kit{
 
 	/* function to generate output for upload field */
 	function wck_get_entry_field_upload($id){
-		if( !empty ( $id ) && is_numeric( $id ) ){				
+		if( !empty ( $id ) && is_numeric( $id ) ){
 			$file_src = wp_get_attachment_url($id);
 			$thumbnail = wp_get_attachment_image( $id, array( 80, 60 ), true );
 			$file_name = get_the_title( $id );
-			
+			$attachment_url = admin_url( "post.php?post={$id}&action=edit" );
+
 			if ( preg_match( '/^.*?\.(\w+)$/', get_attached_file( $id ), $matches ) )
 				$file_type = esc_html( strtoupper( $matches[1] ) );
 			else
 				$file_type = strtoupper( str_replace( 'image/', '', get_post_mime_type( $id ) ) );
-			
-			return $display_value = '<div class="upload-field-details">'. $thumbnail .'<p><span class="file-name">'. $file_name .'</span><span class="file-type">'. $file_type . '</span></p></div>';	
+
+			return $display_value = '<div class="upload-field-details"><a href="'. $attachment_url. '"  target="_blank" class="wck-attachment-link">' . $thumbnail .'</a><p><span class="file-name">'. $file_name .'</span><span class="file-type">'. $file_type . '</span></p></div>';
 		} else {
 			return '';
 		}
@@ -611,7 +639,7 @@ class Wordpress_Creation_Kit{
 			}
 		}
 		elseif( $this->args['context'] == 'option' ){
-			if( $wck_pages_hooknames[$this->args['post_type']] == $hook ){				
+			if( !empty( $wck_pages_hooknames[$this->args['post_type']] ) && $wck_pages_hooknames[$this->args['post_type']] == $hook ){
 				self::wck_enqueue();
 			}
 		}
@@ -673,7 +701,7 @@ class Wordpress_Creation_Kit{
 		if( !empty( $fields ) ){
 			foreach( $fields as $field ){
 				if( !empty( $field['required'] ) && $field['required'] )
-					$required_fields[Wordpress_Creation_Kit::wck_generate_slug( $field['title'] )] = $field['title'];
+					$required_fields[Wordpress_Creation_Kit::wck_generate_slug( $field['title'], $field )] = $field['title'];
 			}
 		}
 		
@@ -730,8 +758,12 @@ class Wordpress_Creation_Kit{
 			$results = get_post_meta($id, $meta, true);
 		else if ( $this->args['context'] == 'option' )
 			$results = get_option( $meta );
-		
-		$results[] = $values;
+
+        /* for single metaboxes overwrite entries each time so we have a maximum of one */
+        if( $this->args['single'] )
+		    $results = array( $values );
+        else
+            $results[] = $values;
 		
 		do_action( 'wck_before_add_meta', $meta, $id, $values );
 		
@@ -1008,6 +1040,133 @@ class Wordpress_Creation_Kit{
 		
 		exit;
 	}
+
+    /**
+     * Function that saves the entries for single forms on posts(no options). It is hooke on the 'save_post' hook
+     * It is executed on each WCK object instance so we need to restrict it on only the ones that are present for that post
+     */
+    function wck_save_single_metabox( $post_id, $post ){
+        if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+            return $post_id;
+        // check permissions
+        if ( !current_user_can( 'edit_page', $post_id ) )
+            return $post_id;
+        /* only go through for metaboxes defined for this post type */
+        if( get_post_type( $post_id ) != $this->args['post_type'] )
+            return $post_id;
+
+        if( !empty( $_POST ) ){
+            /* for single metaboxes we save a hidden input that contains the meta_name attr as a key so we need to search for it */
+            foreach( $_POST as $request_key => $request_value ){
+                if( strpos( $request_key, '_wckmetaname_' ) !== false && strpos( $request_key, '#wck' ) !== false ){
+                    /* found it so now retrieve the meta_name from the key formatted _wckmetaname_actuaname#wck */
+                    $request_key = str_replace( '_wckmetaname_', '', $request_key );
+                    $meta_name = str_replace( '#wck', '', $request_key );
+                    /* we have it so go through only on the WCK object instance that has this meta_name */
+                    if( $this->args['meta_name'] == $meta_name ){
+
+                        /* get the meta values from the $_POST and store them in an array */
+                        $meta_values = array();
+                        if( !empty( $this->args['meta_array'] ) ){
+                            foreach ($this->args['meta_array'] as $meta_field){
+                                /* in the $_POST the names for the fields are prefixed with the meta_name for the single metaboxes in case there are multiple metaboxes that contain fields wit hthe same name */
+                                $single_field_name = $this->args['meta_name'] .'_'. Wordpress_Creation_Kit::wck_generate_slug( $meta_field['title'], $meta_field );
+                                if (!empty($_POST[$single_field_name])) {
+                                    /* checkbox needs to be stored as string not array */
+                                    if( $meta_field['type'] == 'checkbox' )
+                                        $_POST[$single_field_name] = implode( ', ', $_POST[$single_field_name] );
+
+                                    $meta_values[Wordpress_Creation_Kit::wck_generate_slug($meta_field['title'], $meta_field )] = $_POST[$single_field_name];
+                                }
+                                else
+                                    $meta_values[Wordpress_Creation_Kit::wck_generate_slug( $meta_field['title'], $meta_field )] = '';
+                            }
+                        }
+
+                        /* test if we have errors for the required fields */
+                        $errors = self::wck_test_required( $this->args['meta_array'], $meta_name, $meta_values, $post_id );
+                        if( !empty( $errors ) ){
+                            /* if we have errors then add them in the global. We do this so we get all errors from all single metaboxes that might be on that page */
+                            global $wck_single_forms_errors;
+                            if( !empty( $errors['errorfields'] ) ){
+                                foreach( $errors['errorfields'] as $key => $field_name ){
+                                    $errors['errorfields'][$key] = $this->args['meta_name']. '_' .$field_name;
+                                }
+                            }
+                            $wck_single_forms_errors[] = $errors;
+                        }
+                        else {
+
+                            do_action( 'wck_before_add_meta', $meta_name, $post_id, $meta_values );
+                            do_action( 'wck_before_update_meta', $meta_name, $post_id, $meta_values, '0' );
+
+                            /* no errors so we can save */
+                            update_post_meta($post_id, $meta_name, array($meta_values));
+                            /* handle unserialized fields */
+                            if ($this->args['unserialize_fields']) {
+                                if (!empty($this->args['meta_array'])) {
+                                    foreach ($this->args['meta_array'] as $meta_field) {
+                                        update_post_meta($post_id, $meta_name . '_' . Wordpress_Creation_Kit::wck_generate_slug( $meta_field['title'], $meta_field ) . '_1', $_POST[$this->args['meta_name'] . '_' . Wordpress_Creation_Kit::wck_generate_slug( $meta_field['title'], $meta_field )]);
+                                    }
+                                }
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Function that checks if we have any errors in the required fields from the single metaboxes. It is executed on 'wp_insert_post' hook
+     * that comes after 'save_post' so we should have the global errors by now. If we have errors perform a redirect and add the error messages and error fields
+     * in the url
+     */
+    function wck_single_metabox_redirect_if_errors( $post_id, $post ){
+        global $wck_single_forms_errors;
+        if( !empty( $wck_single_forms_errors ) ) {
+            $error_messages = '';
+            $error_fields = '';
+            foreach( $wck_single_forms_errors as $wck_single_forms_error ){
+                $error_messages .= $wck_single_forms_error['error'];
+                $error_fields .= implode( ',', $wck_single_forms_error['errorfields'] ).',';
+            }
+            wp_redirect( add_query_arg( array( 'wckerrormessages' => base64_encode( urlencode( $error_messages ) ), 'wckerrorfields' => base64_encode( urlencode( $error_fields ) ) ), $_SERVER["HTTP_REFERER"] ) );
+            exit;
+        }
+    }
+
+    /** Function that displays the error messages, if we have any, as js alerts and marks the fields with red
+     */
+    function wck_single_metabox_errors_display(){
+        /* only execute for the WCK objects defined for the current post type */
+        global $post;
+        if( get_post_type( $post ) != $this->args['post_type'] )
+            return;
+
+        /* and only do it once */
+        global $allready_saved;
+        if( isset( $allready_saved ) && $allready_saved == true )
+            return;
+        $allready_saved = true;
+
+        /* mark the fields */
+        if( isset( $_GET['wckerrorfields'] ) && !empty( $_GET['wckerrorfields'] ) ){
+            echo '<script type="text/javascript">';
+            $field_names = explode( ',', urldecode( base64_decode( $_GET['wckerrorfields'] ) ) );
+            foreach( $field_names as $field_name ){
+                echo "jQuery( '.field-label[for=\"". $field_name ."\"]' ).addClass('error');";
+
+            }
+            echo '</script>';
+        }
+
+        /* alert the error messages */
+        if( isset( $_GET['wckerrormessages'] ) ){
+            echo '<script type="text/javascript">alert("'. urldecode( str_replace( '%0A', '\n', base64_decode( $_GET['wckerrormessages'] ) ) ) .'")</script>';
+        }
+    }
 	
 	/* WPML Compatibility */
 	
@@ -1182,9 +1341,13 @@ class Wordpress_Creation_Kit{
 	 * @param string $string The input string from which we generate the slug	 
 	 * @return string $slug The henerated slug
 	 */
-	static function wck_generate_slug( $string ){
-		$slug = rawurldecode( sanitize_title_with_dashes( remove_accents( $string ) ) );
-		return $slug;
+	static function wck_generate_slug( $string, $details = array() ){
+        if( !empty( $details['slug'] ) )
+            $slug = $details['slug'];
+        else
+		    $slug = rawurldecode( sanitize_title_with_dashes( remove_accents( $string ) ) );
+
+        return $slug;
 	}
 }
 
@@ -1282,6 +1445,12 @@ class WCK_Page_Creator{
 	 */
 	function wck_page_init(){			
 		global $wck_pages_hooknames;
+
+        /* don't add the page at all if the user doesn't meet the capabilities */
+        if( !empty( $this->args['capability'] ) ){
+            if( !current_user_can( $this->args['capability'] ) )
+                return;
+        }
 		
 		/* Create the page using either add_menu_page or add_submenu_page functions depending on the 'page_type' parameter. */
 		if( $this->args['page_type'] == 'menu_page' ){

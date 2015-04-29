@@ -13,7 +13,7 @@ jQuery(function(){
 		}
 	});
 	
-	jQuery(document).on( 'click', '#wck_fep_args input[name="anonymous-posting"], .update_container_wck_fep_args input[name="anonymous-posting"]', function () {
+	jQuery(document).on( 'click', '#wck_fep_args input[name="wck_fep_args_anonymous-posting"], .update_container_wck_fep_args input[name="wck_fep_args_anonymous-posting"]', function () {
 		value = jQuery(this).val();
 		if( value == 'yes' ){
 			jQuery( '.row-assign-to-user', jQuery(this).parent().parent().parent().parent().parent().parent() ).show();

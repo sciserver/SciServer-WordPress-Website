@@ -208,8 +208,6 @@ function wck_cfc_display_field_title_slug( $form, $i, $value ){
 	return $form;
 }
 
-
-
 /* add refresh to page */
 add_action("wck_refresh_list_wck_cfc", "wck_cfc_after_refresh_list");
 function wck_cfc_after_refresh_list(){
@@ -411,29 +409,30 @@ function wck_cfc_change_meta_key( $meta, $id, $values, $element_id ){
 	global $wpdb;
 	if( $meta == 'wck_cfc_args' ){
 		$wck_cfc_args = get_post_meta( $id, 'wck_cfc_args', true );
+        if( !empty( $wck_cfc_args ) ) {
+            if ($wck_cfc_args[0]['meta-name'] != $values['meta-name']) {
+                $wpdb->update(
+                    $wpdb->postmeta,
+                    array('meta_key' => $values['meta-name']),
+                    array('meta_key' => $wck_cfc_args[0]['meta-name'])
+                );
+            }
 
-		if( $wck_cfc_args[0]['meta-name'] != $values['meta-name'] ){
-			$wpdb->update(
-				$wpdb->postmeta,
-				array( 'meta_key' => $values['meta-name'] ),
-				array( 'meta_key' => $wck_cfc_args[0]['meta-name'] )
-			);
-		}
+            // Post Type
+            if ($wck_cfc_args[0]['post-type'] != $values['post-type']) {
+                update_post_meta($id, 'wck_cfc_post_type_arg', $values['post-type']);
+            }
 
-		// Post Type
-		if( $wck_cfc_args[0]['post-type'] != $values['post-type'] ){
-			update_post_meta( $id, 'wck_cfc_post_type_arg', $values['post-type'] );
-		}
+            // Post Id
+            if ($wck_cfc_args[0]['post-id'] != $values['post-id']) {
+                update_post_meta($id, 'wck_cfc_post_id_arg', $values['post-id']);
+            }
 
-		// Post Id
-		if( $wck_cfc_args[0]['post-id'] != $values['post-id'] ){
-			update_post_meta( $id, 'wck_cfc_post_id_arg', $values['post-id'] );
-		}
-
-		// Page Template
-		if( $wck_cfc_args[0]['page-template'] != $values['page-template'] ){
-			update_post_meta( $id, 'wck_cfc_page_template_arg', $values['page-template'] );
-		}
+            // Page Template
+            if ($wck_cfc_args[0]['page-template'] != $values['page-template']) {
+                update_post_meta($id, 'wck_cfc_page_template_arg', $values['page-template']);
+            }
+        }
 	}
 }
 
@@ -443,26 +442,27 @@ function wck_cfc_change_field_title( $meta, $id, $values, $element_id ){
 	global $wpdb;
 	if( $meta == 'wck_cfc_fields' ){
 		$wck_cfc_fields = get_post_meta( $id, 'wck_cfc_fields', true );
+        if( !empty( $wck_cfc_fields ) ) {
+            if ($wck_cfc_fields[$element_id]['field-title'] != $values['field-title']) {
 
-		if( $wck_cfc_fields[$element_id]['field-title'] != $values['field-title'] ){
+                $wck_cfc_args = get_post_meta($id, 'wck_cfc_args', true);
+                $meta_name = $wck_cfc_args[0]['meta-name'];
+                $post_id_with_this_meta = $wpdb->get_results($wpdb->prepare("SELECT post_id FROM $wpdb->postmeta WHERE meta_key = %s", $meta_name));
 
-			$wck_cfc_args = get_post_meta( $id, 'wck_cfc_args', true );
-			$meta_name = $wck_cfc_args[0]['meta-name'];
-			$post_id_with_this_meta = $wpdb->get_results( $wpdb->prepare( "SELECT post_id FROM $wpdb->postmeta WHERE meta_key = %s", $meta_name ) );
-
-			if( !empty( $post_id_with_this_meta ) ){
-				foreach( $post_id_with_this_meta as $post ){
-					$results = get_post_meta( $post->post_id, $meta_name, true );
-					if( !empty( $results ) ){
-						foreach( $results as $key => $result ){
-							$results[$key][ Wordpress_Creation_Kit::wck_generate_slug( $values['field-title'] ) ] = $results[$key][ Wordpress_Creation_Kit::wck_generate_slug( $wck_cfc_fields[$element_id]['field-title'] ) ];
-							unset( $results[$key][ Wordpress_Creation_Kit::wck_generate_slug( $wck_cfc_fields[$element_id]['field-title'] ) ] );
-						}
-					}
-					update_post_meta( $post->post_id, $meta_name, $results );
-				}
-			}
-		}
+                if (!empty($post_id_with_this_meta)) {
+                    foreach ($post_id_with_this_meta as $post) {
+                        $results = get_post_meta($post->post_id, $meta_name, true);
+                        if (!empty($results)) {
+                            foreach ($results as $key => $result) {
+                                $results[$key][Wordpress_Creation_Kit::wck_generate_slug($values['field-title'])] = $results[$key][Wordpress_Creation_Kit::wck_generate_slug($wck_cfc_fields[$element_id]['field-title'])];
+                                unset($results[$key][Wordpress_Creation_Kit::wck_generate_slug($wck_cfc_fields[$element_id]['field-title'])]);
+                            }
+                        }
+                        update_post_meta($post->post_id, $meta_name, $results);
+                    }
+                }
+            }
+        }
 	}
 }
 

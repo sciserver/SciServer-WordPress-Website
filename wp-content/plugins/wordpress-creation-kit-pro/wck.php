@@ -3,7 +3,7 @@
 Plugin Name: WordPress Creation Kit Pro
 Description: WordPress Creation Kit is a collection of WordPress utilities: Swift Templates, FrontEnd Posting, Custom Fields Creator, Custom Post Types Creator and Custom Taxonomies Creator
 Author: Cozmoslabs, Madalin Ungureanu, Cristian Antohe
-Version: 2.1.2
+Version: 2.1.4
 Author URI: http://www.cozmoslabs.com
 
 License: GPL2
@@ -142,8 +142,22 @@ if (file_exists ($wck_premium_update . 'update-checker.php')){
 	}
 }
 
+/* Add admin footer text for encouraging users to leave a review of the plugin on wordpress.org */
+function wck_admin_rate_us( $footer_text ) {
+    global $current_screen;
+
+    if ($current_screen->parent_base == 'wck-page'){
+        $rate_text = sprintf( __( 'If you enjoy using <strong> WordPress Creation Kit </strong> please <a href="%1$s" target="_blank">rate us on WordPress.org</a> to help us reach more people. More happy users means more features, less bugs and better support for everyone. ', 'profilebuilder' ),
+            'https://wordpress.org/support/view/plugin-reviews/wck-custom-fields-and-custom-post-types-creator?filter=5#postform'
+        );
+        return '<span id="footer-thankyou">' .$rate_text . '</span>';
+    } else {
+        return $footer_text;
+    }
+}
+add_filter('admin_footer_text','wck_admin_rate_us');
+
 /* include nested repeaters */
 /* if( file_exists( dirname(__FILE__).'/wordpress-creation-kit-api/wck-nested-repeaters/wck-nested-repeaters.php' ) )
 	require_once('wordpress-creation-kit-api/wck-nested-repeaters/wck-nested-repeaters.php'); */
-
 ?>

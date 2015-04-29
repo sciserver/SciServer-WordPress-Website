@@ -10,10 +10,10 @@ $args = apply_filters( 'wck-cpt-select-args', array( 'post_type' => $details['cp
 $cpt_query = new WP_Query($args);
 
 if( !empty( $cpt_query->posts ) ){
-	$element .= '<select name="'. esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) ) .'"  id="';
+	$element .= '<select name="'. $single_prefix . esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'"  id="';
 	if( !empty( $frontend_prefix ) )
 		$element .=	$frontend_prefix;  
-	$element .= esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'] ) ) .'" class="mb-user-select mb-field" >';
+	$element .= esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'" class="mb-user-select mb-field" >';
 	$element .= '<option value="">'. __('...Chose', 'wck') .'</option>';						
 	foreach( $cpt_query->posts as $cpt ){
 		if ( $cpt->post_title == '' )
