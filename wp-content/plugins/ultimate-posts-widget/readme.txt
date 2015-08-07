@@ -1,12 +1,12 @@
 === Ultimate Posts Widget ===
 Contributors: bostondv
 Donate link: http://www.pomelodesign.com/donate/
-License: GPLv3
-License URI: http://www.gnu.org/licenses/gpl.html
+License: MIT
+License URI: http://opensource.org/licenses/MIT
 Tags: widget, recent posts, custom post types, sticky posts, featured image, post thumbnail, excerpts, category, custom fields, list pages, widget query, microformats, customizable widget,  categories widget, tags widget, excerpt, widget templates, post author, post date, custom query, ultimate posts, comments, orderby, comment count
 Requires at least: 3.5
-Tested up to: 4.0
-Stable tag: 2.0.3
+Tested up to: 4.3
+Stable tag: 2.0.4
 
 The ultimate widget for displaying posts, custom post types or sticky posts with an array of options.
 
@@ -123,6 +123,9 @@ This plugin uses the [timthumb library](http://www.binarymoon.co.uk/projects/tim
 
 == Changelog ==
 
+= 2.0.4 =
+* Updated class constructor for WordPress 4.3 compatibility (thanks @JustB)
+
 = 2.0.3 =
 * Adds link to thumbnail images
 * Adds option to show all categories, tags, or types for better usability
@@ -161,7 +164,7 @@ This plugin uses the [timthumb library](http://www.binarymoon.co.uk/projects/tim
 
 * Upgrades from prior to 2.0.0 we retain the "legacy" template for you. To change which template to use, find the "Template" option under the "Display" tab.
 * If you used the "More Button", you will need to add in your own HTML into one of the new fields since the more button is now removed.
-* If you used custom thumbnail settings you will need to update them. You can now choose from pre-defined sizes available to WordPress. If you need an additional image size please see [how to add image sizes](http://codex.wordpress.org/Function_Reference/add_image_size/).
+* If you used custom thumbnail settings you will need to update them. You can now choose from pre-defined sizes available to WordPress. If you need an additional image size please see [how to add image sizes](http://codex.wordpress.org/Function_Reference/add_image_size).
 * Date formatting has changed, you will need to update your settings. By default it uses WordPress' date/time options.
 
 = 1.9.0 =

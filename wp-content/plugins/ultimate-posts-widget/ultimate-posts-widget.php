@@ -3,48 +3,32 @@
 Plugin Name: Ultimate Posts Widget
 Plugin URI: http://wordpress.org/plugins/ultimate-posts-widget/
 Description: The ultimate widget for displaying posts, custom post types or sticky posts with an array of options.
-Version: 2.0.3
+Version: 2.0.4
 Author: Boston Dell-Vandenberg
 Author URI: http://pomelodesign.com
 Text Domain: upw
 Domain Path: /languages/
-License: GPLv3
-
-Ultimate Posts Widget Plugin
-Copyright (C) 2012-2014, Boston Dell-Vandenberg - boston@pomelodesign.com
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>.
+License: MIT
 */
 
 if ( !class_exists( 'WP_Widget_Ultimate_Posts' ) ) {
 
   class WP_Widget_Ultimate_Posts extends WP_Widget {
 
-    function WP_Widget_Ultimate_Posts() {
+    function __construct() {
 
-      $widget_options = array( 
-        'classname' => 'widget_ultimate_posts', 
-        'description' => __( 'Displays list of posts with an array of options', 'upw' ) 
+      $widget_options = array(
+        'classname' => 'widget_ultimate_posts',
+        'description' => __( 'Displays list of posts with an array of options', 'upw' )
       );
 
       $control_options = array(
         'width' => 450
       );
 
-      $this->WP_Widget( 
-        'sticky-posts', 
-        __( 'Ultimate Posts', 'upw' ), 
+      parent::__construct(
+        'sticky-posts',
+        __( 'Ultimate Posts', 'upw' ),
         $widget_options,
         $control_options
       );
@@ -112,7 +96,7 @@ if ( !class_exists( 'WP_Widget_Ultimate_Posts' ) ) {
       $orderby = $instance['orderby'];
       $meta_key = $instance['meta_key'];
       $custom_fields = $instance['custom_fields'];
-      
+
       // Sticky posts
       if ($sticky == 'only') {
         $sticky_query = array( 'post__in' => get_option( 'sticky_posts' ) );
@@ -144,8 +128,11 @@ if ( !class_exists( 'WP_Widget_Ultimate_Posts' ) ) {
       // If $attag true and is single post
       if ($attag && is_single()) {
         $tags = '';
-        foreach (get_the_tags() as $tagg) {
-          $tags .= $tagg->term_id.' ';
+        $thetags = get_the_tags();
+        if ($thetags) {
+            foreach ($thetags as $tagg) {
+                $tags .= $tagg->term_id . ' ';
+            }
         }
         $tags = str_replace(' ', ',', trim($tags));
       }
@@ -615,7 +602,7 @@ if ( !class_exists( 'WP_Widget_Ultimate_Posts' ) ) {
           <label for="<?php echo $this->get_field_id( 'meta_key' ); ?>"><?php _e('Custom field', 'upw'); ?>:</label>
           <input class="widefat" id="<?php echo $this->get_field_id('meta_key'); ?>" name="<?php echo $this->get_field_name('meta_key'); ?>" type="text" value="<?php echo $meta_key; ?>" />
         </p>
-        
+
         <p>
           <label for="<?php echo $this->get_field_id('order'); ?>"><?php _e('Order', 'upw'); ?>:</label>
           <select name="<?php echo $this->get_field_name('order'); ?>" id="<?php echo $this->get_field_id('order'); ?>" class="widefat">
