@@ -1038,9 +1038,14 @@ if ( class_exists('WP_Widget') ) {
 	
 	class RSSImport_Widget extends WP_Widget {
 		
-		function RSSImport_Widget() {
+		/*function RSSImport_Widget() {
 			$widget_ops = array('classname' => 'rssimport', 'description' => __( 'Entries from any RSS or Atom feed', FB_RSSI_TEXTDOMAIN ) );
 			$this->WP_Widget('rssimport', __( 'RSSImport' ), $widget_ops);
+		}*/
+		
+		function __construct() {
+			$widget_ops = array('classname' => 'rssimport', 'description' => __( 'Entries from any RSS or Atom feed', FB_RSSI_TEXTDOMAIN ) );
+			parent::__construct('rssimport', __( 'RSSImport' ), $widget_ops);
 		}
 		
 		function widget($args, $instance) {
