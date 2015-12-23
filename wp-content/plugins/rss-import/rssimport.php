@@ -1,8 +1,7 @@
 <?php
 /**
  * @package WP-RSSImport
- * @author Frank B&uuml;ltge &amp; Novaclic
- * @version 4.4.14
+ * @author Frank Bültge
  */
  
 /**
@@ -10,11 +9,11 @@
  * Plugin URI:  http://bueltge.de/wp-rss-import-plugin/55/
  * Text Domain: rssimport
  * Domain Path: /languages
- * Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport]. Please see the new <a href="http://wordpress.org/extend/plugins/rss-import/">possibilities</a>.
- * Author:      Frank B&uuml;ltge, novaclic, took77
- * Version:     4.4.15
- * License:     GPLv3
- * Last change: 08/22/2014
+ * Description: Import and display Feeds in your blog, use the function RSSImport(), a Widget or Shortcode [RSSImport].
+ * Author:      Frank Bültge, took77
+ * Version:     4.4.16
+ * License:     GPLv2+
+ * Last change: 09/24/2015
  */ 
 
 /*
@@ -1038,11 +1037,6 @@ if ( class_exists('WP_Widget') ) {
 	
 	class RSSImport_Widget extends WP_Widget {
 		
-		/*function RSSImport_Widget() {
-			$widget_ops = array('classname' => 'rssimport', 'description' => __( 'Entries from any RSS or Atom feed', FB_RSSI_TEXTDOMAIN ) );
-			$this->WP_Widget('rssimport', __( 'RSSImport' ), $widget_ops);
-		}*/
-		
 		function __construct() {
 			$widget_ops = array('classname' => 'rssimport', 'description' => __( 'Entries from any RSS or Atom feed', FB_RSSI_TEXTDOMAIN ) );
 			parent::__construct('rssimport', __( 'RSSImport' ), $widget_ops);
@@ -1443,4 +1437,3 @@ if ( class_exists('WP_Widget') ) {
 	add_action( 'widgets_init', create_function('', 'return register_widget("RSSImport_Widget");') );
 
 } // end if class wp_widget exists
-?>
