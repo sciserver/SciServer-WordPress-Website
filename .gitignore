@@ -1,6 +1,7 @@
 .htaccess
-wp-config.php
-xgncjgy2/
+node_modules
+wp-content/uploads/ninja-forms/
+wp-config*.php
 
 # Compiled source #
 ###################
