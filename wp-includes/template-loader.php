@@ -4,6 +4,7 @@
  * @package WordPress
  */
 if ( defined('WP_USE_THEMES') && WP_USE_THEMES )
+
 	/**
 	 * Fires before determining which template to load.
 	 *
