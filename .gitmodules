@@ -7,9 +7,3 @@
 [submodule "login-portal-2"]
 	path = login-portal-2
 	url = git@github.com:idies/sciserver-sso-portal.git
-[submodule "wp-content/themes/roots"]
-	path = wp-content/themes/roots
-	url = //github.com/roots/roots.git
-[submodule "wp-content/themes/sciserver_old"]
-	path = wp-content/themes/sciserver_old
-	url = git@bitbucket.org:idies/sciserver_wptheme.git
