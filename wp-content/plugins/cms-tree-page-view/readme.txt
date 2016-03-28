@@ -5,7 +5,7 @@ Tags: page, pages, posts, custom posts, tree, cms, dashboard, overview, drag-and
 Text Domain: cms-tree-page-view
 Requires at least: 3.8
 Tested up to: 4.2
-Stable tag: 1.2.34
+Stable tag: 1.3.2
 
 Adds a tree view of all pages & custom posts. Get a great overview + options to drag & drop to reorder & option to add multiple pages.
 
@@ -92,8 +92,9 @@ If you want to always have a list of your pages available in your WordPress admi
 [Admin Menu Tree Page View](http://wordpress.org/extend/plugins/admin-menu-tree-page-view/).
 
 #### Donation and more plugins
+
+* Check out my other plugin [Simple History](http://simple-history.com/) if you want to see a log of changes in your WordPress admin. With Simple History you can see login attempts (both failed and sucessful), page changes, plugin updated, and more. It's a great way to view user actions on your site!
 * If you like this plugin don't forget to [donate to support further development](http://eskapism.se/sida/donate/).
-* More [WordPress CMS plugins](http://wordpress.org/extend/plugins/profile/eskapism) by the same author.
 
 == Installation ==
 
@@ -115,6 +116,20 @@ Now the tree with the pages will be visible both on the dashboard and in the men
 
 
 == Changelog ==
+
+= 1.3.2 (March 2016) =
+
+- Make the page tree use less memory. Should work ok with very large amount of pages now.
+Fixes https://wordpress.org/support/topic/fatal-error-allowed-memory-size-exhausted-27.
+
+= 1.3.1 =
+
+ - A problem with WP Super Cache should be fixed. Fixes https://wordpress.org/support/topic/1233-breaks-plugin-fix and probably some more support threads.
+
+= 1.3 =
+
+- Languages should be loaded from wordpress.org, if available there.
+- Removed German translation, because it's loaded from wordpress.org.
 
 = 1.2.34 =
 
@@ -552,7 +567,7 @@ http://wordpress.org/support/topic/plugin-cms-tree-page-view-broken-for-language
 - added swedish translation by Måns Jonasson
 
 = 0.4.3 =
-- forgot the domain for _e at some places
+- forgot the domain for `_e` at some places
 
 = 0.4.2 =
 - added .pot-file
