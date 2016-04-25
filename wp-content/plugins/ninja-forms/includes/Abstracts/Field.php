@@ -21,6 +21,11 @@ abstract class NF_Abstracts_Field
     protected $_section = '';
 
     /**
+    * @var string
+    */
+    protected $_icon = 'square-o';
+
+    /**
      * @var array
      */
     protected $_aliases = array();
@@ -179,6 +184,11 @@ abstract class NF_Abstracts_Field
         return $this->_section;
     }
 
+    public function get_icon()
+    {
+        return $this->_icon;
+    }
+
     public function get_aliases()
     {
         return $this->_aliases;
@@ -265,7 +275,7 @@ abstract class NF_Abstracts_Field
             }
         }
 
-        return $settings;
+        return apply_filters( 'ninja_forms_field_' . $this->_name . '_settings', $settings );
     }
 
     public static function get_base_template()

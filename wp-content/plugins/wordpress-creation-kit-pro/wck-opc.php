@@ -125,14 +125,14 @@ function wck_opc_create_box(){
 	
 	/* set up the fields array */
 	$opc_box_args_fields = array(
-		array( 'type' => 'text', 'title' => __( 'Page name in menu', 'wck' ), 'description' => __( 'The name of the option page in the menu.', 'wck' ), 'required' => true ),				
-		array( 'type' => 'select', 'title' => __( 'Display', 'wck' ), 'options' => array( 'As toplevel page', 'Under Appearance menu', 'Under Settings menu' ), 'default-option' => true, 'description' => __( 'Choose where in the admin menu should the page appear', 'wck' ) ),		
-		array( 'type' => 'text', 'title' => __( 'Page Title', 'wck' ), 'description' => __( 'The title that is displayed on the page. If this is not filled in then it\'s the same as Page name in menu', 'wck' ) ),				
-		array( 'type' => 'select', 'title' => __( 'Page Type', 'wck' ), 'options' => array( '%Toplevel Page%menu_page', '%Submenu Page%submenu_page' ), 'default-option' => true, 'description' => __( 'Choose what type the page should be. IMPORTANT: this overrides the Display option.', 'wck' ) ),
-		array( 'type' => 'text', 'title' => __( 'Parent Slug (for Submenu Page)', 'wck' ), 'description' => __( 'The slug name for the parent menu (or the file name of a standard WordPress admin page) For examples see http://codex.wordpress.org/Function_Reference/add_submenu_page $parent_slug parameter', 'wck' ) ),				
-		array( 'type' => 'text', 'title' => __( 'Position (for Toplevel Page)', 'wck' ), 'description' => __( 'The position in the menu order this menu should appear. Available for toplevel pages only.', 'wck' ) ),						
-		array( 'type' => 'text', 'title' => __( 'Capability', 'wck' ), 'description' => __( 'The capability required for this menu to be displayed to the user. Defaults to "edit_theme_options"', 'wck' ) ),				
-		array( 'type' => 'text', 'title' => __( 'Icon Url (for Toplevel Page)', 'wck' ), 'description' => __( 'The icon for the menu button', 'wck' ) ),						
+		array( 'type' => 'text', 'title' => __( 'Page name in menu', 'wck' ), 'slug' => 'page-name-in-menu', 'description' => __( 'The name of the option page in the menu.', 'wck' ), 'required' => true ),
+		array( 'type' => 'select', 'title' => __( 'Display', 'wck' ), 'slug' => 'display', 'options' => array( 'As toplevel page', 'Under Appearance menu', 'Under Settings menu' ), 'default-option' => true, 'description' => __( 'Choose where in the admin menu should the page appear', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Page Title', 'wck' ), 'slug' => 'page-title', 'description' => __( 'The title that is displayed on the page. If this is not filled in then it\'s the same as Page name in menu', 'wck' ) ),
+		array( 'type' => 'select', 'title' => __( 'Page Type', 'wck' ), 'slug' => 'page-type', 'options' => array( '%Toplevel Page%menu_page', '%Submenu Page%submenu_page' ), 'default-option' => true, 'description' => __( 'Choose what type the page should be. IMPORTANT: this overrides the Display option.', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Parent Slug (for Submenu Page)', 'wck' ), 'slug' => 'parent-slug-for-submenu-page', 'description' => __( 'The slug name for the parent menu (or the file name of a standard WordPress admin page) For examples see http://codex.wordpress.org/Function_Reference/add_submenu_page $parent_slug parameter', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Position (for Toplevel Page)', 'wck' ), 'slug' => 'position-for-toplevel-page', 'description' => __( 'The position in the menu order this menu should appear. Available for toplevel pages only.', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Capability', 'wck' ), 'slug' => 'capability', 'description' => __( 'The capability required for this menu to be displayed to the user. Defaults to "edit_theme_options"', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Icon Url (for Toplevel Page)', 'wck' ), 'slug' => 'icon-url-for-toplevel-page', 'description' => __( 'The icon for the menu button', 'wck' ) ),
 	);
 		
 	/* set up the box arguments */
@@ -166,11 +166,11 @@ function wck_opc_create_box(){
 	
 	/* set up the fields arguments array */
 	$opc_box_fields_fields = apply_filters( 'wck_opc_box_fields_fields', array(		
-		array( 'type' => 'text', 'title' => __( 'Group Title', 'wck' ), 'description' => __( 'The name of the group field', 'wck' ), 'required' => true ),
-		array( 'type' => 'select', 'title' => __( 'Option Page', 'wck' ), 'options' => $all_option_pages_titles, 'default-option' => true, 'description' => __( 'Select the option page here', 'wck' ), 'required' => true ),
-		array( 'type' => 'text', 'title' => __( 'Option Name', 'wck' ), 'description' => __( 'The name of the option. Must be unique, only lowercase letters, no spaces and no special characters.', 'wck' ), 'required' => true ),
-		array( 'type' => 'select', 'title' => __( 'Repeater', 'wck' ), 'options' => array( 'false', 'true' ), 'default' => 'false', 'description' => __( 'Whether the box supports just one entry or if it is a repeater field. By default it is a single field.', 'wck' ) ),
-		array( 'type' => 'select', 'title' => __( 'Sortable', 'wck' ), 'options' => array( 'true', 'false' ), 'default' => 'false', 'description' => __( 'Whether the entries are sortable or not. This is valid for repeater fields.', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Group Title', 'wck' ), 'slug' => 'group-title', 'description' => __( 'The name of the group field', 'wck' ), 'required' => true ),
+		array( 'type' => 'select', 'title' => __( 'Option Page', 'wck' ), 'slug' => 'option-page', 'options' => $all_option_pages_titles, 'default-option' => true, 'description' => __( 'Select the option page here', 'wck' ), 'required' => true ),
+		array( 'type' => 'text', 'title' => __( 'Option Name', 'wck' ), 'slug' => 'option-name', 'description' => __( 'The name of the option. Must be unique, only lowercase letters, no spaces and no special characters.', 'wck' ), 'required' => true ),
+		array( 'type' => 'select', 'title' => __( 'Repeater', 'wck' ), 'slug' => 'repeater', 'options' => array( 'false', 'true' ), 'default' => 'false', 'description' => __( 'Whether the box supports just one entry or if it is a repeater field. By default it is a single field.', 'wck' ) ),
+		array( 'type' => 'select', 'title' => __( 'Sortable', 'wck' ), 'slug' => 'sortable', 'options' => array( 'true', 'false' ), 'default' => 'false', 'description' => __( 'Whether the entries are sortable or not. This is valid for repeater fields.', 'wck' ) ),
 	) );	
 	
 	/* set up the box arguments */
@@ -196,13 +196,13 @@ function wck_opc_create_box(){
 	
 	/* set up the fields array */
 	$opc_box_fields_fields = array(
-		array( 'type' => 'text', 'title' => __( 'Field Title', 'wck' ), 'description' => __( 'Title of the field. A slug will automatically be generated.', 'wck' ), 'required' => true ),
-		array( 'type' => 'select', 'title' => __( 'Field Type', 'wck' ), 'options' => $field_types, 'default-option' => true, 'description' => __( 'The field type', 'wck' ), 'required' => true ),
-		array( 'type' => 'textarea', 'title' => __( 'Description', 'wck' ), 'description' => 'The description of the field.' ),				
-		array( 'type' => 'select', 'title' => __( 'Required', 'wck' ), 'options' => array( 'false', 'true' ), 'default' => 'false', 'description' => __( 'Whether the field is required or not', 'wck' ) ),
-		array( 'type' => 'select', 'title' => __( 'CPT', 'wck' ), 'options' => $post_types, 'default' => 'post', 'description' => __( 'Select what custom post type should be used in the CPT Select.', 'wck' ) ),		
-		array( 'type' => 'text', 'title' => __( 'Default Value', 'wck' ), 'description' => __( 'Default value of the field. For Checkboxes if there are multiple values separate them with a ","', 'wck' ) ),
-		array( 'type' => 'text', 'title' => __( 'Options', 'wck' ), 'description' => __( 'Options for field types "select", "checkbox" and "radio". For multiple options separate them with a ",". You can use the following structure if you want the label to be different from the value: %LabelOne%valueone,%LabelTwo%valuetwo,%LabelThree%valuethree', 'wck' ) ),		
+		array( 'type' => 'text', 'title' => __( 'Field Title', 'wck' ), 'slug' => 'field-title', 'description' => __( 'Title of the field. A slug will automatically be generated.', 'wck' ), 'required' => true ),
+		array( 'type' => 'select', 'title' => __( 'Field Type', 'wck' ), 'slug' => 'field-type', 'options' => $field_types, 'default-option' => true, 'description' => __( 'The field type', 'wck' ), 'required' => true ),
+		array( 'type' => 'textarea', 'title' => __( 'Description', 'wck' ), 'slug' => 'description', 'description' => 'The description of the field.' ),
+		array( 'type' => 'select', 'title' => __( 'Required', 'wck' ), 'slug' => 'required', 'options' => array( 'false', 'true' ), 'default' => 'false', 'description' => __( 'Whether the field is required or not', 'wck' ) ),
+		array( 'type' => 'select', 'title' => __( 'CPT', 'wck' ), 'slug' => 'cpt', 'options' => $post_types, 'default' => 'post', 'description' => __( 'Select what custom post type should be used in the CPT Select.', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Default Value', 'wck' ), 'slug' => 'default-value', 'description' => __( 'Default value of the field. For Checkboxes if there are multiple values separate them with a ","', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Options', 'wck' ), 'slug' => 'options', 'description' => __( 'Options for field types "select", "checkbox" and "radio". For multiple options separate them with a ",". You can use the following structure if you want the label to be different from the value: %LabelOne%valueone,%LabelTwo%valuetwo,%LabelThree%valuethree', 'wck' ) ),
 	);	
 	
 	/* set up the box arguments */

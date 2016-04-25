@@ -122,11 +122,11 @@ function wck_fep_create_boxes(){
 	
 	/* set up the fields array */
 	$fep_box_args_fields = array( 				
-		array( 'type' => 'select', 'title' => __( 'Post Type', 'wck' ), 'options' => $post_type_names, 'default-option' => true, 'description' => __( 'Select in what post type the entries of this form will be added.', 'wck' ), 'required' => true ),				
-		array( 'type' => 'radio', 'title' => __( 'Anonymous posting', 'wck' ), 'options' => array( 'yes', 'no' ), 'default' => 'no', 'description' => __( 'Enable anonymous posting. If enabled users can use this form without being logged in.', 'wck' ) ),				
-		array( 'type' => 'user select', 'title' => __( 'Assign to user', 'wck' ), 'description' => __( 'The user that the posts are assigned to with "Anonymous posting". Defaults to admin', 'wck' ) ),
-		array( 'type' => 'radio', 'title' => __( 'Admin Approval', 'wck' ), 'options' => array( 'yes', 'no' ), 'default' => 'no', 'description' => __( 'Enable Admin Approval. If enabled the entries from this form will be set as drafts and will require an admin to approve them.', 'wck' ) ),				
-		array( 'type' => 'select', 'title' => __( 'Shortcode Page', 'wck' ), 'options' => $page_names, 'values' => $page_ids, 'default-option' => true, 'description' => __( 'The page on which the shortcode will be placed. You can come back and edit this later.', 'wck' ) ),				
+		array( 'type' => 'select', 'title' => __( 'Post Type', 'wck' ), 'slug' => 'post-type', 'options' => $post_type_names, 'default-option' => true, 'description' => __( 'Select in what post type the entries of this form will be added.', 'wck' ), 'required' => true ),
+		array( 'type' => 'radio', 'title' => __( 'Anonymous posting', 'wck' ), 'slug' => 'anonymous-posting', 'options' => array( 'yes', 'no' ), 'default' => 'no', 'description' => __( 'Enable anonymous posting. If enabled users can use this form without being logged in.', 'wck' ) ),
+		array( 'type' => 'user select', 'title' => __( 'Assign to user', 'wck' ), 'slug' => 'assign-to-user', 'description' => __( 'The user that the posts are assigned to with "Anonymous posting". Defaults to admin', 'wck' ) ),
+		array( 'type' => 'radio', 'title' => __( 'Admin Approval', 'wck' ), 'slug' => 'admin-approval', 'options' => array( 'yes', 'no' ), 'default' => 'no', 'description' => __( 'Enable Admin Approval. If enabled the entries from this form will be set as drafts and will require an admin to approve them.', 'wck' ) ),
+		array( 'type' => 'select', 'title' => __( 'Shortcode Page', 'wck' ), 'slug' => 'shortcode-page', 'options' => $page_names, 'values' => $page_ids, 'default-option' => true, 'description' => __( 'The page on which the shortcode will be placed. You can come back and edit this later.', 'wck' ) ),
 	);
 	
 	/* set up the box arguments */
@@ -148,8 +148,8 @@ function wck_fep_create_boxes(){
 	
 	/* set up the fields array */
 	$fep_box_fields_fields = array(		
-		array( 'type' => 'select', 'title' => __( 'Field Type', 'wck' ), 'options' => $default_fields_titles, 'default-option' => true, 'description' => __( 'The field type', 'wck' ), 'required' => true ),
-		array( 'type' => 'radio', 'title' => __( 'Required', 'wck' ), 'options' => array( 'yes', 'no' ), 'default' => 'no', 'description' => __( 'Is this field required?', 'wck' ) )
+		array( 'type' => 'select', 'title' => __( 'Field Type', 'wck' ), 'slug' => 'field-type', 'options' => $default_fields_titles, 'default-option' => true, 'description' => __( 'The field type', 'wck' ), 'required' => true ),
+		array( 'type' => 'radio', 'title' => __( 'Required', 'wck' ), 'slug' => 'required', 'options' => array( 'yes', 'no' ), 'default' => 'no', 'description' => __( 'Is this field required?', 'wck' ) )
 	);	
 	
 	/* add to Field Types all the taxonomies registered for the post type selected in the Form Setup */
@@ -189,14 +189,14 @@ function wck_fep_create_boxes(){
 	
 	/* set up the labels array */
 	$fep_box_label_fields = array(		
-		array( 'type' => 'text', 'title' => __( 'Post Title', 'wck' ), 'description' => __( 'Change the "Post Title" label', 'wck' ) ),
-		array( 'type' => 'text', 'title' => __( 'Post Content', 'wck' ), 'description' => __( 'Change the "Post Content" label', 'wck' ) ),		
-		array( 'type' => 'text', 'title' => __( 'Post Excerpt', 'wck' ), 'description' => __( 'Change the "Post Excerpt" label', 'wck' ) ),		
-		array( 'type' => 'text', 'title' => __( 'Featured Image', 'wck' ), 'description' => __( 'Change the "Featured Image" label', 'wck' ) ),		
-		array( 'type' => 'text', 'title' => __( 'Add Post', 'wck' ), 'description' => __( 'Change the "Add Post" label for the submit button', 'wck' ) ),		
-		array( 'type' => 'text', 'title' => __( 'Update Post', 'wck' ), 'description' => __( 'Change the "Update Post" label for the submit button', 'wck' ) ),		
-		array( 'type' => 'text', 'title' => __( 'Post Added', 'wck' ), 'description' => __( 'Change the "Post Added" success message', 'wck' ) ),		
-		array( 'type' => 'text', 'title' => __( 'Post Updated', 'wck' ), 'description' => __( 'Change the "Post Updated" success message', 'wck' ) )		
+		array( 'type' => 'text', 'title' => __( 'Post Title', 'wck' ), 'slug' => 'post-title', 'description' => __( 'Change the "Post Title" label', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Post Content', 'wck' ), 'slug' => 'post-content', 'description' => __( 'Change the "Post Content" label', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Post Excerpt', 'wck' ), 'slug' => 'post-excerpt', 'description' => __( 'Change the "Post Excerpt" label', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Featured Image', 'wck' ), 'slug' => 'featured-image', 'description' => __( 'Change the "Featured Image" label', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Add Post', 'wck' ), 'slug' => 'add-post', 'description' => __( 'Change the "Add Post" label for the submit button', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Update Post', 'wck' ), 'slug' => 'update-post', 'description' => __( 'Change the "Update Post" label for the submit button', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Post Added', 'wck' ), 'slug' => 'post-added', 'description' => __( 'Change the "Post Added" success message', 'wck' ) ),
+		array( 'type' => 'text', 'title' => __( 'Post Updated', 'wck' ), 'slug' => 'post-updated', 'description' => __( 'Change the "Post Updated" success message', 'wck' ) )
 	);		
 	
 	/* set up the box arguments */
@@ -328,7 +328,7 @@ function wck_fep_change_field_type_select( $id ){
 	}
 	
 	/* build the select html */
-	$select_html = '<option value=\"\">'. __( '...Chose', 'wck' ) .'</option>';
+	$select_html = '<option value=\"\">'. __( '...Choose', 'wck' ) .'</option>';
 	foreach( $default_fields_titles as $default_fields_title ){
 		$select_html .= '<option value=\"'. $default_fields_title .'\">'. $default_fields_title .'</option>';
 	}	

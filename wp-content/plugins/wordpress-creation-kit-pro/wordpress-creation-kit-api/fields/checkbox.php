@@ -32,9 +32,9 @@ if( !empty( $details['options'] ) ){
 				}
 			}
 		}
-			
+
 		$element .= '<div><label><input type="checkbox" name="'. $single_prefix . esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) );
-        if( $this->args['single'] ) {
+        if( $this->args['single'] && $this->args['context'] != 'option' ) {
             $element .= '[]';
         }
         $element .= '" id="';

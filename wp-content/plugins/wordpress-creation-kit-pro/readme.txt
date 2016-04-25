@@ -1,12 +1,12 @@
 === WordPress Creation Kit === 
 
-Contributors: reflectionmedia, madalin.ungureanu, sareiodata
+Contributors: cozmoslabs, reflectionmedia, madalin.ungureanu, sareiodata, adispiac
 Donate link: http://www.cozmoslabs.com/wordpress-creation-kit-sale-page/
 Tags: custom fields, custom field, wordpress custom fields, advanced custom fields, custom post type, custom post types, post types, repeater fields, repeater, repeatable, meta box, meta boxes, metabox, taxonomy, taxonomies, custom taxonomy, custom taxonomies, custom, custom fields creator, post meta, meta, get_post_meta, post creator, cck, content types, types
 
 Requires at least: 3.1
-Tested up to: 4.1.1
-Stable tag: 2.1.4
+Tested up to: 4.4.2
+Stable tag: 2.2.2
 
 A must have tool for creating custom fields, custom post types and taxonomies, fast and without any programming knowledge.
 
@@ -285,3 +285,59 @@ Now metaboxes or pages don't appear for users that shouldn't
 2.1.4
 Fixed major issue that prevented publishing new metaboxes (CFC)
 Added a footer message asking users to leave a review if they enjoyed WCK
+
+2.1.5
+Aligned "Help" wit "WCK" in contextual help red button
+Fixed some issues with translations
+Fixed issue with checkbox not saving in single Options Metaboxes
+Fixed issue with updating profile without password in FEP dashboard that removed password
+Add support for 'post_author_id' in Swift Templates
+Removed pro banner from sidebar on the pro version
+We now run the Custom Post Type and  Custom Taxonomy register function sooner on the init hook
+Add CKEditor Justify addon for enabling the align buttons
+
+
+2.1.6
+Select field can now display lables when outputting values
+Minor security improvements
+We no longer get .js errors when a Select field has no options
+Renamed class Mustache_Autoloader to WCK_Mustache_Autoloader to avoid class redeclaration error from other plugins
+Change names of some variables in Swift Templates .js to fix conflict with the Avada theme builder
+Added global filter for a form element output
+Added a filter in WCK Front End Posting dashboard for posts query
+Fixed typo in Meta Box Creator
+
+2.1.7
+We now allow  Custom Post Types and Custom Taxonomies to be available via REST API by adding 'show_in_rest' attribute
+
+2.1.8
+Fixed issue with Front End Posting that deleted post title, content or excerpt if the field wasn't present in the Front End Posting edit form
+Fixed typo from 'Chose' to 'Choose'
+
+
+2.1.9
+We now display error message when meta name contains uppercase letters
+We now display error when taxonomy name contains uppercase letters or spaces
+Nopriv ajax actions now are available only when Front End Posting  is enabled
+Fixed issues with post thumbnail and themes that added thumbnail support for specific post types in Custom Post Types Creator
+Removed notice when WPML was active in certain cases
+Users with the capability to 'edit_others_posts' can now edit them from the frontend in Front End Posting as well
+
+
+2.2.0
+When renaming a taxonomy we now make sure the terms get ported as well
+We now make sure we have jquery when loading the FEP form
+Fixed a issue where a Mustache class sometimes reported that it was already loaded
+
+
+2.2.1
+Added additional labels to Post Type Creator and Taxonomy Creator
+We now check the post type name to not have spaces, capital letters or hyphens
+When changing a custom post type name the existing posts get ported as well
+
+2.2.2
+Minor security improvements
+Added filter for the 'rewrite' argument in the Custom Taxonomy Creator: 'wck_ctc_register_taxonomy_rewrite_arg'
+Added hooks in WCK_Page_Creator api to allow extra content before and after metaboxes: 'wck_page_creator_before_meta_boxes' and 'wck_page_creator_after_meta_boxes'
+Added wp_nonce to edit post links in Front End Posting Dashboard
+Swift Templates divs now have a unique class to allow customization per template

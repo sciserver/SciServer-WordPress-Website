@@ -1,7 +1,7 @@
 <?php
 // Include Mustache Templates 
 require_once ('Mustache/Autoloader.php');
-Mustache_Autoloader::register();
+WCK_Mustache_Autoloader::register();
 
 function wck_stp_get_image_metadata_types() {
     return array( 'title', 'caption', 'alt', 'description' );
@@ -145,6 +145,7 @@ function wck_stp_populate_default_template_vars( $post, $post_author, $post_type
 		'post_excerpt' 		=> '',
 		'post_date'	 		=> '',
 		'post_author'	 	=> '',
+		'post_author_id' 	=> '',
 		'post_permalink'	=> '',
 		'swift_permalink'	=> '',
 	);
@@ -193,6 +194,7 @@ function wck_stp_populate_default_template_vars( $post, $post_author, $post_type
 			$mustache_default_vars['post_excerpt'] = $post->post_excerpt;
 		$mustache_default_vars['post_date'] = $post->post_date;
 		$mustache_default_vars['post_author'] = $post_author->display_name;
+		$mustache_default_vars['post_author_id'] = $post_author->ID;
 
         /* Featured image sizes */
         $mustache_default_vars['featured_image'] = get_the_post_thumbnail( $post->ID );

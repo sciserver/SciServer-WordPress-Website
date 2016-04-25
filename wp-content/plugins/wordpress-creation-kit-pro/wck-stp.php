@@ -75,10 +75,10 @@ function wck_stp_print_scripts($hook){
 		wp_enqueue_style('wck-codemirror-fullscreen-css');		
 		
 		wp_register_script('wck-codemirror-js', plugins_url('wordpress-creation-kit-api/wck-stp/codemirror/codemirror-compressed.js', __FILE__), array( ), '1.0' );
-		wp_enqueue_script('wck-codemirror-js');				
+		wp_enqueue_script('wck-codemirror-js');
 
 		wp_register_script('wck-stp-codemirror-init-js', plugins_url('wordpress-creation-kit-api/wck-stp/js/wck-stp-codemirror.js', __FILE__), array( 'jquery' ), '1.0' );
-		wp_enqueue_script('wck-stp-codemirror-init-js');		
+		wp_enqueue_script('wck-stp-codemirror-init-js');
 		
 		//initiate default css and js for Swift Templates
 		wp_register_style('wck-stp-backend-css', plugins_url('wordpress-creation-kit-api/wck-stp/css/wck-stp.css', __FILE__) );

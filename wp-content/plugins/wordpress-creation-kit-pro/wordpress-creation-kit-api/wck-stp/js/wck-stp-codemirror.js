@@ -17,17 +17,17 @@
 
 
 jQuery(function(){
-	
+
 	var wck_stp_textareas = ["wck_stp_template_all", "wck_stp_template_single", "wck_stp_singlepost_template"]
-	var length = wck_stp_textareas.length
-	element = null
+	var wck_length = wck_stp_textareas.length
+	wck_element = null
 	var cmeditors = new Array();;
-	
-	for ( var i=0; i < length; i++ ){
-		element = wck_stp_textareas[i]
-		
-		if ( jQuery( "#" + element ).length > 0 ){			
-			var editor = CodeMirror.fromTextArea(document.getElementById( element ), {
+
+	for ( var i=0; i < wck_length; i++ ){
+		wck_element = wck_stp_textareas[i]
+
+		if ( jQuery( "#" + wck_element ).length > 0 ){
+			var editor = CodeMirror.fromTextArea(document.getElementById( wck_element ), {
 				mode: "mustache",
 				lineNumbers: true,
 				extraKeys: {
@@ -47,7 +47,7 @@ jQuery(function(){
 	jQuery("body").bind("ajaxComplete", function(e, xhr, settings){
 		//var editor_all_ajax = CodeMirror.fromTextArea(document.getElementById("all-posts-archive"), {mode: "mustache"});
 		//var editor_single_ajax = CodeMirror.fromTextArea(document.getElementById("single-posts-archive"), {mode: "mustache"});
-	});	
+	});
 	
 	
 	/* Callback implementetion to refresh codemirror instance when the metabox is loaded hidden and we show it

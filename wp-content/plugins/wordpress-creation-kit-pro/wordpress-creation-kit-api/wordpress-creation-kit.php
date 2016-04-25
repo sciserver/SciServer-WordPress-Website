@@ -94,21 +94,24 @@ class Wordpress_Creation_Kit{
 		
 		// Set up the AJAX hooks
 		add_action("wp_ajax_wck_add_meta".$this->args['meta_name'], array( &$this, 'wck_add_meta') );
-		add_action("wp_ajax_nopriv_wck_add_meta".$this->args['meta_name'], array( &$this, 'wck_add_meta') );
 		add_action("wp_ajax_wck_update_meta".$this->args['meta_name'], array( &$this, 'wck_update_meta') );
-		add_action("wp_ajax_nopriv_wck_update_meta".$this->args['meta_name'], array( &$this, 'wck_update_meta') );
 		add_action("wp_ajax_wck_show_update".$this->args['meta_name'], array( &$this, 'wck_show_update_form') );
-		add_action("wp_ajax_nopriv_wck_show_update".$this->args['meta_name'], array( &$this, 'wck_show_update_form') );
 		add_action("wp_ajax_wck_refresh_list".$this->args['meta_name'], array( &$this, 'wck_refresh_list') );
-		add_action("wp_ajax_nopriv_wck_refresh_list".$this->args['meta_name'], array( &$this, 'wck_refresh_list') );
 		add_action("wp_ajax_wck_refresh_entry".$this->args['meta_name'], array( &$this, 'wck_refresh_entry') );
-		add_action("wp_ajax_nopriv_wck_refresh_entry".$this->args['meta_name'], array( &$this, 'wck_refresh_entry') );
 		add_action("wp_ajax_wck_add_form".$this->args['meta_name'], array( &$this, 'wck_add_form') );
-		add_action("wp_ajax_nopriv_wck_add_form".$this->args['meta_name'], array( &$this, 'wck_add_form') );
 		add_action("wp_ajax_wck_remove_meta".$this->args['meta_name'], array( &$this, 'wck_remove_meta') );
-		add_action("wp_ajax_nopriv_wck_remove_meta".$this->args['meta_name'], array( &$this, 'wck_remove_meta') );
-		add_action("wp_ajax_wck_reorder_meta".$this->args['meta_name'], array( &$this, 'wck_reorder_meta') );		
-		add_action("wp_ajax_nopriv_wck_reorder_meta".$this->args['meta_name'], array( &$this, 'wck_reorder_meta') );		
+		add_action("wp_ajax_wck_reorder_meta".$this->args['meta_name'], array( &$this, 'wck_reorder_meta') );
+
+        if( file_exists( dirname(__FILE__).'/wck-fep.php' ) && ( !isset( $wck_fep ) || $wck_fep == 'enabled' ) ){
+            add_action("wp_ajax_nopriv_wck_add_meta".$this->args['meta_name'], array( &$this, 'wck_add_meta') );
+            add_action("wp_ajax_nopriv_wck_update_meta".$this->args['meta_name'], array( &$this, 'wck_update_meta') );
+            add_action("wp_ajax_nopriv_wck_show_update".$this->args['meta_name'], array( &$this, 'wck_show_update_form') );
+            add_action("wp_ajax_nopriv_wck_refresh_list".$this->args['meta_name'], array( &$this, 'wck_refresh_list') );
+            add_action("wp_ajax_nopriv_wck_refresh_entry".$this->args['meta_name'], array( &$this, 'wck_refresh_entry') );
+            add_action("wp_ajax_nopriv_wck_add_form".$this->args['meta_name'], array( &$this, 'wck_add_form') );
+            add_action("wp_ajax_nopriv_wck_remove_meta".$this->args['meta_name'], array( &$this, 'wck_remove_meta') );
+            add_action("wp_ajax_nopriv_wck_reorder_meta".$this->args['meta_name'], array( &$this, 'wck_reorder_meta') );
+        }
 						
 		add_action('add_meta_boxes', array( &$this, 'wck_add_metabox') );
 
@@ -306,9 +309,10 @@ class Wordpress_Creation_Kit{
 		}
 		
 		$element .= '</div><!-- .mb-right-column -->';
-		
+
+		$element = apply_filters( "wck_output_form_field", $element, $meta, $details);
 		$element = apply_filters( "wck_output_form_field_{$meta}_" . Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ), $element );
-		
+
 		return $element;
 				
 	}
@@ -532,7 +536,9 @@ class Wordpress_Creation_Kit{
 					$display_value = self::wck_get_entry_field_cpt_select( $value ) . '</pre>';
 				} elseif ( $details['type'] == 'checkbox' && is_array( $value ) ){
                     $display_value = implode( ', ', $value );
-                } else {
+                } elseif ( $details['type'] == 'select' ){
+                    $display_value = '<pre>' . __(self::wck_get_entry_field_select( $value, $details ), 'profilebuilder') . '</pre>';
+                }else {
 					$display_value = '<pre>'.htmlspecialchars( $value ) . '</pre>';
 				}
 				
@@ -575,6 +581,29 @@ class Wordpress_Creation_Kit{
 		$list .= '</tr>';		
 	
 		return $list;
+	}
+
+    /* function to generate the output for the select field */
+	function wck_get_entry_field_select( $value, $field_details ){
+    	if ( (!is_array( $field_details ) && !isset( $field_details['options']) ) || empty( $value )){
+            return $value;
+		}
+
+		foreach( $field_details['options'] as $option ){
+            if ( strpos( $option, $value ) !== false ){
+                if( strpos( $option, '%' ) === false ){
+                    return $value;
+				} else {
+                    $option_parts = explode( '%', $option );
+                	if( !empty( $option_parts ) ){
+                        if( empty( $option_parts[0] ) && count( $option_parts ) == 3 ){
+                            $label = $option_parts[1];
+                        	return $label;
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/* function to generate output for upload field */
@@ -745,7 +774,7 @@ class Wordpress_Creation_Kit{
 			$values = array();
 		
 		$values = apply_filters( "wck_add_meta_filter_values_{$meta}", $values );
-		
+
 		/* check required fields */
 		$errors = self::wck_test_required( $this->args['meta_array'], $meta, $values, $id );		
 		if( $errors != '' ){
@@ -820,7 +849,7 @@ class Wordpress_Creation_Kit{
 			$results = get_option( $meta );
 		
 		$results[$element_id] = $values;
-		
+
 		do_action( 'wck_before_update_meta', $meta, $id, $values, $element_id );
 		
 		if( $this->args['context'] == 'post_meta' )
@@ -1071,7 +1100,7 @@ class Wordpress_Creation_Kit{
                             foreach ($this->args['meta_array'] as $meta_field){
                                 /* in the $_POST the names for the fields are prefixed with the meta_name for the single metaboxes in case there are multiple metaboxes that contain fields wit hthe same name */
                                 $single_field_name = $this->args['meta_name'] .'_'. Wordpress_Creation_Kit::wck_generate_slug( $meta_field['title'], $meta_field );
-                                if (!empty($_POST[$single_field_name])) {
+                                if (isset($_POST[$single_field_name])) {
                                     /* checkbox needs to be stored as string not array */
                                     if( $meta_field['type'] == 'checkbox' )
                                         $_POST[$single_field_name] = implode( ', ', $_POST[$single_field_name] );
@@ -1132,7 +1161,7 @@ class Wordpress_Creation_Kit{
                 $error_messages .= $wck_single_forms_error['error'];
                 $error_fields .= implode( ',', $wck_single_forms_error['errorfields'] ).',';
             }
-            wp_redirect( add_query_arg( array( 'wckerrormessages' => base64_encode( urlencode( $error_messages ) ), 'wckerrorfields' => base64_encode( urlencode( $error_fields ) ) ), $_SERVER["HTTP_REFERER"] ) );
+            wp_safe_redirect( add_query_arg( array( 'wckerrormessages' => base64_encode( urlencode( $error_messages ) ), 'wckerrorfields' => base64_encode( urlencode( $error_fields ) ) ), $_SERVER["HTTP_REFERER"] ) );
             exit;
         }
     }
@@ -1156,7 +1185,7 @@ class Wordpress_Creation_Kit{
             echo '<script type="text/javascript">';
             $field_names = explode( ',', urldecode( base64_decode( $_GET['wckerrorfields'] ) ) );
             foreach( $field_names as $field_name ){
-                echo "jQuery( '.field-label[for=\"". $field_name ."\"]' ).addClass('error');";
+                echo "jQuery( '.field-label[for=\"". esc_js( $field_name ) ."\"]' ).addClass('error');";
 
             }
             echo '</script>';
@@ -1164,7 +1193,7 @@ class Wordpress_Creation_Kit{
 
         /* alert the error messages */
         if( isset( $_GET['wckerrormessages'] ) ){
-            echo '<script type="text/javascript">alert("'. urldecode( str_replace( '%0A', '\n', base64_decode( $_GET['wckerrormessages'] ) ) ) .'")</script>';
+            echo '<script type="text/javascript">alert("'. str_replace( '%0A', '\n', esc_js( urldecode( base64_decode( $_GET['wckerrormessages'] ) ) ) ) .'")</script>';
         }
     }
 	
@@ -1176,9 +1205,9 @@ class Wordpress_Creation_Kit{
 	 * if any of the custom fields has the 'wckwpml' prefix.
 	 */
 	function wck_add_sync_translation_metabox(){
-		global $post;	
-			
-		if( isset( $_GET['lang'] ) ){
+		global $post;
+
+        if( isset( $_GET['lang'] ) && !empty( $post ) ){
 			
 			$has_wck_with_unserialize_fields = false;
 			$custom_field_keys = get_post_custom_keys( $post->ID );
@@ -1476,8 +1505,10 @@ class WCK_Page_Creator{
 	/**
 	 * Do action 'add_meta_boxes'. This hook isn't executed by default on a admin page so we have to add it.
 	 */
-	function wck_settings_page_add_meta_boxes() {					
-		do_action( 'add_meta_boxes', $this->hookname );		
+	function wck_settings_page_add_meta_boxes() {
+        do_action( 'wck_page_creator_before_meta_boxes', $this->hookname );
+		do_action( 'add_meta_boxes', $this->hookname, 0 );
+        do_action( 'wck_page_creator_after_meta_boxes', $this->hookname );
 	}
 	
 	/**

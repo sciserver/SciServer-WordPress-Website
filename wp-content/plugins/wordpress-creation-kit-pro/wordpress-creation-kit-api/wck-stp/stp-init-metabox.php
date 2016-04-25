@@ -2,7 +2,7 @@
 $prefix = 'wck_stp_args_';
 $wck_stp_all_post_types = wck_stp_get_all_post_types();
 $wck_stp_cpt_select_options = array(
-	$prefix.'chose' => array('label' => '...Chose', 'value' => '' ),
+	$prefix.'chose' => array('label' => '...Choose', 'value' => '' ),
 );
 
 foreach($wck_stp_all_post_types as $value){
@@ -63,11 +63,12 @@ foreach( $available_args as $key => $value) {
 	
 /* set up the fields array */
 $stp_box_args_fields = array( 				
-	array( 'type' => 'select', 'title' => __( 'Query Arguments', 'wck' ), 'options' => $process_args, 'default-option' => true, 
+	array( 'type' => 'select', 'title' => __( 'Query Arguments', 'wck' ), 'slug' => 'query-arguments', 'options' => $process_args, 'default-option' => true,
 	'description' => __( 'Setup query arguments. <a href="'. plugins_url( 'wck-stp/wck_stp_query_docs.html' , dirname(__FILE__) ) . '?TB_iframe=true&width=600&height=550" class="thickbox">see accepted values</a>', 'wck' ), 'required' => true ),
 	array( 
 		'type' => 'text', 
-		'title' => __( 'Value', 'wck' ), 
+		'title' => __( 'Value', 'wck' ),
+        'slug' => 'value',
 		'description' => __( 'The value of the selected query argument. Parameters normaly passed as arrays (some tax args, meta_query, etc) are not supported in the UI. Use the <b>wck_stp_archive_query_args</b> filter for those.  ', 'wck' ), 
 		'required' => false ),
 );

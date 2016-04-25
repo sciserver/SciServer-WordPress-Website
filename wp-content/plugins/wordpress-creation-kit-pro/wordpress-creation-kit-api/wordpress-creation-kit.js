@@ -18,7 +18,7 @@ jQuery(function(){
 });
 
 
-/* add reccord to the meta */
+/* add record to the meta */
 function addMeta(value, id, nonce){
 
 	/* if CKEDITOR then trigger save. save puts the content in the hidden textarea */
@@ -47,9 +47,12 @@ function addMeta(value, id, nonce){
 					values[key.toString()] += ', ' + jQuery(this).val().toString();
 			}			
 		}
-		
-		else		
-			values[key.toString()] = jQuery(this).val().toString();
+		else {
+            if( jQuery(this).val() != null )
+                values[key.toString()] = jQuery(this).val().toString();
+            else
+                values[key.toString()] = '';
+        }
 	});
 	
 	meta = value;
@@ -117,7 +120,7 @@ function addMeta(value, id, nonce){
 	
 }
 
-/* remove reccord from the meta */
+/* remove record from the meta */
 function removeMeta(value, id, element_id, nonce){
 	
 	var response = confirm( "Delete this item ?" );
@@ -304,9 +307,12 @@ function updateMeta(value, id, element_id, nonce){
 					values[key.toString()] += ', ' + jQuery(this).val().toString();
 			}			
 		}
-		
-		else		
-			values[key.toString()] = jQuery(this).val().toString();
+		else {
+            if( jQuery(this).val() != null )
+                values[key.toString()] = jQuery(this).val().toString();
+            else
+                values[key.toString()] = '';
+        }
 		
 	});
 	

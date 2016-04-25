@@ -98,7 +98,10 @@ class WCK_Template_API{
 		
 		foreach( $all_cfc as $post_id ) {
 			$queried_meta_name = WCK_Template_API::get_meta('wck_cfc_args', $post_id );
-			$queried_meta_name = $queried_meta_name[0]['meta-name'];
+            if( isset( $queried_meta_name[0]['meta-name'] ) )
+			    $queried_meta_name = $queried_meta_name[0]['meta-name'];
+            else
+                $queried_meta_name = '';
 						
 			if ( $meta_name == $queried_meta_name ) {
 				$available_fields = WCK_Template_API::get_meta( 'wck_cfc_fields', $post_id );

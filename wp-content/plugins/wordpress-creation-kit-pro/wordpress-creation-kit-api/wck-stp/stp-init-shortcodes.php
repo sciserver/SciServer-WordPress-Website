@@ -68,7 +68,7 @@ function wck_stp_all_listing($name) {
 			}
 
 			$posts = get_posts($args);
-			
+
 			// generate our mustache array with available data
 			$mustache_posts = array( 'posts' => array() );
 			foreach ($posts as $post){
@@ -82,7 +82,7 @@ function wck_stp_all_listing($name) {
 			// parse our template
 			$m = new Mustache_Engine;
 			try {
-				$content = '<div class="stp-bubble-wrap stp-archive">' . $m->render( $template, $mustache_posts ) . '</div>';
+				$content = '<div class="stp-bubble-wrap stp-archive stp-archive-'. $name .'">' . $m->render( $template, $mustache_posts ) . '</div>';
 			} catch (Exception $e) {
 				$content = $e->getMessage();
 			}			
@@ -92,7 +92,7 @@ function wck_stp_all_listing($name) {
 	}
 	// do nothing if shortcode doesn't exist
 	if ( !$valid_shortcode ){
-		return '<p class="wck-stp-error">'.sprintf( __( 'The shortcode with the name <em>%s</em> dose not exist.', 'wck' ), $name ).'</p>';
+		return '<p class="wck-stp-error ">'.sprintf( __( 'The shortcode with the name <em>%s</em> dose not exist.', 'wck' ), $name ).'</p>';
 	}
 }
 
@@ -126,7 +126,7 @@ function wck_stp_single_listing($name, $single) {
 			$template = get_post_meta( $stp_id, 'wck_stp_template_single', true);
 			$m = new Mustache_Engine;
 			
-			$content = '<div class="stp-bubble-wrap stp-single">' . $m->render( $template, $mustache_vars ) . '</div>';
+			$content = '<div class="stp-bubble-wrap stp-single stp-single-'. $name .'">' . $m->render( $template, $mustache_vars ) . '</div>';
 
             return apply_filters( 'wck_stp_template_content_single', do_shortcode( $content ), $content );
 		}

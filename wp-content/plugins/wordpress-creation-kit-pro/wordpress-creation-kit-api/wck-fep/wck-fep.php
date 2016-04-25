@@ -181,9 +181,19 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
 			$post_id = $_GET['post_id'];
 		else
 			$post_id = '';
-			
-		$output .= "<script type='text/javascript'>			
-		jQuery.post( wckAjaxurl,  { action:'wck_fep_create_frontend_form_".$form_name."', action_type:'".$action."', post_id:'".$post_id."' ". $loginerror ."}, function(response) {
+
+        /* edit nonce */
+        if( !empty( $_GET['_wpnonce'] ) ){
+            $edit_nonce = $_GET['_wpnonce'];
+        }
+        else
+            $edit_nonce = '';
+
+        /* make sure we have jquery at this point */
+        wp_print_scripts( 'jquery' );
+
+		$output .= "<script type='text/javascript'>
+		jQuery.post( wckAjaxurl,  { action:'wck_fep_create_frontend_form_".$form_name."', action_type:'".$action."', post_id:'".$post_id."', _wpnonce:'". $edit_nonce ."' ". $loginerror ."}, function(response) {
 			jQuery('.fep-container.".$form_name."').html(response);
 			jQuery( '#fep-ajax-loading' ).remove();
 			jQuery(mb_sortable_elements);
@@ -308,10 +318,11 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
             if ( $fep_form ){
                 $author_id = $fep_form->post_author;
                 $user_ID = get_current_user_id();
-
-                if ( $author_id != $user_ID ){
-                    $error = '<div class="fep-error fep-access-denied">You are not allowed to edit this post.</div>';
-                    return $error;
+                if ( !current_user_can( 'edit_others_posts' ) && !wp_verify_nonce( $_REQUEST['_wpnonce'], 'wck-fep-dashboard-edit-'.$post_id.'-'.$user_ID ) ){
+                    if ($author_id != $user_ID) {
+                        $error = '<div class="fep-error fep-access-denied">' . __( "You are not allowed to edit this post.", "wck" ) . '</div>';
+                        return $error;
+                    }
                 }
             }
         }
@@ -539,13 +550,46 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
 		
 		$wck_fep_new_post = array(
 			'ID' => $post_ID,
-			'post_title' => $values['post-title'],
 			'post_content' => $values['post-content'],
 			'post_excerpt' => $values['post-excerpt'],
 			'post_type' => $this->args['post_type']
 		);
-		
-		/* post status */
+
+
+        if( !empty($values['post-title'] ) )
+            $wck_fep_new_post['post_title'] = wp_strip_all_tags($values['post-title']);
+        else {
+            if( !empty( $action_type ) && $action_type == 'edit' )
+                $wck_fep_new_post['post_title'] = get_the_title( $post_ID );
+            else
+                $wck_fep_new_post['post_title'] = '';
+        }
+
+        if( !empty($values['post-content'] ) )
+            $wck_fep_new_post['post_content'] = wp_strip_all_tags($values['post-content']);
+        else {
+            if( !empty( $action_type ) && $action_type == 'edit' ) {
+                $post_obj = get_post( $post_ID );
+                $wck_fep_new_post['post_content'] = $post_obj->post_content;
+            }
+            else
+                $wck_fep_new_post['post_content'] = '';
+        }
+
+        if( !empty($values['post-excerpt'] ) )
+            $wck_fep_new_post['post_excerpt'] = wp_strip_all_tags($values['post-excerpt']);
+        else {
+            if( !empty( $action_type ) && $action_type == 'edit' ) {
+                $post_obj = get_post( $post_ID );
+                $wck_fep_new_post['post_excerpt'] = $post_obj->post_excerpt;
+            }
+            else
+                $wck_fep_new_post['post_excerpt'] = '';
+        }
+
+
+
+        /* post status */
 		if( $this->args['admin_approval'] == 'yes' )
 			$wck_fep_new_post['post_status'] = 'draft';	
 		else 
@@ -714,8 +758,8 @@ class WCK_FEP_Dashboard{
 								'author' => $user_id,
 								'post_type' => $post_type->name
 							);
-					$posts = get_posts( $args );
-					
+					$posts = get_posts( apply_filters( 'wck_fep_dashbord_get_posts_args', $args ) );
+
 					if( !empty( $posts ) )				
 						$dashboard .= '<li><a href="#fep-'. $post_type->name .'">'. __( 'My ', 'wck' ) .$post_type->label.'</a></li>';
 				}
@@ -733,7 +777,7 @@ class WCK_FEP_Dashboard{
 								'author' => $user_id,
 								'post_type' => $post_type->name
 							);
-					$posts = get_posts( $args );
+					$posts = get_posts( apply_filters( 'wck_fep_dashbord_get_posts_args', $args ) );
 					if( !empty( $posts ) ){
 						$dashboard .= '<div id="fep-'. $post_type->name .'">';
 						$dashboard .= '<h3 class="fep-'. $post_type->name .'">'. __( 'My ', 'wck' ) . $post_type->label .'</h3>';
@@ -765,14 +809,14 @@ class WCK_FEP_Dashboard{
 							}
 							
 							if( !empty( $shortcode_page_id ) ){
-								$arr_params = array ( 'action' => 'edit', 'post_id' => $post->ID );								
+								$arr_params = array ( 'action' => 'edit', 'post_id' => $post->ID, '_wpnonce' => wp_create_nonce( 'wck-fep-dashboard-edit-'.$post->ID.'-'.$user_id ) );
 								$edit_link = add_query_arg( $arr_params, get_permalink( $shortcode_page_id ) );
 							}
 							
 						
 							$dashboard .= '<li id="'. $post->ID .'"><a href="'. get_permalink( $post->ID ) .'">'. get_the_title( $post->ID ) .'</a>';
 							if( !empty( $edit_link ) )
-								$dashboard .= ' <a class="wck-edit-post" href="'.$edit_link.'">'. __( 'Edit', 'wck' ) .'</a> ';
+								$dashboard .= ' <a class="wck-edit-post" href="'.esc_url( $edit_link ).'">'. __( 'Edit', 'wck' ) .'</a> ';
 								
 							$delete_nonce = wp_create_nonce( 'wck-fep-delete-entry' );
 							$dashboard .= ' <a class="wck-delete-post" href="javascript:void(0)" onclick="wckFepDeletePost(\''.$post->ID.'\', \''. $delete_nonce .'\')">'. __( 'Delete', 'wck' ) .'</a> </li>';
@@ -939,10 +983,10 @@ function wck_fep_output_user_profile(){
 	$user_profile .= '<input type="text" id="email" name="email" value="'. esc_attr( $current_user->user_email ) .'" /></li>';
 	
 	$user_profile .= '<li><label for="password">'. __( 'Password:', 'wck' ) .'</label>';
-	$user_profile .= '<input type="text" id="password" name="password"/></li>';
+	$user_profile .= '<input type="password" id="password" name="password"/></li>';
 	
 	$user_profile .= '<li><label for="confirm-password">'. __( 'Password Confirm:', 'wck' ) .'</label>';
-	$user_profile .= '<input type="text" id="confirm-password" name="confirm-password"/></li>';
+	$user_profile .= '<input type="password" id="confirm-password" name="confirm-password"/></li>';
 	
 	$user_profile .= '<li><label for="description">'. __( 'Description', 'wck' ) .'</label>';
 	$user_profile .= '<textarea id="description" name="description">'. esc_textarea( $user_data->user_description ) .'</textarea></li>';
@@ -1026,6 +1070,7 @@ function wck_fep_handle_user_action(){
 						'user_email' => $email,
 						'user_pass' => $password						
 					);
+            $user = wp_insert_user( $userdata );
 		}
 		else if( $action == 'update' ){
 			$current_user = wp_get_current_user();
@@ -1037,9 +1082,11 @@ function wck_fep_handle_user_action(){
 					);
 			if( !empty( $password ) )
 				$userdata['user_pass'] = $password;
+
+            $user = wp_update_user( $userdata );
 		}
 				
-		$user = wp_insert_user( $userdata );
+
 	}
 	
 	if( is_wp_error( $user ) ){

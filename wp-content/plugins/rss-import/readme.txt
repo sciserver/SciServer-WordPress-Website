@@ -1,18 +1,18 @@
 ﻿=== RSSImport ===
 Contributors: Bueltge, inpsyde, took77
 Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
-Author: Frank B&uuml;ltge
+Author: Frank Bültge
 Author URI: http://bueltge.de/
 Donate link: http://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 4.4
-Stable tag: 4.4.16
+Tested up to: 4.5
+Stable tag: 4.4.17
 
-Import and display feeds on your blog, using PHP in your templates or Shortcode in your posts and pages.
+Display feeds on your blog, using PHP in your templates or Shortcode in your posts and pages.
 
 == Description ==
-Import and display feeds in your blog, using PHP, a Widget or Shortcode. The plugin uses only standard WordPress functionality, so no external libraries are required. For older versions of Wordpress, the built-in [MagpieRSS library](http://magpierss.sourceforge.net/) is used. For WordPress 2.8 and newer, there is a setting available to enable the built-in [SimplePie library](http://simplepie.org/) for parsing feeds.
+Display feeds in your blog, using PHP, a Widget or Shortcode. The plugin uses only standard WordPress functionality, so no external libraries are required. For older versions of Wordpress, the built-in [MagpieRSS library](http://magpierss.sourceforge.net/) is used. For WordPress 2.8 and newer, there is a setting available to enable the built-in [SimplePie library](http://simplepie.org/) for parsing feeds.
 
 As with all other content you publish, make sure you are allowed to (re-)publish the content of the feeds you are about to import!
 
@@ -25,7 +25,7 @@ _Example:_
 This is the minimal code needed for using the plugin. The plugin accepts a number of parameters for customizing the feed content import. See below for the full list of available parameters. You can also use any of the parameters with Shortcode in posts and pages.
 
 _Example Shortcode:_
-`[RSSImport display="5" feedurl="http://bueltge.de/feed/"]`
+`[RSSImport display="5" feedurl="http://bueltge.de/feed/" use_simplepie="true"]`
 
 For all (bool) parameters you can either use the strings `true` and `false` or the integer values `1` and `0`.
 
@@ -101,7 +101,7 @@ _Using Shortcode with several parameters:_
 
 	[RSSImport display="10" feedurl="http://your_feed_url/" 
 	displaydescriptions="true" html="true" 
-	start_items="<ol>" end_items="</ol>" paging="true"]
+	start_items="<ol>" end_items="</ol>" paging="true" use_simplepie="true"]
 
 _Add a "more" link to the output:_
 
@@ -115,7 +115,7 @@ _Add a "more" link to the output:_
 
 or
 
-	[RSSImport feedurl="http://www.ichdruck3d.de/feed/" after_desc=" <a href='%href%' target='_blank'>show more</a>" displaydescriptions="true"]
+	[RSSImport feedurl="http://www.ichdruck3d.de/feed/" after_desc=" <a href='%href%' target='_blank'>show more</a>" displaydescriptions="true" use_simplepie="true"]
 
 _Enable Thumbnail Pictures:_
 
@@ -142,6 +142,11 @@ or
 1. Widget support
 
 == Changelog ==
+= v4.4.17 (2016-04-17) =
+* Fix for usage under php 7*
+* Code Formatting, WP Codex
+* *You should always use SimplePie library as Feed Parser - check your parameter.*
+
 = v4.4.16 (09/24/2015) =
 * Fix the widget PHP4 style
 

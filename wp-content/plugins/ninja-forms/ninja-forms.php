@@ -3,13 +3,13 @@
 Plugin Name: Ninja Forms
 Plugin URI: http://ninjaforms.com/
 Description: Ninja Forms is a webform builder with unparalleled ease of use and features.
-Version: 2.9.39
+Version: 2.9.42
 Author: The WP Ninjas
 Author URI: http://ninjaforms.com
 Text Domain: ninja-forms
 Domain Path: /lang/
 
-Copyright 2015 WP Ninjas.
+Copyright 2016 WP Ninjas.
 */
 
 require_once dirname( __FILE__ ) . '/lib/NF_VersionSwitcher.php';
@@ -139,6 +139,14 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
          * @var array
          */
         public $actions = array();
+
+        /**
+         * Merge Tags
+         *
+         * @since 3.0
+         * @var array
+         */
+        public $merge_tags = array();
 
         /**
          * Model Factory
@@ -353,6 +361,11 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE )  && ! isset( $_POST[ 'nf2
              * Form Action Registration
              */
             self::$instance->actions = apply_filters( 'ninja_forms_register_actions', self::load_classes( 'Actions' ) );
+
+            /*
+             * Merge Tag Registration
+             */
+            self::$instance->merge_tags = apply_filters( 'ninja_forms_register_merge_tags', self::$instance->merge_tags );
 
             /*
              * It's Ninja Time: Hook for Extensions

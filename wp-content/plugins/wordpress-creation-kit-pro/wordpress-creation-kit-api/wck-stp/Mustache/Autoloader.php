@@ -12,64 +12,66 @@
 /**
  * Mustache class autoloader.
  */
-class Mustache_Autoloader
-{
-
-    private $baseDir;
-
-    /**
-     * Autoloader constructor.
-     *
-     * @param string $baseDir Mustache library base directory (default: dirname(__FILE__).'/..')
-     */
-    public function __construct($baseDir = null)
+if( !class_exists( 'WCK_Mustache_Autoloader' ) ) {
+    class WCK_Mustache_Autoloader
     {
-        if ($baseDir === null) {
-            $baseDir = dirname(__FILE__).'/..';
+
+        private $baseDir;
+
+        /**
+         * Autoloader constructor.
+         *
+         * @param string $baseDir Mustache library base directory (default: dirname(__FILE__).'/..')
+         */
+        public function __construct($baseDir = null)
+        {
+            if ($baseDir === null) {
+                $baseDir = dirname(__FILE__) . '/..';
+            }
+
+            // realpath doesn't always work, for example, with stream URIs
+            $realDir = realpath($baseDir);
+            if (is_dir($realDir)) {
+                $this->baseDir = $realDir;
+            } else {
+                $this->baseDir = $baseDir;
+            }
         }
 
-        // realpath doesn't always work, for example, with stream URIs
-        $realDir = realpath($baseDir);
-        if (is_dir($realDir)) {
-            $this->baseDir = $realDir;
-        } else {
-            $this->baseDir = $baseDir;
-        }
-    }
+        /**
+         * Register a new instance as an SPL autoloader.
+         *
+         * @param string $baseDir Mustache library base directory (default: dirname(__FILE__).'/..')
+         *
+         * @return Mustache_Autoloader Registered Autoloader instance
+         */
+        public static function register($baseDir = null)
+        {
+            $loader = new self($baseDir);
+            spl_autoload_register(array($loader, 'autoload'));
 
-    /**
-     * Register a new instance as an SPL autoloader.
-     *
-     * @param string $baseDir Mustache library base directory (default: dirname(__FILE__).'/..')
-     *
-     * @return Mustache_Autoloader Registered Autoloader instance
-     */
-    public static function register($baseDir = null)
-    {
-        $loader = new self($baseDir);
-        spl_autoload_register(array($loader, 'autoload'));
-
-        return $loader;
-    }
-
-    /**
-     * Autoload Mustache classes.
-     *
-     * @param string $class
-     */
-    public function autoload($class)
-    {
-        if ($class[0] === '\\') {
-            $class = substr($class, 1);
+            return $loader;
         }
 
-        if (strpos($class, 'Mustache') !== 0) {
-            return;
-        }
+        /**
+         * Autoload Mustache classes.
+         *
+         * @param string $class
+         */
+        public function autoload($class)
+        {
+            if ($class[0] === '\\') {
+                $class = substr($class, 1);
+            }
 
-        $file = sprintf('%s/%s.php', $this->baseDir, str_replace('_', '/', $class));
-        if (is_file($file)) {
-            require $file;
+            if (strpos($class, 'Mustache') !== 0) {
+                return;
+            }
+
+            $file = sprintf('%s/%s.php', $this->baseDir, str_replace('_', '/', $class));
+            if (is_file($file)) {
+                require $file;
+            }
         }
     }
 }
