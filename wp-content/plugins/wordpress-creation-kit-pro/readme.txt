@@ -5,13 +5,15 @@ Donate link: http://www.cozmoslabs.com/wordpress-creation-kit-sale-page/
 Tags: custom fields, custom field, wordpress custom fields, advanced custom fields, custom post type, custom post types, post types, repeater fields, repeater, repeatable, meta box, meta boxes, metabox, taxonomy, taxonomies, custom taxonomy, custom taxonomies, custom, custom fields creator, post meta, meta, get_post_meta, post creator, cck, content types, types
 
 Requires at least: 3.1
-Tested up to: 4.4.2
-Stable tag: 2.2.2
+Tested up to: 4.5
+Stable tag: 2.2.4
 
 A must have tool for creating custom fields, custom post types and taxonomies, fast and without any programming knowledge.
 
 
 == Description ==
+
+**Like this plugin?** Consider leaving a [5 star review](https://wordpress.org/support/view/plugin-reviews/wck-custom-fields-and-custom-post-types-creator?filter=5).
 
 **WordPress Creation Kit** consists of three tools that can help you create and maintain custom post types, custom taxonomies and most importantly, custom fields and metaboxes for your posts, pages or CPT's.
 
@@ -341,3 +343,14 @@ Added filter for the 'rewrite' argument in the Custom Taxonomy Creator: 'wck_ctc
 Added hooks in WCK_Page_Creator api to allow extra content before and after metaboxes: 'wck_page_creator_before_meta_boxes' and 'wck_page_creator_after_meta_boxes'
 Added wp_nonce to edit post links in Front End Posting Dashboard
 Swift Templates divs now have a unique class to allow customization per template
+
+2.2.3
+We now load the translation files from the theme first if they exist in the folder:local_wck_lang
+Now in Custom Fields Creator the Options field for selects,radios and checkboxes is required so you can't create those field without any options
+Single forms now keep their values when form throws alert required message so you don't have to input the values again
+Swift Templates: rewritten the meta queries. Reduced them by a factor of 8 which should greatly improve performance on large databases
+Swift Templates: fixed upload field image metadata for repeater field and alt text for featured image
+
+2.2.4
+Changed way we make sure swift templates is not run in the header by mistake because of Yoast SEO
+Added new filter for registration errors

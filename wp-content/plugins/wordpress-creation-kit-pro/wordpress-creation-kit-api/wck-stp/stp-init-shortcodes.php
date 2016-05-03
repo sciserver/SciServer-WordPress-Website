@@ -122,7 +122,6 @@ function wck_stp_single_listing($name, $single) {
 			// get information from the current post queried in the front-end by our shortcode
 
 			$mustache_vars = wck_stp_generate_mustache_single_array($single, $stp_cpt_name);
-			
 			$template = get_post_meta( $stp_id, 'wck_stp_template_single', true);
 			$m = new Mustache_Engine;
 			

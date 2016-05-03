@@ -74,7 +74,7 @@ class WCK_Template_API{
 			
 			// use this filter to modify the return var in order to output text, arrays or objects
 			$output = apply_filters('wck_output_get_field_' . $field_type, $post_meta[$key][$field_name] );
-			
+
 			return $output;
 		}
 		return '';

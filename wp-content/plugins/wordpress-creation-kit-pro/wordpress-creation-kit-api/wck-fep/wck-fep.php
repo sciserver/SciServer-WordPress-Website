@@ -1058,11 +1058,13 @@ function wck_fep_handle_user_action(){
 	if( empty( $password ) && $action== "register" )
 		$registration_errors->add('password_error', __( 'Please enter a password.', 'wck' ) );
 	else if( $password != $confirm_password )
-		$registration_errors->add('password_dont_match_error', __( 'The passwords do not match.', 'wck' ) );		
-	
+		$registration_errors->add('password_dont_match_error', __( 'The passwords do not match.', 'wck' ) );
+
+	$registration_errors = apply_filters('wck_registration_errors',$registration_errors, $_POST);
+
 	if( $registration_errors->get_error_code() )
 		$user = $registration_errors;
-	
+
 	if( empty( $user ) ){
 		if( $action == 'register' ){
 			$userdata = array(

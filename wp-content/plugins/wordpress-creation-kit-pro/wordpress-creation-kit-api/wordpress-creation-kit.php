@@ -361,7 +361,12 @@ class Wordpress_Creation_Kit{
                         $value = '';
                         if( $this->args['single'] == true ) {
                             $value = null;
-                            if( !empty( $results[0] ) && !empty( $results[0][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )] ) )
+                            /* see if we have any posted values */
+                            if( !empty( $_GET['postedvalues'] ) ){
+                                $posted_values = unserialize( urldecode( base64_decode( $_GET['postedvalues'] ) ) );
+                                $value = $posted_values[$meta][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )];
+                            }
+                            else if( !empty( $results[0] ) && !empty( $results[0][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )] ) )
                                 $value = $results[0][Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details )];
                         }
 						
@@ -720,7 +725,7 @@ class Wordpress_Creation_Kit{
 
 	/* Helper function for required fields */
 	function wck_test_required( $meta_array, $meta, $values, $id ){
-		$fields = $meta_array;
+		$fields = apply_filters( 'wck_before_test_required', $meta_array, $meta, $values, $id );
 		$required_fields = array();
 		$required_fields_with_errors = array();
 		$required_message = '';
@@ -1117,12 +1122,14 @@ class Wordpress_Creation_Kit{
                         if( !empty( $errors ) ){
                             /* if we have errors then add them in the global. We do this so we get all errors from all single metaboxes that might be on that page */
                             global $wck_single_forms_errors;
+                            global $wck_single_forms_posted_values;
                             if( !empty( $errors['errorfields'] ) ){
                                 foreach( $errors['errorfields'] as $key => $field_name ){
                                     $errors['errorfields'][$key] = $this->args['meta_name']. '_' .$field_name;
                                 }
                             }
                             $wck_single_forms_errors[] = $errors;
+                            $wck_single_forms_posted_values[$meta_name] = $meta_values;
                         }
                         else {
 
@@ -1154,6 +1161,7 @@ class Wordpress_Creation_Kit{
      */
     function wck_single_metabox_redirect_if_errors( $post_id, $post ){
         global $wck_single_forms_errors;
+        global $wck_single_forms_posted_values;
         if( !empty( $wck_single_forms_errors ) ) {
             $error_messages = '';
             $error_fields = '';
@@ -1161,7 +1169,7 @@ class Wordpress_Creation_Kit{
                 $error_messages .= $wck_single_forms_error['error'];
                 $error_fields .= implode( ',', $wck_single_forms_error['errorfields'] ).',';
             }
-            wp_safe_redirect( add_query_arg( array( 'wckerrormessages' => base64_encode( urlencode( $error_messages ) ), 'wckerrorfields' => base64_encode( urlencode( $error_fields ) ) ), $_SERVER["HTTP_REFERER"] ) );
+            wp_safe_redirect( add_query_arg( array( 'wckerrormessages' => base64_encode( urlencode( $error_messages ) ), 'wckerrorfields' => base64_encode( urlencode( $error_fields ) ), 'postedvalues' => base64_encode( urlencode( serialize( $wck_single_forms_posted_values ) ) ) ), $_SERVER["HTTP_REFERER"] ) );
             exit;
         }
     }

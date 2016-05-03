@@ -649,4 +649,19 @@ function wck_cfc_filter_field_types( $field_types ){
 
 	return $field_types;
 }
+
+/* Mark as required the 'Options' field for checkboxes, radios, selects .. */
+add_filter( 'wck_before_test_required', 'wck_cfc_make_options_required', 10, 4 );
+function wck_cfc_make_options_required( $meta_array, $meta, $values, $id ){
+    if( $meta == 'wck_cfc_fields' ){
+        if( $values['field-type'] == 'select' || $values['field-type'] == 'radio' || $values['field-type'] == 'checkbox' ){
+            foreach( $meta_array as $key => $field ){
+                if( $field['slug'] == 'options' ){
+                    $meta_array[$key]['required'] = true;
+                }
+            }
+        }
+    }
+    return $meta_array;
+}
 ?>

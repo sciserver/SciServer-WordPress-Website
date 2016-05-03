@@ -206,7 +206,7 @@ function wck_stp_populate_default_template_vars( $post, $post_author, $post_type
         $post_thumbnail = get_post( get_post_thumbnail_id( $post->ID ) );
         $mustache_default_vars['featured_image_title'] = $post_thumbnail->post_title;
         $mustache_default_vars['featured_image_caption'] = $post_thumbnail->post_excerpt;
-        $mustache_default_vars['featured_image_alt_text'] = get_post_meta($post_thumbnail->ID, '_wp_attachment_image_alt', true);
+        $mustache_default_vars['featured_image_alt'] = get_post_meta($post_thumbnail->ID, '_wp_attachment_image_alt', true);
         $mustache_default_vars['featured_image_description'] = $post_thumbnail->post_content;
 
 		$mustache_default_vars['post_permalink'] = get_permalink( $post->ID );
@@ -332,41 +332,77 @@ function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0)
 		$all_cfc = wck_cfc_create_boxes_args();
 		(!empty( $all_cfc )) ? $all_box_args = $all_cfc : $all_box_args = array();
 
+        /* get all post meta for the current post */
+        $all_metas_for_this_post = get_post_meta( $user_posts[0]->ID );
+
 		foreach( $all_box_args as $box_args ){
 			if( ( $box_args['post_type'] == $post_type ) ){					
 				if ( $box_args['single'] ) {
 					foreach( $box_args['meta_array'] as $value ){
 						$slug = Wordpress_Creation_Kit::wck_generate_slug( $value['title'] );
-						$processed = the_cfc_field($box_args['meta_name'], $slug, $user_posts[0]->ID, 0, false);
-						$unprocessed = get_cfc_field( $box_args['meta_name'], $slug, $user_posts[0]->ID, 0 );
-						$mustache_vars_cfc[ $box_args['meta_name'] . '_' . $slug ] = apply_filters('wck_stp_unprocessed_content_' . Wordpress_Creation_Kit::wck_generate_slug( $value['type'] ), $processed, $unprocessed, $level );
 
-                        /* Check to see if the returned value is the array for an image upload */
-                        if( $value['type'] == 'upload' && is_array($unprocessed) && isset( $unprocessed['sizes'] ) ){
-                            foreach( get_intermediate_image_sizes() as $image_size ) {
-                                $mustache_vars_cfc[ $box_args['meta_name'] . '_' . $slug . '_' .$image_size] = $unprocessed['sizes'][$image_size];
-                            }
+                        if( !empty( $all_metas_for_this_post ) ){
+                            foreach( $all_metas_for_this_post as $meta_key => $meta_for_this_post ){
+                                if( $meta_key == $box_args['meta_name'] ){
+                                    $meta_for_this_post = maybe_unserialize( $meta_for_this_post[0] );
+                                    if( !empty( $meta_for_this_post[0][$slug] ) ) {
+                                        $meta_value = $meta_for_this_post[0][$slug];
 
-                            foreach( wck_stp_get_image_metadata_types() as $metadata ) {
-                                $mustache_vars_cfc[ $box_args['meta_name'] . '_' . $slug . '_' .$metadata] = $unprocessed[$metadata];
+                                        $field_type = WCK_Template_API::generate_slug($value['type']);
+                                        $unprocessed = apply_filters('wck_output_get_field_' . $field_type, $meta_value);
+                                        $processed = apply_filters('wck_output_the_field_' . $field_type, $unprocessed);
+                                        $mustache_vars_cfc[$box_args['meta_name'] . '_' . $slug] = apply_filters('wck_stp_unprocessed_content_' . $field_type, $processed, $unprocessed, $level);
+
+                                        // Check to see if the returned value is the array for an image upload
+                                        if ($value['type'] == 'upload' && is_array($unprocessed) && isset($unprocessed['sizes'])) {
+                                            foreach (get_intermediate_image_sizes() as $image_size) {
+                                                $mustache_vars_cfc[$box_args['meta_name'] . '_' . $slug . '_' . $image_size] = $unprocessed['sizes'][$image_size];
+                                            }
+
+                                            foreach (wck_stp_get_image_metadata_types() as $metadata) {
+                                                $mustache_vars_cfc[$box_args['meta_name'] . '_' . $slug . '_' . $metadata] = $unprocessed[$metadata];
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
-
 					}
 				} else {
 					foreach( $box_args['meta_array'] as $key => $value ){
 						$slug = Wordpress_Creation_Kit::wck_generate_slug( $value['title'] );
-						foreach ( get_cfc_meta( $box_args['meta_name'], $user_posts[0]->ID ) as $mkey => $mvalue ){
-							$processed = the_cfc_field($box_args['meta_name'], $slug, $user_posts[0]->ID, $mkey, false);							
-							$unprocessed = get_cfc_field( $box_args['meta_name'], $slug, $user_posts[0]->ID, $mkey );							
-							$mustache_vars_cfc[ $box_args['meta_name'] ][$mkey][$slug] = apply_filters('wck_stp_unprocessed_content_' . Wordpress_Creation_Kit::wck_generate_slug( $value['type'] ), $processed, $unprocessed, $level );
 
-                            if( $value['type'] == 'upload' && is_array($unprocessed) && isset( $unprocessed['sizes'] ) ) {
-                                foreach (get_intermediate_image_sizes() as $image_size) {
-                                    $mustache_vars_cfc[$box_args['meta_name']][$mkey][$slug . '_' . $image_size] = $unprocessed['sizes'][$image_size];
+                        if( !empty( $all_metas_for_this_post ) ) {
+                            foreach ($all_metas_for_this_post as $meta_key => $meta_for_this_post) {
+                                if ($meta_key == $box_args['meta_name']) {
+                                    $meta_for_this_post = maybe_unserialize( $meta_for_this_post[0] );
+                                    if( !empty( $meta_for_this_post ) ){
+                                        foreach( $meta_for_this_post as $mkey => $meta ){
+                                            if( !empty( $meta[$slug] ) ) {
+                                                $meta_value = $meta[$slug];
+
+                                                $field_type = WCK_Template_API::generate_slug($value['type']);
+                                                $unprocessed = apply_filters('wck_output_get_field_' . $field_type, $meta_value);
+                                                $processed = apply_filters('wck_output_the_field_' . $field_type, $unprocessed);
+                                                $mustache_vars_cfc[$box_args['meta_name']][$mkey][$slug] = apply_filters('wck_stp_unprocessed_content_' . $field_type, $processed, $unprocessed, $level);
+
+                                                if ($value['type'] == 'upload' && is_array($unprocessed) && isset($unprocessed['sizes'])) {
+                                                    foreach (get_intermediate_image_sizes() as $image_size) {
+                                                        $mustache_vars_cfc[$box_args['meta_name']][$mkey][$slug . '_' . $image_size] = $unprocessed['sizes'][$image_size];
+                                                    }
+
+                                                    foreach (wck_stp_get_image_metadata_types() as $metadata) {
+                                                        $mustache_vars_cfc[$box_args['meta_name']][$mkey][$slug . '_' . $metadata] = $unprocessed[$metadata];
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+
                                 }
                             }
-						}
+                        }
+
 						/* for cpt select in the second level we need to initailize with an empty array the metabox even if we don't have values. 
 						When we have the same cpt to same cpt relationship and in the "son" post the metabox is empty mustache will show the value from the parent so we need to avoid this */
 						if( $level == 2 && get_cfc_meta( $box_args['meta_name'], $user_posts[0]->ID ) == array() ){
@@ -480,9 +516,23 @@ function wck_stp_singlepost_enable_script(){
 	<?php
 }
 
-// Process the single post content and output in the front end. 
-add_filter("the_content", "wck_stp_render_single_template");
+// Process the single post content and output in the front end.
+add_action( 'the_post', 'my_the_post_action' );
+function my_the_post_action()
+{
+    add_filter("the_content", "wck_stp_render_single_template");
+}
 function wck_stp_render_single_template( $content ){
+
+    /* this part should ensure that the hook is only run during the the_content() call and not somewhere else (it is experimental) */
+    global $wp_current_filter;
+    if( !empty( $wp_current_filter ) && is_array( $wp_current_filter ) ){
+        foreach( $wp_current_filter as $filter ){
+            if( $filter == 'wp_head' )
+                return;
+        }
+    }
+
 	global $post;
 	$id = $post->ID;
 	
@@ -533,7 +583,7 @@ function wck_stp_render_single_template( $content ){
 		if ( $template != '') {
 			$single = wck_stp_get_slug ( $id );
 			$mustache_vars = wck_stp_generate_mustache_single_array($single, $post_type) ;
-			
+
 			$m = new Mustache_Engine;
 			try {
 				$content = '<div class="stp-bubble-wrap stp-single">' . $m->render( $template, $mustache_vars ) . '</div>';

@@ -66,7 +66,7 @@ function wck_preprocess_the_field_checkbox( $field ){
 
 /**
  * Preprocess the upload field types.
- * We're returnig an array for images and an object for normal files
+ * We're returning an array for images and an object for normal files
  *
  * @since 1.1.5
  *	 
@@ -75,7 +75,7 @@ function wck_preprocess_the_field_checkbox( $field ){
  */
 add_filter( 'wck_output_get_field_upload', 'wck_preprocess_field_upload', 10 );
 function wck_preprocess_field_upload( $field ){
-	
+
 	if ( $field == '' || !is_numeric( $field ) )
 		return false;
 
@@ -85,7 +85,7 @@ function wck_preprocess_field_upload( $field ){
 	if ( wp_attachment_is_image( $field ) ) {
 		
 		$attachment = get_post( $field );
-		
+
 		// create array to hold value data
 		$src = wp_get_attachment_image_src( $attachment->ID, 'full' );
 		
