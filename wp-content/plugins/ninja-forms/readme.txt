@@ -2,8 +2,8 @@
 Contributors: wpninjasllc, kstover, jameslaws, wpnzach, kbjohnson90, aman086, daveshine, mordauk, bftrick, helgatheviking
 Tags: form, forms, contact form, custom form, form builder, form creator, form manager, form creation, contact forms, custom forms, forms builder, forms creator, forms manager, forms creation, form administration,
 Requires at least: 4.3
-Tested up to: 4.5
-Stable tag: 2.9.44
+Tested up to: 4.5.2
+Stable tag: 2.9.48
 License: GPLv2 or later
 
 Create forms and manage submissions easily with a simple drag and drop interface. Contact forms, subscription forms, or any other form for WordPress.
@@ -97,17 +97,48 @@ For help and video tutorials, please visit our website: [Ninja Forms Documentati
 
 == Upgrade Notice ==
 
-= 2.9.44 (28 April 2016) =
-
-*Security:*
-
-* Fixed an important security issue related to the 3.0 codebase. It is recommended that all users update to 2.9.44 as soon as possible.
+= 2.9.48 (13 June 2016) =
 
 *Bugs:*
 
-* Fixed a bug with one of the security fixes that could cause a fatal error.
+* Sites that also use WooCommerce should no longer see issues with non-logged in users being unable to submit forms.
+* Fixed a bug with 3.0 Beta that could cause submission saving to fail.
+* Fixed a timezone issue with the system status page.
+* Fixed a bug that could cause translations to fail in some circumstances.
 
 == Changelog ==
+
+= 2.9.48 (13 June 2016) =
+
+*Bugs:*
+
+* Sites that also use WooCommerce should no longer see issues with non-logged in users being unable to submit forms.
+* Fixed a bug with 3.0 Beta that could cause submission saving to fail.
+* Fixed a timezone issue with the system status page.
+* Fixed a bug that could cause translations to fail in some circumstances.
+
+= 2.9.47 (1 June 2016) =
+
+*Bugs:*
+
+* Fixed a bug that could cause forms to disappear on some installations.
+
+= 2.9.46 (31 May 2016) =
+
+*Changes:*
+
+* Updating opinionated styling choices.
+
+*Bugs:*
+
+* Fixed a bug that could cause the input limit to crash submission.
+* Fixed a bug with 3.0 that could cause conversion issues.
+
+= 2.9.45 (2 May 2016) =
+
+*Bugs:*
+
+* Fixed a bug with templating that could cause the server to throw a 500 error.
 
 = 2.9.44 (28 April 2016) =
 

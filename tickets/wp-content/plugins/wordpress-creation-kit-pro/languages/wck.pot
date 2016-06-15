@@ -1,0 +1,1598 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WCK\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-27 17:16+0200\n"
+"PO-Revision-Date: 2013-11-27 17:17+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;__;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: c:\\wamp\\www\\wordpress\\wp-content\\plugins\\wordpress-creation-kit-pro\n"
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:32
+msgid "Add New Meta Box"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:33
+msgid "Edit Meta Box"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:34
+msgid "New Meta Box"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:35
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:56
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:113
+msgid "Custom Fields Creator"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:36
+msgid "View Meta Box"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:37
+msgid "Search Meta Boxes"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:38
+msgid "No Meta Boxes found"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:39
+msgid "No Meta Boxes found in Trash"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:41
+msgid "Custom Meta Boxes"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:110
+msgid "Meta name"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:110
+msgid "The name of the meta field. It is the name by which you will query the data in the frontend. Must be unique, only lowercase letters, no spaces and no special characters."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:111
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:435
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:125
+msgid "Post Type"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:111
+msgid "What post type the meta box should be attached to"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:112
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:173
+msgid "Repeater"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:112
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:173
+msgid "Whether the box supports just one entry or if it is a repeater field. By default it is a single field."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:113
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:174
+msgid "Sortable"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:113
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:174
+msgid "Whether the entries are sortable or not. This is valid for repeater fields."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:114
+msgid "Post ID"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:114
+msgid "ID of a post on which the meta box should appear."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:119
+msgid "Nested"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:119
+msgid "Set to true if you want this metabox to be a nested repeater inside another repeater."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:124
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:436
+msgid "Page Template"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:124
+msgid "If post type is \"page\" you can further select a page templete. The meta box will only appear  on the page that has that selected page template."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:129
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:544
+msgid "Meta Box Arguments"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:149
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:200
+msgid "Field Title"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:149
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:200
+msgid "Title of the field. A slug will automatically be generated."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:150
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:150
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:201
+msgid "Field Type"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:150
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:150
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:201
+msgid "The field type"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:151
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:50
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:202
+msgid "Description"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:152
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:151
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:203
+msgid "Required"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:152
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:203
+msgid "Whether the field is required or not"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:153
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:204
+msgid "CPT"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:153
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:204
+msgid "Select what custom post type should be used in the CPT Select."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:154
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:205
+msgid "Default Value"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:154
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:205
+msgid "Default value of the field. For Checkboxes if there are multiple values separate them with a \",\""
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:155
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:206
+msgid "Options"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:155
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:206
+msgid "Options for field types \"select\", \"checkbox\" and \"radio\". For multiple options separate them with a \",\". You can use the following structure if you want the label to be different from the value: %LabelOne%valueone,%LabelTwo%valuetwo,%LabelThree%valuethree"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:156
+msgid "Attach upload to post"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:156
+msgid "Whether or not the uploads should be attached to the post"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:163
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:550
+msgid "Meta Box Fields"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:176
+msgid "Enter below the arguments for the meta box."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:196
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:290
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:297
+msgid "Slug:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:196
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:297
+msgid "(Note:changing the slug when you already have a lot of existing entries may result in unexpected behavior.)"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:344
+msgid "Choose a different Meta Name as this one contains spaces\n"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:346
+msgid "Choose a different Meta Name as this one already exists\n"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:434
+msgid "Id"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:440
+msgid "Nested Repeater"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:514
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:262
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:222
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck.php:38
+msgid "Wordpress Creation Kit"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:538
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:287
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:246
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:576
+msgid "Overview"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:539
+msgid "WCK Custom Fields Creator allows you to easily create custom meta boxes for Wordpress without any programming knowledge."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:545
+msgid "Define here the rules for the meta box. This rules are used to set up where the meta box will appear, it's type and also the meta key name stored in the database. The name of the entry (Enter title here) will be used as the meta box title."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:551
+msgid "Define here the fields contained in the meta box. From \"Field Title\" a slug will be automatically generated and you will use this slug to display the data in the frontend."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:556
+msgid "CFC Frontend Example"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:557
+msgid "Let's consider we have a meta box with the following arguments:<br /> - Meta name: books <br /> - Post Type: post <br />And we also have two fields deffined:<br /> - A text field with the Field Title: Book name <br /> - And another text field with the Field Title: Author name "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:557
+msgid "You will notice that slugs will automatically be created for the two text fields. For \"Book name\" the slug will be \"book-name\" and for \"Author name\" the slug will be \"author-name\""
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:557
+msgid "Let's see what the code for displaying the meta box values in single.php of your theme would be:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:557
+msgid "So as you can see the Meta Name \"books\" is used as the $key parameter of the funtion <a href=\"http://codex.wordpress.org/Function_Reference/get_post_meta\" target=\"_blank\">get_post_meta()</a> and the slugs of the text fields are used as keys for the resulting array. Basically CFC stores the entries as post meta in a multidimensioanl array. In our case the array would be: <br /><pre>array( array( \"book-name\" => \"The Hitchhiker's Guide To The Galaxy\", \"author-name\" => \"Douglas Adams\" ),  array( \"book-name\" => \"Ender's Game\", \"author-name\" => \"Orson Scott Card\" ) );</pre> This is true even for single entries."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cfc.php:585
+msgid "Metabox updated."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:6
+msgid "WCK Post Type Creator"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:7
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:117
+msgid "Post Type Creator"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:49
+msgid "Post type"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:49
+msgid "(max. 20 characters, can not contain capital letters, hyphens, or spaces)"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:50
+msgid "A short descriptive summary of what the post type is."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:51
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:38
+msgid "Singular Label"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:51
+msgid "ex. Book"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:52
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:39
+msgid "Plural Label"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:52
+msgid "ex. Books"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:53
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:41
+msgid "Hierarchical"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:53
+msgid "Whether the post type is hierarchical. Allows Parent to be specified."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:54
+msgid "Has Archive"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:54
+msgid "Enables post type archives. Will use string as archive slug. Will generate the proper rewrite rules if rewrite is enabled."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:55
+msgid "Supports"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:58
+msgid "Add New"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:58
+msgid "ex. Add New"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:59
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:50
+msgid "Add New Item"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:59
+msgid "ex. Add New Book"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:60
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:48
+msgid "Edit Item"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:60
+msgid "ex. Edit Book"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:61
+msgid "New Item"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:61
+msgid "ex. New Book"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:62
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:45
+msgid "All Items"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:62
+msgid "ex. All Books"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:63
+msgid "View Items"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:63
+msgid "ex. View Books"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:64
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:43
+msgid "Search Items"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:64
+msgid "ex. Search Books"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:65
+msgid "Not Found"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:65
+msgid "ex. No Books Found"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:66
+msgid "Not Found In Trash"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:66
+msgid "ex. No Books found in Trash"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:67
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:47
+msgid "Parent Item Colon"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:67
+msgid "the parent text. This string isn't used on non-hierarchical types. In hierarchical ones the default is Parent Page "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:68
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:55
+msgid "Menu Name"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:70
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:57
+msgid "Public"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:70
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:57
+msgid "Meta argument used to define default values for publicly_queriable, show_ui, show_in_nav_menus and exclude_from_search"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:71
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:58
+msgid "Show UI"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:71
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:58
+msgid "Whether to generate a default UI for managing this post type."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:72
+msgid "Show In Nav Menus"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:72
+msgid "Whether post_type is available for selection in navigation menus."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:73
+msgid "Show In Menu"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:73
+msgid "Whether to show the post type in the admin menu. show_ui must be true. \"false\" - do not display in the admin menu, \"true\" - display as a top level menu, \"some string\" - If an existing top level page such as \"tools.php\" or \"edit.php?post_type=page\", the post type will be placed as a sub menu of that."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:74
+msgid "Menu Position"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:74
+msgid "The position in the menu order the post type should appear."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:75
+msgid "Menu Icon"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:75
+msgid "The url to the icon to be used for this menu."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:76
+msgid "Capability Type"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:76
+msgid "The string to use to build the read, edit, and delete capabilities."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:77
+msgid "Taxonomies"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:78
+msgid "Rewrite"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:78
+msgid "Rewrite permalinks."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:79
+msgid "Rewrite Slug"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:79
+msgid "Defaults to post type name."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:85
+msgid "Custom Post Type Creation"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:110
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:94
+msgid "Add New "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:111
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:92
+msgid "Edit "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:112
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:95
+msgid "New "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:113
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:89
+msgid "All "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:114
+msgid "View "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:115
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:87
+msgid "Search "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:116
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:117
+msgid "No "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:118
+msgid "Parent Page"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:174
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:198
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:141
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:165
+msgid "Show Advanced Label Options"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:174
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:198
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:141
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:165
+msgid "Hide Advanced Label Options"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:186
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:212
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:241
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:153
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:179
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:208
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:234
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:246
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:260
+msgid "Show Advanced Options"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:186
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:212
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:241
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:153
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:179
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:208
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:234
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:246
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:260
+msgid "Hide Advanced Options"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:227
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:194
+msgid "Show Advanced Labels"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:227
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:194
+msgid "Hide Advanced Labels"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:288
+msgid "WCK Custom Post Type Creator allows you to easily create custom post types for Wordpress without any programming knowledge.<br />Most of the common options for creating a post type are displayed by default while the advanced options and label are just one click away."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:293
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:252
+msgid "Labels"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:294
+msgid "For simplicity you are required to introduce only the Singular Label and Plural Label from wchich the rest of the labels will be formed.<br />For a more detailed control of the labels you just have to click the \"Show Advanced Label Options\" link and all the availabel labels will be displayed."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:299
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:258
+msgid "Advanced Options"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-cptc.php:300
+msgid "The Advanced Options are set to the most common defaults for custom post types. To display them click the \"Show Advanced Options\" link."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:6
+msgid "WCK Taxonomy Creator"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:7
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:121
+msgid "Taxonomy Creator"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:37
+msgid "Taxonomy"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:37
+msgid "(The name of the taxonomy. Name must not contain capital letters or spaces.)"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:38
+msgid "ex. Writer"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:39
+msgid "ex. Writers"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:40
+msgid "Attach to"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:41
+msgid "Is this taxonomy hierarchical (have descendants) like categories or not hierarchical like tags."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:43
+msgid "ex. Search Writers"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:44
+msgid "Popular Items"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:44
+msgid "ex. Popular Writers"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:45
+msgid "ex. All Writers"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:46
+msgid "Parent Item"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:46
+msgid "ex. Parent Genre"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:47
+msgid "ex. Parent Genre:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:48
+msgid "ex. Edit Writer"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:49
+msgid "Update Item"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:49
+msgid "ex. Update Writer"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:50
+msgid "ex. Add New Writer"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:51
+msgid "New Item Name"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:51
+msgid "ex. New Writer Name"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:52
+msgid "Separate Items With Commas"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:52
+msgid "ex. Separate writers with commas"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:53
+msgid "Add Or Remove Items"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:53
+msgid "ex. Add or remove writers"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:54
+msgid "Choose From Most Used"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:54
+msgid "ex. Choose from the most used writers"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:59
+msgid "Show Tagcloud"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:59
+msgid "Whether to allow the Tag Cloud widget to use this taxonomy."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:60
+msgid "Show Admin Column"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:60
+msgid "Whether to allow automatic creation of taxonomy columns on associated post-types."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:65
+msgid "Custom Taxonomy Creation"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:88
+msgid "Popular "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:90
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:91
+msgid "Parent "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:93
+msgid "Update "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:96
+msgid "Separate  "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:97
+msgid "Add or remove "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:98
+msgid "Choose from the most used "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:247
+msgid "WCK Custom Taxonomy Creator allows you to easily create custom taxonomy for Wordpress without any programming knowledge.<br />Most of the common options for creating a taxonomy are displayed by default while the advanced and label options are just one click away."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:253
+msgid "For simplicity you are required to introduce only the Singular Label and Plural Label from wchich the rest of the labels will be formed.<br />For a more detailed control of the labels you just have to click the \"Show Advanced Label Options\" link and all the availabel labels will be displayed"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-ctc.php:259
+msgid "The Advanced Options are set to the most common defaults for taxonomies. To display them click the \"Show Advanced Options\" link."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:15
+msgid "Add New Frontend Posting"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:16
+msgid "Edit Frontend Posting"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:17
+msgid "New Frontend Posting"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:18
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:24
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:61
+msgid "Frontend Posting"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:19
+msgid "View Frontend Posting"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:20
+msgid "Search Frontend Posting"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:21
+msgid "No Frontend Posting found"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:22
+msgid "No Frontend Posting found in Trash"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:125
+msgid "Select in what post type the entries of this form will be added."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:126
+msgid "Anonymous posting"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:126
+msgid "Enable anonymous posting. If enabled users can use this form without being logged in."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:127
+msgid "Admin Approval"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:127
+msgid "Enable Admin Approval. If enabled the entries from this form will be set as drafts and will require an admin to approve them."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:128
+msgid "Shortcode Page"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:128
+msgid "The page on which the shortcode will be placed. You can come back and edit this later."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:134
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:582
+msgid "Form Setup"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:151
+msgid "Is this field required?"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:177
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:588
+msgid "Form Fields"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:191
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:396
+msgid "Post Title"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:191
+msgid "Change the \"Post Title\" label"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:192
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:399
+msgid "Post Content"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:192
+msgid "Change the \"Post Content\" label"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:193
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:402
+msgid "Post Excerpt"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:193
+msgid "Change the \"Post Excerpt\" label"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:194
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:405
+msgid "Featured Image"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:194
+msgid "Change the \"Featured Image\" label"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:195
+msgid "Add Post"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:195
+msgid "Change the \"Add Post\" label for the submit button"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:196
+msgid "Update Post"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:196
+msgid "Change the \"Update Post\" label for the submit button"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:197
+msgid "Post Added"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:197
+msgid "Change the \"Post Added\" success message"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:198
+msgid "Post Updated"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:198
+msgid "Change the \"Post Updated\" success message"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:204
+msgid "Form Labels and Messages"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:268
+msgid "Taxonomy: "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:300
+msgid "Choose a different Field Type as this one already exists in your Form\n"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:330
+msgid "...Chose"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:396
+msgid "The title of the post"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:399
+msgid "The content of the post"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:402
+msgid "The excerpt of the post"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:405
+msgid "The Featured Image"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:577
+msgid "WCK Frontend Posting gives you the possibility to create post ( and custom posts ) entries from the frontend, and also edit them. <br />You can create a custom form for every post type by selecting from the most common post elements( Post Title, Post Content, Excerpt, Featured Image ), the registered taxonomies for that post type  and also any Meta Box created with WCK Custom Fields Creator ( repeater or single )."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:583
+msgid "In the \"Form Setup\" metabox you set the form arguments. <br />The \"Post type\" argument determines in what post type the entries from the form will be added and also what field types you can add to the form.<br /> \"Anonymous posting\" and \"Admin Approval\" determine weather entries can be added without users being logged in and weather the posts will be automatically published.<br /> The \"Shortcode Page\" argument is used to determine on what page the form for this post type is displayed so that when we want to edit a post of this post type we are directed to the correct form (even tough this argument isn't required it needs to be set for editing posts to work correctly)."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:589
+msgid "Define here the fields contained by the form. <br />\"Field Type\" is dynamically constructed from the default fields( Post title, Post content, Excerpt, Featured image ), all the registered taxonomies and all the registered Meta Boxes for the post type selected in the \"Post Type\" option in the \"Form Setup\" Meta Box."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:594
+msgid "Frontend Usage"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:595
+msgid "To display a form in the frontend you must place it's corresponding shortcode on the desired page. You can take this shortcode from the \"Form Shortcode\" side metabox displayed on every form creation page.<br /> To display the Frontend Dashboard where you can see your posts, edit or delete them just add the following shortcode on the desired page \"<strong>[fep-dashboard]</strong>\"<br />Frontend Posting also provides a login/logout/register widget that also has a corresponding shortcode \"[fep-lilo]\"."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:609
+msgid "Form Shortcode"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:620
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:140
+msgid "Use this shortcode on the page you want the form to be displayed:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:621
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:141
+msgid "Note: changing the Form Title also changes the shortcode!"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:627
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:147
+msgid "Shortcode"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:655
+msgid "Login/Logout Widget"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:723
+msgid "Login Widget"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:727
+msgid "Title:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-fep.php:819
+msgid "Frontend Posting form updated."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:32
+msgid "Add New Option Page"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:33
+msgid "Edit Option Page"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:34
+msgid "New Option Page"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:35
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:63
+msgid "Option Pages Creator"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:36
+msgid "View Option Page"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:37
+msgid "Search Option Pages"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:38
+msgid "No Option Pages found"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:39
+msgid "No Option Pages found in Trash"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:41
+msgid "Option Pages"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:68
+msgid "Add New Option Field"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:69
+msgid "Edit Option Field"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:70
+msgid "New Option Field"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:71
+msgid "Option Fields Creator"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:72
+msgid "View Option Field"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:73
+msgid "Search Option Fields"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:74
+msgid "No Option Fields found"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:75
+msgid "No Option Fields found in Trash"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:77
+msgid "Option Fields"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:129
+msgid "Page name in menu"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:129
+msgid "The name of the option page in the menu."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:130
+msgid "Display"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:130
+msgid "Choose where in the admin menu should the page appear"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:131
+msgid "Page Title"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:131
+msgid "The title that is displayed on the page. If this is not filled in then it's the same as Page name in menu"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:132
+msgid "Page Type"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:132
+msgid "Choose what type the page should be. IMPORTANT: this overrides the Display option."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:133
+msgid "Parent Slug (for Submenu Page)"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:133
+msgid "The slug name for the parent menu (or the file name of a standard WordPress admin page) For examples see http://codex.wordpress.org/Function_Reference/add_submenu_page $parent_slug parameter"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:134
+msgid "Position (for Toplevel Page)"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:134
+msgid "The position in the menu order this menu should appear. Available for toplevel pages only."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:135
+msgid "Capability"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:135
+msgid "The capability required for this menu to be displayed to the user. Defaults to \"edit_theme_options\""
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:136
+msgid "Icon Url (for Toplevel Page)"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:136
+msgid "The icon for the menu button"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:142
+msgid "Option Page Arguments"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:170
+msgid "Group Title"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:170
+msgid "The name of the group field"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:171
+msgid "Option Page"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:171
+msgid "Select the option page here"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:172
+msgid "Option Name"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:172
+msgid "The name of the option. Must be unique, only lowercase letters, no spaces and no special characters."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:180
+msgid "Select on which option page this field group will appear"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:212
+msgid "Option Page Fields"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:475
+msgid "Option Page updated."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:479
+msgid "Option Field updated."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:523
+msgid "Choose a different Option Name as this one contains spaces\n"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:525
+msgid "Choose a different Option Name as this one has Uppercase letters\n"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-opc.php:527
+msgid "Choose a different Option Name as this one already exists\n"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:15
+msgid "Start Here & General Settings"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:16
+msgid "Start and Settings"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:34
+msgid "Serial Number"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:34
+msgid "Please enter your serial number. For example: (e.g. WCKPRO-11-SN-251r55baa4fbe7bf595b2aabb8d72985)"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:40
+msgid "Register Your Version"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:57
+msgid "Custom Post Type Creator"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:58
+msgid "Custom Taxonomy Creator"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:65
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:18
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:24
+msgid "Swift Templates"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:70
+msgid "WordPress Creation Kit Tools: enable or disable the tools you want"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:93
+#, php-format
+msgid "Welcome to %s"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:94
+msgid "WCK helps you to improve the usability of the sites you build, making them manageable by your clients. Your very own repeater custom fields and groups, custom post type and taxonomy creator with front-end posting."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:95
+#, php-format
+msgid "Version %s"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:109
+msgid "Quick Start-Up Guide"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:114
+msgid "WordPress Creation Kit Pro has support for a wide list of custom fields: WYSIWYG Editor, Upload Field, Date, User, Country, Text Input, Textarea, Drop-Down, Select, Checkboxes, Radio Buttons"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:115
+msgid "Access documentation <a href=\"http://www.cozmoslabs.com/wordpress-creation-kit/custom-fields-creator/\" target=\"_blank\">here</a> about how to display them in your templates."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:118
+msgid "Create & manage all your custom content types"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:119
+msgid "Access documentation <a href=\"http://www.cozmoslabs.com/wordpress-creation-kit/custom-post-type-creator/\" target=\"_blank\">here</a> about how to display them in your templates."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:122
+msgid "Create new taxonomies for filtering your content"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:123
+msgid "Access documentation <a href=\"http://www.cozmoslabs.com/wordpress-creation-kit/custom-taxonomy-creator/\" target=\"_blank\">here</a> about how to display them in your templates."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:125
+msgid "Front-End Posting (available in the Pro version)"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:126
+msgid "Create and edit posts/pages or custom posts directly from the front-end."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:127
+msgid "Available shortcodes:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:129
+msgid "[fep form_name=\"front-end-post-name\"] - displayes your form in the front-end"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:130
+msgid "[fep-dashboard] - the quick-dashboard allows: simple profile updates, editing/deletion of posts, pages and custom post types."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:131
+msgid "[fep-lilo] - login/logout/register widget with the simple usage of a shortcode. Can be added in a page or text widget."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:133
+msgid "Access documentation <a href=\"http://www.cozmoslabs.com/wordpress-creation-kit/frontend-posting/\" target=\"_blank\">here</a> about how to display them in your templates."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:135
+msgid "Option Pages (available in the Pro version)"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:136
+msgid "The Options Page Creator Allows you to create a new menu item called \"Options\"(for example) which can hold advanced custom field groups. Perfect for theme options or a simple UI for your custom plugin (like a simple testimonials section in the front-end)."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:165
+msgid "Please enter your serial number to get access to automatic updates. If you do not have one, you can <a href=\"http://www.cozmoslabs.com/wordpress-creation-kit/\" target=\"_blank\">Get One Here</a>."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:167
+msgid "Oups! Our serial verification server is down. Please try again later."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:169
+msgid "Oups! It seems the serial number you entered was not found in our database. To find out what's your serial number log-in to <a href=\"http://www.cozmoslabs.com/account/\" target=\"_blank\">your account page</a> over at Cozmoslabs.com"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:171
+msgid "Wohoo! Your serial number is valid and you have access to automatic updates."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-sas.php:173
+msgid "It seems your serial number has <strong>expired</strong>. You'll continue to get automatic updates if update your serial number for another year from <a href=\"http://www.cozmoslabs.com/account/\" target=\"_blank\"><strong>your account page</strong></a>."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:15
+msgid "Add New Swift Template"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:16
+msgid "Edit Swift Template"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:17
+msgid "New Swift Template"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:19
+msgid "View Swift Template"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:20
+msgid "Search Swift Templates"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:21
+msgid "No Swift Templates found"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:22
+msgid "No Swift Templates found in Trash"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wck-stp.php:128
+msgid "Swift Template Shortcode"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:315
+msgid "Add Entry"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:374
+msgid "Save Changes"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:375
+msgid "Cancel"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:416
+msgid "Content"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:416
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:502
+msgid "Edit"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:416
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:503
+msgid "Delete"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:502
+msgid "Edit this item"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:503
+msgid "Delete this item"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:628
+msgid "Please enter a value for the required field "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:992
+msgid "Select File"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:1033
+msgid "Remove"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:1073
+msgid "Syncronize WCK"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wordpress-creation-kit.php:1085
+msgid "Syncronize WCK Translation"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/fields/nested
+#: repeater.php:8
+#, php-format
+msgid "You can add the information for the %s after you add a entry"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/fields/upload.php:48
+msgid "Upload "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:256
+msgid "Auto Draft"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:660
+msgid "My Profile"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:673
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:692
+msgid "My "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:824
+msgid "User:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:826
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:847
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:885
+msgid "Password:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:828
+msgid "Log in"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:831
+msgid "Remember"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:836
+msgid "Don't have a user account? "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:837
+msgid "Register."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:843
+msgid "Username:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:845
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:882
+msgid "Email:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:849
+msgid "Confirm Password:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:853
+msgid "Back to login."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:858
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:876
+#, php-format
+msgid "Welcome %1$s! "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:859
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:876
+msgid "Logout"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:888
+msgid "Password Confirm:"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:894
+msgid "Update"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:938
+msgid "Please enter a username."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:940
+msgid "This username is invalid because it uses illegal characters. Please enter a valid username."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:943
+msgid "This username is already registered, please choose another one."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:949
+msgid "Please type your e-mail address."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:951
+msgid "The email address isn&#8217;t correct."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:954
+msgid "This email is already registered, please choose another one."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:959
+msgid "Please enter a password."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-fep/wck-fep.php:961
+msgid "The passwords do not match."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-stp/stp-init-metabox.php:66
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-stp/stp-init-metabox.php:78
+msgid "Query Arguments"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-stp/stp-init-metabox.php:67
+msgid "Setup query arguments. <a href=\""
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-stp/stp-init-metabox.php:70
+msgid "Value"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-stp/stp-init-metabox.php:71
+msgid "The value of the selected query argument. Parameters normaly passed as arrays (some tax args, meta_query, etc) are not supported in the UI. Use the <b>wck_stp_archive_query_args</b> filter for those.  "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-stp/stp-init-shortcodes.php:95
+#, php-format
+msgid "The shortcode with the name <em>%s</em> dose not exist."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-stp/stp-init-shortcodes.php:134
+#, php-format
+msgid "The single listing post with the name <em>%s</em> dose not exist."
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-stp/stp-init-shortcodes.php:152
+msgid "&laquo;&laquo; First"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-stp/stp-init-shortcodes.php:153
+msgid "&laquo; Prev"
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-stp/stp-init-shortcodes.php:154
+msgid "Next &raquo; "
+msgstr ""
+
+#: c:\wamp\www\wordpress\wp-content\plugins\wordpress-creation-kit-pro/wordpress-creation-kit-api/wck-stp/stp-init-shortcodes.php:155
+msgid "Last &raquo;&raquo;"
+msgstr ""
+

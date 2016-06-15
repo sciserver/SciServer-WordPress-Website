@@ -1,0 +1,23 @@
+#icon-wck-page{
+	background:url( ../images/wck-32x32.png ) 0 0 no-repeat;;
+}
+
+#container_wck_fep_fields .wck-edit{
+	display:none;
+}
+
+#edit-slug-box {
+    display: none;
+}
+
+#minor-publishing-actions{
+	display:none;
+}
+
+#wck_fep_args .row-assign-to-user{
+	display:none;
+}
+
+#wck_fep_args.anonymous-posting-enabled .row-assign-to-user{
+	display:block;
+}

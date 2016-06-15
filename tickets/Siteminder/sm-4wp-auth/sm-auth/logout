@@ -1,0 +1,44 @@
+#!/usr/bin/perl
+
+
+# When this script is called, it should automatically end any existing SiteMinder session for this site.
+# The main goal, at this point, is to now redirect the client to a given URL (if possible).
+
+use CGI;
+
+my $cgiObject = CGI->new;
+
+
+# We wish to redirect to a given URL.  If a redirection location does not
+# appear to have been specified, though, then we should use a default value.
+my $serverurl = $cgiObject->param('dest');
+
+if ($serverurl eq "") {
+        $serverurl = "http://www.jhu.edu";
+}
+if (!($serverurl =~ m/^http/)) {
+
+        if ($serverurl =~ m/^\//) {
+                $serverurl = "http:/" . $serverurl;
+        }
+        else {
+                $serverurl = "http://" . $serverurl;
+        }
+}
+
+
+print $cgiObject->redirect($serverurl);
+
+
+exit;
+
+
+######################################################################################
+
+sub urldecode {
+    my $s = shift;
+    $s =~ s/\%([A-Fa-f0-9]{2})/pack('C', hex($1))/seg;
+    $s =~ s/\+/ /g;
+    return $s;
+}
+

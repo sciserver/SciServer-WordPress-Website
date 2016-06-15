@@ -4,3 +4,6 @@
 [submodule "wp-content/plugins/idies-update-tracker"]
 	path = wp-content/plugins/idies-update-tracker
 	url = git@bitbucket.org:idies/idies-update-tracker.git
+[submodule "tickets"]
+	path = tickets
+	url = git@github.com:sciserver/SciServer-Tickets-Website.git
