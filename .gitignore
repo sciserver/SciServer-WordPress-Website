@@ -3,7 +3,7 @@ node_modules
 wp-content/uploads/ninja-forms/
 wp-config*.php
 ninja-forms-submission.csv
-documentation/
+tickets/
 
 # Compiled source #
 ###################
