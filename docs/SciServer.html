@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SciServer package &mdash; Sciserver Python 0.1 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Sciserver Python 0.1 documentation" href="index.html" />
+    <link rel="next" title="Turbulence package" href="Turbulence.html" />
+    <link rel="prev" title="Welcome to SciScript Python documentation!" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Turbulence.html" title="Turbulence package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to SciScript Python documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Sciserver Python 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="sciserver-package">
+<h1>SciServer package<a class="headerlink" href="#sciserver-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-SciServer.CasJobs">
+<span id="sciserver-casjobs-module"></span><h2>SciServer.CasJobs module<a class="headerlink" href="#module-SciServer.CasJobs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="SciServer.CasJobs.executeQuery">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">executeQuery</code><span class="sig-paren">(</span><em>queryString</em>, <em>context='MyDB'</em>, <em>acceptHeader='application/json+array'</em>, <em>token=''</em>, <em>format='pandas'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.executeQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a casjob query.  If a token is supplied then it will execute on behalf of the token&#8217;s user.
+format parameter specifies the return type:</p>
+<p>&#8216;pandas&#8217;: pandas.DataFrame.
+&#8216;csv&#8217;: a csv string.
+&#8216;readable&#8217; : a StringIO, readable object wrapping a csv string that can be passed into pandas.read_csv for example.
+&#8216;json&#8217;: a dict created from a JSON string with the Query, a Result consisting of a Columns and a Data field.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.getFitsFileFromQuery">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">getFitsFileFromQuery</code><span class="sig-paren">(</span><em>filename</em>, <em>queryString</em>, <em>context='MyDB'</em>, <em>token=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.getFitsFileFromQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a casjobs query and writes the result to a fits (<a class="reference external" href="http://www.stsci.edu/institute/software_hardware/pyfits">http://www.stsci.edu/institute/software_hardware/pyfits</a>) file.
+Returns True if successful.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.getJobStatus">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">getJobStatus</code><span class="sig-paren">(</span><em>jobid</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.getJobStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a casjobs job status.
+Returns the dict object (<a class="reference external" href="https://docs.python.org/3.4/library/stdtypes.html#dict">https://docs.python.org/3.4/library/stdtypes.html#dict</a>) corresponding to the json received from casjobs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.getNumpyArrayFromQuery">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">getNumpyArrayFromQuery</code><span class="sig-paren">(</span><em>queryString</em>, <em>context='MyDB'</em>, <em>token=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.getNumpyArrayFromQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a casjobs query and stores the cvs result in a numpy (<a class="reference external" href="http://docs.scipy.org/doc/numpy/">http://docs.scipy.org/doc/numpy/</a>) array.
+Returns numpy array.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.getPandasDataFrameFromQuery">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">getPandasDataFrameFromQuery</code><span class="sig-paren">(</span><em>queryString</em>, <em>context='MyDB'</em>, <em>token=''</em>, <em>index_col=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.getPandasDataFrameFromQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a casjobs query and stores the cvs result in a pandas (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/">http://pandas.pydata.org/pandas-docs/stable/</a>) dataframe object.
+Returns the dataframe.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.getSchemaName">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">getSchemaName</code><span class="sig-paren">(</span><em>token=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.getSchemaName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.getTables">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">getTables</code><span class="sig-paren">(</span><em>context='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.getTables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all the tables from the current user in the given context.
+The result is a json object with format [{&#8220;Date&#8221;:seconds,&#8221;Name&#8221;:&#8221;TableName&#8221;,&#8221;Rows&#8221;:int,&#8221;Size&#8221;,int},..]</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.submitJob">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">submitJob</code><span class="sig-paren">(</span><em>queryString</em>, <em>context='MyDB'</em>, <em>acceptHeader='text/plain'</em>, <em>token=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.submitJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submits a query to the casjobs queue.  If a token is supplied then it will execute on behalf of the token&#8217;s user.
+Returns the casjobs jobID (int).</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.uploadCVSDataToTable">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">uploadCVSDataToTable</code><span class="sig-paren">(</span><em>CVSdata</em>, <em>tableName</em>, <em>context='MyDB'</em>, <em>token=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.uploadCVSDataToTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads  cvs data into casjobs.  data should support the buffered interface (it should have a read() method).
+<a class="reference external" href="https://docs.python.org/3/library/urllib.request.html">https://docs.python.org/3/library/urllib.request.html</a>
+Returns the output from casjobs in string form.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.uploadPandasDataFrameToTable">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">uploadPandasDataFrameToTable</code><span class="sig-paren">(</span><em>dataFrame</em>, <em>tableName</em>, <em>context='MyDB'</em>, <em>token=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.uploadPandasDataFrameToTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads a pandas dataframe object into casjobs.
+Returns the output from casjobs in string form.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.waitForJob">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">waitForJob</code><span class="sig-paren">(</span><em>jobid</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.waitForJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Waits for the casjobs job to return a status of 3, 4, or 5.
+Queries the job status from casjobs every 2 seconds.</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sciserver-loginportal-module">
+<h2>SciServer.LoginPortal module<a class="headerlink" href="#sciserver-loginportal-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-SciServer.LoginPortal"></span><dl class="class">
+<dt id="SciServer.LoginPortal.KeystoneUser">
+<em class="property">class </em><code class="descclassname">SciServer.LoginPortal.</code><code class="descname">KeystoneUser</code><a class="headerlink" href="#SciServer.LoginPortal.KeystoneUser" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="attribute">
+<dt id="SciServer.LoginPortal.KeystoneUser.id">
+<code class="descname">id</code><em class="property"> = 'KeystoneID'</em><a class="headerlink" href="#SciServer.LoginPortal.KeystoneUser.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="SciServer.LoginPortal.KeystoneUser.userName">
+<code class="descname">userName</code><em class="property"> = 'User Name'</em><a class="headerlink" href="#SciServer.LoginPortal.KeystoneUser.userName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.getKeystoneToken">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">getKeystoneToken</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.getKeystoneToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the users keystone token passed into the python instance with the &#8211;ident argument.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.getKeystoneUserWithToken">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">getKeystoneUserWithToken</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.getKeystoneUserWithToken" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.getToken">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">getToken</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.getToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Retrieve the token stored in the docker container. If not found there, will look at system argument &#8211;ident.
+Will only work when running on docker.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.identArgIdentifier">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">identArgIdentifier</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.identArgIdentifier" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.login">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">login</code><span class="sig-paren">(</span><em>UserName</em>, <em>Password</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.login" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.setKeystoneToken">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">setKeystoneToken</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.setKeystoneToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the token as the &#8211;ident argument
+:param token:
+:return:</p>
+</dd></dl>
+
+</div>
+<div class="section" id="sciserver-scidrive-module">
+<h2>SciServer.SciDrive module<a class="headerlink" href="#sciserver-scidrive-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-SciServer.SciDrive"></span><dl class="function">
+<dt id="SciServer.SciDrive.createContainer">
+<code class="descclassname">SciServer.SciDrive.</code><code class="descname">createContainer</code><span class="sig-paren">(</span><em>path</em>, <em>token=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SciDrive.createContainer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SciDrive.download">
+<code class="descclassname">SciServer.SciDrive.</code><code class="descname">download</code><span class="sig-paren">(</span><em>path</em>, <em>token=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SciDrive.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Download the file identified by the path as a read()-able stream.
+I.e. to get contents call read() on the resulting object</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SciDrive.publicUrl">
+<code class="descclassname">SciServer.SciDrive.</code><code class="descname">publicUrl</code><span class="sig-paren">(</span><em>path</em>, <em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SciDrive.publicUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>retrieve public URL for file identified by path</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SciDrive.upload">
+<code class="descclassname">SciServer.SciDrive.</code><code class="descname">upload</code><span class="sig-paren">(</span><em>path</em>, <em>data</em>, <em>token=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SciDrive.upload" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SciServer package</a><ul>
+<li><a class="reference internal" href="#submodules">Submodules</a></li>
+<li><a class="reference internal" href="#module-SciServer.CasJobs">SciServer.CasJobs module</a></li>
+<li><a class="reference internal" href="#sciserver-loginportal-module">SciServer.LoginPortal module</a></li>
+<li><a class="reference internal" href="#sciserver-scidrive-module">SciServer.SciDrive module</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to SciScript Python documentation!</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="Turbulence.html"
+                        title="next chapter">Turbulence package</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/SciServer.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="Turbulence.html" title="Turbulence package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to SciScript Python documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">Sciserver Python 0.1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2015, Chris Richardson.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.5.
+    </div>
+  </body>
+</html>
