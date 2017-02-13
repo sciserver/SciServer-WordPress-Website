@@ -275,8 +275,8 @@ function wck_fep_get_taxonomies_for_post_type( $post_id ){
 }
 
 /* Add an extra verification for the Field Type select in the Form Fields Meta Box. Throw error if the field type is allready added  */
-add_filter( 'wck_required_test_wck_fep_fields_field-type', 'wck_fep_ceck_field_type', 10, 3 );
-function wck_fep_ceck_field_type( $bool, $value, $post_id ){	
+add_filter( 'wck_required_test_wck_fep_fields_field-type', 'wck_fep_ceck_field_type', 10, 6 );
+function wck_fep_ceck_field_type( $bool, $value, $post_id, $field, $meta, $fields ){
 	$wck_fep_fields = get_post_meta( $post_id, 'wck_fep_fields', true );
 	
 	$allready_exists = false;
@@ -293,8 +293,8 @@ function wck_fep_ceck_field_type( $bool, $value, $post_id ){
 	return ( $allready_exists || empty($value) );
 }
 /* Message filter if the allready existing error is thrown */
-add_filter( 'wck_required_message_wck_fep_fields_field-type', 'wck_fep_change_fields_message', 10, 2 );
-function wck_fep_change_fields_message( $message, $value ){
+add_filter( 'wck_required_message_wck_fep_fields_field-type', 'wck_fep_change_fields_message', 10, 3 );
+function wck_fep_change_fields_message( $message, $value, $required_field ){
 	if( empty( $value ) )
 		return $message;	
 	else
@@ -534,6 +534,8 @@ function wck_fep_change_form_labels(){
 					if( !empty( $wck_fep_label ) ){
 						foreach( $wck_fep_label as $field_slug => $new_label ){						
 							if( !empty( $new_label ) ){
+								/* take care of special characters */
+								$new_label = esc_html( $new_label );
 								$this_form_name = Wordpress_Creation_Kit::wck_generate_slug( $form->post_title );
 								/*  Create the anonymous (lambda-style) function to add to pur filters */
 								$wck_fep_change_labels_and_messages = create_function('$label,$form_name','
@@ -565,6 +567,20 @@ function wck_fep_change_form_labels(){
 			}
 		}
 	}
+}
+
+/* register FEP labels for translation with wpml */
+add_action( "update_post_meta", 'wck_fep_register_labels_for_translation', 10, 4 );
+function wck_fep_register_labels_for_translation( $meta_id, $object_id, $meta_key, $_meta_value ){
+    if( $meta_key == 'wck_fep_labels' ){
+        if( !empty( $_meta_value[0] ) ) {
+            foreach( $_meta_value[0] as $field_key => $field_value ) {
+                if (function_exists('icl_register_string')) {
+                    icl_register_string('plugin wck', 'fep_label_' . $field_key . '_translation', $field_value );
+                }
+            }
+        }
+    }
 }
 
 /* Show "Assign to user" row  */

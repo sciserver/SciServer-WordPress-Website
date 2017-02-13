@@ -67,8 +67,7 @@ Normalize Ninja Forms fields with default structure
   padding: 0 10px; }
 
 .nf-after-field .nf-error-msg {
-  margin-right: 10px;
-  text-align: right; }
+  margin-right: 10px; }
 
 /* ---------------------------------
 CHECKBOX FIELD
@@ -76,30 +75,30 @@ CHECKBOX FIELD
 /* ---------------------------------
 RADIO & CHECKBOX LISTS
 ----------------------------------*/
-.list-radio-wrap ul, .list-radio-wrap li,
-.list-checkbox-wrap ul,
-.list-checkbox-wrap li {
+.list-radio-wrap .nf-field-element ul, .list-radio-wrap .nf-field-element li,
+.list-checkbox-wrap .nf-field-element ul,
+.list-checkbox-wrap .nf-field-element li {
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important; }
-  .list-radio-wrap ul input, .list-radio-wrap li input,
-  .list-checkbox-wrap ul input,
-  .list-checkbox-wrap li input {
+  .list-radio-wrap .nf-field-element ul input, .list-radio-wrap .nf-field-element li input,
+  .list-checkbox-wrap .nf-field-element ul input,
+  .list-checkbox-wrap .nf-field-element li input {
     margin-right: 5px; }
 
-.list-radio-wrap li,
-.list-checkbox-wrap li {
+.list-radio-wrap .nf-field-element li,
+.list-checkbox-wrap .nf-field-element li {
   padding-left: 10px;
   margin: 0 0 5px !important;
   text-indent: initial !important; }
-  .list-radio-wrap li label,
-  .list-checkbox-wrap li label {
+  .list-radio-wrap .nf-field-element li label,
+  .list-checkbox-wrap .nf-field-element li label {
     display: inline-block;
     float: initial;
     margin: 0;
     width: auto; }
-  .list-radio-wrap li input,
-  .list-checkbox-wrap li input {
+  .list-radio-wrap .nf-field-element li input,
+  .list-checkbox-wrap .nf-field-element li input {
     width: auto !important; }
 
 /* ---------------------------------
@@ -169,8 +168,89 @@ HELPER CLASSES
   float: left;
   width: 25%; }
 
+.five-col-list ul li {
+  float: left;
+  width: 20%; }
+
+.six-col-list ul li {
+  float: left;
+  width: 16.66%; }
+
 body .pika-label {
   background: transparent; }
+
+/* Column Classes
+    Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css
+--------------------------------------------- */
+.nf-form-cont .five-sixths,
+.nf-form-cont .four-sixths,
+.nf-form-cont .one-fourth,
+.nf-form-cont .one-half,
+.nf-form-cont .one-sixth,
+.nf-form-cont .one-third,
+.nf-form-cont .three-fourths,
+.nf-form-cont .three-sixths,
+.nf-form-cont .two-fourths,
+.nf-form-cont .two-sixths,
+.nf-form-cont .two-thirds {
+  clear: initial;
+  float: left;
+  margin-left: 2.564102564102564%; }
+  .nf-form-cont .five-sixths .inside,
+  .nf-form-cont .four-sixths .inside,
+  .nf-form-cont .one-fourth .inside,
+  .nf-form-cont .one-half .inside,
+  .nf-form-cont .one-sixth .inside,
+  .nf-form-cont .one-third .inside,
+  .nf-form-cont .three-fourths .inside,
+  .nf-form-cont .three-sixths .inside,
+  .nf-form-cont .two-fourths .inside,
+  .nf-form-cont .two-sixths .inside,
+  .nf-form-cont .two-thirds .inside {
+    padding: 20px; }
+  .nf-form-cont .five-sixths::after,
+  .nf-form-cont .four-sixths::after,
+  .nf-form-cont .one-fourth::after,
+  .nf-form-cont .one-half::after,
+  .nf-form-cont .one-sixth::after,
+  .nf-form-cont .one-third::after,
+  .nf-form-cont .three-fourths::after,
+  .nf-form-cont .three-sixths::after,
+  .nf-form-cont .two-fourths::after,
+  .nf-form-cont .two-sixths::after,
+  .nf-form-cont .two-thirds::after {
+    clear: both;
+    content: "";
+    display: block; }
+
+.nf-form-cont .one-half,
+.nf-form-cont .three-sixths,
+.nf-form-cont .two-fourths {
+  width: 48.717948717948715%; }
+
+.nf-form-cont .one-third,
+.nf-form-cont .two-sixths {
+  width: 31.623931623931625%; }
+
+.nf-form-cont .four-sixths,
+.nf-form-cont .two-thirds {
+  width: 65.81196581196582%; }
+
+.nf-form-cont .one-fourth {
+  width: 23.076923076923077%; }
+
+.nf-form-cont .three-fourths {
+  width: 74.35897435897436%; }
+
+.nf-form-cont .one-sixth {
+  width: 14.52991452991453%; }
+
+.nf-form-cont .five-sixths {
+  width: 82.90598290598291%; }
+
+.nf-form-cont .first {
+  clear: both;
+  margin-left: 0; }
 
 .note-popover {
   display: none !important; }
@@ -219,6 +299,7 @@ body .pika-label {
     height: auto; }
   .nf-form-wrap .note-editor .dropdown-toggle {
     position: relative;
+    display: inline-block;
     top: 0; }
     .nf-form-wrap .note-editor .dropdown-toggle::after {
       content: "";
@@ -549,25 +630,13 @@ body .pika-label {
   margin: 100px auto;
   background-color: rgba(208, 208, 208, 0.5);
   border-radius: 100%;
-  -webkit-animation: nf-scaleout 1.0s infinite ease-in-out;
-          animation: nf-scaleout 1.0s infinite ease-in-out; }
-
-@-webkit-keyframes nf-scaleout {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 0; } }
+  animation: nf-scaleout 1.0s infinite ease-in-out; }
 
 @keyframes nf-scaleout {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
+    transform: scale(0); }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     opacity: 0; } }
 
 /*
@@ -577,8 +646,6 @@ Make sure all Ninja Forms label positons function properly
 STANDARDIZE ALL FIELDS
 ----------------------------------*/
 .field-wrap {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
   .field-wrap > label {
@@ -596,23 +663,17 @@ STANDARDIZE ALL FIELDS
     width: auto; }
 
 .nf-field-label {
-  -webkit-box-ordinal-group: 6;
-  -webkit-order: 5;
-      -ms-flex-order: 5;
-          order: 5; }
+  -ms-flex-order: 5;
+      order: 5; }
 
 .nf-field-description {
   width: 100%;
-  -webkit-box-ordinal-group: 11;
-  -webkit-order: 10;
-      -ms-flex-order: 10;
-          order: 10; }
+  -ms-flex-order: 10;
+      order: 10; }
 
 .nf-field-element {
-  -webkit-box-ordinal-group: 16;
-  -webkit-order: 15;
-      -ms-flex-order: 15;
-          order: 15; }
+  -ms-flex-order: 15;
+      order: 15; }
 
 /* ---------------------------------
 LABEL ABOVE
@@ -625,24 +686,19 @@ LABEL BELOW
 ----------------------------------*/
 .label-below .nf-field-label {
   margin-top: 10px;
-  -webkit-box-ordinal-group: 16;
-  -webkit-order: 15;
-      -ms-flex-order: 15;
-          order: 15; }
+  -ms-flex-order: 15;
+      order: 15; }
 
 .label-below .nf-field-element {
-  -webkit-box-ordinal-group: 6;
-  -webkit-order: 5;
-      -ms-flex-order: 5;
-          order: 5; }
+  -ms-flex-order: 5;
+      order: 5; }
 
 /* ---------------------------------
 LABEL HIDDEN
 ----------------------------------*/
 .label-hidden .field-wrap {
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
 
 .label-hidden .nf-field-label {
   height: 0;
@@ -651,10 +707,8 @@ LABEL HIDDEN
 
 .label-hidden .nf-field-description {
   width: 100%;
-  -webkit-box-ordinal-group: 21;
-  -webkit-order: 20;
-      -ms-flex-order: 20;
-          order: 20; }
+  -ms-flex-order: 20;
+      order: 20; }
 
 .label-hidden .nf-field-element {
   width: 100%; }
@@ -663,36 +717,23 @@ LABEL HIDDEN
 LABEL LEFT
 ----------------------------------*/
 .label-left .field-wrap {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
 
 .label-left .nf-field-label {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-align: center;
+      align-items: center;
   padding-right: 2%;
   text-align: right;
   width: 35%;
-  -webkit-box-ordinal-group: 6;
-  -webkit-order: 5;
-      -ms-flex-order: 5;
-          order: 5; }
+  -ms-flex-order: 5;
+      order: 5; }
   .label-left .nf-field-label label {
     width: 100%; }
 
@@ -702,10 +743,8 @@ LABEL LEFT
 .label-left .nf-field-element {
   display: inline-block;
   width: 65%;
-  -webkit-box-ordinal-group: 11;
-  -webkit-order: 10;
-      -ms-flex-order: 10;
-          order: 10; }
+  -ms-flex-order: 10;
+      order: 10; }
 
 .label-left .nf-after-field {
   margin-left: 36.5%; }
@@ -714,50 +753,33 @@ LABEL LEFT
 LABEL RIGHT
 ----------------------------------*/
 .label-right .field-wrap {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
 
 .label-right .nf-field-label {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-align: center;
+      align-items: center;
   padding-left: 2%;
   width: 35%;
-  -webkit-box-ordinal-group: 11;
-  -webkit-order: 10;
-      -ms-flex-order: 10;
-          order: 10; }
+  -ms-flex-order: 10;
+      order: 10; }
 
 .label-right .nf-field-description {
   margin-right: 35%;
-  -webkit-box-ordinal-group: 16;
-  -webkit-order: 15;
-      -ms-flex-order: 15;
-          order: 15; }
+  -ms-flex-order: 15;
+      order: 15; }
 
 .label-right .nf-field-element {
   display: inline-block;
   width: 65%;
-  -webkit-box-ordinal-group: 6;
-  -webkit-order: 5;
-      -ms-flex-order: 5;
-          order: 5; }
+  -ms-flex-order: 5;
+      order: 5; }
 
 .label-right .checkbox-wrap .nf-field-label {
   width: auto; }
@@ -773,14 +795,10 @@ ADJUST SOME LABEL ABOVE & BELOW ISSUES
 ----------------------------------*/
 .label-below .field-wrap,
 .label-above .field-wrap {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-flex-flow: wrap;
-      -ms-flex-flow: wrap;
-          flex-flow: wrap; }
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap; }
 
 .label-below .nf-field-element,
 .label-above .nf-field-element {
@@ -796,10 +814,9 @@ ADJUST SOME LABEL LEFT & RIGHT ISSUES
 .label-right .textarea-wrap .nf-field-label,
 .label-right .listradio-wrap .nf-field-label,
 .label-right .listcheckbox-wrap .nf-field-label {
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-      -ms-flex-align: start;
-          align-items: flex-start; }
+  -ms-flex-align: start;
+      -ms-grid-row-align: flex-start;
+      align-items: flex-start; }
 
 .label-left .textarea-wrap .nf-field-label,
 .label-right .textarea-wrap .nf-field-label {

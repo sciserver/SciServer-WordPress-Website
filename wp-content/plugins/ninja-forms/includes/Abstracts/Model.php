@@ -152,32 +152,13 @@ class NF_Abstracts_Model
         if( is_numeric( $id ) ) {
             $this->_id = absint( $id );
         } elseif( $id ) {
-
-            $field = $this->_db->get_row(
-                "
-                SELECT `id`
-                FROM   `$this->_table_name`
-                WHERE  `key` = '$id'
-                "
-            );
-
-            if( $field ){
-                $this->_id = $field->id;
-            } else {
-                $this->_tmp_id = $id;
-            }
+            $this->_tmp_id = $id;
         }
 
         /*
          * Set the Parent ID for context
          */
         $this->_parent_id = $parent_id;
-
-        /*
-         * With the ID set, query settings from the database
-         */
-        $this->_settings = $this->get_settings();
-
     }
 
     /**
@@ -219,7 +200,11 @@ class NF_Abstracts_Model
      */
     public function get_setting( $setting, $default = FALSE )
     {
-        $return = $this->get_settings( $setting );
+        if( isset( $this->_settings[ $setting ] )){
+            $return =  $this->_settings[ $setting ];
+        } else {
+            $return = $this->get_settings($setting);
+        }
 
         return ( $return ) ? $return : $default;
     }
@@ -234,6 +219,58 @@ class NF_Abstracts_Model
     {
         // If the ID is not set, then we cannot pull settings from the Database.
         if( ! $this->_id ) return $this->_settings;
+
+        if( ! $this->_settings && 'field' == $this->_type ) {
+            global $wpdb;
+            $results = $wpdb->get_results(
+                "
+                SELECT Meta.key, Meta.value
+                FROM $this->_table_name as Object
+                JOIN $this->_meta_table_name as Meta
+                ON Object.id = Meta.parent_id
+                WHERE Object.id = '$this->_id'
+                "
+            , ARRAY_A );
+
+            foreach( $results as $result ) {
+                $key = $result[ 'key' ];
+                $this->_settings[ $key ] = $result[ 'value' ];
+            }
+
+            $field = $wpdb->get_row(
+                "
+                SELECT `label`, `key`, `type`
+                FROM $this->_table_name
+                WHERE `id` = '$this->_id'
+                ",
+                ARRAY_A
+            );
+
+            if( ! is_wp_error( $field ) ){
+                $this->_settings[ 'label' ] = $field[ 'label' ];
+                $this->_settings[ 'key' ] = $field[ 'key' ];
+                $this->_settings[ 'type' ] = $field[ 'type' ];
+            }
+        }
+
+        if( ! $this->_settings ) {
+            $form_cache = get_option('nf_form_' . $this->_parent_id);
+            if ($form_cache) {
+
+                if ('field' == $this->_type) {
+
+                    if (isset($form_cache['fields'])) {
+
+                        foreach ($form_cache['fields'] as $object) {
+                            if ($this->_id != $object['id']) continue;
+
+                            $this->update_settings($object['settings']);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
 
         // Only query if settings haven't been already queried or cache is FALSE.
         if( ! $this->_settings || ! $this->_cache ) {
@@ -329,8 +366,10 @@ class NF_Abstracts_Model
      */
     public function update_settings( $data )
     {
-        foreach( $data as $key => $value ){
-            $this->update_setting( $key, $value );
+        if( is_array( $data ) ) {
+            foreach ($data as $key => $value) {
+                $this->update_setting($key, $value);
+            }
         }
 
         return $this;
@@ -484,7 +523,7 @@ class NF_Abstracts_Model
 
     /**
      * Cache Flag
-     * 
+     *
      * @param string $cache
      * @return $this
      */

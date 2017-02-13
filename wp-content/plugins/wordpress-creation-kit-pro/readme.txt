@@ -5,8 +5,8 @@ Donate link: http://www.cozmoslabs.com/wordpress-creation-kit-sale-page/
 Tags: custom fields, custom field, wordpress custom fields, advanced custom fields, custom post type, custom post types, post types, repeater fields, repeater, repeatable, meta box, meta boxes, metabox, taxonomy, taxonomies, custom taxonomy, custom taxonomies, custom, custom fields creator, post meta, meta, get_post_meta, post creator, cck, content types, types
 
 Requires at least: 3.1
-Tested up to: 4.5
-Stable tag: 2.2.4
+Tested up to: 4.7.1
+Stable tag: 2.4.0
 
 A must have tool for creating custom fields, custom post types and taxonomies, fast and without any programming knowledge.
 
@@ -354,3 +354,86 @@ Swift Templates: fixed upload field image metadata for repeater field and alt te
 2.2.4
 Changed way we make sure swift templates is not run in the header by mistake because of Yoast SEO
 Added new filter for registration errors
+
+2.2.5
+Swift template post content now attempts to embed automatically embedable links
+Front End Posting form now can only edit posts of the set post type in the form arguments
+Small change in saving single metaboxes
+Fixed a possible conflict with ACF Pro
+
+2.2.6
+Added Heading field type
+Added Colorpicker field type
+Added Currency field type
+Added number of rows and readonly options to the textarea field
+Added error notice for users with a php version lower than 5.3.0 on the settings page
+Front End Posting field labels can now be translated with WPML
+
+2.2.7
+Added Phone field type
+Added HTML field type
+Added Time Picker field type
+Added Default Text for textarea field instead of Default Value
+
+2.2.8
+Added Map field type
+Added Lables field in Custom Fields Creator next to Options for checkboxes, selects and radios
+Fixed a bug with the datepicker field and repeaters
+
+2.2.9
+Fixed bug in cfc when updating post
+Security fixes
+
+2.3.0
+Fixed Front end Posting problem with anonymous posting and repeater custom fields
+Fixed preview draft not showing the correct custom fields in certain conditions
+Fixed a fatal error that was happening in certain conditions when adding a new Custom Fields Creator Meta Box
+
+2.3.1
+Added Number field type
+Removed notice regarding post thumbnail on certain themes
+Fixed and error with the Map field
+New branding to match website
+
+2.3.2
+Added date format option for Datepicker Field
+Fixed notices when multiple single boxes were present and the first one had a required error
+New menu icon
+
+2.3.3
+We now save every custom field in it's own separate post meta with an editable meta_key
+UI improvements to repeater sortable table
+
+2.3.4
+Fixed issue with Custom Fields Creator when fields had the same name as the meta name
+
+2.3.5
+Fixed an issue with the unserialized conversion page when fields had same names
+
+2.3.6
+Fixed some issues with the unserialized fields conversion
+Changed per batch variable from 100 to 30 to try to reduce timeouts on sites with a lot of entries
+Fixed warnings regarding Number field
+Fixed a issue with FEP and label change that contained special characters on some servers
+
+2.3.7
+Added sortable taxonomy admin column support for Taxonomy Creator
+Added show_in_quick_edit argument support for Taxonomy Creator
+
+2.3.8
+Changes to the unserialized fields: we can now handle fields from other sources
+Improvements to javascript speed in the admin interface
+
+2.3.9
+Fixed a problem with Front End Posting and some custom fields not showing up on edit
+Fixed a bug in Front End Posting admin interface when values in the fields list would disappear
+We now display default values in custom fields on front end forms from Front End Posting
+Fixed an issue with Swift Templates and serialized fields when the serialized meta was not present
+Fixed an issue with fields that had their slug changed and didn't appear sometimes
+Modifications to upload button so that it disappears when we already have something uploaded
+Added 2 new currencies in the Currency Select field
+Small modifications to the generate slug function
+
+2.4.0
+Compatibility with php version 7.1
+Fixed an issue with Swift Templates and repeater fields that were not displaying properly

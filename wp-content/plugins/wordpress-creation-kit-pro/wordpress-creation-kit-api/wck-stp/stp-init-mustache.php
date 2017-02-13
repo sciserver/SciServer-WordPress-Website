@@ -175,7 +175,12 @@ function wck_stp_populate_default_template_vars( $post, $post_author, $post_type
 		$mustache_default_vars['post_id'] = $post->ID;
 		$mustache_default_vars['post_title'] = $post->post_title;
 		$mustache_default_vars['post_name'] = $post->post_name;
-		$mustache_default_vars['post_content'] = wpautop( $post->post_content );
+        $mustache_default_vars['post_content'] = $post->post_content;
+        if( isset( $GLOBALS['wp_embed'] ) ){
+            $mustache_default_vars['post_content'] = $GLOBALS['wp_embed']->autoembed( $mustache_default_vars['post_content'] );
+        }
+        $mustache_default_vars['post_content'] = wpautop( $mustache_default_vars['post_content'] );
+
 		if( $post->post_excerpt == '' ){
 			$excerpt = $post->post_content;
 			$excerpt = strip_shortcodes( $excerpt );
@@ -307,17 +312,24 @@ function wck_stp_generate_mustache_variables_rec($array, $level = 0){
  
 // Initialize Mustache Tags in the front-end.
 // generate an array with information that users can use inside Mustache Templates
-function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0){
+function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0, $post_id = 0){
 	if ( $level > 1 ) { return ''; }
 	$level++;
-	
-	$args=array(
-	  'name' 			=> $single,
-	  'post_type' 		=> $post_type,
-	  'post_status' 	=> 'publish',
-	  'posts_per_page' 	=> 1
-	);
-	$user_posts = get_posts($args);
+
+	/* Drafts do not have a 'name' (post slug), so if a $post_id is provided, then we will only get that post */
+	if ( $post_id == 0 ) {
+		$args = array(
+			'name' => $single,
+			'post_type' => $post_type,
+			'post_status' => 'publish',
+			'posts_per_page' => 1
+		);
+		$user_posts = get_posts($args);
+	}else{
+		$user_posts = array();
+		$user_posts[0] = get_post($post_id);
+	}
+
 	if ( !$user_posts ){
 		return;
 	}
@@ -336,7 +348,14 @@ function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0)
         $all_metas_for_this_post = get_post_meta( $user_posts[0]->ID );
 
 		foreach( $all_box_args as $box_args ){
-			if( ( $box_args['post_type'] == $post_type ) ){					
+			if( ( $box_args['post_type'] == $post_type ) ){
+
+				if( !array_key_exists( $box_args['meta_name'], $all_metas_for_this_post ) ){
+					$meta_val = get_post_meta( $user_posts[0]->ID, $box_args['meta_name'], true );
+					if( !empty( $meta_val ) )
+						$all_metas_for_this_post[$box_args['meta_name']] = array( maybe_serialize( $meta_val ) );
+				}
+
 				if ( $box_args['single'] ) {
 					foreach( $box_args['meta_array'] as $value ){
 						$slug = Wordpress_Creation_Kit::wck_generate_slug( $value['title'] );
@@ -363,6 +382,10 @@ function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0)
                                                 $mustache_vars_cfc[$box_args['meta_name'] . '_' . $slug . '_' . $metadata] = $unprocessed[$metadata];
                                             }
                                         }
+
+                                        if( $value['type'] == 'map' && is_array( $processed ) ) {
+                                            $mustache_vars_cfc[$box_args['meta_name'] . '_' . $slug ] = wck_get_map_output( $value, array( 'markers' => $meta_value, 'editable' => false, 'show_search' => false, 'wrapper' => 'div' ) );
+                                        }
                                     }
                                 }
                             }
@@ -374,13 +397,13 @@ function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0)
 
                         if( !empty( $all_metas_for_this_post ) ) {
                             foreach ($all_metas_for_this_post as $meta_key => $meta_for_this_post) {
-                                if ($meta_key == $box_args['meta_name']) {
+                                if ($meta_key == $box_args['meta_name'] ) {
                                     $meta_for_this_post = maybe_unserialize( $meta_for_this_post[0] );
+
                                     if( !empty( $meta_for_this_post ) ){
                                         foreach( $meta_for_this_post as $mkey => $meta ){
                                             if( !empty( $meta[$slug] ) ) {
                                                 $meta_value = $meta[$slug];
-
                                                 $field_type = WCK_Template_API::generate_slug($value['type']);
                                                 $unprocessed = apply_filters('wck_output_get_field_' . $field_type, $meta_value);
                                                 $processed = apply_filters('wck_output_the_field_' . $field_type, $unprocessed);
@@ -394,6 +417,11 @@ function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0)
                                                     foreach (wck_stp_get_image_metadata_types() as $metadata) {
                                                         $mustache_vars_cfc[$box_args['meta_name']][$mkey][$slug . '_' . $metadata] = $unprocessed[$metadata];
                                                     }
+                                                }
+
+                                                if( $value['type'] == 'map' && is_array( $processed ) ) {
+                                                    //$mustache_vars_cfc[$box_args['meta_name']][$mkey][$slug] = json_encode( $processed );
+                                                    $mustache_vars_cfc[$box_args['meta_name']][$mkey][$slug] = wck_get_map_output( $value, array( 'markers' => $meta_value, 'editable' => false, 'show_search' => false, 'wrapper' => 'div' ) );
                                                 }
                                             }
                                         }
@@ -410,6 +438,7 @@ function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0)
 						}
 					}
 				}
+
 			}
 		}
 	}	
@@ -582,7 +611,7 @@ function wck_stp_render_single_template( $content ){
 		
 		if ( $template != '') {
 			$single = wck_stp_get_slug ( $id );
-			$mustache_vars = wck_stp_generate_mustache_single_array($single, $post_type) ;
+			$mustache_vars = wck_stp_generate_mustache_single_array($single, $post_type, 0, $id) ;
 
 			$m = new Mustache_Engine;
 			try {
@@ -602,7 +631,7 @@ function wck_stp_render_single_template( $content ){
 function wck_stp_get_slug($id) {
 	$post_data = get_post($id, ARRAY_A);
 	$slug = $post_data['post_name'];
-	return $slug; 
+	return $slug;
 }
 
 // add support for going inside a cpt_select and access it's content inside swift templates

@@ -53,6 +53,11 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         add_action('admin_head', array( $this, 'hide_page_title_action' ) );
     }
 
+    public function get_page_title()
+    {
+        return __( 'Submissions', 'ninja-forms' );
+    }
+
     /**
      * Display
      */
@@ -72,6 +77,10 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
         if( ! $form_id ) return array();
 
+        static $cols;
+
+        if( $cols ) return $cols;
+
         $cols = array(
             'cb'    => '<input type="checkbox" />',
             'seq_num' => __( '#', 'ninja-forms' ),
@@ -85,8 +94,12 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
             if( in_array( $field->get_setting( 'type' ), $hidden_field_types ) ) continue;
 
-            // TODO: Add support for 'Admin Labels'
-            $cols[ 'field_' . $field->get_id() ] = $field->get_setting( 'label' );
+            if ( $field->get_setting( 'admin_label' ) ) {
+                $cols[ 'field_' . $field->get_id() ] = $field->get_setting( 'admin_label' );
+            } else {
+                $cols[ 'field_' . $field->get_id() ] = $field->get_setting( 'label' );  
+            }
+            
         }
 
         $cols[ 'sub_date' ] = __( 'Date', 'ninja-forms' );
@@ -249,8 +262,8 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
                     $url = admin_url( 'admin.php?page=nf-processing&action=download_all_subs&form_id=' . absint( $_REQUEST['form_id'] ) . '&redirect=' . $redirect );
                     $url = esc_url( $url );
                     ?>
-                    var button = '<a href="<?php echo $url; ?>" class="button-secondary nf-download-all"><?php echo __( 'Download All Submissions', 'ninja-forms' ); ?></a>';
-                    jQuery( '#doaction2' ).after( button );
+                    var button = '<a href="<?php echo $url; ?>" class=<?php __( "button-secondary nf-download-all", 'ninja-forms' ) ;?> . '>' . <?php echo __( 'Download All Submissions', 'ninja-forms' ); ?></a>';
+//                    jQuery( '#doaction2' ).after( button );
                     <?php
                 }
 
@@ -309,7 +322,7 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
 
             unlink($file_path);
 
-            $form_name = Ninja_Forms()->form(absint($_REQUEST['form_id']))->get_setting('title');
+            $form_name = Ninja_Forms()->form(absint($_REQUEST['form_id']))->get()->get_setting('title');
             $form_name = sanitize_title($form_name);
 
             $today = date('Y-m-d', current_time('timestamp'));
@@ -416,6 +429,11 @@ final class NF_Admin_Menus_Submissions extends NF_Abstracts_Submenu
         }
 
         return $vars;
+    }
+
+    public function get_capability()
+    {
+        return apply_filters( 'ninja_forms_admin_submissions_capabilities', $this->capability );
     }
 
 }

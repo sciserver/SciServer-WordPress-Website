@@ -95,12 +95,30 @@ function wck_stp_print_scripts($hook){
 add_action( 'wp_enqueue_scripts', 'wck_stp_front' );
 
 /**
- * Enqueue plugin style-file
+ * Enqueue plugin scripts style files
+ *
  */
 function wck_stp_front() {
+
     // Respects SSL, Style.css is relative to the current file
     wp_register_style( 'wck-stp-front-style', plugins_url('wordpress-creation-kit-api/wck-stp/css/wck-stp-front.css', __FILE__) );
     wp_enqueue_style( 'wck-stp-front-style' );
+
+    $wck_tools = get_option( 'wck_tools' );
+
+    if( empty( $wck_tools ) || ( !empty( $wck_tools[0]['swift-templates'] ) && $wck_tools[0]['swift-templates'] == 'enabled' ) ){
+
+    	// map field
+	    $options = get_option( 'wck_extra_options' );
+
+	    if( !empty( $options[0]['google-maps-api'] ) ) {
+	        wp_enqueue_script( 'wck-google-maps-api-script', 'https://maps.googleapis.com/maps/api/js?key=' . $options[0]['google-maps-api'] . '&libraries=places', array('jquery') );
+	        wp_enqueue_script( 'wck-google-maps-script', plugin_dir_url( __FILE__ ) . 'wordpress-creation-kit-api/assets/map/map.js', array('jquery') );
+	        wp_enqueue_style( 'wck-google-maps-style', plugin_dir_url( __FILE__ ) . 'wordpress-creation-kit-api/assets/map/map.css' );
+	    }
+
+    }
+
 }
 
 

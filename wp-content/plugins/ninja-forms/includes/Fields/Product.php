@@ -23,7 +23,7 @@ class NF_Fields_Product extends NF_Abstracts_Input
 
     protected $_settings = array( 'product_use_quantity', 'product_price', 'product_type', 'product_type' );
 
-    protected $_settings_exclude = array( 'input_limit_set' );
+    protected $_settings_exclude = array( 'input_limit_set', 'disable_input', 'required' );
 
     public function __construct()
     {
@@ -31,7 +31,12 @@ class NF_Fields_Product extends NF_Abstracts_Input
 
         $this->_nicename = __( 'Product', 'ninja-forms' );
 
+        $this->_settings[ 'product_price' ][ 'width' ] = 'full';
+
         add_filter( 'ninja_forms_merge_tag_value_product', array( $this, 'merge_tag_value' ), 10, 2 );
+
+        add_filter( 'ninja_forms_localize_field_' . $this->_name, array( $this, 'filter_required_setting' ) );
+        add_filter( 'ninja_forms_localize_field_' . $this->_name . '_preview', array( $this, 'filter_required_setting' ) );
     }
 
     public function process( $product, $data )
@@ -40,7 +45,8 @@ class NF_Fields_Product extends NF_Abstracts_Input
 
         foreach( $data[ 'fields' ] as $key => $field ){
 
-            if( ! in_array( $field[ 'type' ], $this->processing_fields ) ) continue;
+
+            if( ! isset ( $field[ 'type' ] ) || ! in_array( $field[ 'type' ], $this->processing_fields ) ) continue;
 
             $type = $field[ 'type' ];
 
@@ -68,12 +74,42 @@ class NF_Fields_Product extends NF_Abstracts_Input
         return $data;
     }
 
-    public function merge_tag_value( $value, $field )
+    /**
+     * Validate
+     *
+     * @param $field
+     * @param $data
+     * @return array $errors
+     */
+    public function validate( $field, $data )
     {
-        if( isset( $field[ 'product_price' ] ) ){
-            $value = $field[ 'product_price' ];
+        $errors = array();
+
+        if( isset( $field[ 'product_use_quantity' ] ) && 1 == $field[ 'product_use_quantity' ] ){
+
+            // Required check.
+            if( isset( $field['required'] ) && 1 == $field['required'] && ! trim( $field['value'] ) ){
+                $errors[] = 'Field is required.';
+            }
         }
 
-        return $value;
+        return $errors;
+    }
+
+    public function filter_required_setting( $field )
+    {
+        if( ! isset( $field[ 'settings' ][ 'product_use_quantity' ] ) || 1 != $field[ 'settings' ][ 'product_use_quantity' ] ) {
+            $field[ 'settings' ][ 'required' ] = 0;
+        }
+        return $field;
+    }
+
+    public function merge_tag_value( $value, $field )
+    {
+        $product_price = preg_replace ('/[^\d,\.]/', '', $field[ 'product_price' ] );
+
+        $product_quantity = ( isset( $field[ 'product_use_quantity' ] ) && 1 == $field[ 'product_use_quantity' ] ) ? $value : 1;
+
+        return number_format( $product_price * $product_quantity, 2 );
     }
 }

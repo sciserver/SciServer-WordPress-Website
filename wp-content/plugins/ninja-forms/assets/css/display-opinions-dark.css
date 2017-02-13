@@ -67,8 +67,7 @@ Normalize Ninja Forms fields with default structure
   padding: 0 10px; }
 
 .nf-after-field .nf-error-msg {
-  margin-right: 10px;
-  text-align: right; }
+  margin-right: 10px; }
 
 /* ---------------------------------
 CHECKBOX FIELD
@@ -76,30 +75,30 @@ CHECKBOX FIELD
 /* ---------------------------------
 RADIO & CHECKBOX LISTS
 ----------------------------------*/
-.list-radio-wrap ul, .list-radio-wrap li,
-.list-checkbox-wrap ul,
-.list-checkbox-wrap li {
+.list-radio-wrap .nf-field-element ul, .list-radio-wrap .nf-field-element li,
+.list-checkbox-wrap .nf-field-element ul,
+.list-checkbox-wrap .nf-field-element li {
   list-style: none !important;
   margin: 0 !important;
   padding: 0 !important; }
-  .list-radio-wrap ul input, .list-radio-wrap li input,
-  .list-checkbox-wrap ul input,
-  .list-checkbox-wrap li input {
+  .list-radio-wrap .nf-field-element ul input, .list-radio-wrap .nf-field-element li input,
+  .list-checkbox-wrap .nf-field-element ul input,
+  .list-checkbox-wrap .nf-field-element li input {
     margin-right: 5px; }
 
-.list-radio-wrap li,
-.list-checkbox-wrap li {
+.list-radio-wrap .nf-field-element li,
+.list-checkbox-wrap .nf-field-element li {
   padding-left: 10px;
   margin: 0 0 5px !important;
   text-indent: initial !important; }
-  .list-radio-wrap li label,
-  .list-checkbox-wrap li label {
+  .list-radio-wrap .nf-field-element li label,
+  .list-checkbox-wrap .nf-field-element li label {
     display: inline-block;
     float: initial;
     margin: 0;
     width: auto; }
-  .list-radio-wrap li input,
-  .list-checkbox-wrap li input {
+  .list-radio-wrap .nf-field-element li input,
+  .list-checkbox-wrap .nf-field-element li input {
     width: auto !important; }
 
 /* ---------------------------------
@@ -169,8 +168,89 @@ HELPER CLASSES
   float: left;
   width: 25%; }
 
+.five-col-list ul li {
+  float: left;
+  width: 20%; }
+
+.six-col-list ul li {
+  float: left;
+  width: 16.66%; }
+
 body .pika-label {
   background: transparent; }
+
+/* Column Classes
+    Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css
+--------------------------------------------- */
+.nf-form-cont .five-sixths,
+.nf-form-cont .four-sixths,
+.nf-form-cont .one-fourth,
+.nf-form-cont .one-half,
+.nf-form-cont .one-sixth,
+.nf-form-cont .one-third,
+.nf-form-cont .three-fourths,
+.nf-form-cont .three-sixths,
+.nf-form-cont .two-fourths,
+.nf-form-cont .two-sixths,
+.nf-form-cont .two-thirds {
+  clear: initial;
+  float: left;
+  margin-left: 2.564102564102564%; }
+  .nf-form-cont .five-sixths .inside,
+  .nf-form-cont .four-sixths .inside,
+  .nf-form-cont .one-fourth .inside,
+  .nf-form-cont .one-half .inside,
+  .nf-form-cont .one-sixth .inside,
+  .nf-form-cont .one-third .inside,
+  .nf-form-cont .three-fourths .inside,
+  .nf-form-cont .three-sixths .inside,
+  .nf-form-cont .two-fourths .inside,
+  .nf-form-cont .two-sixths .inside,
+  .nf-form-cont .two-thirds .inside {
+    padding: 20px; }
+  .nf-form-cont .five-sixths::after,
+  .nf-form-cont .four-sixths::after,
+  .nf-form-cont .one-fourth::after,
+  .nf-form-cont .one-half::after,
+  .nf-form-cont .one-sixth::after,
+  .nf-form-cont .one-third::after,
+  .nf-form-cont .three-fourths::after,
+  .nf-form-cont .three-sixths::after,
+  .nf-form-cont .two-fourths::after,
+  .nf-form-cont .two-sixths::after,
+  .nf-form-cont .two-thirds::after {
+    clear: both;
+    content: "";
+    display: block; }
+
+.nf-form-cont .one-half,
+.nf-form-cont .three-sixths,
+.nf-form-cont .two-fourths {
+  width: 48.717948717948715%; }
+
+.nf-form-cont .one-third,
+.nf-form-cont .two-sixths {
+  width: 31.623931623931625%; }
+
+.nf-form-cont .four-sixths,
+.nf-form-cont .two-thirds {
+  width: 65.81196581196582%; }
+
+.nf-form-cont .one-fourth {
+  width: 23.076923076923077%; }
+
+.nf-form-cont .three-fourths {
+  width: 74.35897435897436%; }
+
+.nf-form-cont .one-sixth {
+  width: 14.52991452991453%; }
+
+.nf-form-cont .five-sixths {
+  width: 82.90598290598291%; }
+
+.nf-form-cont .first {
+  clear: both;
+  margin-left: 0; }
 
 .note-popover {
   display: none !important; }
@@ -219,6 +299,7 @@ body .pika-label {
     height: auto; }
   .nf-form-wrap .note-editor .dropdown-toggle {
     position: relative;
+    display: inline-block;
     top: 0; }
     .nf-form-wrap .note-editor .dropdown-toggle::after {
       content: "";
@@ -549,25 +630,13 @@ body .pika-label {
   margin: 100px auto;
   background-color: rgba(208, 208, 208, 0.5);
   border-radius: 100%;
-  -webkit-animation: nf-scaleout 1.0s infinite ease-in-out;
-          animation: nf-scaleout 1.0s infinite ease-in-out; }
-
-@-webkit-keyframes nf-scaleout {
-  0% {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-    opacity: 0; } }
+  animation: nf-scaleout 1.0s infinite ease-in-out; }
 
 @keyframes nf-scaleout {
   0% {
-    -webkit-transform: scale(0);
-            transform: scale(0); }
+    transform: scale(0); }
   100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
+    transform: scale(1);
     opacity: 0; } }
 
 /*
@@ -577,8 +646,6 @@ Make sure all Ninja Forms label positons function properly
 STANDARDIZE ALL FIELDS
 ----------------------------------*/
 .field-wrap {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
   .field-wrap > label {
@@ -596,23 +663,17 @@ STANDARDIZE ALL FIELDS
     width: auto; }
 
 .nf-field-label {
-  -webkit-box-ordinal-group: 6;
-  -webkit-order: 5;
-      -ms-flex-order: 5;
-          order: 5; }
+  -ms-flex-order: 5;
+      order: 5; }
 
 .nf-field-description {
   width: 100%;
-  -webkit-box-ordinal-group: 11;
-  -webkit-order: 10;
-      -ms-flex-order: 10;
-          order: 10; }
+  -ms-flex-order: 10;
+      order: 10; }
 
 .nf-field-element {
-  -webkit-box-ordinal-group: 16;
-  -webkit-order: 15;
-      -ms-flex-order: 15;
-          order: 15; }
+  -ms-flex-order: 15;
+      order: 15; }
 
 /* ---------------------------------
 LABEL ABOVE
@@ -625,24 +686,19 @@ LABEL BELOW
 ----------------------------------*/
 .label-below .nf-field-label {
   margin-top: 10px;
-  -webkit-box-ordinal-group: 16;
-  -webkit-order: 15;
-      -ms-flex-order: 15;
-          order: 15; }
+  -ms-flex-order: 15;
+      order: 15; }
 
 .label-below .nf-field-element {
-  -webkit-box-ordinal-group: 6;
-  -webkit-order: 5;
-      -ms-flex-order: 5;
-          order: 5; }
+  -ms-flex-order: 5;
+      order: 5; }
 
 /* ---------------------------------
 LABEL HIDDEN
 ----------------------------------*/
 .label-hidden .field-wrap {
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
 
 .label-hidden .nf-field-label {
   height: 0;
@@ -651,10 +707,8 @@ LABEL HIDDEN
 
 .label-hidden .nf-field-description {
   width: 100%;
-  -webkit-box-ordinal-group: 21;
-  -webkit-order: 20;
-      -ms-flex-order: 20;
-          order: 20; }
+  -ms-flex-order: 20;
+      order: 20; }
 
 .label-hidden .nf-field-element {
   width: 100%; }
@@ -663,36 +717,23 @@ LABEL HIDDEN
 LABEL LEFT
 ----------------------------------*/
 .label-left .field-wrap {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
 
 .label-left .nf-field-label {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-align: center;
+      align-items: center;
   padding-right: 2%;
   text-align: right;
   width: 35%;
-  -webkit-box-ordinal-group: 6;
-  -webkit-order: 5;
-      -ms-flex-order: 5;
-          order: 5; }
+  -ms-flex-order: 5;
+      order: 5; }
   .label-left .nf-field-label label {
     width: 100%; }
 
@@ -702,10 +743,8 @@ LABEL LEFT
 .label-left .nf-field-element {
   display: inline-block;
   width: 65%;
-  -webkit-box-ordinal-group: 11;
-  -webkit-order: 10;
-      -ms-flex-order: 10;
-          order: 10; }
+  -ms-flex-order: 10;
+      order: 10; }
 
 .label-left .nf-after-field {
   margin-left: 36.5%; }
@@ -714,50 +753,33 @@ LABEL LEFT
 LABEL RIGHT
 ----------------------------------*/
 .label-right .field-wrap {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-flex-wrap: wrap;
-      -ms-flex-wrap: wrap;
-          flex-wrap: wrap; }
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; }
 
 .label-right .nf-field-label {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: row;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-direction: row;
+      flex-direction: row;
+  -ms-flex-align: center;
+      align-items: center;
   padding-left: 2%;
   width: 35%;
-  -webkit-box-ordinal-group: 11;
-  -webkit-order: 10;
-      -ms-flex-order: 10;
-          order: 10; }
+  -ms-flex-order: 10;
+      order: 10; }
 
 .label-right .nf-field-description {
   margin-right: 35%;
-  -webkit-box-ordinal-group: 16;
-  -webkit-order: 15;
-      -ms-flex-order: 15;
-          order: 15; }
+  -ms-flex-order: 15;
+      order: 15; }
 
 .label-right .nf-field-element {
   display: inline-block;
   width: 65%;
-  -webkit-box-ordinal-group: 6;
-  -webkit-order: 5;
-      -ms-flex-order: 5;
-          order: 5; }
+  -ms-flex-order: 5;
+      order: 5; }
 
 .label-right .checkbox-wrap .nf-field-label {
   width: auto; }
@@ -773,14 +795,10 @@ ADJUST SOME LABEL ABOVE & BELOW ISSUES
 ----------------------------------*/
 .label-below .field-wrap,
 .label-above .field-wrap {
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-flex-flow: wrap;
-      -ms-flex-flow: wrap;
-          flex-flow: wrap; }
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-flow: wrap;
+      flex-flow: wrap; }
 
 .label-below .nf-field-element,
 .label-above .nf-field-element {
@@ -796,10 +814,9 @@ ADJUST SOME LABEL LEFT & RIGHT ISSUES
 .label-right .textarea-wrap .nf-field-label,
 .label-right .listradio-wrap .nf-field-label,
 .label-right .listcheckbox-wrap .nf-field-label {
-  -webkit-box-align: start;
-  -webkit-align-items: flex-start;
-      -ms-flex-align: start;
-          align-items: flex-start; }
+  -ms-flex-align: start;
+      -ms-grid-row-align: flex-start;
+      align-items: flex-start; }
 
 .label-left .textarea-wrap .nf-field-label,
 .label-right .textarea-wrap .nf-field-label {
@@ -827,136 +844,63 @@ FIELD DESCRIPTION POSITIONS
 .nf-field-description {
   font-size: 14px; }
 
-.nf-fields {
+.nf-form-content {
   padding: 5px;
   max-width: 1000px;
   margin: 0 auto; }
-  .nf-fields label {
+  .nf-form-content label {
     font-size: 18px;
     line-height: 20px; }
-  .nf-fields .ninja-forms-field,
-  .nf-fields .listselect-wrap .nf-field-element div {
+  .nf-form-content .ninja-forms-field,
+  .nf-form-content .listselect-wrap .nf-field-element div {
     font-size: 16px;
     margin: 0;
     padding: 12px; }
-  .nf-fields input.ninja-forms-field,
-  .nf-fields select.ninja-forms-field,
-  .nf-fields .listselect-wrap .nf-field-element div {
+  .nf-form-content input.ninja-forms-field,
+  .nf-form-content select.ninja-forms-field,
+  .nf-form-content .listselect-wrap .nf-field-element div {
     height: 50px; }
-  .nf-fields textarea.ninja-forms-field {
+  .nf-form-content textarea.ninja-forms-field {
     height: 200px; }
-  .nf-fields hr.ninja-forms-field {
+  .nf-form-content hr.ninja-forms-field {
     padding: 0; }
-  .nf-fields input[type="radio"].ninja-forms-field,
-  .nf-fields input[type="checkbox"].ninja-forms-field {
+  .nf-form-content input[type="radio"].ninja-forms-field,
+  .nf-form-content input[type="checkbox"].ninja-forms-field {
     height: auto; }
-  .nf-fields .listradio-wrap li,
-  .nf-fields .listcheckbox-wrap li {
+  .nf-form-content .listradio-wrap li,
+  .nf-form-content .listcheckbox-wrap li {
     margin-bottom: 12px !important;
     line-height: 0; }
-  .nf-fields .nf-product-field span {
+  .nf-form-content .nf-product-field span {
     padding-right: 16px; }
-  .nf-fields .nf-product-field .nf-field-qty {
+  .nf-form-content .nf-product-field .nf-field-qty {
     font-size: 16px;
     padding: 5px;
     width: 80px !important; }
-  .nf-fields .nf-static {
+  .nf-form-content .nf-static {
     background: transparent;
     border: 0;
     font-weight: bold;
     padding: 0; }
-  .nf-fields .label-above .nf-field-label,
-  .nf-fields .label-below .nf-field-label,
-  .nf-fields .label-hidden .nf-field-label {
+  .nf-form-content .label-above .nf-field-label,
+  .nf-form-content .label-below .nf-field-label,
+  .nf-form-content .label-hidden .nf-field-label {
     margin-bottom: 10px;
     padding: 0; }
-  .nf-fields .label-below .nf-field-label {
+  .nf-form-content .label-below .nf-field-label {
     margin-bottom: 0;
     margin-top: 10px; }
-  .nf-fields .label-right .nf-field-label {
+  .nf-form-content .label-right .nf-field-label {
     margin: 0; }
-  .nf-fields .label-right > input[type=radio],
-  .nf-fields .label-right input[type=checkbox] {
+  .nf-form-content .label-right > input[type=radio],
+  .nf-form-content .label-right input[type=checkbox] {
     margin-right: 1%; }
-  .nf-fields .label-right ul {
+  .nf-form-content .label-right ul {
     margin-right: 1%; }
 
-/* Column Classes
-    Link: http://twitter.github.io/bootstrap/assets/css/bootstrap-responsive.css
---------------------------------------------- */
-.five-sixths,
-.four-sixths,
-.one-fourth,
-.one-half,
-.one-sixth,
-.one-third,
-.three-fourths,
-.three-sixths,
-.two-fourths,
-.two-sixths,
-.two-thirds {
-  clear: initial;
-  float: left;
-  margin-left: 2.564102564102564%; }
-  .five-sixths .inside,
-  .four-sixths .inside,
-  .one-fourth .inside,
-  .one-half .inside,
-  .one-sixth .inside,
-  .one-third .inside,
-  .three-fourths .inside,
-  .three-sixths .inside,
-  .two-fourths .inside,
-  .two-sixths .inside,
-  .two-thirds .inside {
-    padding: 20px; }
-  .five-sixths::after,
-  .four-sixths::after,
-  .one-fourth::after,
-  .one-half::after,
-  .one-sixth::after,
-  .one-third::after,
-  .three-fourths::after,
-  .three-sixths::after,
-  .two-fourths::after,
-  .two-sixths::after,
-  .two-thirds::after {
-    clear: both;
-    content: "";
-    display: block; }
-
-.one-half,
-.three-sixths,
-.two-fourths {
-  width: 48.717948717948715%; }
-
-.one-third,
-.two-sixths {
-  width: 31.623931623931625%; }
-
-.four-sixths,
-.two-thirds {
-  width: 65.81196581196582%; }
-
-.one-fourth {
-  width: 23.076923076923077%; }
-
-.three-fourths {
-  width: 74.35897435897436%; }
-
-.one-sixth {
-  width: 14.52991452991453%; }
-
-.five-sixths {
-  width: 82.90598290598291%; }
-
-.first {
-  clear: both;
-  margin-left: 0; }
-
-.nf-fields .list-select-wrap > div {
+.nf-form-content .list-select-wrap > div {
   position: relative; }
-  .nf-fields .list-select-wrap > div div {
+  .nf-form-content .list-select-wrap > div div {
     display: block;
     position: absolute;
     font-size: 16px;
@@ -968,7 +912,7 @@ FIELD DESCRIPTION POSITIONS
     right: 0;
     left: 0;
     z-index: 1; }
-    .nf-fields .list-select-wrap > div div::after {
+    .nf-form-content .list-select-wrap > div div::after {
       content: "\f078";
       font-family: FontAwesome;
       font-size: 20px;
@@ -977,16 +921,16 @@ FIELD DESCRIPTION POSITIONS
       bottom: 0;
       height: 50px;
       line-height: 50px; }
-  .nf-fields .list-select-wrap > div.label-right div {
+  .nf-form-content .list-select-wrap > div.label-right div {
     width: 59%; }
-  .nf-fields .list-select-wrap > div.label-below div {
+  .nf-form-content .list-select-wrap > div.label-below div {
     top: 0;
     bottom: auto; }
-  .nf-fields .list-select-wrap > div.label-left div {
+  .nf-form-content .list-select-wrap > div.label-left div {
     width: 59%;
     left: 40.5%;
     right: 40px; }
-  .nf-fields .list-select-wrap > div select {
+  .nf-form-content .list-select-wrap > div select {
     background: transparent;
     border: 0;
     -webkit-appearance: none;
@@ -995,7 +939,7 @@ FIELD DESCRIPTION POSITIONS
     position: relative;
     z-index: 2; }
 
-.nf-fields .listmultiselect-wrap select {
+.nf-form-content .listmultiselect-wrap select {
   -webkit-appearance: normal;
      -moz-appearance: normal;
           appearance: normal; }
@@ -1077,21 +1021,20 @@ FIELD DESCRIPTION POSITIONS
 
 .checkbox-container.label-right .nf-field-label {
   padding: 0;
-  -webkit-box-ordinal-group: 11;
-  -webkit-order: 10;
-      -ms-flex-order: 10;
-          order: 10; }
+  -ms-flex-order: 10;
+      order: 10; }
 
 .checkbox-container.label-right .nf-field-element {
-  -webkit-box-ordinal-group: 6;
-  -webkit-order: 5;
-      -ms-flex-order: 5;
-          order: 5;
+  -ms-flex-order: 5;
+      order: 5;
   display: none; }
 
 .checkbox-container.label-right label {
   margin: 0 0 0 30px;
   display: block; }
+  .checkbox-container.label-right label::before {
+    left: -30px;
+    bottom: 0; }
   .checkbox-container.label-right label::after {
     left: -28px;
     bottom: 0; }
@@ -1100,8 +1043,6 @@ FIELD DESCRIPTION POSITIONS
     bottom: 0; }
 
 .checkbox-container.label-right .field-wrap {
-  display: -webkit-box;
-  display: -webkit-flex;
   display: -ms-flexbox;
   display: flex; }
   .checkbox-container.label-right .field-wrap > div {
@@ -1110,6 +1051,19 @@ FIELD DESCRIPTION POSITIONS
 .checkbox-container.label-right label::after {
   bottom: 2px !important; }
 
+.checkbox-container.label-hidden label {
+  height: 0;
+  margin: 0;
+  display: block; }
+  .checkbox-container.label-hidden label::after {
+    left: 0;
+    bottom: 0;
+    visibility: visible; }
+  .checkbox-container.label-hidden label.nf-checked-label::before {
+    left: -2px;
+    bottom: 0;
+    visibility: visible; }
+
 .listcheckbox-container .nf-field-label label::after {
   background: transparent !important;
   border: 0; }
@@ -1117,8 +1071,10 @@ FIELD DESCRIPTION POSITIONS
 .listcheckbox-container .nf-field-element input {
   display: none; }
 
-.listcheckbox-container .nf-field-element label::before {
-  left: -30px; }
+.listcheckbox-container .nf-field-element label {
+  margin-left: 30px !important; }
+  .listcheckbox-container .nf-field-element label::before {
+    left: -30px; }
 
 .listcheckbox-container.label-above .nf-field-label label, .listcheckbox-container.label-below .nf-field-label label, .listcheckbox-container.label-right .nf-field-label label {
   margin: 0; }
@@ -1127,7 +1083,7 @@ FIELD DESCRIPTION POSITIONS
 
 .listradio-wrap .nf-field-element label {
   position: relative;
-  margin-left: 30px; }
+  margin-left: 30px !important; }
   .listradio-wrap .nf-field-element label::after {
     border-radius: 50%;
     content: "";
@@ -1170,7 +1126,6 @@ input[type=checkbox].nf-toggle {
     left: -4px;
     width: 46px;
     height: 24px;
-    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease; }
   input[type=checkbox].nf-toggle::before {
     background: #fff;
@@ -1182,17 +1137,14 @@ input[type=checkbox].nf-toggle {
     width: 18px;
     height: 18px;
     z-index: 99;
-    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease; }
   input[type=checkbox].nf-toggle:checked::after {
     background: lightgreen;
     border: 2px solid lightgreen;
-    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease; }
   input[type=checkbox].nf-toggle:checked::before {
     top: -1px;
     left: 20px;
-    -webkit-transition: all 0.3s ease;
     transition: all 0.3s ease; }
   .label-right input[type=checkbox].nf-toggle {
     padding: 0 50px 0 0; }
@@ -1289,45 +1241,41 @@ input[type=checkbox].nf-toggle {
 /* ---------------------------------
 DEFAULT DARK COLORS
 ----------------------------------*/
-.nf-fields input:not([type='button']),
-.nf-fields textarea,
-.nf-fields .list-select-wrap .nf-field-element > div {
+.nf-form-content input:not([type='button']),
+.nf-form-content textarea,
+.nf-form-content .list-select-wrap .nf-field-element > div {
   background: #222;
   border: 1px solid #3c3c3c;
   border-radius: 0;
   box-shadow: none;
   color: #888888;
-  -webkit-transition: all .5s;
   transition: all .5s; }
-  .nf-fields input:not([type='button']):focus,
-  .nf-fields textarea:focus,
-  .nf-fields .list-select-wrap .nf-field-element > div:focus {
+  .nf-form-content input:not([type='button']):focus,
+  .nf-form-content textarea:focus,
+  .nf-form-content .list-select-wrap .nf-field-element > div:focus {
     background: #3c3c3c;
     border-color: #555555;
     color: #a2a2a2;
     outline: none;
-    -webkit-transition: all .5s;
     transition: all .5s; }
 
-.nf-fields input[type="submit"],
-.nf-fields input[type="button"],
-.nf-fields button {
+.nf-form-content input[type="submit"],
+.nf-form-content input[type="button"],
+.nf-form-content button {
   background: #fff;
   border: 0;
   color: #222;
-  -webkit-transition: all .5s;
   transition: all .5s; }
-  .nf-fields input[type="submit"]:hover,
-  .nf-fields input[type="button"]:hover,
-  .nf-fields button:hover {
+  .nf-form-content input[type="submit"]:hover,
+  .nf-form-content input[type="button"]:hover,
+  .nf-form-content button:hover {
     background: #3c3c3c;
     color: #888888;
-    -webkit-transition: all .5s;
     transition: all .5s; }
 
-.nf-fields select.ninja-forms-field {
+.nf-form-content select.ninja-forms-field {
   color: #888888; }
-  .nf-fields select.ninja-forms-field:focus {
+  .nf-form-content select.ninja-forms-field:focus {
     background: transparent;
     border: 0;
     box-shadow: none;
@@ -1335,24 +1283,20 @@ DEFAULT DARK COLORS
 
 .list-select-wrap div::after {
   color: #888888;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .list-select-wrap select:active + div, .list-select-wrap select:focus + div {
   background: #3c3c3c !important;
   border-color: #555555 !important;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .listradio-wrap .nf-field-element label::after {
   background: #222;
   border: 2px solid #3c3c3c;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .listradio-wrap .nf-field-element label.nf-checked-label::after {
   border-color: #fff;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .listradio-wrap .nf-field-element label.nf-checked-label::before {
@@ -1364,7 +1308,6 @@ DEFAULT DARK COLORS
 .listcheckbox-wrap .nf-field-element label::after {
   background: #222;
   border-color: #3c3c3c;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .checkbox-wrap .nf-field-label label::before,
@@ -1373,7 +1316,6 @@ DEFAULT DARK COLORS
 .listcheckbox-wrap .nf-field-element label::before {
   color: #222;
   opacity: 0;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .checkbox-wrap .nf-field-label label.nf-checked-label::after,
@@ -1381,7 +1323,6 @@ DEFAULT DARK COLORS
 .listcheckbox-wrap .nf-field-label label.nf-checked-label::after,
 .listcheckbox-wrap .nf-field-element label.nf-checked-label::after {
   border-color: #555555;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .checkbox-wrap .nf-field-label label.nf-checked-label::before,
@@ -1390,14 +1331,12 @@ DEFAULT DARK COLORS
 .listcheckbox-wrap .nf-field-element label.nf-checked-label::before {
   color: #fff;
   opacity: 100;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-error {
   position: relative; }
   .nf-error .ninja-forms-field {
     border-color: #E80000 !important;
-    -webkit-transition: all .5s;
     transition: all .5s; }
   .nf-error.field-wrap .nf-field-element::after {
     background: #E80000;
@@ -1413,8 +1352,9 @@ DEFAULT DARK COLORS
     width: 50px;
     line-height: 50px;
     text-align: center;
-    -webkit-transition: all .5s;
     transition: all .5s; }
+  .nf-error.field-wrap.checkbox-wrap .nf-field-element::after {
+    display: none; }
   .nf-error .nf-error-msg {
     color: #E80000; }
 
@@ -1422,7 +1362,6 @@ DEFAULT DARK COLORS
   position: relative; }
   .nf-pass .ninja-forms-field {
     border-color: green !important;
-    -webkit-transition: all .5s;
     transition: all .5s; }
   .nf-pass.field-wrap .nf-field-element::after {
     color: green;
@@ -1434,8 +1373,9 @@ DEFAULT DARK COLORS
     right: 16px;
     height: 50px;
     line-height: 50px;
-    -webkit-transition: all .5s;
     transition: all .5s; }
+  .nf-pass.field-wrap.checkbox-wrap .nf-field-element::after {
+    display: none; }
 
 .nf-field-submit-error {
   border: 1px solid;
@@ -1470,45 +1410,41 @@ DEFAULT DARK COLORS
 /* ---------------------------------
 DARK COLORS - nf-brown
 ----------------------------------*/
-.nf-brown .nf-fields input:not([type='button']),
-.nf-brown .nf-fields textarea,
-.nf-brown .nf-fields .list-select-wrap .nf-field-element > div {
+.nf-brown .nf-form-content input:not([type='button']),
+.nf-brown .nf-form-content textarea,
+.nf-brown .nf-form-content .list-select-wrap .nf-field-element > div {
   background: #3e2b13;
   border: 1px solid #65461f;
   border-radius: 0;
   box-shadow: none;
   color: #ca9553;
-  -webkit-transition: all .5s;
   transition: all .5s; }
-  .nf-brown .nf-fields input:not([type='button']):focus,
-  .nf-brown .nf-fields textarea:focus,
-  .nf-brown .nf-fields .list-select-wrap .nf-field-element > div:focus {
+  .nf-brown .nf-form-content input:not([type='button']):focus,
+  .nf-brown .nf-form-content textarea:focus,
+  .nf-brown .nf-form-content .list-select-wrap .nf-field-element > div:focus {
     background: #65461f;
     border-color: #8c612b;
     color: #d6ad7a;
     outline: none;
-    -webkit-transition: all .5s;
     transition: all .5s; }
 
-.nf-brown .nf-fields input[type="submit"],
-.nf-brown .nf-fields input[type="button"],
-.nf-brown .nf-fields button {
+.nf-brown .nf-form-content input[type="submit"],
+.nf-brown .nf-form-content input[type="button"],
+.nf-brown .nf-form-content button {
   background: #ea981b;
   border: 0;
   color: #3e2b13;
-  -webkit-transition: all .5s;
   transition: all .5s; }
-  .nf-brown .nf-fields input[type="submit"]:hover,
-  .nf-brown .nf-fields input[type="button"]:hover,
-  .nf-brown .nf-fields button:hover {
+  .nf-brown .nf-form-content input[type="submit"]:hover,
+  .nf-brown .nf-form-content input[type="button"]:hover,
+  .nf-brown .nf-form-content button:hover {
     background: #65461f;
     color: #ca9553;
-    -webkit-transition: all .5s;
     transition: all .5s; }
 
-.nf-brown .nf-fields select.ninja-forms-field {
+.nf-brown .nf-form-content select.ninja-forms-field {
   color: #ca9553; }
-  .nf-brown .nf-fields select.ninja-forms-field:focus {
+  .nf-brown .nf-form-content select.ninja-forms-field:focus {
     background: transparent;
     border: 0;
     box-shadow: none;
@@ -1516,24 +1452,20 @@ DARK COLORS - nf-brown
 
 .nf-brown .list-select-wrap div::after {
   color: #ca9553;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-brown .list-select-wrap select:active + div, .nf-brown .list-select-wrap select:focus + div {
   background: #65461f !important;
   border-color: #8c612b !important;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-brown .listradio-wrap .nf-field-element label::after {
   background: #3e2b13;
   border: 2px solid #65461f;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-brown .listradio-wrap .nf-field-element label.nf-checked-label::after {
   border-color: #ea981b;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-brown .listradio-wrap .nf-field-element label.nf-checked-label::before {
@@ -1545,7 +1477,6 @@ DARK COLORS - nf-brown
 .nf-brown .listcheckbox-wrap .nf-field-element label::after {
   background: #3e2b13;
   border-color: #65461f;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-brown .checkbox-wrap .nf-field-label label::before,
@@ -1554,7 +1485,6 @@ DARK COLORS - nf-brown
 .nf-brown .listcheckbox-wrap .nf-field-element label::before {
   color: #3e2b13;
   opacity: 0;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-brown .checkbox-wrap .nf-field-label label.nf-checked-label::after,
@@ -1562,7 +1492,6 @@ DARK COLORS - nf-brown
 .nf-brown .listcheckbox-wrap .nf-field-label label.nf-checked-label::after,
 .nf-brown .listcheckbox-wrap .nf-field-element label.nf-checked-label::after {
   border-color: #8c612b;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-brown .checkbox-wrap .nf-field-label label.nf-checked-label::before,
@@ -1571,14 +1500,12 @@ DARK COLORS - nf-brown
 .nf-brown .listcheckbox-wrap .nf-field-element label.nf-checked-label::before {
   color: #ea981b;
   opacity: 100;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-brown .nf-error {
   position: relative; }
   .nf-brown .nf-error .ninja-forms-field {
     border-color: #E80000 !important;
-    -webkit-transition: all .5s;
     transition: all .5s; }
   .nf-brown .nf-error.field-wrap .nf-field-element::after {
     background: #E80000;
@@ -1594,8 +1521,9 @@ DARK COLORS - nf-brown
     width: 50px;
     line-height: 50px;
     text-align: center;
-    -webkit-transition: all .5s;
     transition: all .5s; }
+  .nf-brown .nf-error.field-wrap.checkbox-wrap .nf-field-element::after {
+    display: none; }
   .nf-brown .nf-error .nf-error-msg {
     color: #E80000; }
 
@@ -1603,7 +1531,6 @@ DARK COLORS - nf-brown
   position: relative; }
   .nf-brown .nf-pass .ninja-forms-field {
     border-color: green !important;
-    -webkit-transition: all .5s;
     transition: all .5s; }
   .nf-brown .nf-pass.field-wrap .nf-field-element::after {
     color: green;
@@ -1615,8 +1542,9 @@ DARK COLORS - nf-brown
     right: 16px;
     height: 50px;
     line-height: 50px;
-    -webkit-transition: all .5s;
     transition: all .5s; }
+  .nf-brown .nf-pass.field-wrap.checkbox-wrap .nf-field-element::after {
+    display: none; }
 
 .nf-brown .nf-field-submit-error {
   border: 1px solid;
@@ -1650,45 +1578,41 @@ DARK COLORS - nf-brown
 /* ---------------------------------
 DARK COLORS - nf-red
 ----------------------------------*/
-.nf-red .nf-fields input:not([type='button']),
-.nf-red .nf-fields textarea,
-.nf-red .nf-fields .list-select-wrap .nf-field-element > div {
+.nf-red .nf-form-content input:not([type='button']),
+.nf-red .nf-form-content textarea,
+.nf-red .nf-form-content .list-select-wrap .nf-field-element > div {
   background: #350000;
   border: 1px solid #680000;
   border-radius: 0;
   box-shadow: none;
   color: #ff0202;
-  -webkit-transition: all .5s;
   transition: all .5s; }
-  .nf-red .nf-fields input:not([type='button']):focus,
-  .nf-red .nf-fields textarea:focus,
-  .nf-red .nf-fields .list-select-wrap .nf-field-element > div:focus {
+  .nf-red .nf-form-content input:not([type='button']):focus,
+  .nf-red .nf-form-content textarea:focus,
+  .nf-red .nf-form-content .list-select-wrap .nf-field-element > div:focus {
     background: #680000;
     border-color: #9b0000;
     color: #ff3535;
     outline: none;
-    -webkit-transition: all .5s;
     transition: all .5s; }
 
-.nf-red .nf-fields input[type="submit"],
-.nf-red .nf-fields input[type="button"],
-.nf-red .nf-fields button {
+.nf-red .nf-form-content input[type="submit"],
+.nf-red .nf-form-content input[type="button"],
+.nf-red .nf-form-content button {
   background: red;
   border: 0;
   color: #350000;
-  -webkit-transition: all .5s;
   transition: all .5s; }
-  .nf-red .nf-fields input[type="submit"]:hover,
-  .nf-red .nf-fields input[type="button"]:hover,
-  .nf-red .nf-fields button:hover {
+  .nf-red .nf-form-content input[type="submit"]:hover,
+  .nf-red .nf-form-content input[type="button"]:hover,
+  .nf-red .nf-form-content button:hover {
     background: #680000;
     color: #ff0202;
-    -webkit-transition: all .5s;
     transition: all .5s; }
 
-.nf-red .nf-fields select.ninja-forms-field {
+.nf-red .nf-form-content select.ninja-forms-field {
   color: #ff0202; }
-  .nf-red .nf-fields select.ninja-forms-field:focus {
+  .nf-red .nf-form-content select.ninja-forms-field:focus {
     background: transparent;
     border: 0;
     box-shadow: none;
@@ -1696,24 +1620,20 @@ DARK COLORS - nf-red
 
 .nf-red .list-select-wrap div::after {
   color: #ff0202;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-red .list-select-wrap select:active + div, .nf-red .list-select-wrap select:focus + div {
   background: #680000 !important;
   border-color: #9b0000 !important;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-red .listradio-wrap .nf-field-element label::after {
   background: #350000;
   border: 2px solid #680000;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-red .listradio-wrap .nf-field-element label.nf-checked-label::after {
   border-color: red;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-red .listradio-wrap .nf-field-element label.nf-checked-label::before {
@@ -1725,7 +1645,6 @@ DARK COLORS - nf-red
 .nf-red .listcheckbox-wrap .nf-field-element label::after {
   background: #350000;
   border-color: #680000;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-red .checkbox-wrap .nf-field-label label::before,
@@ -1734,7 +1653,6 @@ DARK COLORS - nf-red
 .nf-red .listcheckbox-wrap .nf-field-element label::before {
   color: #350000;
   opacity: 0;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-red .checkbox-wrap .nf-field-label label.nf-checked-label::after,
@@ -1742,7 +1660,6 @@ DARK COLORS - nf-red
 .nf-red .listcheckbox-wrap .nf-field-label label.nf-checked-label::after,
 .nf-red .listcheckbox-wrap .nf-field-element label.nf-checked-label::after {
   border-color: #9b0000;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-red .checkbox-wrap .nf-field-label label.nf-checked-label::before,
@@ -1751,14 +1668,12 @@ DARK COLORS - nf-red
 .nf-red .listcheckbox-wrap .nf-field-element label.nf-checked-label::before {
   color: red;
   opacity: 100;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-red .nf-error {
   position: relative; }
   .nf-red .nf-error .ninja-forms-field {
     border-color: #E80000 !important;
-    -webkit-transition: all .5s;
     transition: all .5s; }
   .nf-red .nf-error.field-wrap .nf-field-element::after {
     background: #E80000;
@@ -1774,8 +1689,9 @@ DARK COLORS - nf-red
     width: 50px;
     line-height: 50px;
     text-align: center;
-    -webkit-transition: all .5s;
     transition: all .5s; }
+  .nf-red .nf-error.field-wrap.checkbox-wrap .nf-field-element::after {
+    display: none; }
   .nf-red .nf-error .nf-error-msg {
     color: #E80000; }
 
@@ -1783,7 +1699,6 @@ DARK COLORS - nf-red
   position: relative; }
   .nf-red .nf-pass .ninja-forms-field {
     border-color: green !important;
-    -webkit-transition: all .5s;
     transition: all .5s; }
   .nf-red .nf-pass.field-wrap .nf-field-element::after {
     color: green;
@@ -1795,8 +1710,9 @@ DARK COLORS - nf-red
     right: 16px;
     height: 50px;
     line-height: 50px;
-    -webkit-transition: all .5s;
     transition: all .5s; }
+  .nf-red .nf-pass.field-wrap.checkbox-wrap .nf-field-element::after {
+    display: none; }
 
 .nf-red .nf-field-submit-error {
   border: 1px solid;
@@ -1830,45 +1746,41 @@ DARK COLORS - nf-red
 /* ---------------------------------
 DARK COLORS - nf-blue
 ----------------------------------*/
-.nf-blue .nf-fields input:not([type='button']),
-.nf-blue .nf-fields textarea,
-.nf-blue .nf-fields .list-select-wrap .nf-field-element > div {
+.nf-blue .nf-form-content input:not([type='button']),
+.nf-blue .nf-form-content textarea,
+.nf-blue .nf-form-content .list-select-wrap .nf-field-element > div {
   background: #001C33;
   border: 1px solid #003866;
   border-radius: 0;
   box-shadow: none;
   color: #008cff;
-  -webkit-transition: all .5s;
   transition: all .5s; }
-  .nf-blue .nf-fields input:not([type='button']):focus,
-  .nf-blue .nf-fields textarea:focus,
-  .nf-blue .nf-fields .list-select-wrap .nf-field-element > div:focus {
+  .nf-blue .nf-form-content input:not([type='button']):focus,
+  .nf-blue .nf-form-content textarea:focus,
+  .nf-blue .nf-form-content .list-select-wrap .nf-field-element > div:focus {
     background: #003866;
     border-color: #005499;
     color: #33a3ff;
     outline: none;
-    -webkit-transition: all .5s;
     transition: all .5s; }
 
-.nf-blue .nf-fields input[type="submit"],
-.nf-blue .nf-fields input[type="button"],
-.nf-blue .nf-fields button {
+.nf-blue .nf-form-content input[type="submit"],
+.nf-blue .nf-form-content input[type="button"],
+.nf-blue .nf-form-content button {
   background: #00AEFF;
   border: 0;
   color: #001C33;
-  -webkit-transition: all .5s;
   transition: all .5s; }
-  .nf-blue .nf-fields input[type="submit"]:hover,
-  .nf-blue .nf-fields input[type="button"]:hover,
-  .nf-blue .nf-fields button:hover {
+  .nf-blue .nf-form-content input[type="submit"]:hover,
+  .nf-blue .nf-form-content input[type="button"]:hover,
+  .nf-blue .nf-form-content button:hover {
     background: #003866;
     color: #008cff;
-    -webkit-transition: all .5s;
     transition: all .5s; }
 
-.nf-blue .nf-fields select.ninja-forms-field {
+.nf-blue .nf-form-content select.ninja-forms-field {
   color: #008cff; }
-  .nf-blue .nf-fields select.ninja-forms-field:focus {
+  .nf-blue .nf-form-content select.ninja-forms-field:focus {
     background: transparent;
     border: 0;
     box-shadow: none;
@@ -1876,24 +1788,20 @@ DARK COLORS - nf-blue
 
 .nf-blue .list-select-wrap div::after {
   color: #008cff;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-blue .list-select-wrap select:active + div, .nf-blue .list-select-wrap select:focus + div {
   background: #003866 !important;
   border-color: #005499 !important;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-blue .listradio-wrap .nf-field-element label::after {
   background: #001C33;
   border: 2px solid #003866;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-blue .listradio-wrap .nf-field-element label.nf-checked-label::after {
   border-color: #00AEFF;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-blue .listradio-wrap .nf-field-element label.nf-checked-label::before {
@@ -1905,7 +1813,6 @@ DARK COLORS - nf-blue
 .nf-blue .listcheckbox-wrap .nf-field-element label::after {
   background: #001C33;
   border-color: #003866;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-blue .checkbox-wrap .nf-field-label label::before,
@@ -1914,7 +1821,6 @@ DARK COLORS - nf-blue
 .nf-blue .listcheckbox-wrap .nf-field-element label::before {
   color: #001C33;
   opacity: 0;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-blue .checkbox-wrap .nf-field-label label.nf-checked-label::after,
@@ -1922,7 +1828,6 @@ DARK COLORS - nf-blue
 .nf-blue .listcheckbox-wrap .nf-field-label label.nf-checked-label::after,
 .nf-blue .listcheckbox-wrap .nf-field-element label.nf-checked-label::after {
   border-color: #005499;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-blue .checkbox-wrap .nf-field-label label.nf-checked-label::before,
@@ -1931,14 +1836,12 @@ DARK COLORS - nf-blue
 .nf-blue .listcheckbox-wrap .nf-field-element label.nf-checked-label::before {
   color: #00AEFF;
   opacity: 100;
-  -webkit-transition: all .5s;
   transition: all .5s; }
 
 .nf-blue .nf-error {
   position: relative; }
   .nf-blue .nf-error .ninja-forms-field {
     border-color: #E80000 !important;
-    -webkit-transition: all .5s;
     transition: all .5s; }
   .nf-blue .nf-error.field-wrap .nf-field-element::after {
     background: #E80000;
@@ -1954,8 +1857,9 @@ DARK COLORS - nf-blue
     width: 50px;
     line-height: 50px;
     text-align: center;
-    -webkit-transition: all .5s;
     transition: all .5s; }
+  .nf-blue .nf-error.field-wrap.checkbox-wrap .nf-field-element::after {
+    display: none; }
   .nf-blue .nf-error .nf-error-msg {
     color: #E80000; }
 
@@ -1963,7 +1867,6 @@ DARK COLORS - nf-blue
   position: relative; }
   .nf-blue .nf-pass .ninja-forms-field {
     border-color: green !important;
-    -webkit-transition: all .5s;
     transition: all .5s; }
   .nf-blue .nf-pass.field-wrap .nf-field-element::after {
     color: green;
@@ -1975,8 +1878,9 @@ DARK COLORS - nf-blue
     right: 16px;
     height: 50px;
     line-height: 50px;
-    -webkit-transition: all .5s;
     transition: all .5s; }
+  .nf-blue .nf-pass.field-wrap.checkbox-wrap .nf-field-element::after {
+    display: none; }
 
 .nf-blue .nf-field-submit-error {
   border: 1px solid;
@@ -2012,25 +1916,19 @@ DARK COLORS - nf-blue
     margin-bottom: 10px !important;
     padding: 0;
     width: 100%;
-    -webkit-box-ordinal-group: 6;
-    -webkit-order: 5;
-        -ms-flex-order: 5;
-            order: 5; }
+    -ms-flex-order: 5;
+        order: 5; }
     .nf-field-container .nf-field-label label {
       text-align: left; }
   .nf-field-container .nf-field-description {
     margin: 0;
     width: 100%;
-    -webkit-box-ordinal-group: 11;
-    -webkit-order: 10;
-        -ms-flex-order: 10;
-            order: 10; }
+    -ms-flex-order: 10;
+        order: 10; }
   .nf-field-container .nf-field-element {
     width: 100%;
-    -webkit-box-ordinal-group: 16;
-    -webkit-order: 15;
-        -ms-flex-order: 15;
-            order: 15; }
+    -ms-flex-order: 15;
+        order: 15; }
   .nf-field-container .checkbox-wrap .nf-field-label {
     width: auto; }
     .nf-field-container .checkbox-wrap .nf-field-label label {
@@ -2043,6 +1941,33 @@ DARK COLORS - nf-blue
         left: -30px;
         bottom: 0; }
   .nf-field-container .checkbox-wrap .nf-field-element {
-    width: 20px; } }
+    width: 20px; }
+  .nf-form-cont .five-sixths,
+  .nf-form-cont .four-sixths,
+  .nf-form-cont .one-fourth,
+  .nf-form-cont .one-half,
+  .nf-form-cont .one-sixth,
+  .nf-form-cont .one-third,
+  .nf-form-cont .three-fourths,
+  .nf-form-cont .three-sixths,
+  .nf-form-cont .two-fourths,
+  .nf-form-cont .two-sixths,
+  .nf-form-cont .two-thirds {
+    clear: both;
+    float: none;
+    margin: 0;
+    width: 100%; }
+    .nf-form-cont .five-sixths .inside,
+    .nf-form-cont .four-sixths .inside,
+    .nf-form-cont .one-fourth .inside,
+    .nf-form-cont .one-half .inside,
+    .nf-form-cont .one-sixth .inside,
+    .nf-form-cont .one-third .inside,
+    .nf-form-cont .three-fourths .inside,
+    .nf-form-cont .three-sixths .inside,
+    .nf-form-cont .two-fourths .inside,
+    .nf-form-cont .two-sixths .inside,
+    .nf-form-cont .two-thirds .inside {
+      padding: 0; } }
 
 /*# sourceMappingURL=display-opinions-dark.css.map */

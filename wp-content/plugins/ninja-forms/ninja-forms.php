@@ -3,7 +3,7 @@
 Plugin Name: Ninja Forms
 Plugin URI: http://ninjaforms.com/
 Description: Ninja Forms is a webform builder with unparalleled ease of use and features.
-Version: 2.9.50
+Version: 3.0.27
 Author: The WP Ninjas
 Author URI: http://ninjaforms.com
 Text Domain: ninja-forms
@@ -13,6 +13,9 @@ Copyright 2016 WP Ninjas.
 */
 
 require_once dirname( __FILE__ ) . '/lib/NF_VersionSwitcher.php';
+require_once dirname( __FILE__ ) . '/lib/NF_Tracking.php';
+require_once dirname( __FILE__ ) . '/lib/NF_Conversion.php';
+require_once dirname( __FILE__ ) . '/lib/Conversion/Calculations.php';
 
 function ninja_forms_three_table_exists(){
     global $wpdb;
@@ -20,21 +23,14 @@ function ninja_forms_three_table_exists(){
     return ( $wpdb->get_var("SHOW TABLES LIKE '$table_name'") == $table_name );
 }
 
-if( version_compare( get_option( 'ninja_forms_version', '0.0.0' ), '3', '<' ) || ! ninja_forms_three_table_exists() ) {
-    update_option( 'ninja_forms_load_deprecated', TRUE );
-}
-
 if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf2to3' ] ) && ( defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ){
 
     include 'deprecated/ninja-forms.php';
 
     register_activation_hook( __FILE__, 'ninja_forms_activation_deprecated' );
+
     function ninja_forms_activation_deprecated( $network_wide ){
         include_once 'deprecated/includes/activation.php';
-
-        if( ! get_option( 'nf_aff', FALSE ) ) {
-            update_option('ninja_forms_freemius', 1);
-        }
 
         ninja_forms_activation( $network_wide );
     }
@@ -44,7 +40,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
     include_once 'lib/NF_Upgrade.php';
     include_once 'lib/NF_AddonChecker.php';
 
-    require_once 'includes/deprecated.php';
+    include_once plugin_dir_path( __FILE__ ) . 'includes/deprecated.php';
 
     /**
      * Class Ninja_Forms
@@ -55,7 +51,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
         /**
          * @since 3.0
          */
-        const VERSION = '3.0';
+        const VERSION = '3.0.27';
 
         /**
          * @var Ninja_Forms
@@ -139,12 +135,21 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
         protected $session = '';
 
         /**
+         * @var NF_Tracking
+         */
+        public $tracking;
+
+        /**
          * Plugin Settings
          *
          * @since 3.0
          * @var array
          */
         protected $settings = array();
+
+        protected $requests = array();
+
+        protected $processes = array();
 
         /**
          * Main Ninja_Forms Instance
@@ -167,7 +172,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 // Define old constants for backwards compatibility.
                 if( ! defined( 'NF_PLUGIN_DIR' ) ){
                     define( 'NF_PLUGIN_DIR', self::$dir );
-                    define( 'NINJA_FORMS_DIR', self::$dir );
+                    define( 'NINJA_FORMS_DIR', self::$dir . 'deprecated' );
                 }
 
                 self::$url = plugin_dir_url( __FILE__ );
@@ -206,6 +211,18 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 self::$instance->controllers[ 'savedfields' ] = new NF_AJAX_Controllers_SavedFields();
 
                 /*
+                 * Async Requests
+                 */
+                require_once Ninja_Forms::$dir . 'includes/Libraries/BackgroundProcessing/classes/wp-async-request.php';
+                self::$instance->requests[ 'delete-field' ] = new NF_AJAX_Requests_DeleteField();
+
+                /*
+                 * Background Processes
+                 */
+                require_once Ninja_Forms::$dir . 'includes/Libraries/BackgroundProcessing/wp-background-processing.php';
+                self::$instance->requests[ 'update-fields' ] = new NF_AJAX_Processes_UpdateFields();
+
+                /*
                  * WP-CLI Commands
                  */
                 if( class_exists( 'WP_CLI_Command' ) ) {
@@ -226,6 +243,8 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                  * Submission CPT
                  */
                 new NF_Admin_CPT_Submission();
+                new NF_Admin_CPT_DownloadAllSubmissions();
+                require_once Ninja_Forms::$dir . 'lib/StepProcessing/menu.php';
 
                 /*
                  * Logger
@@ -241,6 +260,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 self::$instance->merge_tags[ 'fields' ] = new NF_MergeTags_Fields();
                 self::$instance->merge_tags[ 'calcs' ] = new NF_MergeTags_Calcs();
                 self::$instance->merge_tags[ 'querystrings' ] = new NF_MergeTags_QueryStrings();
+                self::$instance->merge_tags[ 'form' ] = new NF_MergeTags_Form();
 
                 /*
                  * Add Form Modal
@@ -257,7 +277,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 /*
                  * Plugin Settings
                  */
-                self::$instance->settings = get_option( 'ninja_forms_settings' );
+                self::$instance->settings = apply_filters( 'ninja_forms_settings', get_option( 'ninja_forms_settings' ) );
 
                 /*
                  * Admin Notices System
@@ -265,6 +285,11 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 self::$instance->notices = new NF_Admin_Notices();
 
                 self::$instance->widgets[] = new NF_Widget();
+
+                /*
+                 * Opt-In Tracking
+                 */
+                self::$instance->tracking = new NF_Tracking();
 
                 /*
                  * Activation Hook
@@ -288,7 +313,31 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
 
             add_action( 'plugins_loaded', array( self::$instance, 'plugins_loaded' ) );
 
+            add_action( 'ninja_forms_available_actions', array( self::$instance, 'scrub_available_actions' ) );
+
+            add_action( 'init', array( self::$instance, 'init' ), 5 );
+            add_action( 'admin_init', array( self::$instance, 'admin_init' ), 5 );
+
             return self::$instance;
+        }
+
+        public function init()
+        {
+            do_action( 'nf_init', self::$instance );
+        }
+
+        public function admin_init()
+        {
+            do_action( 'nf_admin_init', self::$instance );
+        }
+
+        public function scrub_available_actions( $actions )
+        {
+            foreach( $actions as $key => $action ){
+                if ( ! is_plugin_active( $action[ 'plugin_path' ] ) )  continue;
+                unset( $actions[ $key ] );
+            }
+            return $actions;
         }
 
         public function admin_notices()
@@ -300,10 +349,21 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
 
         public function plugins_loaded()
         {
+            load_plugin_textdomain( 'ninja-forms', false, basename( dirname( __FILE__ ) ) . '/lang' );
+
             /*
              * Field Class Registration
              */
             self::$instance->fields = apply_filters( 'ninja_forms_register_fields', self::load_classes( 'Fields' ) );
+
+            if( ! apply_filters( 'ninja_forms_enable_credit_card_fields', false ) ){
+                unset( self::$instance->fields[ 'creditcard' ] );
+                unset( self::$instance->fields[ 'creditcardcvc' ] );
+                unset( self::$instance->fields[ 'creditcardexpiration' ] );
+                unset( self::$instance->fields[ 'creditcardfullname' ] );
+                unset( self::$instance->fields[ 'creditcardnumber' ] );
+                unset( self::$instance->fields[ 'creditcardzip' ] );
+            }
 
             /*
              * Form Action Registration
@@ -367,8 +427,14 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
         public function form( $id = '' )
         {
             global $wpdb;
+            
+            static $forms;
+            if ( isset ( $forms[ $id ] ) ) {
+                return $forms[ $id ];
+            }
 
-            return new NF_Abstracts_ModelFactory( $wpdb, $id );
+            $forms[ $id ] = new NF_Abstracts_ModelFactory( $wpdb, $id );
+            return $forms[ $id ];
         }
 
         /**
@@ -393,6 +459,20 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
         public function session()
         {
             return $this->session;
+        }
+
+        public function request( $action )
+        {
+            if( ! isset( $this->requests[ $action ] ) ) return new NF_AJAX_Requests_NullRequest();
+
+            return $this->requests[ $action ];
+        }
+
+        public function background_process( $action )
+        {
+            if( ! isset( $this->requests[ $action ] ) ) return new NF_AJAX_Processes_NullProcess();
+
+            return $this->requests[ $action ];
         }
 
 	    /**
@@ -441,7 +521,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
 	     */
         public function update_settings( $settings = array() )
         {
-            if( ! is_array( $this->settings ) ) $this->settings = array( $this->settings );
+            if( ! is_array( $this->settings ) ) $this->settings = array();
 
             if( $settings && is_array( $settings ) ) {
                 $this->settings = array_merge($this->settings, $settings);
@@ -549,9 +629,43 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
          * Activation
          */
         public function activation() {
-            update_option( 'ninja_forms_freemius', 1 );
             $migrations = new NF_Database_Migrations();
             $migrations->migrate();
+
+            if( Ninja_Forms()->form()->get_forms() ) return;
+
+            $form = Ninja_Forms::template( 'formtemplate-contactform.nff', array(), TRUE );
+            Ninja_Forms()->form()->import_form( $form );
+        }
+
+        /**
+         * Deprecated Notice
+         *
+         * Example: Ninja_Forms::deprecated_hook( 'ninja_forms_old', '3.0', 'ninja_forms_new', debug_backtrace() );
+         *
+         * @param $deprecated
+         * @param $version
+         * @param null $replacement
+         * @param null $backtrace
+         */
+        public static function deprecated_notice( $deprecated, $version, $replacement = null, $backtrace = null )
+        {
+            do_action( 'ninja_forms_deprecated_call', $deprecated, $replacement, $version );
+
+            $show_errors = current_user_can( 'manage_options' );
+
+            // Allow plugin to filter the output error trigger
+            if ( WP_DEBUG && apply_filters( 'ninja_forms_deprecated_function_trigger_error', $show_errors ) ) {
+                if ( ! is_null( $replacement ) ) {
+                    trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since Ninja Forms version %2$s! Use %3$s instead.', 'ninja-forms' ), $deprecated, $version, $replacement ) );
+                    // trigger_error(  print_r( $backtrace, 1 ) ); // Limited to previous 1028 characters, but since we only need to move back 1 in stack that should be fine.
+                    // Alternatively we could dump this to a file.
+                } else {
+                    trigger_error( sprintf( __( '%1$s is <strong>deprecated</strong> since Ninja Forms version %2$s.', 'ninja-forms' ), $deprecated, $version ) );
+                    // trigger_error( print_r( $backtrace, 1 ) );// Limited to previous 1028 characters, but since we only need to move back 1 in stack that should be fine.
+                    // Alternatively we could dump this to a file.
+                }
+            }
         }
 
     } // End Class Ninja_Forms
@@ -583,15 +697,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
     |--------------------------------------------------------------------------
     */
 
-    if ( nf_is_freemius_on() ) {
-        // Override plugin's version, should be executed before Freemius init.
-        nf_override_plugin_version();
-        // Init Freemius.
-        nf_fs();
-        nf_fs()->add_action( 'after_uninstall', 'ninja_forms_uninstall' );
-    } else {
-        register_uninstall_hook( __FILE__, 'ninja_forms_uninstall' );
-    }
+    register_uninstall_hook( __FILE__, 'ninja_forms_uninstall' );
 
     function ninja_forms_uninstall(){
 
@@ -602,4 +708,63 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
         }
     }
 
+    // Scheduled Action Hook
+    function nf_optin_send_admin_email( ) {
+        /*
+         * If we aren't opted in, or we've specifically opted out, then return false.
+         */
+        if ( ! Ninja_Forms()->tracking->is_opted_in() || Ninja_Forms()->tracking->is_opted_out() ) {
+            return false;
+        }
+
+        /*
+         * If we haven't already submitted our email to api.ninjaforms.com, submit it and set an option saying we have.
+         */
+
+        if ( get_option ( 'ninja_forms_optin_admin_email', false ) ) {
+            return false;
+        }
+
+        /*
+         * Ping api.ninjaforms.com
+         */
+
+        $admin_email = get_option('admin_email');
+        $url = home_url();
+        $response = wp_remote_post(
+            'http://api.ninjaforms.com',
+            array(
+                'body' => array( 'admin_email' => $admin_email, 'url' => $url ),
+            )
+        );
+
+        if( is_array($response) ) {
+            $header = $response['headers']; // array of http header lines
+            $body = $response['body']; // use the content
+        }
+
+        update_option( 'ninja_forms_optin_admin_email', true );
+    }
+
+    add_action( 'nf_optin_cron', 'nf_optin_send_admin_email' );
+
+    // Custom Cron Recurrences
+    function nf_custom_cron_job_recurrence( $schedules ) {
+        $schedules['nf-monthly'] = array(
+            'display' => __( 'Once per month', 'textdomain' ),
+            'interval' => 2678400,
+        );
+        return $schedules;
+    }
+    add_filter( 'cron_schedules', 'nf_custom_cron_job_recurrence' );
+
+    // Schedule Cron Job Event
+    function nf_optin_send_admin_email_cron_job() {
+        if ( ! wp_next_scheduled( 'nf_optin_cron' ) ) {
+            nf_optin_send_admin_email();
+            wp_schedule_event( current_time( 'timestamp' ), 'nf-monthly', 'nf_optin_cron' );
+        }
+    }
+
+    add_action( 'wp', 'nf_optin_send_admin_email_cron_job' );
 }
