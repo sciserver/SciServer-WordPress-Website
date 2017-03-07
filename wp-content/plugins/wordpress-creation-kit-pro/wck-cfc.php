@@ -1202,8 +1202,6 @@ function wck_serialized_update_from_unserialized( $replace, $object_id, $meta_ke
 		foreach( $wck_meta_boxes_ids as $wck_meta_boxes_id ){
 			$cfc_args = get_post_meta( $wck_meta_boxes_id, 'wck_cfc_args', true );
 			
-			//if( empty( $cfc_args[0] ) ) echo('No $cfc_args[0]' . " for $meta_key : $wck_meta_boxes_id.<br>\n");
-			
 			if( !empty( $cfc_args[0] ) && !empty( $cfc_args[0]['meta-name'] ) && $cfc_args[0]['meta-name'] == $meta_key ){
 
 				/* get all post meta for the post id like it is done in get_post_meta() function  */
