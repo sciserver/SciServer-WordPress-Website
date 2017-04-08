@@ -1,31 +1,8 @@
 <html><head>
-<title>SDSS error message</title>
-</head><body bgcolor=white>
-<h2>SDSS error message</h2><H3 BGCOLOR=pink><font color=red>You are not logged-in with SciServer. Please log-in and try again.</font></H3><h3>Your SQL command was: <br><pre>SELECT TOP 10
- p.objid,p.ra,p.dec,p.u,p.g,p.r,p.i,p.z,
- p.run, p.rerun, p.camcol, p.field,
- s.specobjid, s.class, s.z as redshift,
- s.plate, s.mjd, s.fiberid
-FROM PhotoObj AS p
- JOIN SpecObj AS s ON s.bestobjid = p.objid
-WHERE 
- p.u BETWEEN 0 AND 19.6
- AND g BETWEEN 0 AND 20
-</pre></h3><hr><br><br> 
-<form method ="POST" target="_blank" name="bugreportform" action="http://test.sciserver.org/bug-report/">
-<input type="hidden" name="popz_ErrorCode" value="500" >
-<input type="hidden" name="popz_ErrorType" value="InternalServerError" >
-<input type="hidden" name="popz_ErrorMessage" value="You are not logged-in with SciServer. Please log-in and try again." >
-<input type="hidden" name="popz_LogMessageID" value="9235b9ad-ebab-44c6-8468-39068ab1f922" >
-<input type="hidden" name="popz_username" value="null" >
-<input type="hidden" name="popz_userid" value="null" >
-<input type="hidden" name="popz_pageurl" value="http://localhost:2997/dr12/SearchTools/SqlSearch?searchtool=SQL&amp;TaskName=Skyserver.Search.SQL&amp;syntax=NoSyntax&amp;DoShowMyDBAsHtml=true&amp;cmd=--%20This%20query%20does%20a%20table%20JOIN%20between%20the%20imaging%20%28PhotoObj%29%20and%20spectra%0D%0A--%20%28SpecObj%29%20tables%20and%20includes%20the%20necessary%20columns%20in%20the%20SELECT%20to%20upload%0D%0A--%20the%20results%20to%20the%20SAS%20%28Science%20Archive%20Server%29%20for%20FITS%20file%20retrieval.%0D%0ASELECT%20TOP%2010%0D%0A%20%20%20p.objid%2Cp.ra%2Cp.dec%2Cp.u%2Cp.g%2Cp.r%2Cp.i%2Cp.z%2C%0D%0A%20%20%20p.run%2C%20p.rerun%2C%20p.camcol%2C%20p.field%2C%0D%0A%20%20%20s.specobjid%2C%20s.class%2C%20s.z%20as%20redshift%2C%0D%0A%20%20%20s.plate%2C%20s.mjd%2C%20s.fiberid%0D%0AFROM%20PhotoObj%20AS%20p%0D%0A%20%20%20JOIN%20SpecObj%20AS%20s%20ON%20s.bestobjid%20%3D%20p.objid%0D%0AWHERE%20%0D%0A%20%20%20p.u%20BETWEEN%200%20AND%2019.6%0D%0A%20%20%20AND%20g%20BETWEEN%200%20AND%2020%0D%0A%0D%0A&amp;format=mydb&amp;TableName=&amp;EntryPoint=SkyserverWS.SearchTools.SqlSearch" >
-<input type="hidden" name="popz_referrer" value="http://scidev03.pha.jhu.edu/SkyServerManu/en/tools/search/sql.aspx" >
-<input type="hidden" name="popz_StackTrace" value="at Sciserver_webService.DoDatabaseQuery.RunDBquery.SendToMyDB() in c:\\data\\mtaghiza\\ManuWork\\SkyServerWS\\Sciserver_webService\\Common\\RunDBquery.cs:line 318\r\n   at Sciserver_webService.DoDatabaseQuery.RunDBquery.&lt;ExecuteAsync&gt;d__0.MoveNext() in c:\\data\\mtaghiza\\ManuWork\\SkyServerWS\\Sciserver_webService\\Common\\RunDBquery.cs:line 67" >
-<input id="submit" type="submit" value="Click to Report Error"></form>
-<br>Technical info: <br> {&quot;ErrorCode&quot;:500,&quot;ErrorType
-InternalServerError
-ErrorMessage
-You are not logged-in with SciServer. Please log-in and try again.
-LogMessageID
-9235b9ad-ebab-44c6-8468-39068ab1f922&quot;}</BODY></HTML>
+<title>TEST</title>
+</head>
+<body>
+  <script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+  <script type='text/javascript' src='http://www.sciserver.org/messages/message.js'></script>
+</body>
+</html>
