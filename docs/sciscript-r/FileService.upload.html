@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Upload content or a file into a remote directory.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for FileService.upload {SciServer}"><tr><td>FileService.upload {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Upload content or a file into a remote directory.
+</h2>
+
+<h3>Description</h3>
+
+<p>Executes a synchronous SQL query in a CasJobs database context.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>CasJobs.executeQuery(sql, context="MyDB", format="dataframe")</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>sql</code></td>
+<td>
+<p>sql query</p>
+</td></tr>
+<tr valign="top"><td><code>context</code></td>
+<td>
+<p>database context</p>
+</td></tr>
+<tr valign="top"><td><code>format</code></td>
+<td>
+<p>output format. Choose between &quot;list&quot; (list object), &quot;dataframe&quot; (data.frame object), &quot;csv&quot; (csv string), &quot;json&quot; (json string), &quot;fits&quot; (raw binary data containing a fits file) and &quot;raw&quot; (raw binary data containing a fits file). </p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p> Returns the results table from the query in different output formats defined by the input parameter 'format'. Throws an exception if the HTTP request to the CasJobs API returns an error</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Gerard Lemson, Manuchehr Taghizadeh-Popp <br />
+Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://skyserver.sdss.org/casjobs">http://skyserver.sdss.org/casjobs</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="CasJobs.submitJob.html">CasJobs.submitJob</a></code>, <code><a href="CasJobs.getTables.html">CasJobs.getTables</a></code>, <code><a href="SkyServer.sqlSearch.html">SkyServer.sqlSearch</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+table = CasJobs.executeQuery(sql="select 1 as foo, 2 as bar",context="MyDB")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

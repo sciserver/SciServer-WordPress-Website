@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get status of job.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for CasJobs.getJobStatus {SciServer}"><tr><td>CasJobs.getJobStatus {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Get status of job.
+</h2>
+
+<h3>Description</h3>
+
+<p>Shows the status of a job submitted to CasJobs.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>CasJobs.getJobStatus(jobId)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>jobId</code></td>
+<td>
+<p>id of the job</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p> Returns a list containing the job status and related metadata. The &quot;Status&quot; field can be equal to 0 (Ready), 1 (Started), 2 (Canceling), 3(Canceled), 4 (Failed) or 5 (Finished). If <code>jobid</code> is the empty string, then returns a list with the statuses of all previous jobs. Throws an exception if the user is not logged into SciServer (use <code><a href="Authentication.login.html">Authentication.login</a></code> for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Gerard Lemson, Manuchehr Taghizadeh-Popp <br />
+Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://skyserver.sdss.org/casjobs">http://skyserver.sdss.org/casjobs</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="CasJobs.submitJob.html">CasJobs.submitJob</a></code>, <code><a href="CasJobs.waitForJob.html">CasJobs.waitForJob</a></code>, <code><a href="CasJobs.cancelJob.html">CasJobs.cancelJob</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: status = CasJobs.getJobStatus(CasJobs.submitJob("select 1"))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

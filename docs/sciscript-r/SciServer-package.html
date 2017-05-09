@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Access to SciServer tools.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for SciServer {SciServer}"><tr><td>SciServer {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Access to SciServer tools.
+</h2>
+
+<h3>Description</h3>
+
+<p>This package provides functions for quick access of SciServer web services and tools. <br />
+SciServer (<a href="www.sciserver.org">www.sciserver.org</a>) provides a new online framework for data-intensive scientifc computing in the cloud, where the motto is to bring the computation close where the data is stored, and allow seamless access and sharing of big data sets within the scientific community.
+</p>
+
+
+<h3>Details</h3>
+
+<p>Some SciServer tools you can access with this package:
+</p>
+<p><a href="http://skyserver.sdss.org/casjobs/">CasJobs</a>: Database storage and querying. <br />
+You can have access big databases, as well as save your data tables in your own database called 'MyDB'. 
+The user can run synchronous or asynchronous SQL queries and get the result back as an R data-frame (using <code><a href="CasJobs.executeQuery.html">CasJobs.executeQuery</a></code> or <code><a href="CasJobs.submitJob.html">CasJobs.submitJob</a></code>, respectively). Uploading of CSV files or R data-frames into a database table can be done using <code><a href="CasJobs.uploadCSVDataToTable.html">CasJobs.uploadCSVDataToTable</a></code> and <code><a href="CasJobs.uploadDataFrameToTable.html">CasJobs.uploadDataFrameToTable</a></code>, respectively.<br />
+</p>
+<p><a href="http://portal.sciserver.org/login-portal/">Login Portal</a>: Single sign-on portal to all SciServer applications. <br />
+Although some tools accept anonymous access, you can use  <code><a href="Authentication.login.html">Authentication.login</a></code> to login and access your own data and environment (after registering in the <a href="http://portal.sciserver.org/login-portal/">Login Portal</a>).    <br />
+</p>
+<p><a href="http://scidrive.org/scidrive/">SciDrive</a>: Drag-and-drop file storage and sharing.<br />
+You can create directories in SciDrive using <code><a href="SciDrive.createContainer.html">SciDrive.createContainer</a></code>, upload a file to SciDrive using <code><a href="SciDrive.upload.html">SciDrive.upload</a></code>, and share its URL with your collaborators by using <code><a href="SciDrive.publicUrl.html">SciDrive.publicUrl</a></code>. <br />
+</p>
+<p><a href="http://skyserver.sdss.org/">SkyServer</a>: Access to the <a href="http://www.sdss.org/">SDSS</a> astronomical survey. <br />
+You can query the SDSS database using <code><a href="SkyServer.sqlSearch.html">SkyServer.sqlSearch</a></code>, get cutout images from the sky using <code><a href="SkyServer.getJpegImgCutout.html">SkyServer.getJpegImgCutout</a></code>.  <br />
+</p>
+<p><a href="http://skyserver.sdss.org/">SkyQuery</a>: Access to the <a href="http://voservices.net/skyquery">SkyQuery</a> astronomical database catalog cross-match.<br />
+You can upload your own astronomical source catalog into your own database using <code><a href="SkyQuery.uploadTable.html">SkyQuery.uploadTable</a></code>, and cross-match it againt many other public source catalogs by running asynchronous SQL queries jobs using <code><a href="SkyQuery.submitJob.html">SkyQuery.submitJob</a></code>.<br />
+</p>
+
+<table summary="Rd table">
+<tr>
+ <td style="text-align: left;">
+Package: </td><td style="text-align: left;"> SciServer</td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+Type: </td><td style="text-align: left;"> Package</td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+Version: </td><td style="text-align: left;"> 1.10.0</td>
+</tr>
+<tr>
+ <td style="text-align: left;">
+</td>
+</tr>
+
+</table>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp, Gerard Lemson <br />
+Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

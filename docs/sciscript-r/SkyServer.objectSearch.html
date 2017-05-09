@@ -1,0 +1,121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Searches for an object in the SDSS catalog.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for SkyServer.objectSearch {SciServer}"><tr><td>SkyServer.objectSearch {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Searches for an object in the SDSS catalog.
+</h2>
+
+<h3>Description</h3>
+
+<p>Searches for an object in the SDSS catalog and gets its properties and associated metadata. Search parameters include position in the sky and various identifiers included in SDSS catalog tables.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>SkyServer.objectSearch(objId=NULL, specObjId=NULL, apogee_id=NULL, apstar_id=NULL, ra=NULL, dec=NULL, plate=NULL, mjd=NULL, fiber=NULL, run=NULL, rerun=NULL, camcol=NULL, field=NULL, obj=NULL, dataRelease=NULL)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>objId</code></td>
+<td>
+<p>SDSS ObjId.</p>
+</td></tr>
+<tr valign="top"><td><code>specObjId</code></td>
+<td>
+<p>SDSS SpecObjId.</p>
+</td></tr>
+<tr valign="top"><td><code>apogee_id</code></td>
+<td>
+<p>ID identifying Apogee target object.</p>
+</td></tr>
+<tr valign="top"><td><code>apstar_id</code></td>
+<td>
+<p>unique ID for combined apogee star spectrum.</p>
+</td></tr>
+<tr valign="top"><td><code>ra</code></td>
+<td>
+<p>Right Ascension of the object.</p>
+</td></tr>
+<tr valign="top"><td><code>dec</code></td>
+<td>
+<p>Declination of the object.</p>
+</td></tr>
+<tr valign="top"><td><code>plate</code></td>
+<td>
+<p>SDSS plate number.</p>
+</td></tr>
+<tr valign="top"><td><code>mjd</code></td>
+<td>
+<p>Modified Julian Date of observation.</p>
+</td></tr>
+<tr valign="top"><td><code>fiber</code></td>
+<td>
+<p>SDSS fiber number.</p>
+</td></tr>
+<tr valign="top"><td><code>run</code></td>
+<td>
+<p>SDSS run number.</p>
+</td></tr>
+<tr valign="top"><td><code>rerun</code></td>
+<td>
+<p>SDSS rerun number.</p>
+</td></tr>
+<tr valign="top"><td><code>camcol</code></td>
+<td>
+<p>SDSS camera column.</p>
+</td></tr>
+<tr valign="top"><td><code>field</code></td>
+<td>
+<p>SDSS field number.</p>
+</td></tr>
+<tr valign="top"><td><code>obj</code></td>
+<td>
+<p>The object id within a field.</p>
+</td></tr>
+<tr valign="top"><td><code>dataRelease</code></td>
+<td>
+<p>SDSS data release. E.g, 'DR13'</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p> Returns an object containing various tables with the objects properties and associated metadata. Throws an exception if the HTTP request to the SkyServer API returns an error.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://skyserver.sdss.org">http://skyserver.sdss.org</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="SkyServer.sqlSearch.html">SkyServer.sqlSearch</a></code>, <code><a href="SkyServer.rectangularSearch.html">SkyServer.rectangularSearch</a></code>, <code><a href="SkyServer.radialSearch.html">SkyServer.radialSearch</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+object = SkyServer.objectSearch(ra=258.25, dec=64.05)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

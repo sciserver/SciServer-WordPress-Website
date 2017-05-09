@@ -1,0 +1,73 @@
+* 0e0cdaa (HEAD, v1.2.1, master) post wp 4.7.4 update
+* 903ac95 (v1.2.0, origin/master, origin/HEAD) pre wp 4.7.4 update
+* a5959d3 moved sciscript docs to subdir; added casjobs api to docs
+* 78ae93f (v1.1.12) updated theme, added sciserver v1.9.4 to updates and options
+* 4676a61 (v1.1.11) post wp 4.7.3 update
+* d742330 pre wp 4.7.3 update
+* 2c9b893 updated wck pro to fix bug in line 1205 of wck-cfc.php to check whether [0] exists as well
+* b89e990 (v1.1.10) wp and plugins 4.7.2 update, security update
+* be8b328 (v1.1.9) backpushing prod master website to test
+* 71a95e1 (v1.1.8) added docs folder with help docs from github; updated theme
+* aeba5ea (v1.1.7) added restful api pdf
+* fcc1949 post wp 4.5.3 update
+* 3154de5 theme updated
+* 0dd0ba6 (v1.1.6) removed tickets subsite from git cache. added to gitignore
+* ba6e3c7 updated plugins, sciserver theme
+* b7dab0f updated a couple of images
+* 448ee8b (v1.1.5) updated to WP4.5.1, updated plugins, updated theme submodule
+*   af418d7 (v1.1.4) Merge branch 'dev'
+|\  
+| * 736e25e updated theme
+* | c8469f4 fixed crlf to lf in img_scale.py...
+* | ce3fc78 mid-workshop updates to website
+|/  
+* 551ea6f (v1.1.3) added workshop notebook html exports to be included in iframes. html files are in uploads-workshop. updated theme
+* 1049ec0 (v1.1.2) updated wordpress to 4.5, updated plugins, added Members plugin to hide content from people not logged in, but still show page exists
+* 7161d57 (tag: v1.1.1) major website update for upcoming workshop and first release
+* 363c316 (v1.0.8) updated plugins: blc, ninja-forms
+* 9b58e33 (v1.0.7) minor theme submodule change
+* b31641e (v1.0.6) updated theme submodule
+* 7e6261a (v1.0.5) updated theme
+*   942bba4 Merge branch 'master' into dev
+|\  
+| * a09e7cb (v1.0.4) removed old submodule login-portal: now in VS own git repo
+| * 4006851 (v1.0.3) removed theme wordpress-bootstrap-master
+| * 981a4c9 (v1.0.2) removed extra themes and old theme submodules
+| * bc97943 wp update 4.2.2 revisited
+| *   116bc84 Merge branch 'dev'
+| |\  
+| * | c73e012 post wp 4.4.1 update - no db update was required
+| * | f48dbff added early adopters pages and forms. pre wp 4.4.1 update
+* | | f9066ce updated plugin ninja forms, contact forms, updated theme
+| |/  
+|/|   
+* | 393e181 pre 4.2.2 update, and updated sciserver_old with new theme name commit
+* | a6b089f pre wp4.2.2 update
+|/  
+*   b170e38 Merge branch 'master' into dev
+|\  
+| * dc1a3af fixed submodule mappings. no sure if will work with dev branch which was also fixed independently
+| * 2360c76 messing with submodules. need to shelf idies_roots
+* | 8f795f9 updated submodules, changed theme to 'sciserver', changed theme origin to github
+|/  
+* b37d0d9 migrating to sciserver github. ready for push to prod with early adopters forms, etc
+* f06ad2c updating with early adopters signup and bugreport
+* 859dff6 updated logo constallation with lines
+* 3c8ff8b Addeing uploads
+* 5ad1f66 WordPress updated to 4.1.3. RSSIMport PLugin fixed for deprecated wp_widgets constructor call
+* 7097795 wordpress 4.2.4 update, plugins update
+* 10737aa updated BLC, added submodule for login portal (temporary)
+* 4aaf235 Update WordPress 4.2.2, Broken Link Checker Version 1.10.8
+* b5760a7 Update to WordPress 4.2.1 part 2
+* d5fec2c Update to WordPress 4.2.1
+* 8ed1656 Update to WordPress 4.2.1
+* 14c5ed5 pushing to www for website 2.0. post nsf review
+* 8cfc95b building blocks, components, scientific integration, splash
+* 0a54b9d moved to idies_roots theme. setting up laptop for trip to OR
+*   31ff6d3 Merge branch 'master', remote branch 'origin/master'
+|\  
+| * 2812c64 Added gitignore to project. Site is live.
+* | 57aff3f Adding update in sciserver theme
+|/  
+* c6da87f (tag: v1.0.1) SciServer Release Candidate v1.0.rc1 First real working sciserver website. On test. Pushing upstream to origin. Pushing to prod and releasing.
+* b39f77a Initial Commit

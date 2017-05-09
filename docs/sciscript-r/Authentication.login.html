@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: User login.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for Authentication.login {SciServer}"><tr><td>Authentication.login {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+User login.
+</h2>
+
+<h3>Description</h3>
+
+<p>Logs the user into SciServer and returns the authentication token. This function is useful when SciScript-R library methods are executed outside the SciServer-Compute environment. In this case, the session authentication token does not exist (and therefore can't be automatically recognized), so the user has to use <code>Authentication.login</code> in order to log into SciServer manually and get the authentication token. <code>Authentication.login</code> also sets the token value in the Sys environment variable &quot;sciservertoken&quot; and as the variable <code><a href="Authentication.token.html">Authentication.token</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>Authentication.login(UserName, Password)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>UserName</code></td>
+<td>
+<p>name of the user.</p>
+</td></tr>
+<tr valign="top"><td><code>Password</code></td>
+<td>
+<p>password of the user.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Returns the authentication token (string). Throws an exception if the HTTP request to the Authentication URL returns an error.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Gerard Lemson, Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://portal.sciserver.org/login-portal/">http://portal.sciserver.org/login-portal/</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="Authentication.getKeystoneUserWithToken.html">Authentication.getKeystoneUserWithToken</a></code>, <code><a href="Authentication.getToken.html">Authentication.getToken</a></code>, <code><a href="Authentication.setToken.html">Authentication.setToken</a></code>, <code><a href="Authentication.token.html">Authentication.token</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: Authentication.login("MyName","MyPassword") 
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

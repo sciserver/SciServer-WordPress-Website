@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get a sky image cutout from SDSS.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for SkyServer.getJpegImgCutout {SciServer}"><tr><td>SkyServer.getJpegImgCutout {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Get a sky image cutout from SDSS.
+</h2>
+
+<h3>Description</h3>
+
+<p>Gets a rectangular image cutout from a region of the sky in SDSS, centered at (<code>ra</code>,<code>dec</code>).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>SkyServer.getJpegImgCutout(ra, dec, scale=0.7, width=512, height=512, opt="", query="", dataRelease=NULL)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>ra</code></td>
+<td>
+<p>Right Ascension of the image's center.</p>
+</td></tr>
+<tr valign="top"><td><code>dec</code></td>
+<td>
+<p>Declination of the image's center.</p>
+</td></tr>
+<tr valign="top"><td><code>scale</code></td>
+<td>
+<p>Scale of the image, measured in <code>[arcsec/pix]</code></p>
+</td></tr>
+<tr valign="top"><td><code>width</code></td>
+<td>
+<p>Width of the image, measured in <code>[pix]</code></p>
+</td></tr>
+<tr valign="top"><td><code>height</code></td>
+<td>
+<p>Height of the image, measured in <code>[pix]</code></p>
+</td></tr>
+<tr valign="top"><td><code>opt</code></td>
+<td>
+<p>Optional drawing options, expressed as concatenation of letters (string). The letters options are<br /> 
+&quot;G&quot;: Grid. Draw a N-S E-W grid through the center <br />
+&quot;L&quot;: Label. Draw the name, scale, ra, and dec on image. <br />
+&quot;P 	PhotoObj. Draw a small cicle around each primary photoObj. <br />
+&quot;S: SpecObj. Draw a small square around each specObj. <br />
+&quot;O&quot;: Outline. Draw the outline of each photoObj. <br />
+&quot;B&quot;: Bounding Box. Draw the bounding box of each photoObj. <br />
+&quot;F&quot;: Fields. Draw the outline of each field. <br />
+&quot;M&quot;: Masks. Draw the outline of each mask considered to be important. <br />
+&quot;Q&quot;: Plates. Draw the outline of each plate. <br />
+&quot;I&quot;: Invert. Invert the image (B on W). <br />
+(see <a href="http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx">http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx</a>)</p>
+</td></tr>
+<tr valign="top"><td><code>query</code></td>
+<td>
+<p>Optional string. Marks with inverted triangles on the image the position of user defined objects. The (RA,Dec) coordinates of these object can be given by three means: <br /> 
+1) query is a SQL command of format <code>"SELECT Id, RA, Dec, FROM Table"</code>.<br />
+2) query is list of objects. A header with RA and DEC columns must be included. Columns must be separated by tabs, spaces, commas or semicolons. The list may contain as many columns as wished. <br />
+3) aquery is a string following the pattern: ObjType Band (low_mag, high_mag).<br />
+ObjType: 	S | G | P  marks Stars, Galaxies or PhotoPrimary objects.<br />
+Band: 	U | G | R | I | Z | A 	restricts marks to objects with Band BETWEEN low_mag AND high_mag Band 'A' will mark all objects within the specified magnitude range in any band (ORs composition).<br />
+Examples:<br />
+S <br />
+S R (0.0, 23.5) <br />
+G A (20, 30) <br />
+(see <a href="http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx">http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx</a>)<br />
+</p>
+</td></tr>
+<tr valign="top"><td><code>dataRelease</code></td>
+<td>
+<p>SDSS data release. E.g, 'DR13'</p>
+</td></tr>  
+</table>
+
+
+<h3>Value</h3>
+
+<p> Returns an array of doubles, of dimensions  [1:<code>width</code>,1:<code>height</code>,1:3]. Throws an exception if the HTTP request to the SkyServer API returns an error.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://skyserver.sdss.org">http://skyserver.sdss.org</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: 
+img = SkyServer.getJpegImgCutout(ra=197.614455642896, dec=18.438168853724, width=512, height=512, scale=0.4, opt="OG", query="SELECT TOP 100 p.objID, p.ra, p.dec, p.r FROM fGetObjFromRectEq(197.6,18.4,197.7,18.5) n, PhotoPrimary p WHERE n.objID=p.objID")
+plot(0:1, 0:1, type = "n");
+rasterImage(img, 0, 0, 1, 1)
+
+## End(Not run)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

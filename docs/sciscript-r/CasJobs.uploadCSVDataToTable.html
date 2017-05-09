@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Upload CSV string table into a DB table.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for CasJobs.uploadCSVDataToTable {SciServer}"><tr><td>CasJobs.uploadCSVDataToTable {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Upload CSV string table into a DB table.
+</h2>
+
+<h3>Description</h3>
+
+<p>Uploads a table in CSV string format into a CasJobs database table.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>CasJobs.uploadCSVDataToTable(csv, tableName, context="MyDB")</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>csv</code></td>
+<td>
+<p>CSV string representing a table (string)</p>
+</td></tr>
+<tr valign="top"><td><code>tableName</code></td>
+<td>
+<p>Name of table (string)</p>
+</td></tr>
+<tr valign="top"><td><code>context</code></td>
+<td>
+<p>Database context (string)</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Returns TRUE if the table was uploaded successfully. Throws an exception if the user is not logged into SciServer (use <code><a href="Authentication.login.html">Authentication.login</a></code> for that purpose). Throws an exception if the CSV file could not be found. Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Gerard Lemson, Manuchehr Taghizadeh-Popp <br />
+Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://skyserver.sdss.org/casjobs">http://skyserver.sdss.org/casjobs</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="CasJobs.uploadDataFrameToTable.html">CasJobs.uploadDataFrameToTable</a></code>, <code><a href="CasJobs.uploadCSVFileToTable.html">CasJobs.uploadCSVFileToTable</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+response = CasJobs.uploadCSVDataToTable(csv="col1,col2\n1,2", tableName="MyNewTable", context="MyDB")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

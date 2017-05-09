@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Run a radial search on the sky.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for SkyServer.radialSearch {SciServer}"><tr><td>SkyServer.radialSearch {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Run a radial search on the sky.
+</h2>
+
+<h3>Description</h3>
+
+<p>Runs a query in the SDSS database that searches for all objects within a certain radius from a point in the sky, and retrieves the result table as a dataframe. Maximum number of rows retrieved is set currently to 500,000.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>SkyServer.radialSearch(ra, dec, radius=1, coordType="equatorial", whichPhotometry="optical", limit="0", dataRelease=NULL)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>ra</code></td>
+<td>
+<p>Right Ascension of the point in the sky.</p>
+</td></tr>
+<tr valign="top"><td><code>dec</code></td>
+<td>
+<p>Declination of the point in the sky.</p>
+</td></tr>
+<tr valign="top"><td><code>radius</code></td>
+<td>
+<p>Search radius around the (ra,dec) coordinate in the sky. Measured in arcminutes.</p>
+</td></tr>
+<tr valign="top"><td><code>coordType</code></td>
+<td>
+<p>Type of celestial coordinate system. Can be set to &quot;equatorial&quot; or &quot;galactic&quot;.</p>
+</td></tr>
+<tr valign="top"><td><code>whichPhotometry</code></td>
+<td>
+<p>Type of retrieved data. Can be set to &quot;optical&quot; or &quot;infrared&quot;.</p>
+</td></tr>
+<tr valign="top"><td><code>limit</code></td>
+<td>
+<p>maximum number of rows in the result table (string). If set to &quot;0&quot;, then the function will return all rows.</p>
+</td></tr>
+<tr valign="top"><td><code>dataRelease</code></td>
+<td>
+<p>SDSS data release. E.g, 'DR13'</p>
+</td></tr>  
+</table>
+
+
+<h3>Value</h3>
+
+<p> Returns the results table as a dataframe. Throws an exception if the HTTP request to the SkyServer API returns an error.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://skyserver.sdss.org">http://skyserver.sdss.org</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="SkyServer.sqlSearch.html">SkyServer.sqlSearch</a></code>, <code><a href="SkyServer.rectangularSearch.html">SkyServer.rectangularSearch</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+table = SkyServer.radialSearch(ra=258.25, dec=64.05, radius=3)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

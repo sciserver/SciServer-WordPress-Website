@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Job submission</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for SkyQuery.submitJob {SciServer}"><tr><td>SkyQuery.submitJob {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Job submission
+</h2>
+
+<h3>Description</h3>
+
+<p>Submits a new job (more info in http://www.voservices.net/skyquery).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>SkyQuery.submitJob(query, queue="quick")</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>query</code></td>
+<td>
+<p>sql query (string).</p>
+</td></tr>
+<tr valign="top"><td><code>queue</code></td>
+<td>
+<p>queue name (string).</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p> Returns the jobID (string), unique identifier of the job. Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="SkyQuery.getJobStatus.html">SkyQuery.getJobStatus</a></code>, <code><a href="SkyQuery.listQueues.html">SkyQuery.listQueues</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+jobId = SkyQuery.submitJob('select 1 as foo',"quick")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

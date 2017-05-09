@@ -1,0 +1,1738 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>SciServer package &mdash; SciScript-Python 1.10.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="SciScript-Python 1.10.0 documentation" href="index.html" />
+    <link rel="prev" title="Welcome to SciScript Python documentation!" href="index.html" /> 
+  </head>
+  <body role="document">
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to SciScript Python documentation!"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">SciScript-Python 1.10.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-SciServer">
+<span id="sciserver-package"></span><h1>SciServer package<a class="headerlink" href="#module-SciServer" title="Permalink to this headline">¶</a></h1>
+<p>This python package provides functions for quick access of SciServer APIs (web services) and tools.
+SciServer (<a class="reference external" href="http://www.sciserver.org">http://www.sciserver.org</a>) provides a new online framework for data-intensive scientifc computing in the cloud,
+where the motto is to bring the computation close where the data is stored, and allow seamless access and sharing of big data sets within the scientific community.</p>
+<p>Some SciServer tools you can access with this package:</p>
+<ul>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://portal.sciserver.org">Login Portal</a>: Single sign-on portal to all SciServer applications.</dt>
+<dd><p class="first last">Although some tools accept anonymous access, you can use Authentication.login to login and access the tools and your own data and environment (after registering in the Login Portal). If you are running this package in a Jupyter Notebook in the SciServer-Compute environment, the use of Authentication.login is not necessary since it&#8217;s done automatically.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://skyserver.sdss.org/CasJobs/">CasJobs</a>: Database storage and querying.</dt>
+<dd><p class="first last">You can have access big databases, as well as save your data tables in your own database called &#8216;MyDB&#8217;. The user can run synchronous or asynchronous SQL queries and get the result back as an R data-frame (using CasJobs.executeQuery or CasJobs.submitJob, respectively). Uploading of CSV files or R data-frames into a database table can be done using CasJobs.uploadCSVToTable and CasJobs.uploadDataFrameToTable, respectively.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://www.scidrive.org/">SciDrive</a>: Drag-and-drop file storage and sharing.</dt>
+<dd><p class="first last">You can create directories in SciDrive using SciDrive.createContainer, upload a file to SciDrive using SciDrive.upload, and share its URL with your collaborators by using SciDrive.publicUrl.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://skyserver.sdss.org/">SkyServer</a>: Access to the SDSS astronomical survey.</dt>
+<dd><p class="first last">You can query the SDSS database using SkyServer.sqlSearch, run cone searches using SkyServer.radialSearch, or get cutout images from the sky using SkyServer.getJpegImgCutout, between other tasks.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://www.voservices.net/skyquery">SkyQuery</a>: Cross-match of astronomical source catalogs.</dt>
+<dd><p class="first last">You can use this scalable database system for uploading your own catalogs and cross-matching them against huge astronomical source catalogs, or even cross-matching huge catalogs against each other!. Use SkyQuery.submitJob to run the cross-match, and use SkyQuery.listAllDatasets, SkyQuery.listDatasetTables and SkyQuery.listTableColumns to browse the catalogs and database schema.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>References</strong></p>
+<ul class="simple">
+<li>SciServer-Python repository: <a class="reference external" href="http://www.github.com/sciserver/SciScript-Python">http://www.github.com/sciserver/SciScript-Python</a></li>
+<li>SciServer: <a class="reference external" href="http://www.sciserver.org">http://www.sciserver.org</a></li>
+</ul>
+<p><strong>Maintainer</strong>: Manuchehr Taghizadeh-Popp &lt;<a class="reference external" href="mailto:mtaghiza&#37;&#52;&#48;jhu&#46;edu">mtaghiza<span>&#64;</span>jhu<span>&#46;</span>edu</a>&gt;</p>
+<p><strong>Authors</strong>: Gerard Lemson &lt;<a class="reference external" href="mailto:glemson1&#37;&#52;&#48;jhu&#46;edu">glemson1<span>&#64;</span>jhu<span>&#46;</span>edu</a>&gt;, Manuchehr Taghizadeh-Popp &lt;<a class="reference external" href="mailto:mtaghiza&#37;&#52;&#48;jhu&#46;edu">mtaghiza<span>&#64;</span>jhu<span>&#46;</span>edu</a>&gt;</p>
+<p><strong>Version</strong>: sciserver-v1.10.0</p>
+<div class="section" id="module-SciServer.CasJobs">
+<span id="sciserver-casjobs-module"></span><h2>SciServer.CasJobs module<a class="headerlink" href="#module-SciServer.CasJobs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="SciServer.CasJobs.cancelJob">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">cancelJob</code><span class="sig-paren">(</span><em>jobId</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.cancelJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancels a job already submitted.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> &#8211; id of job (integer)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns True if the job was canceled successfully.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">response = CasJobs.cancelJob(CasJobs.submitJob(&#8220;select 1&#8221;))</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.submitJob, CasJobs.waitForJob.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.executeQuery">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">executeQuery</code><span class="sig-paren">(</span><em>sql</em>, <em>context='MyDB'</em>, <em>format='pandas'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.executeQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a synchronous SQL query in a CasJobs database context.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sql</strong> &#8211; sql query (string)</li>
+<li><strong>context</strong> &#8211; database context (string)</li>
+<li><strong>format</strong> &#8211; <p>parameter (string) that specifies the return type:</p>
+<p>&#8216;pandas&#8217;: pandas.DataFrame.</p>
+<p>&#8216;json&#8217;: a JSON string containing the query results.</p>
+<p>&#8216;dict&#8217;: a dictionary created from the JSON string containing the query results.</p>
+<p>&#8216;csv&#8217;: a csv string.</p>
+<p>&#8216;readable&#8217;: an object of type io.StringIO, which has the .read() method and wraps a csv string that can be passed into pandas.read_csv for example.</p>
+<p>&#8216;StringIO&#8217;: an object of type io.StringIO, which has the .read() method and wraps a csv string that can be passed into pandas.read_csv for example.</p>
+<p>&#8216;fits&#8217;: an object of type io.BytesIO, which has the .read() method and wraps the result in fits format.</p>
+<p>&#8216;BytesIO&#8217;: an object of type io.BytesIO, which has the .read() method and wraps the result in fits format.</p>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the query result table, in a format defined by the &#8216;format&#8217; input parameter.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error. Throws an exception if parameter &#8216;format&#8217; is not correctly specified.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">table = CasJobs.executeQuery(sql=&#8221;select 1 as foo, 2 as bar&#8221;,format=&#8221;pandas&#8221;, context=&#8221;MyDB&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.submitJob, CasJobs.getTables, SkyServer.sqlSearch</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.getJobStatus">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">getJobStatus</code><span class="sig-paren">(</span><em>jobId</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.getJobStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shows the status of a job submitted to CasJobs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> &#8211; id of job (integer)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns a dictionary object containing the job status and related metadata. The &#8220;Status&#8221; field can be equal to 0 (Ready), 1 (Started), 2 (Canceling), 3(Canceled), 4 (Failed) or 5 (Finished). If jobId is the empty string, then returns a list with the statuses of all previous jobs.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">status = CasJobs.getJobStatus(CasJobs.submitJob(&#8220;select 1&#8221;))</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.submitJob, CasJobs.waitForJob, CasJobs.cancelJob.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.getNumpyArrayFromQuery">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">getNumpyArrayFromQuery</code><span class="sig-paren">(</span><em>queryString</em>, <em>context='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.getNumpyArrayFromQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a casjobs query and returns the results table as a Numpy array (<a class="reference external" href="http://docs.scipy.org/doc/numpy/">http://docs.scipy.org/doc/numpy/</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>queryString</strong> &#8211; sql query (string)</li>
+<li><strong>context</strong> &#8211; database context (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns a Numpy array storing the results table.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">array = CasJobs.getNumpyArrayFromQuery(&#8220;select 1 as foo&#8221;, context=&#8221;MyDB&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.submitJob, CasJobs.getJobStatus, CasJobs.executeQuery, CasJobs.writeFitsFileFromQuery, CasJobs.getPandasDataFrameFromQuery</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.getPandasDataFrameFromQuery">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">getPandasDataFrameFromQuery</code><span class="sig-paren">(</span><em>queryString</em>, <em>context='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.getPandasDataFrameFromQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a casjobs quick query and returns the result as a pandas dataframe object with an index (<a class="reference external" href="http://pandas.pydata.org/pandas-docs/stable/">http://pandas.pydata.org/pandas-docs/stable/</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>queryString</strong> &#8211; sql query (string)</li>
+<li><strong>context</strong> &#8211; database context (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns a Pandas dataframe containing the results table.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">df = CasJobs.getPandasDataFrameFromQuery(&#8220;select 1 as foo&#8221;, context=&#8221;MyDB&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.submitJob, CasJobs.getJobStatus, CasJobs.executeQuery, CasJobs.writeFitsFileFromQuery, CasJobs.getNumpyArrayFromQuery</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.getSchemaName">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">getSchemaName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.getSchemaName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the WebServiceID that identifies the schema for a user in MyScratch database with CasJobs.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">WebServiceID of the user (string).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">wsid = CasJobs.getSchemaName()</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.getTables.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.getTables">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">getTables</code><span class="sig-paren">(</span><em>context='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.getTables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the names, size and creation date of all tables in a database context that the user has access to.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>context</strong> &#8211; database context (string)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The result is a json object with format [{&#8220;Date&#8221;:seconds,&#8221;Name&#8221;:&#8221;TableName&#8221;,&#8221;Rows&#8221;:int,&#8221;Size&#8221;,int},..]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">tables = CasJobs.getTables(&#8220;MyDB&#8221;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.getSchemaName</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.submitJob">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">submitJob</code><span class="sig-paren">(</span><em>sql</em>, <em>context='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.submitJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submits an asynchronous SQL query to the CasJobs queue.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sql</strong> &#8211; sql query (string)</li>
+<li><strong>context</strong> &#8211; database context (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns the CasJobs jobID (integer).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">jobid = CasJobs.submitJob(&#8220;select 1 as foo&#8221;,&#8221;MyDB&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.executeQuery, CasJobs.getJobStatus, CasJobs.waitForJob, CasJobs.cancelJob.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.uploadCSVDataToTable">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">uploadCSVDataToTable</code><span class="sig-paren">(</span><em>csvData</em>, <em>tableName</em>, <em>context='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.uploadCSVDataToTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads CSV data into a CasJobs table.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>csvData</strong> &#8211; a CSV table in string format.</li>
+<li><strong>tableName</strong> &#8211; name of CasJobs table to be created.</li>
+<li><strong>context</strong> &#8211; database context (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns True if the csv data was uploaded successfully.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">csv = CasJobs.getPandasDataFrameFromQuery(&#8220;select 1 as foo&#8221;, context=&#8221;MyDB&#8221;).to_csv().encode(&#8220;utf8&#8221;); response = CasJobs.uploadCSVDataToTable(csv, &#8220;NewTableFromDataFrame&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.uploadPandasDataFrameToTable</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.uploadPandasDataFrameToTable">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">uploadPandasDataFrameToTable</code><span class="sig-paren">(</span><em>dataFrame</em>, <em>tableName</em>, <em>context='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.uploadPandasDataFrameToTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads a pandas dataframe object into a CasJobs table. If the dataframe contains a named index, then the index will be uploaded as a column as well.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataFrame</strong> &#8211; Pandas data frame containg the data (pandas.core.frame.DataFrame)</li>
+<li><strong>tableName</strong> &#8211; name of CasJobs table to be created.</li>
+<li><strong>context</strong> &#8211; database context (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns True if the dataframe was uploaded successfully.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">response = CasJobs.uploadPandasDataFrameToTable(CasJobs.getPandasDataFrameFromQuery(&#8220;select 1 as foo&#8221;, context=&#8221;MyDB&#8221;), &#8220;NewTableFromDataFrame&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.uploadCSVDataToTable</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.waitForJob">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">waitForJob</code><span class="sig-paren">(</span><em>jobId</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.waitForJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the job status from casjobs every 2 seconds and waits for the casjobs job to return a status of 3, 4, or 5 (Cancelled, Failed or Finished, respectively).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>jobId</strong> &#8211; id of job (integer)</li>
+<li><strong>verbose</strong> &#8211; if True, will print &#8220;wait&#8221; messages on the screen while the job is not done. If False, will suppress printing messages on the screen.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">After the job is finished, returns a dictionary object containing the job status and related metadata. The &#8220;Status&#8221; field can be equal to 0 (Ready), 1 (Started), 2 (Canceling), 3(Canceled), 4 (Failed) or 5 (Finished).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">CasJobs.waitForJob(CasJobs.submitJob(&#8220;select 1&#8221;))</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.submitJob, CasJobs.getJobStatus, CasJobs.cancelJob.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.CasJobs.writeFitsFileFromQuery">
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">writeFitsFileFromQuery</code><span class="sig-paren">(</span><em>fileName</em>, <em>queryString</em>, <em>context='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.writeFitsFileFromQuery" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a quick CasJobs query and writes the result to a local Fits file (<a class="reference external" href="http://www.stsci.edu/institute/software_hardware/pyfits">http://www.stsci.edu/institute/software_hardware/pyfits</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileName</strong> &#8211; path to the local Fits file to be created (string)</li>
+<li><strong>queryString</strong> &#8211; sql query (string)</li>
+<li><strong>context</strong> &#8211; database context (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns True if the fits file was created successfully.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">CasJobs.writeFitsFileFromQuery(&#8220;/home/user/myFile.fits&#8221;,&#8221;select 1 as foo&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.submitJob, CasJobs.getJobStatus, CasJobs.executeQuery, CasJobs.getPandasDataFrameFromQuery, CasJobs.getNumpyArrayFromQuery</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-SciServer.Config">
+<span id="sciserver-config-module"></span><h2>SciServer.Config module<a class="headerlink" href="#module-SciServer.Config" title="Permalink to this headline">¶</a></h2>
+<p>The SciServer.Config module contains important parameters for the correct functioning of the SciServer package.</p>
+<p>Although these parameters must be set/defined by the admin or user before the installation of the package, they can also be accessed and changed on-the-fly while on the python session.</p>
+<ul class="simple">
+<li><strong>Config.CasJobsRESTUri</strong>: defines the base URL of the CasJobs web API (string). E.g., &#8220;<a class="reference external" href="https://skyserver.sdss.org/CasJobs/RestApi">https://skyserver.sdss.org/CasJobs/RestApi</a>&#8220;</li>
+<li><strong>Config.AuthenticationURL</strong>: defines the base URL of the Authentication web service API (string). E.g., &#8220;<a class="reference external" href="https://portal.sciserver.org/login-portal/keystone/v3/tokens">https://portal.sciserver.org/login-portal/keystone/v3/tokens</a>&#8220;</li>
+<li><strong>Config.SciDriveHost</strong>: defines the base URL of the SciDrive web service API (string). E.g., &#8220;<a class="reference external" href="https://www.scidrive.org">https://www.scidrive.org</a>&#8220;</li>
+<li><strong>Config.SkyQueryUrl</strong>: defines the base URL of the SkyQuery web service API (string). E.g., &#8220;<a class="reference external" href="http://voservices.net/skyquery/Api/V1">http://voservices.net/skyquery/Api/V1</a>&#8220;</li>
+<li><strong>Config.SkyServerWSurl</strong>: defines the base URL of the SkyServer web service API (string). E.g., &#8220;<a class="reference external" href="https://skyserver.sdss.org">https://skyserver.sdss.org</a>&#8220;</li>
+<li><strong>Config.DataRelease</strong>: defines the SDSS data release (string), to be used to build the full SkyServer API url along with Config.SkyServerWSurl. E.g., &#8220;DR13&#8221;</li>
+<li><strong>Config.KeystoneTokenPath</strong>: defines the local path (string) to the file containing the user&#8217;s authentication token in the SciServer-Compute environment. E.g., &#8220;/home/idies/keystone.token&#8221;. Unlikely to change since it is hardcoded in SciServer-Compute.</li>
+<li><strong>Config.version</strong>: defines the SciServer release version tag (string), to which this package belongs. E.g., &#8220;sciserver-v1.9.3&#8221;</li>
+</ul>
+<dl class="function">
+<dt id="SciServer.Config.isSciServerComputeEnvironment">
+<code class="descclassname">SciServer.Config.</code><code class="descname">isSciServerComputeEnvironment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Config.isSciServerComputeEnvironment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the library is being run within the SciServer-Compute environment.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Returns True if the library is being run within the SciServer-Compute environment, and False if not.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="sciserver-authentication-module">
+<h2>SciServer.Authentication module<a class="headerlink" href="#sciserver-authentication-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-SciServer.Authentication"></span><dl class="class">
+<dt id="SciServer.Authentication.KeystoneUser">
+<em class="property">class </em><code class="descclassname">SciServer.Authentication.</code><code class="descname">KeystoneUser</code><a class="headerlink" href="#SciServer.Authentication.KeystoneUser" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class KeystoneUser stores the &#8216;id&#8217; and &#8216;name&#8217; of the user.</p>
+<dl class="attribute">
+<dt id="SciServer.Authentication.KeystoneUser.id">
+<code class="descname">id</code><em class="property"> = None</em><a class="headerlink" href="#SciServer.Authentication.KeystoneUser.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="SciServer.Authentication.KeystoneUser.userName">
+<code class="descname">userName</code><em class="property"> = None</em><a class="headerlink" href="#SciServer.Authentication.KeystoneUser.userName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="SciServer.Authentication.Token">
+<em class="property">class </em><code class="descclassname">SciServer.Authentication.</code><code class="descname">Token</code><a class="headerlink" href="#SciServer.Authentication.Token" title="Permalink to this definition">¶</a></dt>
+<dd><p>The class token stores the authentication token of the user in a particular session.</p>
+<dl class="attribute">
+<dt id="SciServer.Authentication.Token.value">
+<code class="descname">value</code><em class="property"> = None</em><a class="headerlink" href="#SciServer.Authentication.Token.value" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Authentication.getKeystoneToken">
+<code class="descclassname">SciServer.Authentication.</code><code class="descname">getKeystoneToken</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Authentication.getKeystoneToken" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Deprecated. Use Authentication.getToken instead.</p>
+</div>
+<p>Returns the users keystone token passed into the python instance with the &#8211;ident argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">authentication token (string)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">token = Authentication.getKeystoneToken()</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getKeystoneUserWithToken, Authentication.login, Authentication.setToken, Authentication.token, Authentication.getToken.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Authentication.getKeystoneUserWithToken">
+<code class="descclassname">SciServer.Authentication.</code><code class="descname">getKeystoneUserWithToken</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Authentication.getKeystoneUserWithToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name and Keystone id of the user corresponding to the specified token.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> &#8211; Sciserver&#8217;s authentication token (string) for the user.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns a KeystoneUser object, which stores the name and id of the user.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the HTTP request to the Authentication URL returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">token = Authentication.getKeystoneUserWithToken(Authentication.getToken())</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getToken, Authentication.login, Authentication.setToken.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Authentication.getToken">
+<code class="descclassname">SciServer.Authentication.</code><code class="descname">getToken</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Authentication.getToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the SciServer authentication token of the user. First, will try to return Authentication.token.value.
+If Authentication.token.value is not set, Authentication.getToken will try to return the token value in the python instance argument variable &#8220;&#8211;ident&#8221;.
+If this variable does not exist, will try to return the token stored in Config.KeystoneTokenFilePath. Will return a None value if all previous steps fail.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">authentication token (string)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">token = Authentication.getToken()</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getKeystoneUserWithToken, Authentication.login, Authentication.setToken, Authentication.token.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Authentication.identArgIdentifier">
+<code class="descclassname">SciServer.Authentication.</code><code class="descname">identArgIdentifier</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Authentication.identArgIdentifier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the name of the python instance argument variable where the user token is stored.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">name (string) of the python instance argument variable where the user token is stored.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">name = Authentication.identArgIdentifier()</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getKeystoneUserWithToken, Authentication.login, Authentication.getToken, Authentication.token.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Authentication.login">
+<code class="descclassname">SciServer.Authentication.</code><code class="descname">login</code><span class="sig-paren">(</span><em>UserName</em>, <em>Password</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Authentication.login" title="Permalink to this definition">¶</a></dt>
+<dd><p>Logs the user into SciServer and returns the authentication token.
+This function is useful when SciScript-Python library methods are executed outside the SciServer-Compute environment.
+In this case, the session authentication token does not exist (and therefore can&#8217;t be automatically recognized),
+so the user has to use Authentication.login in order to log into SciServer manually and get the authentication token.
+Authentication.login also sets the token value in the python instance argument variable &#8220;&#8211;ident&#8221;, and as the local object Authentication.token (of class Authentication.Token).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>UserName</strong> &#8211; name of the user (string)</li>
+<li><strong>Password</strong> &#8211; password of the user (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">authentication token (string)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the Authentication URL returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">token = Authentication.login(&#8216;loginName&#8217;,&#8217;loginPassword&#8217;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getKeystoneUserWithToken, Authentication.getToken, Authentication.setToken, Authentication.token.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Authentication.setKeystoneToken">
+<code class="descclassname">SciServer.Authentication.</code><code class="descname">setKeystoneToken</code><span class="sig-paren">(</span><em>_token</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Authentication.setKeystoneToken" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Deprecated. Use Authentication.setToken instead.</p>
+</div>
+<p>Sets the token as the &#8211;ident argument</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_token</strong> &#8211; authentication token (string)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Authentication.setKeystoneToken(&#8220;myToken&#8221;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getKeystoneUserWithToken, Authentication.login, Authentication.setToken, Authentication.token, Authentication.getToken.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Authentication.setToken">
+<code class="descclassname">SciServer.Authentication.</code><code class="descname">setToken</code><span class="sig-paren">(</span><em>_token</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Authentication.setToken" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the SciServer authentication token of the user in the variable Authentication.token.value, as well as in the python instance argument variable &#8220;&#8211;ident&#8221;.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_token</strong> &#8211; Sciserver&#8217;s authentication token for the user (string)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Authentication.setToken(&#8216;myToken&#8217;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getKeystoneUserWithToken, Authentication.login, Authentication.getToken, Authentication.token.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="sciserver-loginportal-module">
+<h2>SciServer.LoginPortal module<a class="headerlink" href="#sciserver-loginportal-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-SciServer.LoginPortal"></span><dl class="class">
+<dt id="SciServer.LoginPortal.KeystoneUser">
+<em class="property">class </em><code class="descclassname">SciServer.LoginPortal.</code><code class="descname">KeystoneUser</code><a class="headerlink" href="#SciServer.LoginPortal.KeystoneUser" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Deprecated. Use SciServer.Authentication.KeystoneUser instead.</p>
+</div>
+<p>The class KeystoneUser stores the &#8216;id&#8217; and &#8216;name&#8217; of the user.</p>
+<dl class="attribute">
+<dt id="SciServer.LoginPortal.KeystoneUser.id">
+<code class="descname">id</code><em class="property"> = 'KeystoneID'</em><a class="headerlink" href="#SciServer.LoginPortal.KeystoneUser.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="SciServer.LoginPortal.KeystoneUser.userName">
+<code class="descname">userName</code><em class="property"> = 'User Name'</em><a class="headerlink" href="#SciServer.LoginPortal.KeystoneUser.userName" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.getKeystoneToken">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">getKeystoneToken</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.getKeystoneToken" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Deprecated. Use Authentication.getToken instead.</p>
+</div>
+<p>Returns the users keystone token passed into the python instance with the &#8211;ident argument.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">authentication token (string)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">token = Authentication.getKeystoneToken()</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getKeystoneUserWithToken, Authentication.login, Authentication.setToken, Authentication.token, Authentication.getToken.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.getKeystoneUserWithToken">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">getKeystoneUserWithToken</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.getKeystoneUserWithToken" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Deprecated. Use SciServer.Authentication.getKeystoneUserWithToken instead.</p>
+</div>
+<p>Returns the name and Keystone id of the user corresponding to the specified token.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> &#8211; Sciserver&#8217;s authentication token (string) for the user.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns a KeystoneUser object, which stores the name and id of the user.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the HTTP request to the Authentication URL returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">token = Authentication.getKeystoneUserWithToken(Authentication.getToken())</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getToken, Authentication.login, Authentication.setToken.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.getToken">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">getToken</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.getToken" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Deprecated. Use SciServer.Authentication.getToken instead.</p>
+</div>
+<p>Returns the SciServer authentication token of the user. First, will try to return Authentication.token.value.
+If Authentication.token.value is not set, Authentication.getToken will try to return the token value in the python instance argument variable &#8220;&#8211;ident&#8221;.
+If this variable does not exist, will try to return the token stored in Config.KeystoneTokenFilePath. Will return a None value if all previous steps fail.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">authentication token (string)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">token = Authentication.getToken()</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getKeystoneUserWithToken, Authentication.login, Authentication.setToken, Authentication.token.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.identArgIdentifier">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">identArgIdentifier</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.identArgIdentifier" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Deprecated. Use SciServer.Authentication.identArgIdentifier instead.</p>
+</div>
+<p>Returns the name of the python instance argument variable where the user token is stored.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">name (string) of the python instance argument variable where the user token is stored.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">name = Authentication.identArgIdentifier()</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getKeystoneUserWithToken, Authentication.login, Authentication.getToken, Authentication.token.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.login">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">login</code><span class="sig-paren">(</span><em>UserName</em>, <em>Password</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.login" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Deprecated. Use SciServer.Authentication.login instead.</p>
+</div>
+<p>Logs the user into SciServer and returns the authentication token.
+This function is useful when SciScript-Python library methods are executed outside the SciServer-Compute environment.
+In this case, the session authentication token does not exist (and therefore can&#8217;t be automatically recognized),
+so the user has to use Authentication.login in order to log into SciServer manually and get the authentication token.
+Authentication.login also sets the token value in the python instance argument variable &#8220;&#8211;ident&#8221;, and as the local object Authentication.token (of class Authentication.Token).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>UserName</strong> &#8211; name of the user (string)</li>
+<li><strong>Password</strong> &#8211; password of the user (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">authentication token (string)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the Authentication URL returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">token = Authentication.login(&#8216;loginName&#8217;,&#8217;loginPassword&#8217;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getKeystoneUserWithToken, Authentication.getToken, Authentication.setToken, Authentication.token.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.LoginPortal.setKeystoneToken">
+<code class="descclassname">SciServer.LoginPortal.</code><code class="descname">setKeystoneToken</code><span class="sig-paren">(</span><em>token</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.LoginPortal.setKeystoneToken" title="Permalink to this definition">¶</a></dt>
+<dd><div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Deprecated. Use Authentication.setToken instead.</p>
+</div>
+<p>Sets the token as the &#8211;ident argument</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_token</strong> &#8211; authentication token (string)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Authentication.setKeystoneToken(&#8220;myToken&#8221;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Authentication.getKeystoneUserWithToken, Authentication.login, Authentication.setToken, Authentication.token, Authentication.getToken.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="sciserver-scidrive-module">
+<h2>SciServer.SciDrive module<a class="headerlink" href="#sciserver-scidrive-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-SciServer.SciDrive"></span><dl class="function">
+<dt id="SciServer.SciDrive.createContainer">
+<code class="descclassname">SciServer.SciDrive.</code><code class="descname">createContainer</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SciDrive.createContainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a container (directory) in SciDrive</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; path of the directory in SciDrive.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns True if the container (directory) was created successfully.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">response = SciDrive.createContainer(&#8220;MyDirectory&#8221;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SciDrive.upload.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SciDrive.delete">
+<code class="descclassname">SciServer.SciDrive.</code><code class="descname">delete</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SciDrive.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a file or container (directory) in SciDrive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; path of the file or container (directory) in SciDrive.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns True if the file or container (directory) was deleted successfully.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.
+:example: response = SciDrive.delete(&#8220;path/to/SciDrive/file.csv&#8221;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SciDrive.upload.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SciDrive.directoryList">
+<code class="descclassname">SciServer.SciDrive.</code><code class="descname">directoryList</code><span class="sig-paren">(</span><em>path=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SciDrive.directoryList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the contents and metadata of a SciDrive directory (or file).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; path of the directory (or file ) in SciDrive.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a dictionary containing info and metadata of the directory (or file).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">dirList = SciDrive.directoryList(&#8220;path/to/SciDrive/directory&#8221;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SciDrive.upload, SciDrive.download</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SciDrive.download">
+<code class="descclassname">SciServer.SciDrive.</code><code class="descname">download</code><span class="sig-paren">(</span><em>path</em>, <em>format='text'</em>, <em>localFilePath=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SciDrive.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads a file (directory) from SciDrive into the local file system, or returns the file conetent as an object in several formats.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> &#8211; path of the file (or directory) in SciDrive.</li>
+<li><strong>format</strong> &#8211; type of the returned object. Can be &#8220;StringIO&#8221; (io.StringIO object containing readable text), &#8220;BytesIO&#8221; (io.BytesIO object containing readable binary data), &#8220;response&#8221; ( the HTTP response as an object of class requests.Response) or &#8220;text&#8221; (a text string). If the parameter &#8216;localFilePath&#8217; is defined, then the &#8216;format&#8217; parameter is not used and the file is downloaded to the local file system instead.</li>
+<li><strong>localFilePath</strong> &#8211; local path of the file to be downloaded. If &#8216;localFilePath&#8217; is defined, then the &#8216;format&#8217; parameter is not used.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">If the &#8216;localFilePath&#8217; parameter is defined, then it will return True when the file is downloaded successfully in the local file system. If the &#8216;localFilePath&#8217; is not defined, then the type of the returned object depends on the value of the &#8216;format&#8217; parameter (either io.StringIO, io.BytesIO, requests.Response or string).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">csvString = SciDrive.download(&#8220;path/to/SciDrive/file.csv&#8221;, format=&#8221;text&#8221;);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SciDrive.upload</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SciDrive.publicUrl">
+<code class="descclassname">SciServer.SciDrive.</code><code class="descname">publicUrl</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SciDrive.publicUrl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the public URL of a file (or directory) in SciDrive.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; path of the file (or directory) in SciDrive.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">URL of a file in SciDrive (string).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">url = SciDrive.publicUrl(&#8220;path/to/SciDrive/file.csv&#8221;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SciDrive.upload</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SciDrive.upload">
+<code class="descclassname">SciServer.SciDrive.</code><code class="descname">upload</code><span class="sig-paren">(</span><em>path</em>, <em>data=''</em>, <em>localFilePath=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SciDrive.upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads data or a local file into a SciDrive directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> &#8211; desired file path in SciDrive (string).</li>
+<li><strong>data</strong> &#8211; data to be uploaded into SciDrive. If the &#8216;localFilePath&#8217; parameter is set, then the local file will be uploaded instead.</li>
+<li><strong>localFilePath</strong> &#8211; path to the local file to be uploaded (string).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns an object with the attributes of the uploaded file.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">response = SciDrive.upload(&#8220;/SciDrive/path/to/file.csv&#8221;, localFilePath=&#8221;/local/path/to/file.csv&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SciDrive.createContainer</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="sciserver-skyserver-module">
+<h2>SciServer.SkyServer module<a class="headerlink" href="#sciserver-skyserver-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-SciServer.SkyServer"></span><dl class="function">
+<dt id="SciServer.SkyServer.getJpegImgCutout">
+<code class="descclassname">SciServer.SkyServer.</code><code class="descname">getJpegImgCutout</code><span class="sig-paren">(</span><em>ra</em>, <em>dec</em>, <em>scale=0.7</em>, <em>width=512</em>, <em>height=512</em>, <em>opt=''</em>, <em>query=''</em>, <em>dataRelease=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyServer.getJpegImgCutout" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a rectangular image cutout from a region of the sky in SDSS, centered at (ra,dec). Return type is numpy.ndarray.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ra</strong> &#8211; Right Ascension of the image&#8217;s center.</li>
+<li><strong>dec</strong> &#8211; Declination of the image&#8217;s center.</li>
+<li><strong>scale</strong> &#8211; scale of the image, measured in [arcsec/pix]</li>
+<li><strong>width</strong> &#8211; Right Ascension of the image&#8217;s center.</li>
+<li><strong>ra</strong> &#8211; Right Ascension of the image&#8217;s center.</li>
+<li><strong>height</strong> &#8211; Height of the image, measured in [pix].</li>
+<li><strong>opt</strong> &#8211; <p>Optional drawing options, expressed as concatenation of letters (string). The letters options are</p>
+<p>&#8220;G&#8221;: Grid. Draw a N-S E-W grid through the center</p>
+<p>&#8220;L&#8221;: Label. Draw the name, scale, ra, and dec on image.</p>
+<p>&#8220;P PhotoObj. Draw a small cicle around each primary photoObj.</p>
+<p>&#8220;S: SpecObj. Draw a small square around each specObj.</p>
+<p>&#8220;O&#8221;: Outline. Draw the outline of each photoObj.</p>
+<p>&#8220;B&#8221;: Bounding Box. Draw the bounding box of each photoObj.</p>
+<p>&#8220;F&#8221;: Fields. Draw the outline of each field.</p>
+<p>&#8220;M&#8221;: Masks. Draw the outline of each mask considered to be important.</p>
+<p>&#8220;Q&#8221;: Plates. Draw the outline of each plate.</p>
+<p>&#8220;I&#8221;: Invert. Invert the image (B on W).</p>
+<p>(see <a class="reference external" href="http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx">http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx</a>)</p>
+</li>
+<li><strong>query</strong> &#8211; <p>Optional string. Marks with inverted triangles on the image the position of user defined objects. The (RA,Dec) coordinates of these object can be given by three means:</p>
+<ol class="arabic">
+<li>query is a SQL command of format &#8220;SELECT Id, RA, Dec, FROM Table&#8221;.</li>
+<li>query is list of objects. A header with RA and DEC columns must be included. Columns must be separated by tabs, spaces, commas or semicolons. The list may contain as many columns as wished.</li>
+<li><dl class="first docutils">
+<dt>query is a string following the pattern: ObjType Band (low_mag, high_mag).</dt>
+<dd>ObjType: S | G | P marks Stars, Galaxies or PhotoPrimary objects.<p class="last">Band: U | G | R | I | Z | A restricts marks to objects with Band BETWEEN low_mag AND high_mag Band &#8216;A&#8217; will mark all objects within the specified magnitude range in any band (ORs composition).</p>
+</dd>
+</dl>
+</li>
+</ol>
+<p>Examples:</p>
+<blockquote>
+<div>S<p>S R (0.0, 23.5)</p>
+<p>G A (20, 30)</p>
+<p>(see <a class="reference external" href="http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx">http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx</a>)</p>
+</div></blockquote>
+</li>
+<li><strong>dataRelease</strong> &#8211; SDSS data release string. Example: dataRelease=&#8217;DR13&#8217;. Default value already set in SciServer.Config.DataRelease</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns the image as a numpy.ndarray object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the SkyServer API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">img = SkyServer.getJpegImgCutout(ra=197.614455642896, dec=18.438168853724, width=512, height=512, scale=0.4, opt=&#8221;OG&#8221;, query=&#8221;SELECT TOP 100 p.objID, p.ra, p.dec, p.r FROM fGetObjFromRectEq(197.6,18.4,197.7,18.5) n, PhotoPrimary p WHERE n.objID=p.objID&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyServer.objectSearch">
+<code class="descclassname">SciServer.SkyServer.</code><code class="descname">objectSearch</code><span class="sig-paren">(</span><em>objId=None</em>, <em>specObjId=None</em>, <em>apogee_id=None</em>, <em>apstar_id=None</em>, <em>ra=None</em>, <em>dec=None</em>, <em>plate=None</em>, <em>mjd=None</em>, <em>fiber=None</em>, <em>run=None</em>, <em>rerun=None</em>, <em>camcol=None</em>, <em>field=None</em>, <em>obj=None</em>, <em>dataRelease=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyServer.objectSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the properties of the the object that is being searched for. Search parameters:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>objId</strong> &#8211; SDSS ObjId.</li>
+<li><strong>specObjId</strong> &#8211; SDSS SpecObjId.</li>
+<li><strong>apogee_id</strong> &#8211; ID idetifying Apogee target object.</li>
+<li><strong>apstar_id</strong> &#8211; unique ID for combined apogee star spectrum.</li>
+<li><strong>ra</strong> &#8211; right ascention.</li>
+<li><strong>dec</strong> &#8211; declination.</li>
+<li><strong>plate</strong> &#8211; SDSS plate number.</li>
+<li><strong>mjd</strong> &#8211; Modified Julian Date of observation.</li>
+<li><strong>fiber</strong> &#8211; SDSS fiber number.</li>
+<li><strong>run</strong> &#8211; SDSS run number.</li>
+<li><strong>rerun</strong> &#8211; SDSS rerun number.</li>
+<li><strong>camcol</strong> &#8211; SDSS camera column.</li>
+<li><strong>field</strong> &#8211; SDSS field number.</li>
+<li><strong>obj</strong> &#8211; The object id within a field.</li>
+<li><strong>dataRelease</strong> &#8211; SDSS data release string. Example: dataRelease=&#8217;DR13&#8217;. Default value already set in SciServer.Config.DataRelease</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns a list containing the properties and metadata of the astronomical object found.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the SkyServer API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">object = SkyServer.objectSearch(ra=258.25, dec=64.05)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyServer.sqlSearch, SkyServer.rectangularSearch, SkyServer.radialSearch.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyServer.radialSearch">
+<code class="descclassname">SciServer.SkyServer.</code><code class="descname">radialSearch</code><span class="sig-paren">(</span><em>ra</em>, <em>dec</em>, <em>radius=1</em>, <em>coordType='equatorial'</em>, <em>whichPhotometry='optical'</em>, <em>limit='10'</em>, <em>dataRelease=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyServer.radialSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs a query in the SDSS database that searches for all objects within a certain radius from a point in the sky, and retrieves the result table as a Panda&#8217;s dataframe.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>ra</strong> &#8211; Right Ascension of the image&#8217;s center.</li>
+<li><strong>dec</strong> &#8211; Declination of the image&#8217;s center.</li>
+<li><strong>radius</strong> &#8211; Search radius around the (ra,dec) coordinate in the sky. Measured in arcminutes.</li>
+<li><strong>coordType</strong> &#8211; Type of celestial coordinate system. Can be set to &#8220;equatorial&#8221; or &#8220;galactic&#8221;.</li>
+<li><strong>whichPhotometry</strong> &#8211; Type of retrieved data. Can be set to &#8220;optical&#8221; or &#8220;infrared&#8221;.</li>
+<li><strong>limit</strong> &#8211; Maximum number of rows in the result table (string). If set to &#8220;0&#8221;, then the function will return all rows.</li>
+<li><strong>dataRelease</strong> &#8211; SDSS data release string. Example: dataRelease=&#8217;DR13&#8217;. Default value already set in SciServer.Config.DataRelease</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns the results table as a Pandas data frame.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the SkyServer API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">df = SkyServer.radialSearch(ra=258.25, dec=64.05, radius=3)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyServer.sqlSearch, SkyServer.rectangularSearch.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyServer.rectangularSearch">
+<code class="descclassname">SciServer.SkyServer.</code><code class="descname">rectangularSearch</code><span class="sig-paren">(</span><em>min_ra</em>, <em>max_ra</em>, <em>min_dec</em>, <em>max_dec</em>, <em>coordType='equatorial'</em>, <em>whichPhotometry='optical'</em>, <em>limit='10'</em>, <em>dataRelease=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyServer.rectangularSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Runs a query in the SDSS database that searches for all objects within a certain rectangular box defined on the the sky, and retrieves the result table as a Panda&#8217;s dataframe.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>min_ra</strong> &#8211; Minimum value of Right Ascension coordinate that defines the box boundaries on the sky.</li>
+<li><strong>max_ra</strong> &#8211; Maximum value of Right Ascension coordinate that defines the box boundaries on the sky.</li>
+<li><strong>min_dec</strong> &#8211; Minimum value of Declination coordinate that defines the box boundaries on the sky.</li>
+<li><strong>max_dec</strong> &#8211; Maximum value of Declination coordinate that defines the box boundaries on the sky.</li>
+<li><strong>coordType</strong> &#8211; Type of celestial coordinate system. Can be set to &#8220;equatorial&#8221; or &#8220;galactic&#8221;.</li>
+<li><strong>whichPhotometry</strong> &#8211; Type of retrieved data. Can be set to &#8220;optical&#8221; or &#8220;infrared&#8221;.</li>
+<li><strong>limit</strong> &#8211; Maximum number of rows in the result table (string). If set to &#8220;0&#8221;, then the function will return all rows.</li>
+<li><strong>dataRelease</strong> &#8211; SDSS data release string. Example: dataRelease=&#8217;DR13&#8217;. Default value already set in SciServer.Config.DataRelease</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns the results table as a Pandas data frame.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the SkyServer API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">df = SkyServer.rectangularSearch(min_ra=258.2, max_ra=258.3, min_dec=64,max_dec=64.1)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyServer.sqlSearch, SkyServer.radialSearch.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyServer.sqlSearch">
+<code class="descclassname">SciServer.SkyServer.</code><code class="descname">sqlSearch</code><span class="sig-paren">(</span><em>sql</em>, <em>dataRelease=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyServer.sqlSearch" title="Permalink to this definition">¶</a></dt>
+<dd><p>Executes a SQL query to the SDSS database, and retrieves the result table as a dataframe. Maximum number of rows retrieved is set currently to 500,000.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sql</strong> &#8211; a string containing the sql query</li>
+<li><strong>dataRelease</strong> &#8211; SDSS data release (string). E.g, &#8216;DR13&#8217;. Default value already set in SciServer.Config.DataRelease</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Returns the results table as a Pandas data frame.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the SkyServer API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">df = SkyServer.sqlSearch(sql=&#8221;select 1&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">CasJobs.executeQuery, CasJobs.submitJob.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="sciserver-skyquery-module">
+<h2>SciServer.SkyQuery module<a class="headerlink" href="#sciserver-skyquery-module" title="Permalink to this headline">¶</a></h2>
+<span class="target" id="module-SciServer.SkyQuery"></span><dl class="function">
+<dt id="SciServer.SkyQuery.cancelJob">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">cancelJob</code><span class="sig-paren">(</span><em>jobId</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.cancelJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancels a single job (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> &#8211; the ID of the job, which is obtained at the moment of submitting the job.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns True if the job was cancelled successfully.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">isCanceled = SkyQuery.cancelJob(SkyQuery.submitJob(&#8220;select 1 as foo&#8221;))</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.submitJob, SkyQuery.getJobStatus</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.dropTable">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">dropTable</code><span class="sig-paren">(</span><em>tableName</em>, <em>datasetName='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.dropTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drops (deletes) a table from the user database (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tableName</strong> &#8211; name of table (string) within dataset.</li>
+<li><strong>datasetName</strong> &#8211; name of dataset or database context (string).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">returns True if the table was deleted successfully.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">result = SkyQuery.dropTable(&#8220;myTable&#8221;, datasetName=&#8221;MyDB&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.listQueues, SkyQuery.listAllDatasets, SkyQuery.getDatasetInfo, SkyQuery.listDatasetTables, SkyQuery.getTableInfo, SkyQuery.getTable, SkyQuery.submitJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.getDatasetInfo">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">getDatasetInfo</code><span class="sig-paren">(</span><em>datasetName='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.getDatasetInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets information related to a particular dataset (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>datasetName</strong> &#8211; name of dataset (string).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">returns a dictionary containing the dataset information.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">info = SkyQuery.getDatasetInfo(&#8220;MyDB&#8221;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.listQueues, SkyQuery.listAllDatasets, SkyQuery.listDatasetTables, SkyQuery.getTableInfo, SkyQuery.listTableColumns, SkyQuery.getTable, SkyQuery.dropTable</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.getJobStatus">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">getJobStatus</code><span class="sig-paren">(</span><em>jobId</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.getJobStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the status of a job, as well as other related metadata (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> &#8211; the ID of the job (string), which is obtained at the moment of submitting the job.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a dictionary with the job status and other related metadata.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">status = SkyQuery.getJobStatus(SkyQuery.submitJob(&#8220;select 1 as foo&#8221;))</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.submitJob, SkyQuery.cancelJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.getQueueInfo">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">getQueueInfo</code><span class="sig-paren">(</span><em>queue</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.getQueueInfo" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Returns information about a particular job queue (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">param queue:</th><td class="field-body">queue name (string)</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a dictionary containing information associated to the queue.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">queueInfo = SkyQuery.getQueueInfo(&#8216;quick&#8217;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.listQueues, SkyQuery.submitJob, SkyQuery.getJobStatus</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.getTable">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">getTable</code><span class="sig-paren">(</span><em>tableName</em>, <em>datasetName='MyDB'</em>, <em>top=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.getTable" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a dataset table as a pandas DataFrame (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tableName</strong> &#8211; name of table (string) within dataset.</li>
+<li><strong>datasetName</strong> &#8211; name of dataset or database context (string).</li>
+<li><strong>top</strong> &#8211; number of top rows retrieved (integer).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">returns the table as a Pandas dataframe.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">table = SkyQuery.getTable(&#8220;myTable&#8221;, datasetName=&#8221;MyDB&#8221;, top=10)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.listQueues, SkyQuery.listAllDatasets, SkyQuery.getDatasetInfo, SkyQuery.listDatasetTables, SkyQuery.getTableInfo, SkyQuery.dropTable, SkyQuery.submitJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.getTableInfo">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">getTableInfo</code><span class="sig-paren">(</span><em>tableName</em>, <em>datasetName='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.getTableInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns info about a particular table belonging to a dataset (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tableName</strong> &#8211; name of table (string) within dataset.</li>
+<li><strong>datasetName</strong> &#8211; name of dataset (string).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">returns a dictionary containing the table properties and associated info/metadata.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">info = SkyQuery.getTableInfo(&#8220;myTable&#8221;, datasetName=&#8221;MyDB&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.listQueues, SkyQuery.listAllDatasets, SkyQuery.getDatasetInfo, SkyQuery.listDatasetTables, SkyQuery.listTableColumns, SkyQuery.getTable, SkyQuery.dropTable</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.listAllDatasets">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">listAllDatasets</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.listAllDatasets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists all available datasets (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">returns dataset definitions as a list object.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">datasets = SkyQuery.listAllDatasets()</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.listQueues, SkyQuery.getDatasetInfo, SkyQuery.listDatasetTables, SkyQuery.getTableInfo, SkyQuery.listTableColumns, SkyQuery.getTable, SkyQuery.dropTable</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.listDatasetTables">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">listDatasetTables</code><span class="sig-paren">(</span><em>datasetName='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.listDatasetTables" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all tables within a dataset (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>datasetName</strong> &#8211; name of dataset (string).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">returns a list containing the tables and associated descriptions/metadata.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">tables = SkyQuery.listDatasetTables(&#8220;MyDB&#8221;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.listQueues, SkyQuery.listAllDatasets, SkyQuery.getDatasetInfo, SkyQuery.getTableInfo, SkyQuery.listTableColumns, SkyQuery.getTable, SkyQuery.dropTable</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.listJobs">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">listJobs</code><span class="sig-paren">(</span><em>queue='quick'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.listJobs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists the jobs in the queue in descending order by submission time. Only jobs of the authenticated user are listed (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>queue</strong> &#8211; queue name (string). Can be set to &#8216;quick&#8217; for a quick job, or &#8216;long&#8217; for a long job.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">returns job definitions as a list object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">jobsList = SkyQuery.listJobs(&#8216;quick&#8217;)</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.getJobStatus, SkyQuery.listQueues</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.listQueues">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">listQueues</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.listQueues" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all available job queues and related metadata (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of all available job queues and related metadata.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">queueList = SkyQuery.listQueues()</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.getQueueInfo, SkyQuery.submitJob, SkyQuery.getJobStatus</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.listTableColumns">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">listTableColumns</code><span class="sig-paren">(</span><em>tableName</em>, <em>datasetName='MyDB'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.listTableColumns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all columns in a table belonging to a particular dataset (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>tableName</strong> &#8211; name of table (string) within dataset.</li>
+<li><strong>datasetName</strong> &#8211; name of dataset (string).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">returns a list containing the columns and associated descriptions.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">columns = SkyQuery.listTableColumns(&#8220;myTable&#8221;, datasetName=&#8221;MyDB&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.listQueues, SkyQuery.listAllDatasets, SkyQuery.getDatasetInfo, SkyQuery.listDatasetTables, SkyQuery.getTableInfo, SkyQuery.getTable, SkyQuery.dropTable</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.submitJob">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">submitJob</code><span class="sig-paren">(</span><em>query</em>, <em>queue='quick'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.submitJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submits a new job (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>query</strong> &#8211; sql query (string)</li>
+<li><strong>queue</strong> &#8211; queue name (string). Can be set to &#8216;quick&#8217; for a quick job, or &#8216;long&#8217; for a long job.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">returns the jobId (string), unique identifier of the job.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">jobId = SkyQuery.submitJob(&#8216;select 1 as foo&#8217;, &#8220;quick&#8221;)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.getJobStatus, SkyQuery.listQueues</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.uploadTable">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">uploadTable</code><span class="sig-paren">(</span><em>uploadData</em>, <em>tableName</em>, <em>datasetName='MyDB'</em>, <em>format='csv'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.uploadTable" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><p>Uploads a data table into a database (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name" colspan="2">param uploadData:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">data table, for now accepted in CSV string format.</td>
+</tr>
+<tr class="field-even field"><th class="field-name" colspan="2">param tableName:</th></tr>
+<tr class="field-even field"><td>&nbsp;</td><td class="field-body">name of table (string) within dataset.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name" colspan="2">param datasetName:</th></tr>
+<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">name of dataset or database context (string).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">param format:</th><td class="field-body">format of the &#8216;data&#8217; parameter. Set to &#8216;csv&#8217; for now.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">returns True if the table was uploaded successfully.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">example:</th><td class="field-body">result = SkyQuery.uploadTable(&#8220;Column1,Column2</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>4.5,5.5
+&#8221;, tableName=&#8221;myTable&#8221;, datasetName=&#8221;MyDB&#8221;, format=&#8221;csv&#8221;)</p>
+<blockquote>
+<div><div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.listQueues, SkyQuery.listAllDatasets, SkyQuery.getDatasetInfo, SkyQuery.listDatasetTables, SkyQuery.getTableInfo, SkyQuery.getTable, SkyQuery.submitJob</p>
+</div>
+</div></blockquote>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.waitForJob">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">waitForJob</code><span class="sig-paren">(</span><em>jobId</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.waitForJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the job status from SkyQuery every 2 seconds and waits for the SkyQuery job to be completed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>jobId</strong> &#8211; id of job (integer)</li>
+<li><strong>verbose</strong> &#8211; if True, will print &#8220;wait&#8221; messages on the screen while the job is not done. If False, will suppress printing messages on the screen.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">After the job is finished, returns a dictionary object containing the job status and related metadata.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">SkyQuery.waitForJob(SkyQuery.submitJob(&#8220;select 1&#8221;))</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.submitJob, SkyQuery.getJobStatus.</p>
+</div>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">SciServer package</a><ul>
+<li><a class="reference internal" href="#module-SciServer.CasJobs">SciServer.CasJobs module</a></li>
+<li><a class="reference internal" href="#module-SciServer.Config">SciServer.Config module</a></li>
+<li><a class="reference internal" href="#sciserver-authentication-module">SciServer.Authentication module</a></li>
+<li><a class="reference internal" href="#sciserver-loginportal-module">SciServer.LoginPortal module</a></li>
+<li><a class="reference internal" href="#sciserver-scidrive-module">SciServer.SciDrive module</a></li>
+<li><a class="reference internal" href="#sciserver-skyserver-module">SciServer.SkyServer module</a></li>
+<li><a class="reference internal" href="#sciserver-skyquery-module">SciServer.SkyQuery module</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">Welcome to SciScript Python documentation!</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/SciServer.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="Welcome to SciScript Python documentation!"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">SciScript-Python 1.10.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &copy; Copyright 2017, SciServer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.5.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Stores the SciServer user authentication token.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for Authentication.token {SciServer}"><tr><td>Authentication.token {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Stores the SciServer user authentication token.
+</h2>
+
+<h3>Description</h3>
+
+<p>String variable that stores the authentication token for the user's session. It has an initially a <code>NULL</code> value, and gets set directly by running <code><a href="Authentication.setToken.html">Authentication.setToken</a></code>, and indirectly by running <code><a href="Authentication.login.html">Authentication.login</a></code> or <code><a href="Authentication.getToken.html">Authentication.getToken</a></code>.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>Authentication.token</pre>
+
+
+<h3>Value</h3>
+
+<p>Stores the authentication token (string). If never set, it stores a <code>NULL</code> value.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://portal.sciserver.org/login-portal/">http://portal.sciserver.org/login-portal/</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="Authentication.getKeystoneUserWithToken.html">Authentication.getKeystoneUserWithToken</a></code>, <code><a href="Authentication.getToken.html">Authentication.getToken</a></code>, <code><a href="Authentication.setToken.html">Authentication.setToken</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+## Not run: myToken = Authentication.token 
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

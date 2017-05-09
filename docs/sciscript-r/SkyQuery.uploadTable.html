@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Upload table</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for SkyQuery.uploadTable {SciServer}"><tr><td>SkyQuery.uploadTable {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Upload table
+</h2>
+
+<h3>Description</h3>
+
+<p>Uploads a data table into a database (more info in http://www.voservices.net/skyquery).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>SkyQuery.uploadTable(uploadData, tableName, datasetName="MyDB", format="csv")</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>uploadData</code></td>
+<td>
+<p>data table, for now accepted in CSV string format.</p>
+</td></tr>
+<tr valign="top"><td><code>tableName</code></td>
+<td>
+<p>name of table (string) within dataset.</p>
+</td></tr>
+<tr valign="top"><td><code>datasetName</code></td>
+<td>
+<p>name of dataset or database context (string).</p>
+</td></tr>
+<tr valign="top"><td><code>format</code></td>
+<td>
+<p>format of the 'data' parameter. Set to 'csv' for now.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p> Returns TRUE if the table was uploaded successfully. Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="SkyQuery.listQueues.html">SkyQuery.listQueues</a></code>, <code><a href="SkyQuery.listAllDatasets.html">SkyQuery.listAllDatasets</a></code>, <code><a href="SkyQuery.getDatasetInfo.html">SkyQuery.getDatasetInfo</a></code>, <code><a href="SkyQuery.listDatasetTables.html">SkyQuery.listDatasetTables</a></code>, <code><a href="SkyQuery.getTableInfo.html">SkyQuery.getTableInfo</a></code>, <code><a href="SkyQuery.listTableColumns.html">SkyQuery.listTableColumns</a></code>, <code><a href="SkyQuery.getTable.html">SkyQuery.getTable</a></code>, <code><a href="SkyQuery.dropTable.html">SkyQuery.dropTable</a></code>, <code><a href="SkyQuery.uploadTable.html">SkyQuery.uploadTable</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+result = SkyQuery.uploadTable("Column1,Column2\n4.5,5.5\n", tableName="myTable", datasetName="MyDB", format="csv")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

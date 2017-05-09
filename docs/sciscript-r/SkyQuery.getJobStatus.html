@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get job status.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for SkyQuery.getJobStatus {SciServer}"><tr><td>SkyQuery.getJobStatus {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Get job status.
+</h2>
+
+<h3>Description</h3>
+
+<p>Gets the status of a job, as well as other related metadata (more info in http://www.voservices.net/skyquery).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>SkyQuery.getJobStatus(jobId)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>jobId</code></td>
+<td>
+<p>the ID of the job (string), which is obtained at the moment of submitting the job.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Returns a list containing the job status and other related metadata. Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="SkyQuery.submitJob.html">SkyQuery.submitJob</a></code>, <code><a href="SkyQuery.cancelJob.html">SkyQuery.cancelJob</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+status = SkyQuery.getJobStatus(SkyQuery.submitJob("select 1 as foo"))
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

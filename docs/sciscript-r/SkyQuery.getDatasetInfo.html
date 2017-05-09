@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get dataset info.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for SkyQuery.getDatasetInfo {SciServer}"><tr><td>SkyQuery.getDatasetInfo {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Get dataset info.
+</h2>
+
+<h3>Description</h3>
+
+<p>Gets information related to a particular dataset (more info in http://www.voservices.net/skyquery).
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>SkyQuery.getDatasetInfo(datasetName="MyDB")</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>datasetName</code></td>
+<td>
+<p>name of dataset (string).</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p> Returns a list containing the dataset information. Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="SkyQuery.listQueues.html">SkyQuery.listQueues</a></code>, <code><a href="SkyQuery.listAllDatasets.html">SkyQuery.listAllDatasets</a></code>, <code><a href="SkyQuery.getDatasetInfo.html">SkyQuery.getDatasetInfo</a></code>, <code><a href="SkyQuery.listDatasetTables.html">SkyQuery.listDatasetTables</a></code>, <code><a href="SkyQuery.getTableInfo.html">SkyQuery.getTableInfo</a></code>, <code><a href="SkyQuery.listTableColumns.html">SkyQuery.listTableColumns</a></code>, <code><a href="SkyQuery.getTable.html">SkyQuery.getTable</a></code>, <code><a href="SkyQuery.dropTable.html">SkyQuery.dropTable</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+info = SkyQuery.getDatasetInfo("MyDB")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+</body></html>
