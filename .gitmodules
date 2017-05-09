@@ -7,3 +7,6 @@
 [submodule "tickets"]
 	path = tickets
 	url = git@github.com:sciserver/SciServer-Tickets-Website.git
+[submodule "messages"]
+	path = messages
+	url = git@github.com:bonbons0220/js-message-header.git
