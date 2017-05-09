@@ -67,7 +67,8 @@ class Wordpress_Creation_Kit{
 							'unserialize_fields' => false,
 							'unserialize' => true,
 							'sortable' => true,
-							'context' => 'post_meta'
+							'context' => 'post_meta',
+							'box_style' => 'default'
 						);
 	private $args;	
 	
@@ -175,9 +176,9 @@ class Wordpress_Creation_Kit{
 			}
 			else{				
 				if( !empty( $_GET['post'] ) )
-					$post_id = $_GET['post'];
+					$post_id = absint( $_GET['post'] );
 				else if( !empty( $_POST['post_ID'] ) )
-					$post_id = $_POST['post_ID'];
+					$post_id = absint( $_POST['post_ID'] );
 				else 
 					$post_id = '';
 					
@@ -228,6 +229,10 @@ class Wordpress_Creation_Kit{
 	/* Function used to add classes to the wck meta boxes */
 	function wck_add_metabox_classes( $classes ){
 		array_push($classes,'wck-post-box');
+		
+		if( $this->args['box_style'] == 'seamless' )
+			array_push($classes,'wck-no-box');
+		
 		return $classes;
 	}
 
@@ -287,7 +292,12 @@ class Wordpress_Creation_Kit{
             $single_prefix = '';
 
 		if( $details['type'] !== 'heading' && $details['type'] !== 'html' ) {
-			$element .= '<label for="'. $single_prefix . esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'" class="field-label">'. apply_filters( "wck_label_{$meta}_". Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details  ), ucfirst($details['title']) ) .':';
+			$details['title'] = apply_filters( "wck_label_{$meta}_". Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details  ), $details['title'] );
+			if (function_exists('icl_register_string') && function_exists('icl_translate') ) {
+				icl_register_string( 'plugin wck', 'wck_label_translation_'.Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ), $details['title'] );
+				$details['title'] = icl_translate( 'plugin wck', 'wck_label_translation_'.Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ), $details['title'] );
+			}
+			$element .= '<label for="'. $single_prefix . esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'" class="field-label">'.  ucfirst( $details['title'] ) .':';
 			if( !empty( $details['required'] ) && $details['required'] )
 				$element .= '<span class="required">*</span>';
 			$element .= '</label>';
@@ -866,7 +876,7 @@ class Wordpress_Creation_Kit{
 	function wck_add_meta(){
 		check_ajax_referer( "wck-add-meta" );
 		if( !empty( $_POST['meta'] ) )
-			$meta = $_POST['meta'];
+			$meta = sanitize_text_field( $_POST['meta'] );
 		else
 			$meta = '';
 		if( !empty( $_POST['id'] ) )
@@ -953,7 +963,7 @@ class Wordpress_Creation_Kit{
 	function wck_update_meta(){
 		check_ajax_referer( "wck-update-entry" );
 		if( !empty( $_POST['meta'] ) )
-			$meta = $_POST['meta'];
+			$meta = sanitize_text_field( $_POST['meta'] );
 		else 
 			$meta = '';
 		if( !empty( $_POST['id'] ) )
@@ -961,7 +971,7 @@ class Wordpress_Creation_Kit{
 		else 
 			$id = '';
 		if( isset( $_POST['element_id'] ) )
-			$element_id = $_POST['element_id'];	
+			$element_id = absint( $_POST['element_id'] );
 		else 
 			$element_id = 0;
 		if( !empty( $_POST['values'] ) )
@@ -1033,7 +1043,7 @@ class Wordpress_Creation_Kit{
 	/* ajax to refresh the meta content */
 	function wck_refresh_list(){
 		if( isset( $_POST['meta'] ) )
-			$meta = $_POST['meta'];
+			$meta = sanitize_text_field( $_POST['meta'] );
 		else 
 			$meta = '';
 		if( isset( $_POST['id'] ) )
@@ -1050,7 +1060,7 @@ class Wordpress_Creation_Kit{
 	/* ajax to refresh an entry content */
 	function wck_refresh_entry(){
 		if( isset( $_POST['meta'] ) )
-			$meta = $_POST['meta'];
+			$meta = sanitize_text_field( $_POST['meta'] );
 		else 
 			$meta = '';
 		if( isset( $_POST['id'] ) )
@@ -1058,7 +1068,7 @@ class Wordpress_Creation_Kit{
 		else
 			$id = '';
 		if( isset( $_POST['element_id'] ) )
-			$element_id = $_POST['element_id'];
+			$element_id = absint( $_POST['element_id'] );
 		else
 			$element_id = '';
 		
@@ -1077,7 +1087,7 @@ class Wordpress_Creation_Kit{
 	/* ajax to add the form for single */
 	function wck_add_form(){
 		if( !empty( $_POST['meta'] ) )
-			$meta = $_POST['meta'];
+			$meta = sanitize_text_field( $_POST['meta'] );
 		else
 			$meta = '';
 		if( !empty( $_POST['id'] ) )
@@ -1095,9 +1105,9 @@ class Wordpress_Creation_Kit{
 	/* ajax to show the update form */
 	function wck_show_update_form(){
 		check_ajax_referer( "wck-edit-entry" );		
-		$meta = $_POST['meta'];
+		$meta = sanitize_text_field( $_POST['meta'] );
 		$id = absint($_POST['id']);
-		$element_id = $_POST['element_id'];	
+		$element_id = absint( $_POST['element_id'] );
 		
 		echo self::mb_update_form($this->args['meta_array'], $meta, $id, $element_id);
 		
@@ -1111,7 +1121,7 @@ class Wordpress_Creation_Kit{
 	function wck_remove_meta(){
 		check_ajax_referer( "wck-delete-entry" );
 		if( !empty( $_POST['meta'] ) )
-			$meta = $_POST['meta'];
+			$meta = sanitize_text_field( $_POST['meta'] );
 		else 
 			$meta = '';
 		if( !empty( $_POST['id'] ) )
@@ -1220,7 +1230,7 @@ class Wordpress_Creation_Kit{
 	/* ajax to reorder records */
 	function wck_reorder_meta(){
 		if( !empty( $_POST['meta'] ) )
-			$meta = $_POST['meta'];
+			$meta = sanitize_text_field( $_POST['meta'] );
 		else 
 			$meta = '';
 		if( !empty( $_POST['id'] ) )
@@ -1228,7 +1238,7 @@ class Wordpress_Creation_Kit{
 		else 
 			$id = '';
 		if( !empty( $_POST['values'] ) )
-			$elements_id = $_POST['values'];
+			$elements_id = array_map( 'absint', $_POST['values'] );
 		else 
 			$elements_id = array();
 
@@ -1498,7 +1508,7 @@ class Wordpress_Creation_Kit{
 	 */
 	function wck_sync_translation_ajax(){		
 			if( !empty( $_POST['id'] ) ) 
-				$post_id = $_POST['id'];
+				$post_id = absint( $_POST['id'] );
 			else 
 				$post_id = '';
 			
@@ -1592,7 +1602,7 @@ class Wordpress_Creation_Kit{
 	}
 	
 	
-	function wck_get_meta_boxes( $screen = null ){
+	static function wck_get_meta_boxes( $screen = null ){
 		global $wp_meta_boxes, $wck_objects;	
 			
 		if ( empty( $screen ) )

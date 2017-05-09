@@ -6,9 +6,9 @@ add_action('admin_enqueue_scripts', 'wck_cfc_print_scripts' );
 function wck_cfc_print_scripts($hook){
 	if( isset( $_GET['post_type'] ) || isset( $_GET['post'] ) ){
 		if( isset( $_GET['post_type'] ) )
-			$post_type = $_GET['post_type'];
+			$post_type = sanitize_text_field( $_GET['post_type'] );
 		else if( isset( $_GET['post'] ) )
-			$post_type = get_post_type( $_GET['post'] );
+			$post_type = get_post_type( absint( $_GET['post'] ) );
 
 		if( 'wck-meta-box' == $post_type ){
 			wp_register_style('wck-cfc-css', plugins_url('/css/wck-cfc.css', __FILE__));
@@ -61,9 +61,9 @@ add_filter( 'admin_body_class', 'wck_cfc_admin_body_class' );
 function wck_cfc_admin_body_class( $classes ){
 	if( isset( $_GET['post_type'] ) || isset( $_GET['post'] ) ){
 		if( isset( $_GET['post_type'] ) )
-			$post_type = $_GET['post_type'];
+			$post_type = sanitize_text_field( $_GET['post_type'] );
 		else if( isset( $_GET['post'] ) )
-			$post_type = get_post_type( $_GET['post'] );
+			$post_type = get_post_type( absint( $_GET['post'] ) );
 
 		if( 'wck-meta-box' == $post_type ){
 			$classes .= ' wck_page_cfc-page ';
@@ -134,6 +134,9 @@ function wck_cfc_create_box(){
 	if( !empty( $templates ) )
 		$cfc_box_args_fields[] = array( 'type' => 'select', 'title' => __( 'Page Template', 'wck' ), 'slug' => 'page-template', 'options' => $templates, 'default-option' => true, 'description' => __( 'If post type is "page" you can further select a page templete. The meta box will only appear  on the page that has that selected page template.', 'wck' ) );
 
+	/* added box style in version 2.4.4 */
+	$cfc_box_args_fields[] = array( 'type' => 'select', 'title' => __( 'Box Style', 'wck' ), 'slug' => 'box-style', 'options' => array( '%Default (WP meta-box)%default', '%Seamless (no meta-box)%seamless' ), 'default' => 'default', 'description' => __( 'If the fields should be in a meta-box or not', 'wck' ) );
+
 	/* set up the box arguments */
 	$args = array(
 		'metabox_id' => 'wck-cfc-args',
@@ -181,7 +184,7 @@ function wck_cfc_create_box(){
         array( 'type' => 'text', 'title' => __( 'Default Longitude', 'wck' ), 'slug' => 'map-default-longitude', 'description' => __( 'The longitude at which the map should be displayed when no pins are attached.', 'wck' ), 'default' => 0 ),
         array( 'type' => 'text', 'title' => __( 'Default Zoom', 'wck' ), 'slug' => 'map-default-zoom', 'description' => __( 'Add a number from 0 to 19. The higher the number the higher the zoom.', 'wck' ), 'default' => 15 ),
         array( 'type' => 'text', 'title' => __( 'Map Height', 'wck' ), 'slug' => 'map-height', 'description' => __( 'The height of the map.', 'wck' ), 'default' => 350 ),
-		array( 'type' => 'select', 'title' => __( 'Date Format', 'wck' ), 'slug' => 'date-format', 'description' => __( 'The format of the datepicker date', 'wck' ), 'options' => array( '%Default - dd-mm-yy%dd-mm-yy', '%Datepicker default - mm/dd/yy%mm/dd/yy', '%ISO 8601 - yy-mm-dd%yy-mm-dd', '%Short - d M, y%d M, y', '%Medium - d MM, y%d MM, y', '%Full - DD, d MM, yy%DD, d MM, yy', '%With text - \'day\' d \'of\' MM \'in the year\' yy%\'day\' d \'of\' MM \'in the year\' yy' ), 'default' => 'dd-mm-yy' ),
+		array( 'type' => 'select', 'title' => __( 'Date Format', 'wck' ), 'slug' => 'date-format', 'description' => __( 'The format of the datepicker date', 'wck' ), 'options' => array( '%Default - dd-mm-yy%dd-mm-yy', '%Datepicker default - mm/dd/yy%mm/dd/yy', '%ISO 8601 (extended) - yy-mm-dd%yy-mm-dd', '%ISO 8601 (basic) - yymmdd%yymmdd', '%Short - d M, y%d M, y', '%Medium - d MM, y%d MM, y', '%Full - DD, d MM, yy%DD, d MM, yy', '%With text - \'day\' d \'of\' MM \'in the year\' yy%\'day\' d \'of\' MM \'in the year\' yy' ), 'default' => 'dd-mm-yy' ),
 	));
 
 
@@ -367,6 +370,9 @@ function wck_cfc_create_boxes_args(){
 
 					if( !empty( $wck_cfc_arg['page-template'] ) )
 						$box_args['page_template'] = $wck_cfc_arg['page-template'];
+
+					if( !empty( $wck_cfc_arg['box-style'] ) )
+						$box_args['box_style'] = $wck_cfc_arg['box-style'];
 
 					$box_args['unserialize_fields'] = apply_filters( 'wck_cfc_unserialize_fields_'.$wck_cfc_arg['meta-name'], false );
 
@@ -1039,10 +1045,7 @@ function wck_cfc_process_unserialized_batch() {
 	}
 
 	ignore_user_abort( true );
-
-	if (! ini_get( 'safe_mode' ) ) {
-		@set_time_limit( 0 );
-	}
+	@set_time_limit( 0 );
 
 	/* set number of posts that are processed in a batch !IMPORTANT IT IS ALSO SET IN THE wck_unserialized_page_callback() FUNCTION */
 	$per_batch = 30;
@@ -1181,7 +1184,7 @@ function wck_cpt_save_meta_boxes_ids( $post_id ){
 			}
 		}
 	}
-	
+
 	update_option( 'wck_meta_boxes_ids', $wck_meta_boxes_ids );
 }
 
@@ -1255,5 +1258,24 @@ function wck_serialized_update_from_unserialized( $replace, $object_id, $meta_ke
 	}
 
 	return $replace;
+}
+
+/* make wck meta names protected so they are not saved by custom fields */
+add_filter( 'is_protected_meta', 'wck_cfc_protect_meta_keys', 10, 3 );
+function wck_cfc_protect_meta_keys( $protected, $meta_key, $meta_type ){
+	global $wck_objects, $post;
+	if( !empty( $wck_objects ) ){
+		foreach( $wck_objects as $wck_object ){
+			if( !empty( $wck_object['meta_array'] ) ){
+				foreach ( $wck_object['meta_array'] as $field ){
+					$field_meta_key = Wordpress_Creation_Kit::wck_generate_slug( $field['title'], $field );
+					/* take care of suffixes with pregmatch and we could also have the group name as a prefix to be unique */
+					if ( $meta_key == $field_meta_key || preg_match( '/'.$field_meta_key.'_\d+\z/', $meta_key ) || $meta_key == $wck_object['meta_name'].'_'.$field_meta_key || preg_match( '/'.$wck_object['meta_name'].'_'.$field_meta_key.'_\d+\z/', $meta_key ) )
+						return true;
+				}
+			}
+		}
+	}
+	return $protected;
 }
 ?>

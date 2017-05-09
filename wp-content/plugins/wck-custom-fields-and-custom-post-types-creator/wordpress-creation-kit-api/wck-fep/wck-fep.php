@@ -191,12 +191,12 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
 		
 		
 		if( !empty( $_GET['action'] ) )
-			$action = $_GET['action'];
+			$action = sanitize_text_field( $_GET['action'] );
 		else
 			$action = '';
 			
 		if( !empty( $_GET['post_id'] ) )
-			$post_id = $_GET['post_id'];
+			$post_id = absint( $_GET['post_id'] );
 		else
 			$post_id = '';
 
@@ -237,11 +237,11 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
 		}
 		
 		if( !empty( $_POST['action_type'] ) )
-			$action = $_POST['action_type'];
+			$action = sanitize_text_field( $_POST['action_type'] );
 		else
 			$action = '';
 		if( !empty( $_POST['post_id'] ) )
-			$post_id = $_POST['post_id'];
+			$post_id = absint( $_POST['post_id'] );
 		else
 			$post_id = '';
 		
@@ -433,7 +433,12 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
 			$submit_text = apply_filters( 'wck_fep_form_button_update', __( 'Update Post', 'wck' ), $form_name );
 		else 
 			$submit_text = apply_filters( 'wck_fep_form_button_add', __( 'Add Post', 'wck' ), $form_name );
-		
+
+		if (function_exists('icl_register_string') && function_exists('icl_translate') ) {
+			icl_register_string( 'plugin wck', 'wck_label_translation_'.Wordpress_Creation_Kit::wck_generate_slug( $submit_text ), $submit_text );
+			$submit_text = icl_translate( 'plugin wck', 'wck_label_translation_'.Wordpress_Creation_Kit::wck_generate_slug( $submit_text ), $submit_text );
+		}
+
 		$form .= '<input type="submit" id="submit_'.$form_name.'" value="'. $submit_text .'" onclick="wckFepAddPost(\''. $form_name .'\', '. $post_id .', \''. $action .'\', \''. $nonce .'\');return false;"/>';
 		
 		$form .= '</form>';		
@@ -471,8 +476,8 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
 					/* take care of taxonomies */
 					if( !empty( $this->args['taxonomies'] ) ){
 						foreach( $this->args['taxonomies'] as $taxonomy ){
-							
-							if( $details['title'] == $taxonomy->label ){
+
+							if( $details['title'] == $taxonomy->label || $details['slug'] == $taxonomy->name ){
 								$object_terms = wp_get_object_terms( $post->ID, $taxonomy->name );
 								
 								if(!empty($object_terms)){
@@ -509,14 +514,14 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
 	function wck_fep_add_post(){
 		check_ajax_referer( 'wck-fep-add-post' );
 		
-		$meta = $_POST['meta'];
-		$post_ID = $_POST['postid'];
+		$meta = sanitize_text_field( $_POST['meta'] );
+		$post_ID = absint( $_POST['postid'] );
 		if( !empty( $_POST['values'] ) )
 			$values = $_POST['values'];	
 		else
 			$values = array();
 		$single_cfcs = (!empty( $_POST['single_cfcs'] )) ? $_POST['single_cfcs'] : array() ;
-		$action_type = $_POST['action_type'];
+		$action_type = sanitize_text_field( $_POST['action_type'] );
 		
 		/* check required fields */	
 		$errors = array();
@@ -552,6 +557,14 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
 		if( !empty( $single_cfcs ) ){
 			foreach( $single_cfcs as $meta_name => $single_values ){
 				update_post_meta( $post_ID, $meta_name, array( $single_values ) );
+
+				if (!empty($single_values)) {
+					foreach ($single_values as $name => $value) {
+						/* check to see if we already have a meta name like this from the old structure to avoid conflicts */
+						$name = Wordpress_Creation_Kit::wck_generate_unique_meta_name_for_unserialized_field( $post_ID, $name, $meta_name );
+						update_post_meta($post_ID, $name, $value);
+					}
+				}
 				
 				/* if unserialize_fields is true add for each entry separate post meta for every element of the form  */				
 				if( $this->single_cfcs[$meta_name.'_unserialize_fields'] ){					
@@ -646,7 +659,7 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
 		if( !empty( $this->args['taxonomies'] ) ){
 			foreach( $this->args['taxonomies'] as $taxonomy ){
 				
-				$tax_names = $values[ Wordpress_Creation_Kit::wck_generate_slug( $taxonomy->label ) ];
+				$tax_names = $values[ Wordpress_Creation_Kit::wck_generate_slug( $taxonomy->label, array( 'slug' => $taxonomy->name ) ) ];
 				
 				if( !empty( $tax_names ) ){ 
 					$tax_names = explode( ',', $tax_names );			
@@ -695,9 +708,16 @@ class WCK_FrontEnd_Posting extends Wordpress_Creation_Kit{
 			do_action( 'wck_fep_update_post', $wck_fep_new_post, get_current_user_id() );
 		
 		if( $action_type == '' )		
-			echo apply_filters( 'wck_fep_post_added_message', __( 'Post Added', 'wck' ), $meta );
+			$message = apply_filters( 'wck_fep_post_added_message', __( 'Post Added', 'wck' ), $meta );
 		else if( $action_type == 'edit' )
-			echo apply_filters( 'wck_fep_post_updated_message', __( 'Post Updated', 'wck' ), $meta );			
+			$message = apply_filters( 'wck_fep_post_updated_message', __( 'Post Updated', 'wck' ), $meta );
+
+		if (function_exists('icl_register_string') && function_exists('icl_translate') ) {
+			icl_register_string( 'plugin wck', 'wck_label_translation_'.Wordpress_Creation_Kit::wck_generate_slug( $message ), $message );
+			$message = icl_translate( 'plugin wck', 'wck_label_translation_'.Wordpress_Creation_Kit::wck_generate_slug( $message ), $message );
+		}
+
+		echo $message;
 		
 		die();
 	}	
@@ -933,7 +953,7 @@ function wck_fep_output_lilo_form(){
 		if ( isset( $_GET['loginerror'] ) || isset( $_POST['loginerror'] ) ){
 			$loginerror = isset( $_GET['loginerror'] ) ? $_GET['loginerror'] : $_POST['loginerror'];
 			$lilo_form .= '<span class="wck-fep-error">';
-			$lilo_form .= urldecode( base64_decode( $loginerror ) );
+			$lilo_form .= wp_kses_post( urldecode( base64_decode( $loginerror ) ) );
 			$lilo_form .= '</span>';
 		}
 				
@@ -1031,15 +1051,15 @@ function wck_fep_handle_user_action(){
 	check_ajax_referer( 'wck-fep-user-action' );
 	
 	if( !empty( $_POST['action_type'] ) )
-		$action = $_POST['action_type'];
+		$action = sanitize_text_field( $_POST['action_type'] );
 	else
 		$action = '';
 	if( !empty( $_POST['username'] ) )
-		$username = $_POST['username'];
+		$username = sanitize_user( $_POST['username'] );
 	else 
 		$username = '';
 	if( !empty( $_POST['email'] ) )
-		$email = $_POST['email'];
+		$email = sanitize_email( $_POST['email'] );
 	else 
 		$email = '';
 	if( !empty( $_POST['password'] ) )
@@ -1051,7 +1071,7 @@ function wck_fep_handle_user_action(){
 	else 
 		$confirm_password = '';
 	if( !empty( $_POST['description'] ) )
-		$description = $_POST['description'];
+		$description = wp_kses_post( $_POST['description'] );
 	else 
 		$description = '';
 	
@@ -1191,7 +1211,7 @@ add_filter('wp_handle_upload_prefilter', 'wck_upload_file_type');
 function wck_upload_file_type($file) {	
     if (isset($_POST['allowed_type']) && !empty($_POST['allowed_type'])){
         //this allows you to set multiple types seperated by a pipe "|"
-        $allowed = explode("|", $_POST['allowed_type']);
+        $allowed = explode("|", sanitize_text_field( $_POST['allowed_type'] ) );
 
         $ext =  substr(strrchr($file['name'],'.'),1);
         //first check if the user uploaded the right type

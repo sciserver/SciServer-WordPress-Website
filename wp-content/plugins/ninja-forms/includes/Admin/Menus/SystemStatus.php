@@ -113,8 +113,15 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
             $site_wide_plugins = implode( ', <br/>', $all_plugins );
         }
 
-        $server_ip = $_SERVER['SERVER_ADDR'];
+        $server_ip = '';
+        if( array_key_exists( 'SERVER_ADDR', $_SERVER ) )
+            $server_ip = $_SERVER[ 'SERVER_ADDR' ];
+        elseif( array_key_exists( 'LOCAL_ADDR', $_SERVER ) )
+            $server_ip = $_SERVER[ 'LOCAL_ADDR' ];
         $host_name = gethostbyaddr( $server_ip );
+        
+        $tls = WPN_Helper::get_tls();
+        if ( ! $tls ) $tls = 'unknown';
 
         //Output array
         $environment = array(
@@ -124,6 +131,7 @@ final class NF_Admin_Menus_SystemStatus extends NF_Abstracts_Submenu
             __( 'WP Version','ninja-forms' ) => get_bloginfo('version'),
             __( 'WP Multisite Enabled','ninja-forms' ) => $multisite,
             __( 'Web Server Info','ninja-forms' ) => esc_html( $_SERVER['SERVER_SOFTWARE'] ),
+            __( 'TLS Version','ninja-forms' ) => $tls,
             __( 'PHP Version','ninja-forms' ) => esc_html( phpversion() ),
             //TODO: Possibly Refactor with Ninja forms global $_db?
             __( 'MySQL Version','ninja-forms' ) => $wpdb->db_version(),

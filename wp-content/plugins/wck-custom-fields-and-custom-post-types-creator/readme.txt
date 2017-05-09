@@ -5,8 +5,8 @@ Donate link: http://www.cozmoslabs.com/wordpress-creation-kit/
 Tags: custom fields, custom field, wordpress custom fields, custom post type, custom post types, post types, repeater fields, meta box, metabox, custom taxonomy, custom fields creator, post meta
 
 Requires at least: 3.1
-Tested up to: 4.7.2
-Stable tag: 2.0.8
+Tested up to: 4.7.4
+Stable tag: 2.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,19 @@ Creating a taxonomy generally automatically creates a special query variable usi
 10. Taxonomy listing
 
 == Changelog ==
+= 2.1.1 =
+* Added seamless display mode option to Custom Fields Creator boxes
+
+= 2.1.0 =
+* All WCK meta keys are now protected so they do not appear in WordPress Custom Fields box which fixes some issues
+* We now can translate WCK labels with string translation in WPML (this includes Front end Posting labels)
+* Fixed a small css bug
+
+= 2.0.9 =
+* Security improvements
+* Small css change for labels in metaboxes
+* Small PHP 7 compatibility change
+
 = 2.0.8 =
 * We now check for reserved names on Custom Post Types and Taxonomy Creator
 * Added a filter to change input type: wck_text_input_type_attribute_{$meta}_{$field_slug}

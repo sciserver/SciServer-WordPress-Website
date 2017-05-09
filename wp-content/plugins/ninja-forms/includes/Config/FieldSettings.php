@@ -800,7 +800,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
         'type' => 'field-select',
         'label' => __( 'Confirm', 'ninja-forms' ),
         'width' => 'full',
-        'group' => 'advanced'
+        'group' => 'primary'
     ),
 
     /*
@@ -922,7 +922,7 @@ return apply_filters( 'ninja_forms_field_settings', array(
     'product_use_quantity' => array(
         'name' => 'product_use_quantity',
         'type' => 'toggle',
-        'label' => __( 'Use Quantity', 'ninja-forms' ),
+        'label' => __( 'Use Inline Quantity', 'ninja-forms' ),
         'width' => 'one-half',
         'group' => 'primary',
         'value' => TRUE,

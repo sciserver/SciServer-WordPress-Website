@@ -3,7 +3,7 @@
 Plugin Name: Ninja Forms
 Plugin URI: http://ninjaforms.com/
 Description: Ninja Forms is a webform builder with unparalleled ease of use and features.
-Version: 3.0.30
+Version: 3.1.1
 Author: The WP Ninjas
 Author URI: http://ninjaforms.com
 Text Domain: ninja-forms
@@ -52,7 +52,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
         /**
          * @since 3.0
          */
-        const VERSION = '3.0.30';
+        const VERSION = '3.1.1';
 
         /**
          * @var Ninja_Forms
@@ -115,6 +115,14 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
          * @var array
          */
         public $merge_tags = array();
+
+        /**
+         * Metaboxes
+         *
+         * @since 3.0
+         * @var array
+         */
+        public $metaboxes = array();
 
         /**
          * Model Factory
@@ -192,7 +200,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                  * Admin Menus
                  */
                 self::$instance->menus[ 'forms' ]           = new NF_Admin_Menus_Forms();
-                self::$instance->menus[ 'all-forms' ]       = new NF_Admin_Menus_AllForms();
+                self::$instance->menus[ 'dashboard' ]       = new NF_Admin_Menus_Dashboard();
                 self::$instance->menus[ 'add-new' ]         = new NF_Admin_Menus_AddNew();
                 self::$instance->menus[ 'submissions']      = new NF_Admin_Menus_Submissions();
                 self::$instance->menus[ 'import-export']    = new NF_Admin_Menus_ImportExport();
@@ -210,6 +218,12 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 self::$instance->controllers[ 'preview' ]     = new NF_AJAX_Controllers_Preview();
                 self::$instance->controllers[ 'submission' ]  = new NF_AJAX_Controllers_Submission();
                 self::$instance->controllers[ 'savedfields' ] = new NF_AJAX_Controllers_SavedFields();
+
+                /*
+                 * REST Controllers
+                 */
+                self::$instance->controllers[ 'REST' ][ 'forms' ] = new NF_AJAX_REST_Forms();
+                self::$instance->controllers[ 'REST' ][ 'new-form-templates' ] = new NF_AJAX_REST_NewFormTemplates();
 
                 /*
                  * Async Requests
@@ -246,6 +260,11 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 new NF_Admin_CPT_Submission();
                 new NF_Admin_CPT_DownloadAllSubmissions();
                 require_once Ninja_Forms::$dir . 'lib/StepProcessing/menu.php';
+                
+                /*
+                 * Submission Metabox
+                 */
+                new NF_Admin_Metaboxes_Calculations();
 
                 /*
                  * Logger
@@ -255,13 +274,12 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                 /*
                  * Merge Tags
                  */
-                self::$instance->merge_tags[ 'user' ] = new NF_MergeTags_User();
-                self::$instance->merge_tags[ 'post' ] = new NF_MergeTags_Post();
-                self::$instance->merge_tags[ 'system' ] = new NF_MergeTags_System();
+                self::$instance->merge_tags[ 'wp' ] = new NF_MergeTags_WP();
                 self::$instance->merge_tags[ 'fields' ] = new NF_MergeTags_Fields();
                 self::$instance->merge_tags[ 'calcs' ] = new NF_MergeTags_Calcs();
-                self::$instance->merge_tags[ 'querystrings' ] = new NF_MergeTags_QueryStrings();
                 self::$instance->merge_tags[ 'form' ] = new NF_MergeTags_Form();
+                self::$instance->merge_tags[ 'other' ] = new NF_MergeTags_Other();
+                self::$instance->merge_tags[ 'deprecated' ] = new NF_MergeTags_Deprecated();
 
                 /*
                  * Add Form Modal
@@ -294,8 +312,10 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
 
                 /*
                  * JS Exception Handler
+                 *
+                 * TODO: Review PR#2492 for improvements.
                  */
-                self::$instance->exception_handler_js = new NF_ExceptionHandlerJS();
+                // self::$instance->exception_handler_js = new NF_ExceptionHandlerJS();
 
                 /*
                  * Activation Hook
@@ -303,7 +323,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
                  */
                 register_activation_hook( __FILE__, array( self::$instance, 'activation' ) );
 
-                new NF_Admin_Metaboxes_AppendAForm();
+                self::$instance->metaboxes[ 'append-form' ] = new NF_Admin_Metaboxes_AppendAForm();
 
                 /*
                  * Require EDD auto-update file
@@ -433,7 +453,7 @@ if( get_option( 'ninja_forms_load_deprecated', FALSE ) && ! ( isset( $_POST[ 'nf
         public function form( $id = '' )
         {
             global $wpdb;
-            
+
             static $forms;
             if ( isset ( $forms[ $id ] ) ) {
                 return $forms[ $id ];

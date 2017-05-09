@@ -78,7 +78,7 @@ final class NF_Display_Render
         $form->update_settings( $settings );
 
         if( $form->get_setting( 'logged_in' ) && ! is_user_logged_in() ){
-            echo $form->get_setting( 'not_logged_in_msg' );
+            echo do_shortcode( $form->get_setting( 'not_logged_in_msg' ));
             return;
         }
 
@@ -94,7 +94,7 @@ final class NF_Display_Render
             }
 
             if( $count >= $form->get_setting( 'sub_limit_number' ) ) {
-                echo apply_filters( 'nf_sub_limit_reached_msg', $form->get_setting( 'sub_limit_msg' ), $form_id );
+                echo do_shortcode( apply_filters( 'nf_sub_limit_reached_msg', $form->get_setting( 'sub_limit_msg' ), $form_id ));
                 return;
             }
         }
@@ -359,7 +359,7 @@ final class NF_Display_Render
         }
 
         if( isset( $form[ 'settings' ][ 'logged_in' ] ) && $form[ 'settings' ][ 'logged_in' ] && ! is_user_logged_in() ){
-            echo $form[ 'settings' ][ 'not_logged_in_msg' ];
+            echo do_shortcode( $form[ 'settings' ][ 'not_logged_in_msg' ]);
             return;
         }
 
@@ -524,7 +524,7 @@ final class NF_Display_Render
 
         if( $is_preview || in_array( $form_id, self::$form_uses_recaptcha ) ) {
             $recaptcha_lang = Ninja_Forms()->get_setting('recaptcha_lang');
-            wp_enqueue_script('google-recaptcha', 'https://www.google.com/recaptcha/api.js?hl=' . $recaptcha_lang . '&onload=nfRenderRecaptcha&render=explicit', array( 'jquery', 'nf-front-end-deps' ), $ver, TRUE );
+            wp_enqueue_script('nf-google-recaptcha', 'https://www.google.com/recaptcha/api.js?hl=' . $recaptcha_lang . '&onload=nfRenderRecaptcha&render=explicit', array( 'jquery', 'nf-front-end-deps' ), $ver, TRUE );
         }
 
         if( $is_preview || in_array( $form_id, self::$form_uses_datepicker ) ) {

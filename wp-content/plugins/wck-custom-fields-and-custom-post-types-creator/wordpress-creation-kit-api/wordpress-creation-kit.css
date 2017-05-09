@@ -3,6 +3,16 @@
 	height:0;
 }
 
+.wck-post-box.wck-no-box{
+	background: none;
+	box-shadow: none;
+	border: none;
+}
+
+.wck-post-box.wck-no-box > .button-link, .wck-post-box.wck-no-box > .hndle{
+	display:none;
+}
+
 .mb-list-entry-fields li{
 	margin-bottom:15px;
 	clear:both;
@@ -19,6 +29,14 @@
 	min-height:30px;
 	font-weight:bold;
 	padding-right:10px;
+}
+
+.mb-list-entry-fields .field-label{
+	min-width:100px;
+}
+
+#container_post_detail strong{
+	min-width:70px;
 }
 
 .field-label.error{

@@ -32,7 +32,27 @@
     <div id="nf-menu-drawer"></div>
     <div id="nf-drawer"></div>
     <span class="merge-tags-content" style="display:none;"></span>
+    <div id="merge-tags-box"></div>
 </script>
+
+<!-- MERGE TAGS BOX TEMPLATES -->
+<script id="tmpl-nf-merge-tag-box" type="text/template">
+    <div class="merge-tag-filter"></div>
+    <div class="merge-tag-container">
+        <div class="merge-tag-sections"></div>
+        <div class="merge-tag-list"></div>
+    </div>
+</script>
+<script id="tmpl-nf-merge-tag-box-section" type="text/template">
+    {{{ data.label }}}
+</script>
+<script id="tmpl-nf-merge-tag-box-tag" type="text/template">
+    <span data-tag="{{{data.tag}}}">{{{ data.label }}} <small>{{{data.tag}}}</small></span>
+</script>
+<script id="tmpl-nf-merge-tag-box-filter" type="text/template">
+    <input type="text" placeholder="Search for merge tags" >
+</script>
+<!-- END: MERGE TAGS BOX TEMPLATES -->
 
 <script id="tmpl-nf-admin-header" type="text/template">
     <div id="nf-app-admin-header"></div>
@@ -125,33 +145,7 @@
 <script id="tmpl-nf-main-content-fields-empty" type="text/template">
     <div class="nf-fields-empty">
         <h3><?php _e( 'Add form fields', 'ninja-forms' ); ?></h3>
-        <p><?php _e( 'Get started by adding your first form field.', 'ninja-forms' ); ?> <a class="nf-open-drawer" title="<?php _e( 'Add New Field', 'ninja-forms' ); ?>" href="#" data-drawerid="addField"><?php _e( 'Just click here and select the fields you want.', 'ninja-forms' ); ?> </a><?php _e( "It's that easy. Or...", 'ninja-forms' ); ?>
-        <h3><?php _e( 'Start from a template', 'ninja-forms' ); ?></h3>
-        <a href="?page=ninja-forms&form_id=formtemplate-contactform" class="nf-one-third template-box">
-            <div class="template-box-inside">
-                <h4><?php _e( 'Contact Us', 'ninja-forms' ); ?></h4>
-                <p class="template-desc"><?php _e( 'Allow your users to contact you with this simple contact form. You can add and remove fields as needed.', 'ninja-forms' ); ?></p>
-            </div>
-        </a>
-
-        <a href="?page=ninja-forms&form_id=formtemplate-quoterequest" class="nf-one-third template-box">
-            <div class="template-box-inside">
-                <h4><?php _e( 'Quote Request', 'ninja-forms' ); ?></h4>
-                <p class="template-desc"><?php _e( 'Manage quote requests from your website easily with this template. You can add and remove fields as needed.', 'ninja-forms' ); ?></p>
-            </div>
-        </a>
-        <a href="?page=ninja-forms&form_id=formtemplate-eventregistration" class="nf-one-third template-box">
-            <div class="template-box-inside">
-                <h4><?php _e( 'Event Registration', 'ninja-forms' ); ?></h4>
-                <p class="template-desc"><?php _e( 'Allow user to register for your next event this easy to complete form. You can add and remove fields as needed.', 'ninja-forms' ); ?></p>
-            </div>
-        </a>
-        <!--<a href="#" class="nf-one-third template-box">
-            <div class="template-box-inside">
-                <h4><?php _e( 'Newsletter Sign Up Form', 'ninja-forms' ); ?></h4>
-                <p class="template-desc"><?php _e( 'Add subscribers and grow your email list with this newsletter signup form. You can add and remove fields as needed.', 'ninja-forms' ); ?></p>
-            </div>
-        </a> -->
+        <p><?php _e( 'Get started by adding your first form field.', 'ninja-forms' ); ?> <?php _e( "It's that easy.", 'ninja-forms' ); ?>
     </div>
 </script>
 
@@ -165,7 +159,7 @@
 </script>
 
 <script id="tmpl-nf-main-content-field" type="text/template">
-    <div id="{{{ data.getFieldID() }}}" class="{{{ data.renderClasses() }}}" data-id="{{{ data.id }}}">{{{ data.renderIcon() }}}<span class="nf-field-label">{{{ data.label }}} {{{ data.renderRequired() }}}</span>
+    <div id="{{{ data.getFieldID() }}}" class="{{{ data.renderClasses() }}}" data-id="{{{ data.id }}}">{{{ data.renderIcon() }}}<span class="nf-field-label">{{{ _.escape( data.label ) }}} {{{ data.renderRequired() }}}</span>
         <div class="nf-item-controls"></div>
     </div>
 </script>
@@ -411,7 +405,7 @@
 </script>
 
 <script id="tmpl-nf-merge-tags-item" type="text/template">
-    <a href="#" title="{{{ data.label }}}" tabindex="1" class="{{{ data.renderClasses() }}}">{{{ data.label }}}</a>
+    <a href="#" title="{{{ data.label }}}" tabindex="1" class="{{{ data.renderClasses() }}}">{{{ _.escape( data.label ) }}}</a>
 </script>
 
 <!-- Field Settings Templates -->
@@ -647,9 +641,16 @@ Label Three, value-three, 3
     <div>
         <span class="dashicons dashicons-menu handle"></span>
     </div>
-    <div>
-        <input type="text" class="setting" value="{{{ data.name }}}" data-id="name">
-        <span class="nf-option-error"></span>
+    <div class="calc-left">
+        <div>
+            <input type="text" class="setting" value="{{{ data.name }}}" data-id="name">
+            <span class="nf-option-error"></span>
+        </div>
+        <div><?php _e( 'Decimals', 'ninja-forms' ); ?></div>
+        <div>
+            <input type="text" class="setting" value="{{{ data.dec }}}" data-id="dec">
+            <span class="nf-option-error"></span>
+        </div>
     </div>
     <div>
         <textarea class="setting" data-id="eq">{{{ data.eq }}}</textarea>

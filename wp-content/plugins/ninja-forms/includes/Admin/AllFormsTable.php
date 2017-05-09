@@ -73,7 +73,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
             'cb'        => '<input type="checkbox" />',
             'title'     => __( 'Form Title', 'ninja-forms' ),
             'shortcode' => __( 'Shortcode', 'ninja-forms' ),
-            'date'      => __( 'Date Created', 'ninja-forms' )
+            'date'      => __( 'Created', 'ninja-forms' )
         );
 
         return $columns;
@@ -98,7 +98,7 @@ class NF_Admin_AllFormsTable extends WP_List_Table
     {
         return array(
             'title' => array( __( 'title', 'ninja-forms' ),   TRUE ),
-            'date'  => array( __( 'updated', 'ninja-forms' ), TRUE ),
+            'date'  => array( __( 'date', 'ninja-forms' ), TRUE ),
         );
     }
 
