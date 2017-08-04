@@ -43,3 +43,11 @@ tickets/
 ehthumbs.db
 Thumbs.db
 
+######################
+# OVERRIDES          #
+######################
+# Ignore uploads except for ninja-forms, which we do want to ignore
+!wp-content/uploads/*/*/*.zip
+!wp-content/uploads/*/*.zip
+!wp-content/uploads/*.zip
+wp-content/uploads/ninja-forms/*.zip
