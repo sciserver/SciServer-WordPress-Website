@@ -3,7 +3,7 @@
 Plugin Name: Simple Sitemap
 Plugin URI: http://wordpress.org/plugins/simple-sitemap/
 Description: HTML sitemap to display content as a single linked list of posts, pages, or custom post types. You can even display posts in groups sorted by taxonomy!
-Version: 2.1
+Version: 2.2
 Author: David Gwyer
 Author URI: http://www.wpgoplugins.com
 Text Domain: simple-sitemap
@@ -81,19 +81,65 @@ function wpss_render_form() {
 		.pcdm.dashicons-no { color: red; }
 	</style>
 	<div class="wrap">
-		<h2><?php _e( 'Simple Sitemap Options', 'simple-sitemap' ); ?></h2>
-
-		<div class="notice" style="border: 2px #32cd32 solid;margin: 20px 0;">
-			<p><a style="color:#32cd32;" href="https://wpgoplugins.com/plugins/simple-sitemap-pro/" target="_blank"><strong>Simple Sitemap PRO</strong></a> is now available! Access great new features such as sitemap image icons, captions, and beautiful responsive tabbed layouts. <b>Try risk free today with our 100% money back guarantee!</b></p>
-            <p style="font-weight:bold;">*NEW* in Simple Sitemap Pro 0.6: Remove sitemap links for ALL parent pages or specific ones only.</p>
-			<p style="font-weight:bold;">*NEW* in Simple Sitemap Pro 0.7: List child pages of a specific parent page. Easily create a sitemap list for each set of child pages.</p>
+		<div style="display:flex;justify-content: space-between;">
+			<h2><?php _e( 'Simple Sitemap Options', 'simple-sitemap' ); ?></h2>
+			<div><a target="_blank" title="We love to develop WordPress plugins!" alt="WPGO Plugins Site" href="https://wpgoplugins.com/"><img src="<?php echo plugins_url(); ?>/wp-content-filter/images/wpgo_plugins_logo.png"></a></div>
 		</div>
+
+		<div style="background: #fff; width: 600px; padding-left: 20px;border: 2px #32cd32 solid;margin: 20px 0;">
+			<h2>*NEW* in Simple Sitemap Pro</h2>
+			<p><span style="font-weight:bold;">v0.6</span> - Remove sitemap links for ALL parent pages or specific ones only.</p>
+			<p><span style="font-weight:bold;">v0.7</span> - List child pages of a specific parent page. Easily create a sitemap list for each set of child pages.</p>
+		</div>
+
+		<table class="form-table">
+
+			<tr valign="top">
+				<th scope="row">Like the plugin?</th>
+				<td>
+					<p>Then why not upgrade to Pro and access powerful additional features. Try risk free today with our <span style="font-weight: bold;">100% money back guarantee!</span></p>
+					<div style="margin-top:10px;"><input class="button" type="button" value="Upgrade to Pro" onClick="window.open('https://wpgoplugins.com/plugins/simple-sitemap-pro/')"></div>
+				</td>
+			</tr>
+
+			<tr valign="top">
+				<th scope="row">Read all about it!</th>
+				<td>
+					<p>Signup to our plugin newsletter for news and updates about our latest work, and what's coming.</p>
+					<div style="margin-top:10px;"><input class="button" type="button" value="Subscribe here..." onClick="window.open('http://eepurl.com/bXZmmD')"></div>
+				</td>
+			</tr>
+
+			<tr valign="top">
+				<th scope="row">Buy me a coffee?</th>
+				<td>
+					<p>If you use this FREE Plugin on your website <b><em>please</em></b> consider making a <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FBAG4ZHA4TTUC" target="_blank">donation</a> to support continued development. Thank you.<span style="margin-left:5px;" class="dashicons dashicons-smiley"></span></p>
+				</td>
+			</tr>
+
+			<tr valign="top">
+				<th scope="row">Keep in touch...</th>
+				<td>
+					<div>
+						<span><a href="http://www.twitter.com/dgwyer" title="Follow us on Twitter" target="_blank"><img src="<?php echo plugins_url(); ?>/wp-content-filter/images/twitter.png" /></a></span>
+						<span><a href="https://www.facebook.com/wpgoplugins/" title="Our Facebook page" target="_blank"><img src="<?php echo plugins_url(); ?>/wp-content-filter/images/facebook.png" /></a></span>
+						<span><a href="https://www.youtube.com/channel/UCWzjTLWoyMgtIfpDgJavrTg" title="View our YouTube channel" target="_blank"><img src="<?php echo plugins_url(); ?>/wp-content-filter/images/yt.png" /></a></span>
+						<span><a style="text-decoration:none;" title="Need help with ANY aspect of WordPress? We're here to help!" href="https://wpgoplugins.com/need-help-with-wordpress/" target="_blank"><span style="margin-left:-2px;color:#d41515;font-size:39px;line-height:32px;width:39px;height:39px;" class="dashicons dashicons-sos"></span></a></span>
+					</div>
+				</td>
+			</tr>
+
+			<tr valign="top"><td colspan="2"><hr></td></tr>
+
+		</table>
+
+		<h2>Simple Sitemap Instructions</h2>
 
 		<div style="background:#fff;border: 1px dashed #ccc;font-size: 13px;margin: 20px 0 10px 0;padding: 5px 0 5px 8px;">
 			<?php printf( __( 'To display the Simple Sitemap on a post, page, or sidebar (via a Text widget), enter the following shortcode:<br><br>', 'simple-sitemap' ) ); ?> <code>[simple-sitemap]</code><br><br>
 		</div>
 
-		<h2><?php _e( 'Choose the Post Types to Display', 'simple-sitemap' ); ?></h2>
+		<h3><?php _e( 'Choose the Post Types to Display', 'simple-sitemap' ); ?></h3>
 
 		<p><?php _e( 'You now have full control over what post types are displayed as well as the order they are rendered.', 'simple-sitemap' ); ?></p>
 
@@ -109,7 +155,7 @@ function wpss_render_form() {
 			?>
 		</div>
 
-		<h2><?php _e( 'Formatting the Sitemap Output', 'simple-sitemap' ); ?></h2>
+		<h3><?php _e( 'Formatting the Sitemap Output', 'simple-sitemap' ); ?></h3>
 
 		<p><?php _e( 'You have various options for controlling how your sitemap displays.', 'simple-sitemap' ); ?></p>
 
@@ -124,19 +170,6 @@ function wpss_render_form() {
 			order="asc"<br>
 			orderby="title"<br>
 			exclude=""<br><br></b>
-		</div>
-
-		<div style="margin-top:15px;">
-			<p style="margin-bottom:10px;">If you use this FREE Plugin on your website <b><em>please</em></b> consider making a <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=FBAG4ZHA4TTUC" target="_blank">donation</a> to support continued development. Thank you.<span style="margin-left:5px;" class="dashicons dashicons-smiley"></span></p>
-		</div>
-
-		<div style="clear:both;">
-			<span><a href="http://www.twitter.com/dgwyer" title="Follow us on Twitter" target="_blank"><img src="<?php echo plugins_url(); ?>/simple-sitemap/images/twitter.png" /></a></span>
-			<span><a href="https://www.facebook.com/wpgoplugins/" title="Our Facebook page" target="_blank"><img src="<?php echo plugins_url(); ?>/simple-sitemap/images/facebook.png" /></a></span>
-			<span><a href="https://www.youtube.com/channel/UCWzjTLWoyMgtIfpDgJavrTg" title="View our YouTube channel" target="_blank"><img src="<?php echo plugins_url(); ?>/simple-sitemap/images/yt.png" /></a></span>
-			<span><a style="text-decoration:none;" title="Need help with ANY aspect of WordPress? We're here to help!" href="https://wpgoplugins.com/need-help-with-wordpress/" target="_blank"><span style="margin-left:-2px;color:#d41515;font-size:39px;line-height:32px;width:39px;height:39px;" class="dashicons dashicons-sos"></span></a></span>
-			<span style="margin-left:20px;"><input class="button" style="vertical-align:12px;" type="button" value="Visit Our Site" onClick="window.open('http://www.wpgoplugins.com')"></span>
-			<span style="margin-left:3px;"><input class="button" style="vertical-align:12px;" type="button" value="Subscribe (free)" title="Signup today for all the latest plugin news and updates!" onClick="window.open('http://eepurl.com/bXZmmD')"></span>
 		</div>
 
 	</div>
@@ -538,10 +571,13 @@ function wpss_plugin_action_links( $links, $file ) {
 function wpss_plugin_settings_link( $links, $file ) {
 
 	if ( $file == plugin_basename( __FILE__ ) ) {
-		$posk_links = '<a style="color:limegreen;" href="https://wpgoplugins.com/plugins/simple-sitemap-pro/" target="_blank" title="Upgrade to Pro - 100% money back guarantee"><span class="dashicons dashicons-awards"></span></a> | ';
-		$posk_links .= '<a href="' . esc_url(get_admin_url() . 'options-general.php?page=simple-sitemap/simple-sitemap.php' ) . '">' . __( 'Settings', 'simple-sitemap' ) . '</a>';
-		// make the 'Settings' link appear first
-		array_unshift( $links, $posk_links );
+		$pccf_links = '<a href="' . get_admin_url() . 'options-general.php?page=simple-sitemap/simple-sitemap.php">' . __( 'Settings' ) . '</a>';
+		array_unshift( $links, $pccf_links );
+	}
+
+	if ( $file == plugin_basename( __FILE__ ) ) {
+		$pccf_links = '<a style="color:#d54e21;" href="https://wpgoplugins.com/plugins/simple-sitemap-pro/" target="_blank" title="Go PRO - 100% money back guarantee"><span class="dashicons dashicons-megaphone"></span></a>';
+		array_push( $links, $pccf_links );
 	}
 
 	return $links;

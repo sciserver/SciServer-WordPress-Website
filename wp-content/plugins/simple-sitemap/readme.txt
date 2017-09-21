@@ -2,8 +2,8 @@
 Contributors: dgwyer
 Tags: seo sitemap, html, sitemap, html sitemap, seo, global, sort, shortcode, pages, posts, custom post types, post types, responsive, responsive sitemap
 Requires at least: 3.0
-Tested up to: 4.7
-Stable tag: 2.1
+Tested up to: 4.8
+Stable tag: 2.2
 
 The simplest responsive HTML sitemap available for WordPress! No setup required. Flexible customization options available.
 
@@ -67,6 +67,10 @@ Please <a href="https://wordpress.org/support/view/plugin-reviews/simple-sitemap
 10. Show sitemap in a horizontal list separated by any character(s). (Pro only)
 
 == Changelog ==
+
+*2.2*
+
+* Plugin settings page updated.
 
 *2.1*
 
