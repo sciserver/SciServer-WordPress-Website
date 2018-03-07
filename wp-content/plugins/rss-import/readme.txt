@@ -1,13 +1,13 @@
 ﻿=== RSSImport ===
 Contributors: Bueltge, inpsyde, took77
-Plugin URI: http://bueltge.de/wp-rss-import-plugin/55/
+Plugin URI: https://bueltge.de/wp-rss-import-plugin/55/
 Author: Frank Bültge
-Author URI: http://bueltge.de/
-Donate link: http://bueltge.de/wunschliste/
+Author URI: https://bueltge.de/
+Donate link: https://bueltge.de/wunschliste/
 Tags: rss, post, content, post, feed
 Requires at least: 1.5
-Tested up to: 4.5
-Stable tag: 4.4.17
+Tested up to: 4.9
+Stable tag: 4.5.1
 
 Display feeds on your blog, using PHP in your templates or Shortcode in your posts and pages.
 
@@ -69,6 +69,7 @@ For all (bool) parameters you can either use the strings `true` and `false` or t
 1. `next_paging_title` - The title attribute of the next page link. Default is `more items`.
 1. `use_simplepie` - (bool) If true, use SimplePie to parse the feed. SimplePie is included in WordPress 2.8 and newer and can parse both RSS and ATOM feeds. Default is `false` if used with Shortcode, `true` if used with the PHP function.
 1. `view` - (bool) If true, calling the `RSSImport()` function will print the rendered HTML directly to the output. If false, the rendered HTML will be returned by the function as a string value and nothing will be output. Default when using PHP code is `true`. Default when using Shortcode is `false`.
+1. `random_sort` - (bool) If true, Items will be displayed in random order. Default when using Shortcode is `false`.
 
 The parameters `before_desc`, `after_desc`, `start_item` and `end_item` accepts the following variables which will be replaced:
 
@@ -142,6 +143,16 @@ or
 1. Widget support
 
 == Changelog ==
+= v4.5.1 (2017-12-14) =
+* Fix escaping in widget admin form
+
+= v4.5.0 (2017-12-01) =
+* Added new parameter random_sort
+
+= v4.4.18 (2017-11-30) =
+* Small code changes for more strict coding.
+* Fix formatting topics on readme.
+
 = v4.4.17 (2016-04-17) =
 * Fix for usage under php 7*
 * Code Formatting, WP Codex
