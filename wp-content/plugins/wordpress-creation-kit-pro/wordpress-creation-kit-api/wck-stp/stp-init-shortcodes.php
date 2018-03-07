@@ -180,19 +180,41 @@ function wck_stp_pass_archive_query_args( $args, $stp_id ){
 }
 
 // Add the rewrite rule
-function wck_stp_rwr_add_rules() {
-	add_rewrite_rule( '(.+?)/pag/([^/]+)','index.php?pagename=$matches[1]&pag=$matches[2]', 'top' );
-	add_rewrite_rule( '(.+?)/s/([^/]+)','index.php?pagename=$matches[1]&stpsingle=$matches[2]', 'top' );
+function wck_stp_rwr_add_rules( $rules ) {
+
+    $new_rule = array();
+
+    $new_rule['(.+?)/pag/([^/]+)'] = 'index.php?pagename=$matches[1]&pag=$matches[2]';
+    $new_rule['(.+?)/s/([^/]+)'] = 'index.php?pagename=$matches[1]&stpsingle=$matches[2]';
+
+    return $new_rule + $rules;
+
 }
-add_action( 'admin_init', 'wck_stp_rwr_add_rules' );
+add_action( 'rewrite_rules_array', 'wck_stp_rwr_add_rules' );
 
 // Add our own query vars
-add_filter( 'query_vars', 'wck_stp_add_query_vars_filter' );
 function wck_stp_add_query_vars_filter( $vars ){
-  $vars[] = "pag";
-  $vars[] = "stpsingle";
-  return $vars;
+
+    array_push( $vars, 'pag', 'stpsingle' );
+
+    return $vars;
+
 }
+add_filter( 'query_vars', 'wck_stp_add_query_vars_filter' );
+
+// flush_rules() if our rules are not yet included
+function wck_flush_rewrite_rules() {
+
+    $rules = get_option( 'rewrite_rules' );
+
+    if( ! isset( $rules['(.+?)/pag/([^/]+)'] ) || ! isset( $rules['(.+?)/s/([^/]+)'] ) ) {
+        global $wp_rewrite;
+
+        $wp_rewrite->flush_rules();
+    }
+
+}
+add_action( 'wp_loaded', 'wck_flush_rewrite_rules' );
 
 add_action('template_redirect', 'wck_stp_redirect_pag_params');
 function wck_stp_redirect_pag_params(){
@@ -212,7 +234,7 @@ function wck_stp_redirect_pag_params(){
                 }
 
                 if( isset($_GET['pag']) ){
-                    $pag = $_GET['pag'];
+                    $pag = absint( $_GET['pag'] );
                     wp_redirect( $redirect_permalink . '/pag/' . $pag );
                     exit();
                 }

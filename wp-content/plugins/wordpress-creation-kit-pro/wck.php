@@ -3,8 +3,10 @@
 Plugin Name: WordPress Creation Kit Pro
 Description: WordPress Creation Kit is a collection of WordPress utilities: Swift Templates, FrontEnd Posting, Custom Fields Creator, Custom Post Types Creator and Custom Taxonomies Creator
 Author: Cozmoslabs, Madalin Ungureanu, Cristian Antohe
-Version: 2.4.0
+Version: 2.5.2
 Author URI: http://www.cozmoslabs.com
+Text Domain: wck
+Domain Path: /languages
 
 License: GPL2
 
@@ -25,6 +27,8 @@ Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
 */
 
 define( 'WCK_PLUGIN_DIR', WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ) );
+define( 'WCK_PLUGIN_DIR_URL', plugin_dir_url( __FILE__ ) );
+define( 'WCK_PLUGIN_VERSION', '2.5.2' );
 
 /* ready for localization */
 $current_theme = wp_get_theme();

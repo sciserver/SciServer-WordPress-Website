@@ -53,10 +53,12 @@ jQuery(function(){
 	/* Callback implementetion to refresh codemirror instance when the metabox is loaded hidden and we show it
 	   the postboxes.pbshow is a callback implemented in wordpress that we can define to run a piece of code on showing the inside of a postbox
 	*/
-	postboxes.pbshow = function(box){
-		jQuery('.CodeMirror').each(function(i, el){
-			el.CodeMirror.refresh();
-		});		
+	if( typeof postboxes != "undefined" ) {
+		postboxes.pbshow = function (box) {
+			jQuery('.CodeMirror').each(function (i, el) {
+				el.CodeMirror.refresh();
+			});
+		}
 	}
 })
 

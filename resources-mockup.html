@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="http://test.sciserver.org/wp-content/themes/sciserver/assets/img/sciserver_favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<title>SciServer Dashboard</title>
+<link rel='stylesheet' id='roots_css-css'  href='http://test.sciserver.org/wp-content/themes/sciserver/assets/css/main.css' type='text/css' media='all' />
+</head>
+<body>
+<header class="navbar navbar-static-top" id="top" style="background:#003466;padding:5px;max-height:60px;">
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-4">
+<a href="/"><img src="http://test.sciserver.org/wp-content/themes/sciserver/assets/img/sciserverlogo.png" 
+	class="header-logo img-responsive" 
+	 style="max-height:50px;margin-top:5px;margin-bottom:5px;"
+	 alt=""></a></div>
+<div class="col-xs-4">
+&nbsp;
+</div>
+<!--div class="col-xs-4" style="margin-top:auto;margin-bottom:0;" -->
+<div class="col-xs-4" >
+<div class="dropdown nav navbar-nav navbar-right" style="margin-right:15px;">
+&nbsp;<br>
+<a href="/" id="user" style="color:white;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">user <span class="caret"></span></a><ul class="dropdown-menu" >
+<li><a href="#" data-toggle="modal" data-target="account">My Account</a></li>
+<li><a href="#" data-toggle="modal" data-target="resources">My Shortcuts</a></li>
+<li><a href="#" data-toggle="modal" data-target="history">My History</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="#" data-toggle="modal" data-target="#supportModal">Help</a></li>
+<li role="separator" class="divider"></li>
+<li><a href="http://scitest12.pha.jhu.edu/login-portal//logout?callbackUrl=http://scitest12.pha.jhu.edu/dashboard/">Log out</a></li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</header>
+<div class="clearfix"></div>
+<main>
+<div class="container">
+<div class="row">
+  <div class="col-xs-2 text-center">
+<div class="row">
+  <div class="col-xs-offset-2 col-xs-8 text-center">
+  <div class="well well-sm" >
+<a href="//skyserver.sdss.org/casjobs" target="_blank"><img class="img-responsive" style="margin:0px;" src="http://www.sciserver.org/wp-content/uploads/2015/02/sciserver_CasJobs.png" alt="CasJobs"></a>
+<div class="caption"><a href="//skyserver.sdss.org/casjobs" target="_blank">CasJobs</a></div>
+<a href="//compute.sciserver.org" target="_blank"><img class="img-responsive" style="margin:0px;" src="http://www.sciserver.org/wp-content/uploads/2016/06/sciserver_compute.png" alt="Compute" ></a>
+<div class="caption"><a href="//compute.sciserver.org" target="_blank">SciServer Compute</a></div>
+<a href="//portal.sciserver.org" target="_blank"><img class="img-responsive" style="margin:0px;" src="http://www.sciserver.org/wp-content/uploads/2016/05/sciserver__LoginPortal.png" alt="Login Portal " ></a>
+<div class="caption"><a href="//portal.sciserver.org" target="_blank">Login Portal</a></div>
+<a href="//scidrive.org" target="_blank"><img class="img-responsive" style="margin:0px;" src="http://www.sciserver.org/wp-content/uploads/2015/04/scidrive.png" alt="SciDrive link"></a>
+<div class="caption"><a href="//scidrive.org" target="_blank">SciDrive</a></div>
+<a href="//skyserver.sdss.org" target="_blank"><img class="img-responsive" style="margin:0px;" src="http://www.sciserver.org/wp-content/uploads/2015/11/sciserver_sdss.png" alt="SkyServer"></a>
+<div class="caption"><a href="//skyserver.sdss.org" target="_blank">SkyServer</a></div>
+<a href="http://www.voservices.net/skyquery" target="_blank"><img class="img-responsive" style="margin:0px;" src="http://www.sciserver.org/wp-content/uploads/2017/03/sciserver_icons_SkyQuery_180.png" alt="SkyQuery" ></a>
+<div class="caption"><a href="http://www.voservices.net/skyquery" target="_blank">SkyQuery</a></div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xs-10">
+<h1>My Shortcuts</h1>
+<ul class="nav nav-pills nav-justified">
+  <li role="presentation"><a href="dashboard-mockup.html">My Account</a></li>
+  <li role="presentation" class="active"><a href="resources-mockup.html">My Shortcuts</a></li>
+  <li role="presentation"><a href="history-mockup.html">My History</a></li>
+</ul>
+<ul class="list-group">
+  <li class="list-group-item"><a href="#">My Group Invitations <sup><span class="badge">0</span></sup></a></li>
+  <li class="list-group-item"><a href="#">Groups I Own <sup><span class="badge">2</span></sup></a></li>
+  <li class="list-group-item"><a href="#">Groups I Belong To <sup><span class="badge">2</span></sup></a></li>
+  <li class="list-group-item"><a href="#">Volumes I Own <sup><span class="badge">3</span></sup></a></li>
+  <li class="list-group-item"><a href="#">Volumes I Share <sup><span class="badge">1</span></sup></a></li>
+  <li class="list-group-item"><a href="#">Volumes Shared with Me <sup><span class="badge">1</span></sup></a></li>
+  <li class="list-group-item"><a href="#">All Volumes, Shared and Owned <sup><span class="badge">3</span></sup></a></li>
+</ul>
+&nbsp;
+<h2>My History</h2>
+<div class="well well-sm">
+<div class="row">
+<div class="col-xs-12">
+<a data-toggle="collapse" href="#filters" aria-expanded="false" aria-controls="filters" tabindex="1"><strong>Filter my history</strong> <span class="caret"></span></a>
+</div>
+</div>
+<div class="collapse" id="filters">
+<form>
+<div class="row">
+<div class="col-xs-3">
+<label for="dateStart">Start date</label>
+<input name="dateStart" id="dateStart" style="width: 170px;">
+</div>
+<div class="col-xs-3">
+<label for="dateEnd">End date</label>
+<input name="dateEnd" id="dateEnd" style="width: 178px;">
+</div>
+<div class="col-xs-3">
+<label>Number of Records</label>
+<input type="number" placeholder="100">
+</div>
+<div class="col-xs-3">
+<label>Tools</label>
+<div class="dropdown">
+<a type="a" data-toggle="dropdown" class="btn btn-sm btn-primary dropdown-toggle">Tools <span class="caret"></span></a> <ul class="dropdown-menu">
+<li><label class="checkbox-inline">
+&nbsp;<input type="checkbox" value="skyserver">SkyServer</label></li>
+<li><label class="checkbox-inline">
+&nbsp;<input type="checkbox" value="casjobs">CasJobs</label></li>
+<li><label class="checkbox-inline">
+&nbsp;<input type="checkbox" value="jobm">Jobm</label></li>
+<li><label class="checkbox-inline">
+&nbsp;<input type="checkbox" value="fileservice">Fileservice</label></li>
+<li><label class="checkbox-inline">
+&nbsp;<input type="checkbox" value="scidrive">SciDrive</label></li>
+<li><label class="checkbox-inline">
+&nbsp;<input type="checkbox" value="skyquery">SkyQuery</label></li>
+<li><label class="checkbox-inline">
+&nbsp;<input type="checkbox" value="compute">Compute</label></li>
+<li><label class="checkbox-inline">
+&nbsp;<input type="checkbox" value="authentication">Portal</label></li>
+</ul>
+</div>
+</div>
+<div class="col-xs-6">
+&nbsp;<br>
+<label>Records <select name="sciserverTable_length" aria-controls="sciserverTable" class=""><option value="5" selected>5</option><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>  per page</label>
+</div>
+<div class="col-xs-6">
+&nbsp;<br>
+<label>Search: <input type="search" class="" placeholder="" aria-controls="sciserverTable"></label>
+</div>
+</div>
+</div>
+</div>
+</fieldset>
+<table id="sciserverTable" class="table table-bordered sciserver-datatable dataTable no-footer" role="grid" aria-describedby="sciserverTable_info" >
+<thead>
+<tr role="row">
+<th class="sorting" tabindex="0" aria-controls="sciserverTable" rowspan="1" colspan="1" aria-label="Applications: activate to sort column ascending" style="width: 196px;">Tool</th>
+<th class="job-descript-cell sorting" tabindex="0" aria-controls="sciserverTable" rowspan="1" colspan="1" aria-label="Activities: activate to sort column ascending" style="width: 543px;">Record</th>
+<th class="changeColumnWidth sorting_desc" tabindex="0" aria-controls="sciserverTable" rowspan="1" colspan="1" aria-sort="descending" aria-label="Time: activate to sort column ascending" style="width: 310px;">Date & Time</th>
+</tr>
+</thead> <tbody>
+<tr role="row" class="odd">
+<td>
+<a type="a" id="files_btn">
+<b>FileService</b>
+</a>
+</td>
+<td class=" job-descript-cell">
+<span title="bsouter created UserVolume 'bsouter_bon-vol-1' inside RootVolume 'volumes'">
+created UserVolume 'bsouter_bon-vol-1'</span>
+</td>
+<td class="changeColumnWidth sorting_1">
+<span>20 Feb 2018 10:44:17 am </span>
+</td>
+</tr>
+<tr role="row" class="even">
+<td>
+<a type="a" id="authentication_btn">
+<b>LoginPortal</b>
+</a>
+</td>
+<td class=" job-descript-cell">
+<span title="bsouter logged into the Login Portal">
+logged in</span>
+</td>
+<td class="changeColumnWidth sorting_1">
+<span>20 Feb 2018 10:42:13 am </span>
+</td>
+</tr>
+<tr role="row" class="even">
+<td>
+<a type="a" id="authentication_btn">
+<b>LoginPortal</b>
+</a>
+</td>
+<td class=" job-descript-cell">
+<span title="bsouter logged into the Login Portal">
+logged in</span>
+</td>
+<td class="changeColumnWidth sorting_1">
+<span>20 Feb 2018 09:52:11 am </span>
+</td>
+</tr>
+<tr role="row" class="odd">
+<td>
+<a type="a" id="authentication_btn">
+<b>LoginPortal</b>
+</a>
+</td>
+<td class=" job-descript-cell">
+<span title="bsouter logged into the Login Portal">
+logged in</span>
+</td>
+<td class="changeColumnWidth sorting_1">
+<span>16 Feb 2018 02:29:16 pm </span>
+</td>
+</tr>
+<tr role="row" class="even">
+<td>
+<a type="a" id="authentication_btn">
+<b>LoginPortal</b>
+</a>
+</td>
+<td class=" job-descript-cell">
+<span title="bsouter changed SciServer password">
+changed password</span>
+</td>
+<td class="changeColumnWidth sorting_1">
+<span>16 Feb 2018 02:29:00 pm </span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</main>
+<script type='text/javascript' src='//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'></script>
+<script type='text/javascript' src='http://test.sciserver.org/wp-content/themes/sciserver/assets/js/scripts.js'></script>
+</body>
+</html>

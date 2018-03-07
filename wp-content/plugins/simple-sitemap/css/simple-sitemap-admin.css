@@ -1,0 +1,140 @@
+/* Admin settings page styles. */
+
+.pro {
+	background: #f5d53e;
+	margin: 0 0 0 0;
+	padding: 1px 3px;
+	font-weight: bold;
+	border-radius: 2px;
+	font-size: 10px;
+	color: #151515;
+}
+
+.pro a {
+	color: #151515;
+	text-decoration: none;
+}
+
+.shortcode-attributes {
+	list-style-type:disc;
+}
+
+.shortcode-attributes li {
+	margin-left: 25px;
+}
+
+.ss-box {
+	background:#fff;
+	border: 1px dashed #ccc;
+	font-size: 13px;
+	margin: 20px 0 10px 0;
+	padding: 10px 10px 5px 10px;
+}
+
+#shortcodes-wrap, #attributes-wrap {
+	display: none;
+}
+
+.social-link {
+	display: inline-block;
+	line-height: 0;
+}
+
+#attributes-btn, #shortcodes-btn {
+	margin-left: 20px;
+}
+
+/* Sitemap gallery */
+
+/* SIMPLE SITEMAP PRO DEMO STYLES */
+
+#ssp-demo-wrap {
+	display:flex;
+	margin:5px 0 15px 0;
+}
+
+#ssp-demo-description {
+	padding-left: 20px;
+	margin: 20px 0 20px 20px;
+	border-left: 2px solid rgba(39, 154, 151, 0.6);
+}
+
+#ssp-demo-description p {
+	margin: 10px 0 0 0;
+}
+
+#ssp-demo-btn-wrap {
+	align-self:center;
+}
+
+#ssp-btn {
+	width: 225px;
+	/* replace with this when better supported: width: fit-content; */
+	font-size: 18px;
+	background: rgba(39, 154, 151, 0.75);
+	border: 2px rgba(35, 121, 118, 0.63) solid;
+	border-radius: 2px;
+}
+
+#ssp-btn:hover {
+	background: #279a97;
+}
+
+#ssp-demo-gallery {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	/*margin-top: 25px;*/
+}
+
+#ssp-demo-gallery > div {
+	width: calc(33.33% - 30px);
+	padding: 10px;
+	margin: 5px 5px;
+	text-align: center;
+}
+
+#ssp-demo-gallery > div img {
+	border: 2px rgba(102, 180, 177, 0.5) solid;
+	max-width: 230px;
+	height: auto;
+}
+
+#ssp-demo-gallery > div:hover  h5 {
+	text-decoration: underline;
+}
+
+#ssp-demo-gallery > div h5 {
+	font-size: 18px;
+	margin-bottom: 8px;
+}
+
+#ssp-demo-gallery > div h5 a {
+	color: #3c8f8c;
+	text-decoration: none;
+}
+
+#ssp-demo-gallery div > a {
+	display: inline-block;
+	line-height: 0;
+}
+
+@media only screen and (max-width: 800px) {
+	#ssp-demo-wrap {
+		display: block;
+		margin: 15px 0 15px 0;
+	}
+	#ssp-demo-description {
+		margin: 20px 0 30px 0px;
+	}
+	#ssp-demo-gallery > div {
+		width: calc(50% - 30px);
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	#ssp-demo-gallery > div {
+		width: 100%;
+		padding: 0x;
+	}
+}

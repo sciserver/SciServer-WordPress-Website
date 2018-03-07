@@ -8,10 +8,13 @@
 $args = apply_filters( 'wck-user-select-args', array( 'orderby' => 'display_name' ) );			
 $user_query = new WP_User_Query($args);
 if( !empty( $user_query->results ) ){
+
+	$extra_attr = apply_filters( 'wck_extra_field_attributes', '', $details, $meta );
+
 	$element .= '<select name="'. $single_prefix . esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'"  id="';
 	if( !empty( $frontend_prefix ) )
 		$element .=	$frontend_prefix; 
-	$element .= esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'" class="mb-user-select mb-field" >';
+	$element .= esc_attr( Wordpress_Creation_Kit::wck_generate_slug( $details['title'], $details ) ) .'" class="mb-user-select mb-field" '.$extra_attr.'>';
 	$element .= '<option value="">'. __('...Choose', 'wck') .'</option>';
 	foreach( $user_query->results as $user ){
 		$element .= '<option value="'. esc_attr( $user->ID ) .'"  '. selected( $user->ID, $value, false ) .' >'. esc_html( $user->display_name ) .'</option>';					

@@ -6,9 +6,9 @@ add_action('admin_enqueue_scripts', 'wck_opc_print_scripts' );
 function wck_opc_print_scripts($hook){
 	if( isset( $_GET['post_type'] ) || isset( $_GET['post'] ) ){
 		if( isset( $_GET['post_type'] ) )
-			$post_type = $_GET['post_type'];
+			$post_type = sanitize_text_field( $_GET['post_type'] );
 		else if( isset( $_GET['post'] ) )
-			$post_type = get_post_type( $_GET['post'] );			
+			$post_type = get_post_type( absint( $_GET['post'] ) );			
 		
 		if( 'wck-option-page' == $post_type || 'wck-option-field' == $post_type ){
 			wp_register_style('wck-opc-css', plugins_url('/css/wck-opc.css', __FILE__));
@@ -96,9 +96,9 @@ add_filter( 'admin_body_class', 'wck_opc_admin_body_class' );
 function wck_opc_admin_body_class( $classes ){
 	if( isset( $_GET['post_type'] ) || isset( $_GET['post'] ) ){
 		if( isset( $_GET['post_type'] ) )
-			$post_type = $_GET['post_type'];
+			$post_type = sanitize_text_field( $_GET['post_type'] );
 		else if( isset( $_GET['post'] ) )
-			$post_type = get_post_type( $_GET['post'] );
+			$post_type = get_post_type( absint( $_GET['post'] ) );
 		
 		if( 'wck-option-page' == $post_type || 'wck-option-field' == $post_type ){			
 			$classes .= ' wck_page_opc-page ';
@@ -699,7 +699,7 @@ add_filter( 'wck_field_types', 'wck_opc_filter_field_types' );
 function wck_opc_filter_field_types( $field_types ){
 	$wck_premium_update = WCK_PLUGIN_DIR.'/update/';
 	if ( !file_exists ($wck_premium_update . 'update-checker.php'))
-		$field_types = array( 'text', 'textarea', 'select', 'checkbox', 'radio', 'upload', 'wysiwyg editor', 'heading', 'colorpicker', 'currency select', 'phone', 'timepicker', 'html', 'number' );
+		$field_types = array( 'text', 'textarea', 'select', 'select multiple', 'checkbox', 'radio', 'upload', 'wysiwyg editor', 'heading', 'colorpicker', 'currency select', 'phone', 'timepicker', 'html', 'number' );
 	
 	return $field_types;
 }

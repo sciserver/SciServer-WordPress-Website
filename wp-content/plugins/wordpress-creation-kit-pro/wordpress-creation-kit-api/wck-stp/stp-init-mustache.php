@@ -18,7 +18,7 @@ function wck_stp_list_available_vars(){
 	<div class="stp-extra">
 	<h4>Available Variables (also see <a href="<?php echo plugins_url( 'wck-stp/wck_stp_template_docs.html' , dirname(__FILE__) ) ?>?TB_iframe=true&width=600&height=550" class="thickbox">the documentation</a>)</h4>
 	<?php
-	$template_id = (isset($_GET['post'])) ? $_GET['post'] : $template_id = false;
+	$template_id = (isset($_GET['post'])) ? absint( $_GET['post'] ) : $template_id = false;
 	$mustache_available_keys = array();
 
 	$cpt_arg = false;
@@ -166,7 +166,7 @@ function wck_stp_populate_default_template_vars( $post, $post_author, $post_type
 
         /* for drafts */
         if( is_preview() && isset( $_GET['p'] ) )
-            $post = get_post( $_GET['p'] );
+            $post = get_post( absint( $_GET['p'] ) );
 
         /* for post preview */
         if ( is_preview() && isset($_GET['preview_id']) && isset($_GET['preview_nonce']) )
@@ -253,23 +253,29 @@ function wck_stp_generate_custom_fields_keys($custom_post_type, $post_id, $level
 			if( ( $box_args['post_type'] == $custom_post_type && !is_numeric( $box_args['post_id'] ) && is_null( $box_args['page_template'] ) ) || ( $box_args['post_id'] === $post_id ) || ( $box_args['post_type'] == $custom_post_type && $box_args['page_template'] == $page_template ) ) {
 				if ( $box_args['single'] ) {
 					foreach( $box_args['meta_array'] as $value ){
-						$slug = Wordpress_Creation_Kit::wck_generate_slug( $value['title'] );
-						$name = $box_args['meta_name']. '_' . $slug;
+						$slug = Wordpress_Creation_Kit::wck_generate_slug( $value['title'], $value );
+						$name = apply_filters( 'wck_stp_tag_name_'. Wordpress_Creation_Kit::wck_generate_slug( $value['type'] ), $box_args['meta_name']. '_' . $slug );
 						$mustache_vars_cfc[ $name ] = apply_filters( 'wck_stp_tagtype_' . Wordpress_Creation_Kit::wck_generate_slug( $value['type'] ), '', $value, $level );
 					}
 				} else {
 					$mustache_vars_cfc[ $box_args['meta_name'] ] = array();
 					foreach( $box_args['meta_array'] as $key => $value ){
-						$slug = Wordpress_Creation_Kit::wck_generate_slug( $value['title'] );
+						$slug = apply_filters( 'wck_stp_tag_name_'. Wordpress_Creation_Kit::wck_generate_slug( $value['type'] ), Wordpress_Creation_Kit::wck_generate_slug( $value['title'], $value ) );
 						$name = $box_args['meta_name'];
-						$mustache_vars_cfc[ $box_args['meta_name'] ][$slug] = apply_filters( 'wck_stp_tagtype_' . Wordpress_Creation_Kit::wck_generate_slug( $value['type'] ), '', $value, $level );
+						$mustache_vars_cfc[$name][$slug] = apply_filters( 'wck_stp_tagtype_' . Wordpress_Creation_Kit::wck_generate_slug( $value['type'] ), '', $value, $level );
 					}
 				}
 			}
 		}
 	}
-	
+
 	return $mustache_vars_cfc;
+}
+/* add tripple mustache {{{ to certain field types */
+add_filter( 'wck_stp_tag_name_map', 'wck_stp_add_extra_mustaches_to_maps' );
+add_filter( 'wck_stp_tag_name_wysiwyg-editor', 'wck_stp_add_extra_mustaches_to_maps' );
+function wck_stp_add_extra_mustaches_to_maps( $tag_name ){
+	return '{'. $tag_name . '}';
 }
 
 // Generates array with available taxonomies for related taxonomies to a cpt 
@@ -358,13 +364,13 @@ function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0,
 
 				if ( $box_args['single'] ) {
 					foreach( $box_args['meta_array'] as $value ){
-						$slug = Wordpress_Creation_Kit::wck_generate_slug( $value['title'] );
+						$slug = Wordpress_Creation_Kit::wck_generate_slug( $value['title'], $value );
 
                         if( !empty( $all_metas_for_this_post ) ){
                             foreach( $all_metas_for_this_post as $meta_key => $meta_for_this_post ){
                                 if( $meta_key == $box_args['meta_name'] ){
                                     $meta_for_this_post = maybe_unserialize( $meta_for_this_post[0] );
-                                    if( !empty( $meta_for_this_post[0][$slug] ) ) {
+                                    if( isset( $meta_for_this_post[0][$slug] ) ) {
                                         $meta_value = $meta_for_this_post[0][$slug];
 
                                         $field_type = WCK_Template_API::generate_slug($value['type']);
@@ -393,7 +399,7 @@ function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0,
 					}
 				} else {
 					foreach( $box_args['meta_array'] as $key => $value ){
-						$slug = Wordpress_Creation_Kit::wck_generate_slug( $value['title'] );
+						$slug = Wordpress_Creation_Kit::wck_generate_slug( $value['title'], $value );
 
                         if( !empty( $all_metas_for_this_post ) ) {
                             foreach ($all_metas_for_this_post as $meta_key => $meta_for_this_post) {
@@ -402,7 +408,7 @@ function wck_stp_generate_mustache_single_array($single, $post_type, $level = 0,
 
                                     if( !empty( $meta_for_this_post ) ){
                                         foreach( $meta_for_this_post as $mkey => $meta ){
-                                            if( !empty( $meta[$slug] ) ) {
+                                            if( isset( $meta[$slug] ) ) {
                                                 $meta_value = $meta[$slug];
                                                 $field_type = WCK_Template_API::generate_slug($value['type']);
                                                 $unprocessed = apply_filters('wck_output_get_field_' . $field_type, $meta_value);

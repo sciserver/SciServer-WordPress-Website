@@ -5,8 +5,8 @@ Donate link: http://www.cozmoslabs.com/wordpress-creation-kit-sale-page/
 Tags: custom fields, custom field, wordpress custom fields, advanced custom fields, custom post type, custom post types, post types, repeater fields, repeater, repeatable, meta box, meta boxes, metabox, taxonomy, taxonomies, custom taxonomy, custom taxonomies, custom, custom fields creator, post meta, meta, get_post_meta, post creator, cck, content types, types
 
 Requires at least: 3.1
-Tested up to: 4.7.1
-Stable tag: 2.4.0
+Tested up to: 4.9.2
+Stable tag: 2.5.2
 
 A must have tool for creating custom fields, custom post types and taxonomies, fast and without any programming knowledge.
 
@@ -437,3 +437,64 @@ Small modifications to the generate slug function
 2.4.0
 Compatibility with php version 7.1
 Fixed an issue with Swift Templates and repeater fields that were not displaying properly
+
+2.4.1
+Map fields and Wysiwyg Editors now have three mustaches in Swift Templates
+Fixed an issue with Swift Templates and fields that had their slug changed from the default one
+Changed the serial number field to a password field
+We now check for reserved names on Custom Post Types and Taxonomy Creator
+Added a filter to change input type: wck_text_input_type_attribute_{$meta}_{$field_slug}
+Fixed a potential notice in Custom Fields Creator
+
+2.4.2
+Security improvements
+Small css change for labels in metaboxes
+Small PHP 7 compatibility change
+
+2.4.3
+All WCK meta keys are now protected so they do not appear in WordPress Custom Fields box which fixes some issues
+We now can translate WCK labels with string translation in WPML (this includes Front end Posting labels)
+Fixed a small css bug
+We now save the taxonomy slug instead of label in Front End Posting so we are compatible with Multilingual
+We now save in unserialized form the single custom fields in Front End Posting
+Added ISO 8601 basic format to the Datepicker field.
+
+2.4.4
+Added seamless display mode option to Custom Fields Creator boxes
+Taxonomies in Front End Posting now have a slug so we can translate the titles
+
+2.4.5
+Added multiple select field type
+Change query args from month to monthnum as they should be in Swift Templates
+
+2.4.6
+Added filter 'wck_extra_field_attributes' which with you can add extra attributes to fields
+Fixed the start page css
+Fixed an issue with swift template admin interface
+Added translation function to wrap Register string on login form
+
+2.4.7
+Improved speed on sites with a lot of Custom Fields Metaboxes defined
+Fixed and issue with Swift Templates and the 0 value for some custom fields
+Fixed some php notices that appeared in Front End Posting
+
+2.4.8
+Added a filter so we can add a metabox to multiple meta boxes: wck_filter_add_meta_box_screens
+Fixed issue with PageBuilder from SiteOrigin plugin and CodeMirror
+Refactored the way Swift Templates rewrite rules are being loaded
+
+2.4.9
+Fixed a notice regarding the Custom Fields Creator introduced in the last version
+
+2.5.0
+Important security fix. Please update
+
+2.5.1
+Improved speed by at least 100% in most cases for the interface
+Small visual and functionality interface tweaks
+
+2.5.2
+Added 'rewrite' and 'rewrite slug' advanced options for custom taxonomy creator
+Added a plugin notification class
+Put back the yellow background on rows when editing an entry
+Fixed an issue with the view more jquery dialog in Swift Templates view more image tags

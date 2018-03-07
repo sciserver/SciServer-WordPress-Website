@@ -68,9 +68,9 @@ class wck_stp_pagination{
 			// Assign the 'previous pag' link into the array if we are not on the first pag
 			if ($this->pag != 1) {
 				if ($this->showFirstAndLast) {
-				$plinks[] = '<a href="?pag=1'.$queryURL.$this->searchFor.'" class="pagLink_fist">'.$this->first.'</a>';
+				$plinks[] = '<a href="?pag=1'.esc_attr( $queryURL.$this->searchFor ).'" class="pagLink_fist">'.$this->first.'</a>';
 				}
-				$plinks[] = '&nbsp;<a href="?pag='.($this->pag - 1).$queryURL.$this->searchFor.'"  class="pagLink_previous">'.$this->prev.'</a>&nbsp;';
+				$plinks[] = '&nbsp;<a href="?pag='. esc_attr( ($this->pag - 1).$queryURL.$this->searchFor ) .'"  class="pagLink_previous">'.$this->prev.'</a>&nbsp;';
 			}
 
 			// Assign all the pag numbers & links to the array

@@ -79,7 +79,9 @@ function wck_ctc_create_box(){
 			array( 'type' => 'select', 'title' => __( 'Show Admin Column', 'wck' ), 'slug' => 'show-admin-column', 'options' => array( 'false', 'true' ), 'default' => 'false', 'description' => __( 'Whether to allow automatic creation of taxonomy columns on associated post-types.', 'wck' ) ),
 			array( 'type' => 'select', 'title' => __( 'Sortable Admin Column', 'wck' ), 'slug' => 'sortable-admin-column', 'options' => array( 'false', 'true' ), 'default' => 'false', 'description' => __( 'Whether to make the columns sortable or not. WARNING: on a large number of posts the performance can be severely affected', 'wck' ) ),
 			array( 'type' => 'select', 'title' => __( 'Show in Quick Edit', 'wck' ), 'slug' => 'show-in-quick-edit', 'options' => array( 'false', 'true' ), 'default' => 'false', 'description' => __( 'Whether to show the taxonomy in the quick/bulk edit panel.', 'wck' ) ),
-			array( 'type' => 'select', 'title' => __( 'Show in REST API', 'wck'), 'slug' => 'show-in-rest', 'options' => array( 'false', 'true'), 'default' => 'false', 'description' => __('Make this taxonomy available via WP REST API ', 'wck' ) )
+			array( 'type' => 'select', 'title' => __( 'Show in REST API', 'wck'), 'slug' => 'show-in-rest', 'options' => array( 'false', 'true'), 'default' => 'false', 'description' => __('Make this taxonomy available via WP REST API ', 'wck' ) ),
+            array( 'type' => 'select', 'title' => __( 'Rewrite', 'wck' ), 'slug' => 'rewrite', 'options' => array( 'true', 'false' ), 'default' => 'true', 'description' => __( 'Rewrite permalinks.', 'wck' ) ),
+            array( 'type' => 'text', 'title' => __( 'Rewrite Slug', 'wck' ), 'slug' => 'rewrite-slug', 'description' => __( 'Defaults to post type name.', 'wck' ) ),
 		);
 
 		foreach( $ct_creation_fields2 as $ct_creation_field ) {
@@ -167,6 +169,17 @@ function wck_ctc_create_taxonomy(){
             else
                 $object_type = '';
 
+            if( !empty( $ct['rewrite'] ) ) {
+                if ($ct['rewrite'] == 'false') {
+                    $args['rewrite'] = $ct['rewrite'] == 'false' ? false : true;
+                }
+                else {
+                    if (!empty($ct['rewrite-slug'])) {
+                        $args['rewrite'] = array('slug' => $ct['rewrite-slug']);
+                    }
+                }
+            }
+
             register_taxonomy( $ct['taxonomy'], $object_type, apply_filters( 'wck_ctc_register_taxonomy_args', $args, $ct['taxonomy'] ) );
 
             if( !empty( $object_type ) && !empty( $args['show_admin_column'] ) && $args['show_admin_column'] == true && !empty( $ct['sortable-admin-column'] ) && $ct['sortable-admin-column'] === 'true' ){
@@ -196,13 +209,19 @@ SQL;
 
 /* Taxonomy Name Verification */
 
-add_filter( 'wck_required_test_wck_ctc_taxonomy', 'wck_ctc_check_taxonomy', 10, 6 );
-function wck_ctc_check_taxonomy( $bool, $value, $post_id, $field, $meta, $fields ){
+add_filter( 'wck_required_test_wck_ctc_taxonomy', 'wck_ctc_check_taxonomy', 10, 8 );
+function wck_ctc_check_taxonomy( $bool, $value, $post_id, $field, $meta, $fields, $values, $elemet_id ){
     //Make sure it doesn't contain capital letters or spaces
     $no_spaces_value = str_replace(' ', '', $value);
     $lowercase_value = strtolower($value);
 
-    if ( ( $no_spaces_value == $value ) && ( $lowercase_value == $value ) )
+    /* make sure it's not reserved and avoid doing this on the update case for backwards compatibility */
+    $old_values = get_option( 'wck_ctc' );
+    $reserved_vars = array();
+    if( empty( $old_values[$elemet_id]['taxonomy'] ) || $value != $old_values[$elemet_id]['taxonomy']  )
+        $reserved_vars = wck_ctc_get_reserved_names();
+
+    if ( ( $no_spaces_value == $value ) && ( $lowercase_value == $value ) && !in_array( $value, $reserved_vars ) )
         $checked = false;
     else
         $checked = true;
@@ -216,6 +235,7 @@ function wck_ctc_change_taxonomy_message( $message, $value, $required_field ){
     // change error message
     $no_spaces_value = str_replace(' ', '', $value);
     $lowercase_value = strtolower($value);
+    $reserved_vars = wck_ctc_get_reserved_names();
 
     if( empty( $value ) )
         return $message;
@@ -223,8 +243,22 @@ function wck_ctc_change_taxonomy_message( $message, $value, $required_field ){
         return __("Taxonomy name must not contain any spaces\n", "wck" );
     else if ($lowercase_value != $value)
         return __( "Tanomony name must not contain any capital letters\n", "wck" );
+    else if( in_array( $value, $reserved_vars ) )
+        return __( "Please chose a different Tanomony name as this one is reserved\n", "wck" );
 }
 
+function wck_ctc_get_reserved_names(){
+    $reserved_vars = Wordpress_Creation_Kit::wck_get_reserved_variable_names();
+    /* add to reserved names existing taxonomy slugs created with wck */
+    $wck_post_types = get_option( 'wck_cptc' );
+    if( !empty( $wck_post_types ) ){
+        foreach ($wck_post_types as $wck_post_type) {
+            $reserved_vars[] = $wck_post_type['post-type'];
+        }
+    }
+
+    return $reserved_vars;
+}
 
 /* Flush rewrite rules */
 add_action('init', 'ctc_flush_rules', 20);
@@ -259,7 +293,7 @@ function wck_ctc_form_wrapper_start(){
     echo '<li id="ctc-advanced-options-container" style="display:none;"><ul>';
 }
 
-add_action( "wck_after_add_form_wck_ctc_element_27", 'wck_ctc_form_wrapper_end' );
+add_action( "wck_after_add_form_wck_ctc_element_29", 'wck_ctc_form_wrapper_end' );
 function wck_ctc_form_wrapper_end(){
     echo '</ul></li>';
 }
@@ -286,7 +320,7 @@ function wck_ctc_update_form_wrapper_start( $form, $i ){
     return $form;
 }
 
-add_filter( "wck_after_update_form_wck_ctc_element_27", 'wck_ctc_update_form_wrapper_end', 10, 2 );
+add_filter( "wck_after_update_form_wck_ctc_element_29", 'wck_ctc_update_form_wrapper_end', 10, 2 );
 function wck_ctc_update_form_wrapper_end( $form, $i ){
     $form .=  '</ul></li>';
     return $form;
@@ -315,7 +349,7 @@ function wck_ctc_display_adv_wrapper_start( $form, $i ){
     return $form;
 }
 
-add_filter( "wck_after_listed_wck_ctc_element_27", 'wck_ctc_display_adv_wrapper_end', 10, 2 );
+add_filter( "wck_after_listed_wck_ctc_element_29", 'wck_ctc_display_adv_wrapper_end', 10, 2 );
 function wck_ctc_display_adv_wrapper_end( $form, $i ){
     $form .=  '</ul></li>';
     return $form;
@@ -338,6 +372,26 @@ if( !file_exists( dirname(__FILE__).'/wck-stp.php' ) ) {
     <?php
     }
 }
+
+/* add TranslatePress crosspromotion */
+add_action('add_meta_boxes', 'wck_ctc_add_trp_side_box');
+function wck_ctc_add_trp_side_box()
+{
+    add_meta_box('wck-ctc-side-trp', __('TranslatePress', 'wck'), 'wck_ctc_side_box_trp', 'wck_page_ctc-page', 'side', 'low');
+}
+
+function wck_ctc_side_box_trp()
+{
+    ?>
+    <a href="https://wordpress.org/plugins/translatepress-multilingual/" target="_blank"><img
+                src="<?php echo plugins_url('/images/banner_trp.png', __FILE__) ?>?v=1" width="254"
+                alt="TranslatePress"/></a>
+    <h4>Easily translate your entire WordPress website</h4>
+    <p><a href="https://wordpress.org/plugins/translatepress-multilingual/" target="_blank">Translate</a> your Custom Post Types and Custom Fields with a WordPress translation plugin that anyone can use.<br/><br/>
+        It offers a simpler way to translate WordPress sites, with full support for WooCommerce and site builders.</p>
+    <?php
+}
+
 /* Contextual Help */
 add_action('load-wck_page_ctc-page', 'wck_ctc_help');
 

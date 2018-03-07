@@ -1,12 +1,10 @@
 === Custom Post Types and Custom Fields creator - WCK ===
-
 Contributors: cozmoslabs, reflectionmedia, madalin.ungureanu, sareiodata, adispiac
 Donate link: http://www.cozmoslabs.com/wordpress-creation-kit/
 Tags: custom fields, custom field, wordpress custom fields, custom post type, custom post types, post types, repeater fields, meta box, metabox, custom taxonomy, custom fields creator, post meta
-
 Requires at least: 3.1
-Tested up to: 4.7.4
-Stable tag: 2.1.2
+Tested up to: 4.9.0
+Stable tag: 2.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +137,15 @@ Creating a taxonomy generally automatically creates a special query variable usi
 10. Taxonomy listing
 
 == Changelog ==
+= 2.1.4 =
+* Improved speed on sites with a lot of Custom Fields Metaboxes defined
+* Fixed some php notices
+
+= 2.1.3 =
+* Added filter 'wck_extra_field_attributes' which with you can add extra attributes to fields
+* Fixed the start page css
+* Fixed small compatibility issues
+
 = 2.1.2 =
 * Added multiple select field type
 

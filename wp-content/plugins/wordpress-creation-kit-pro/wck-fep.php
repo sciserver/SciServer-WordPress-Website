@@ -45,9 +45,9 @@ add_filter( 'admin_body_class', 'wck_fep_admin_body_class' );
 function wck_fep_admin_body_class( $classes ){
 	if( isset( $_GET['post_type'] ) || isset( $_GET['post'] ) ){
 		if( isset( $_GET['post_type'] ) )
-			$post_type = $_GET['post_type'];
+			$post_type = sanitize_text_field( $_GET['post_type'] );
 		else if( isset( $_GET['post'] ) )
-			$post_type = get_post_type( $_GET['post'] );
+			$post_type = get_post_type( absint( $_GET['post'] ) );
 		
 		if( 'wck-frontend-posting' == $post_type ){			
 			$classes .= ' wck_page_fep-page ';
@@ -71,9 +71,9 @@ add_action('admin_enqueue_scripts', 'wck_print_scripts' );
 function wck_print_scripts($hook){
 	if( isset( $_GET['post_type'] ) || isset( $_GET['post'] ) ){
 		if( isset( $_GET['post_type'] ) )
-				$post_type = $_GET['post_type'];
+				$post_type = sanitize_text_field( $_GET['post_type'] );
 			else if( isset( $_GET['post'] ) )
-				$post_type = get_post_type( $_GET['post'] );		
+				$post_type = get_post_type( absint( $_GET['post'] ) );		
 		
 		if( 'wck-frontend-posting' == $post_type ){
 			wp_register_style('wck-fep-backend-css', plugins_url('/css/wck-fep.css', __FILE__) );
@@ -154,17 +154,17 @@ function wck_fep_create_boxes(){
 	
 	/* add to Field Types all the taxonomies registered for the post type selected in the Form Setup */
 	if( isset( $_GET['post'] ) ){
-		$taxonomy_titles = wck_fep_get_taxonomies_for_post_type( $_GET['post'] );	
+		$taxonomy_titles = wck_fep_get_taxonomies_for_post_type( absint( $_GET['post'] ) );
 		if( !empty( $taxonomy_titles ) ){
 			foreach( $taxonomy_titles as $tax_name => $taxonomy_title ){
-				$fep_box_fields_fields[0]['options'][] = $taxonomy_title;
+				$fep_box_fields_fields[0]['options'][] = '%'.$taxonomy_title.'%'.$tax_name;
 			}
 		}
 	}
 	
 	/* add to Field Types all the CFC registered ( with Custom Fields Creator ) for the post type selected in the Form Setup */
 	if( isset( $_GET['post'] ) ){
-		$cfc_titles = wck_fep_get_cfcs_for_post_type( $_GET['post'] ); 
+		$cfc_titles = wck_fep_get_cfcs_for_post_type( absint( $_GET['post'] ) ); 
 		if( !empty( $cfc_titles ) ){
 			foreach( $cfc_titles as $cfc_title ){
 				$fep_box_fields_fields[0]['options'][] = $cfc_title;
@@ -312,10 +312,10 @@ function wck_fep_change_field_type_select( $id ){
 	
 	
 	/* get taxonomy titles for the post type and add them to the default fields titles */
-	$taxonomy_titles = wck_fep_get_taxonomies_for_post_type( $id );	
+	$taxonomy_titles = wck_fep_get_taxonomies_for_post_type( $id );
 	if( !empty( $taxonomy_titles ) ){
 		foreach( $taxonomy_titles as $tax_name => $taxonomy_title ){
-			$default_fields_titles[$taxonomy_title] = $taxonomy_title;
+			$default_fields_titles[$tax_name] = $taxonomy_title;
 		}
 	}	
 	
@@ -329,8 +329,8 @@ function wck_fep_change_field_type_select( $id ){
 	
 	/* build the select html */
 	$select_html = '<option value=\"\">'. __( '...Choose', 'wck' ) .'</option>';
-	foreach( $default_fields_titles as $default_fields_title ){
-		$select_html .= '<option value=\"'. $default_fields_title .'\">'. $default_fields_title .'</option>';
+	foreach( $default_fields_titles as $default_field_value => $default_fields_title ){
+		$select_html .= '<option value=\"'. $default_field_value .'\">'. $default_fields_title .'</option>';
 	}	
 	
 	echo '<script type="text/javascript">jQuery("#field-type").html("'. $select_html .'")</script>';
@@ -394,16 +394,16 @@ function wck_fep_create_forms_args(){
 				
 					switch ( $wck_fep_field['field-type'] ) {
 						case 'Post Title':
-							$fields_inner_array = array( 'type' => 'text', 'title' => __( 'Post Title', 'wck' ), 'description' => __( 'The title of the post', 'wck' ) ); 						
+							$fields_inner_array = array( 'type' => 'text', 'title' => __( 'Post Title', 'wck' ), 'slug' => 'post-title', 'description' => __( 'The title of the post', 'wck' ) );
 							break;
 						case 'Post Content':
-							$fields_inner_array = array( 'type' => 'wysiwyg editor', 'title' => __( 'Post Content', 'wck' ), 'description' => __( 'The content of the post', 'wck' ) ); 						
+							$fields_inner_array = array( 'type' => 'wysiwyg editor', 'title' => __( 'Post Content', 'wck' ), 'slug' => 'post-content', 'description' => __( 'The content of the post', 'wck' ) );
 							break;
 						case 'Post Excerpt':
-							$fields_inner_array = array( 'type' => 'textarea', 'title' => __( 'Post Excerpt', 'wck' ), 'description' => __( 'The excerpt of the post', 'wck' ) );
+							$fields_inner_array = array( 'type' => 'textarea', 'title' => __( 'Post Excerpt', 'wck' ), 'slug' => 'post-excerpt', 'description' => __( 'The excerpt of the post', 'wck' ) );
 							break;					
 						case 'Featured Image':
-							$fields_inner_array = array( 'type' => 'upload', 'title' => __( 'Featured Image', 'wck' ), 'description' => __( 'The Featured Image', 'wck' ), 'attach_to_post' => apply_filters( 'wck_fep_attach_featured_image_to_post', true ) );
+							$fields_inner_array = array( 'type' => 'upload', 'title' => __( 'Featured Image', 'wck' ), 'slug' => 'featured-image', 'description' => __( 'The Featured Image', 'wck' ), 'attach_to_post' => apply_filters( 'wck_fep_attach_featured_image_to_post', true ) );
 							break;
 						default:
 							if( strpos( $wck_fep_field['field-type'], 'CFC-' ) !== false ){
@@ -411,25 +411,25 @@ function wck_fep_create_forms_args(){
 								$fields_inner_array = array( 'cfc' => 'true', 'title' => preg_replace('/CFC-/', '', $wck_fep_field['field-type'], 1) );
 							}
 							else if( strpos( $wck_fep_field['field-type'], 'Taxonomy: ' ) !== false ){
-							
-								$taxonomy_label = preg_replace( '/Taxonomy: /', '', $wck_fep_field['field-type'], 1 );
-								
+
+								/* since v 2.4.3 we save the tax name(slug) instead of the label so we don't know what we will be getting here */
+								$taxonomy_label_or_name = __( preg_replace( '/Taxonomy: /', '', $wck_fep_field['field-type'], 1 ) );
 								/* taxonomy */
 								$found_taxonomy = false;
 								$taxonomy_objects = get_object_taxonomies( $wck_fep_args[0]['post-type'], 'objects' );
-								
+
 								if( !empty( $taxonomy_objects ) ){
 									foreach( $taxonomy_objects as $taxonomy ){
-										if( $taxonomy->label == $taxonomy_label ){
+										if( $taxonomy->label == $taxonomy_label_or_name || $taxonomy->name == $taxonomy_label_or_name ){
 											$found_taxonomy = true;
 											$taxonomies_array[] = $taxonomy;
 											
 											if( $taxonomy->hierarchical == true ){
-												$fields_inner_array = array( 'type' => apply_filters( 'wck_fep_hierarchical_taxonomy_field_type', 'checkbox'), 'title' => $taxonomy_label );							
+												$fields_inner_array = array( 'type' => apply_filters( 'wck_fep_hierarchical_taxonomy_field_type', 'checkbox'), 'title' => $taxonomy->label, 'slug' => $taxonomy->name );
 												$fields_inner_array['options']	= wck_fep_handle_hierarhical_taxonomy( array(), $taxonomy->name, 0 );										
 											}
 											else{
-												$fields_inner_array = array( 'type' => 'text', 'title' => $taxonomy_label );
+												$fields_inner_array = array( 'type' => 'text', 'title' => $taxonomy->label, 'slug' => $taxonomy->name );
 											}
 										}
 									}
@@ -437,7 +437,7 @@ function wck_fep_create_forms_args(){
 								
 								/* if the taxonomy in the form isn't any more added to the post wee need to add something instead */
 								if( !$found_taxonomy )
-									$fields_inner_array = array( 'type' => 'not_found', 'title' => $taxonomy_label );
+									$fields_inner_array = array( 'type' => 'not_found', 'title' => $taxonomy_label_or_name );
 							}
 					}
 					
@@ -569,8 +569,9 @@ function wck_fep_change_form_labels(){
 	}
 }
 
+/* THIS WAS REMOVED IN v 2.4.3 because I think it did nothing and we implemented the wpml translation in another way */
 /* register FEP labels for translation with wpml */
-add_action( "update_post_meta", 'wck_fep_register_labels_for_translation', 10, 4 );
+/*add_action( "update_post_meta", 'wck_fep_register_labels_for_translation', 10, 4 );
 function wck_fep_register_labels_for_translation( $meta_id, $object_id, $meta_key, $_meta_value ){
     if( $meta_key == 'wck_fep_labels' ){
         if( !empty( $_meta_value[0] ) ) {
@@ -581,7 +582,7 @@ function wck_fep_register_labels_for_translation( $meta_id, $object_id, $meta_ke
             }
         }
     }
-}
+}*/
 
 /* Show "Assign to user" row  */
 add_filter("wck_add_form_class_wck_fep_args", 'wck_fep_update_form_assign_user', 10, 3 );

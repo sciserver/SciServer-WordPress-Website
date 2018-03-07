@@ -1,17 +1,19 @@
-=== Simple Sitemap ===
-Contributors: dgwyer
+=== Simple Sitemap - Automatically Generate a Responsive Sitemap  ===
+Contributors: dgwyer, wpgoplugins
 Tags: seo sitemap, html, sitemap, html sitemap, seo, global, sort, shortcode, pages, posts, custom post types, post types, responsive, responsive sitemap
 Requires at least: 3.0
-Tested up to: 4.8
-Stable tag: 2.2
+Tested up to: 4.9
+Stable tag: 2.4
 
-The simplest responsive HTML sitemap available for WordPress! No setup required. Flexible customization options available.
+The simplest HTML5 sitemap available for WordPress! No setup required. Flexible customization options available.
 
 == Description ==
 
-Improve your SEO ranking by adding a HTML sitemap!
+Simple Sitemap helps improve your SEO ranking by automatically generating a HTML sitemap of all your content! There are flexible options to include only the content you want to include on your sitemap, and to format output.
 
-Very quick and easy to use. Add a powerful fully responsive HTML sitemap to your website today! Simply enter the <code>[simple-sitemap]</code> shortcode in a post, page, custom post type, or text widget and you're good to go. Simple as that!
+It takes just seconds to add a sitemap to your website. Simply include the <code>[simple-sitemap]</code> on a page to display a dynamically generated sitemap. It's that easy!
+
+Whatever your requirements, Simple Sitemap has you covered.
 
 The sitemap shortcode has several attributes you can use to control how your sitemap is rendered including:
 
@@ -53,6 +55,12 @@ Please <a href="https://wordpress.org/support/view/plugin-reviews/simple-sitemap
 5. Click 'Activate Plugin' to finish installation.
 6. Add [simple-sitemap] shortcode to a page to display the sitemap on your site.
 
+== Frequently Asked Questions ==
+
+= Can I generate an XML sitemap too? =
+
+No. This plugin is for generating an HTML sitemap only.
+
 == Screenshots ==
 
 1. Once plugin has been activated simply add the [simple-sitemap] shortcode to any page, post, or text widget.
@@ -67,6 +75,18 @@ Please <a href="https://wordpress.org/support/view/plugin-reviews/simple-sitemap
 10. Show sitemap in a horizontal list separated by any character(s). (Pro only)
 
 == Changelog ==
+
+= 2.4, OCTOBER 9, 2017 =
+
+* Added live sitemap demo gallery on plugin settings page.
+
+= 2.3, SEPTEMBER 25, 2017 =
+
+* New 'container_tag' shortcode attribute added to all shortcodes to output the sitemap as an ordered list, or unordered list. See plugin settings page for more information.
+* Updated plugin readme.txt.
+* Settings page updated to include better shortcode information including the new <code>[simple-sitemap-group]</code> shortcode.
+* Plugin code overhauled and refactored for future maintainability.
+* Improved shortcode attribute validation checks.
 
 *2.2*
 

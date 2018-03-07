@@ -6,9 +6,9 @@ add_action('admin_enqueue_scripts', 'wck_cfc_print_scripts' );
 function wck_cfc_print_scripts($hook){
 	if( isset( $_GET['post_type'] ) || isset( $_GET['post'] ) ){
 		if( isset( $_GET['post_type'] ) )
-			$post_type = $_GET['post_type'];
+			$post_type = sanitize_text_field( $_GET['post_type'] );
 		else if( isset( $_GET['post'] ) )
-			$post_type = get_post_type( $_GET['post'] );
+			$post_type = get_post_type( absint( $_GET['post'] ) );
 
 		if( 'wck-meta-box' == $post_type ){
 			wp_register_style('wck-cfc-css', plugins_url('/css/wck-cfc.css', __FILE__));
@@ -61,9 +61,9 @@ add_filter( 'admin_body_class', 'wck_cfc_admin_body_class' );
 function wck_cfc_admin_body_class( $classes ){
 	if( isset( $_GET['post_type'] ) || isset( $_GET['post'] ) ){
 		if( isset( $_GET['post_type'] ) )
-			$post_type = $_GET['post_type'];
+			$post_type = sanitize_text_field( $_GET['post_type'] );
 		else if( isset( $_GET['post'] ) )
-			$post_type = get_post_type( $_GET['post'] );
+			$post_type = get_post_type( absint( $_GET['post'] ) );
 
 		if( 'wck-meta-box' == $post_type ){
 			$classes .= ' wck_page_cfc-page ';
@@ -134,6 +134,9 @@ function wck_cfc_create_box(){
 	if( !empty( $templates ) )
 		$cfc_box_args_fields[] = array( 'type' => 'select', 'title' => __( 'Page Template', 'wck' ), 'slug' => 'page-template', 'options' => $templates, 'default-option' => true, 'description' => __( 'If post type is "page" you can further select a page templete. The meta box will only appear  on the page that has that selected page template.', 'wck' ) );
 
+	/* added box style in version 2.4.4 */
+	$cfc_box_args_fields[] = array( 'type' => 'select', 'title' => __( 'Box Style', 'wck' ), 'slug' => 'box-style', 'options' => array( '%Default (WP meta-box)%default', '%Seamless (no meta-box)%seamless' ), 'default' => 'default', 'description' => __( 'If the fields should be in a meta-box or not', 'wck' ) );
+
 	/* set up the box arguments */
 	$args = array(
 		'metabox_id' => 'wck-cfc-args',
@@ -150,7 +153,7 @@ function wck_cfc_create_box(){
 
 	/* set up field types */
 
-	$field_types = array( 'heading', 'text', 'number', 'textarea', 'select', 'checkbox', 'radio', 'phone', 'upload', 'wysiwyg editor', 'datepicker', 'timepicker', 'colorpicker', 'country select', 'user select', 'cpt select', 'currency select', 'html', 'map' );
+	$field_types = array( 'heading', 'text', 'number', 'textarea', 'select', 'select multiple', 'checkbox', 'radio', 'phone', 'upload', 'wysiwyg editor', 'datepicker', 'timepicker', 'colorpicker', 'country select', 'user select', 'cpt select', 'currency select', 'html', 'map' );
 
 	$field_types = apply_filters( 'wck_field_types', $field_types );
 
@@ -181,7 +184,7 @@ function wck_cfc_create_box(){
         array( 'type' => 'text', 'title' => __( 'Default Longitude', 'wck' ), 'slug' => 'map-default-longitude', 'description' => __( 'The longitude at which the map should be displayed when no pins are attached.', 'wck' ), 'default' => 0 ),
         array( 'type' => 'text', 'title' => __( 'Default Zoom', 'wck' ), 'slug' => 'map-default-zoom', 'description' => __( 'Add a number from 0 to 19. The higher the number the higher the zoom.', 'wck' ), 'default' => 15 ),
         array( 'type' => 'text', 'title' => __( 'Map Height', 'wck' ), 'slug' => 'map-height', 'description' => __( 'The height of the map.', 'wck' ), 'default' => 350 ),
-		array( 'type' => 'select', 'title' => __( 'Date Format', 'wck' ), 'slug' => 'date-format', 'description' => __( 'The format of the datepicker date', 'wck' ), 'options' => array( '%Default - dd-mm-yy%dd-mm-yy', '%Datepicker default - mm/dd/yy%mm/dd/yy', '%ISO 8601 - yy-mm-dd%yy-mm-dd', '%Short - d M, y%d M, y', '%Medium - d MM, y%d MM, y', '%Full - DD, d MM, yy%DD, d MM, yy', '%With text - \'day\' d \'of\' MM \'in the year\' yy%\'day\' d \'of\' MM \'in the year\' yy' ), 'default' => 'dd-mm-yy' ),
+		array( 'type' => 'select', 'title' => __( 'Date Format', 'wck' ), 'slug' => 'date-format', 'description' => __( 'The format of the datepicker date', 'wck' ), 'options' => array( '%Default - dd-mm-yy%dd-mm-yy', '%Datepicker default - mm/dd/yy%mm/dd/yy', '%ISO 8601 (extended) - yy-mm-dd%yy-mm-dd', '%ISO 8601 (basic) - yymmdd%yymmdd', '%Short - d M, y%d M, y', '%Medium - d MM, y%d MM, y', '%Full - DD, d MM, yy%DD, d MM, yy', '%With text - \'day\' d \'of\' MM \'in the year\' yy%\'day\' d \'of\' MM \'in the year\' yy' ), 'default' => 'dd-mm-yy' ),
 	));
 
 
@@ -228,14 +231,19 @@ function wck_cfc_after_refresh_list(){
 add_action( 'admin_init', 'wck_cfc_create_boxes' );
 
 function wck_cfc_create_boxes_args(){
+    $all_box_args = wp_cache_get( 'wck_all_box_args', 'wck' );
+
+    if ( $all_box_args !== false )
+        return $all_box_args;
+
+    $all_box_args = array();
+
 	$args = array(
 		'post_type' => 'wck-meta-box',
 		'numberposts' => -1
 	);
 
 	$all_meta_boxes = get_posts( $args );
-
-	$all_box_args = array();
 
 	if( !empty( $all_meta_boxes ) ){
 		foreach( $all_meta_boxes as $meta_box ){
@@ -368,6 +376,9 @@ function wck_cfc_create_boxes_args(){
 					if( !empty( $wck_cfc_arg['page-template'] ) )
 						$box_args['page_template'] = $wck_cfc_arg['page-template'];
 
+					if( !empty( $wck_cfc_arg['box-style'] ) )
+						$box_args['box_style'] = $wck_cfc_arg['box-style'];
+
 					$box_args['unserialize_fields'] = apply_filters( 'wck_cfc_unserialize_fields_'.$wck_cfc_arg['meta-name'], false );
 
 					/* nested repeater arg for pro version only */
@@ -379,6 +390,7 @@ function wck_cfc_create_boxes_args(){
 			}
 		}
 	}
+    wp_cache_set( 'wck_all_box_args', $all_box_args, 'wck');
 	return $all_box_args;
 }
 
@@ -748,6 +760,25 @@ if( !file_exists( dirname(__FILE__).'/wck-stp.php' ) ) {
     }
 }
 
+/* add TranslatePress crosspromotion */
+add_action('add_meta_boxes', 'wck_cfc_add_trp_side_box');
+function wck_cfc_add_trp_side_box()
+{
+    add_meta_box('wck-cfc-side-trp', __('TranslatePress', 'wck'), 'wck_cfc_side_box_trp', 'wck-meta-box', 'side', 'low');
+}
+
+function wck_cfc_side_box_trp()
+{
+    ?>
+    <a href="https://wordpress.org/plugins/translatepress-multilingual/" target="_blank"><img
+                src="<?php echo plugins_url('/images/banner_trp.png', __FILE__) ?>?v=1" width="254"
+                alt="TranslatePress"/></a>
+	<h4>Easily translate your entire WordPress website</h4>
+	<p><a href="https://wordpress.org/plugins/translatepress-multilingual/" target="_blank">Translate</a> your Custom Post Types and Custom Fields with a WordPress translation plugin that anyone can use.<br/><br/>
+	It offers a simpler way to translate WordPress sites, with full support for WooCommerce and site builders.</p>
+    <?php
+}
+
 
 /* Contextual Help */
 add_action('current_screen', 'wck_cfc_help');
@@ -821,7 +852,7 @@ add_filter( 'wck_field_types', 'wck_cfc_filter_field_types' );
 function wck_cfc_filter_field_types( $field_types ){
 	$wck_premium_update = WCK_PLUGIN_DIR.'/update/';
 	if ( !file_exists ($wck_premium_update . 'update-checker.php'))
-		$field_types = array( 'text', 'textarea', 'select', 'checkbox', 'radio', 'upload', 'wysiwyg editor', 'heading', 'colorpicker', 'currency select', 'phone', 'timepicker', 'html', 'number' );
+		$field_types = array( 'text', 'textarea', 'select', 'select multiple', 'checkbox', 'radio', 'upload', 'wysiwyg editor', 'heading', 'colorpicker', 'currency select', 'phone', 'timepicker', 'html', 'number' );
 
 	return $field_types;
 }
@@ -830,7 +861,7 @@ function wck_cfc_filter_field_types( $field_types ){
 add_filter( 'wck_before_test_required', 'wck_cfc_make_options_required', 10, 4 );
 function wck_cfc_make_options_required( $meta_array, $meta, $values, $id ) {
 	if( $meta == 'wck_cfc_fields' ) {
-		if( $values['field-type'] == 'select' || $values['field-type'] == 'radio' || $values['field-type'] == 'checkbox' ) {
+		if( $values['field-type'] == 'select' || $values['field-type'] == 'select multiple' || $values['field-type'] == 'radio' || $values['field-type'] == 'checkbox' ) {
 			foreach( $meta_array as $key => $field ) {
 				if( $field['slug'] == 'options' ) {
 					$meta_array[$key]['required'] = true;
@@ -840,13 +871,13 @@ function wck_cfc_make_options_required( $meta_array, $meta, $values, $id ) {
 	}
 
 	foreach( $meta_array as $key => $field ) {
-		if( $field['type'] == 'phone' ) {
+		if( isset( $field['type'] ) && $field['type'] == 'phone' ) {
 			$meta_array[$key]['required'] ? $meta_array[$key]['was_required'] = true : $meta_array[$key]['was_required'] = false;
 			$meta_array[$key]['required'] = true;
 			add_filter( "wck_required_test_{$meta}_" . Wordpress_Creation_Kit::wck_generate_slug( $field['title'], $field ), 'wck_phone_field_error', 10, 6 );
 		}
 
-		if( $field['type'] == 'number' ) {
+		if( isset( $field['type'] ) && $field['type'] == 'number' ) {
 			$meta_array[$key]['required'] ? $meta_array[$key]['was_required'] = true : $meta_array[$key]['was_required'] = false;
 			$meta_array[$key]['required'] = true;
 			add_filter( "wck_required_test_{$meta}_" . Wordpress_Creation_Kit::wck_generate_slug( $field['title'], $field ), 'wck_number_field_error', 10, 6 );
@@ -950,12 +981,12 @@ function wck_number_field_error( $bool, $value, $id, $field, $meta, $fields ) {
 				return true;
 			}
 
-			if( ( ! empty( $field_array['min-number-value'] ) || $field_array['min-number-value'] == '0' ) && ( ! empty( $value ) || $value == '0' ) && $value < $field_array['min-number-value'] ) {
+			if( ( ! empty( $field_array['min-number-value'] ) || (isset($field_array['min-number-value']) && $field_array['min-number-value'] == '0' )) && ( ! empty( $value ) || $value == '0' ) && $value < $field_array['min-number-value'] ) {
 				add_filter( "wck_required_message_{$meta}_{$field_slug}", create_function( '$message, $value, $required_field', '$number_min = '. $field_array['min-number-value'] .'; $message = apply_filters( "wck_number_error_message", "$required_field" . __( " field value must be greater than or equal to ", "wck" ) . "$number_min \n" ); return $message;' ), 10, 3 );
 				return true;
 			}
 
-			if( ( ! empty( $field_array['max-number-value'] ) || $field_array['max-number-value'] == '0' ) && ( ! empty( $value ) || $value == '0' ) && $value > $field_array['max-number-value'] ) {
+			if( ( ! empty( $field_array['max-number-value'] ) || (isset($field_array['max-number-value']) && $field_array['max-number-value'] == '0' )) && ( ! empty( $value ) || $value == '0' ) && $value > $field_array['max-number-value'] ) {
 				add_filter( "wck_required_message_{$meta}_{$field_slug}", create_function( '$message, $value, $required_field', '$number_max = '. $field_array['max-number-value'] .'; $message = apply_filters( "wck_number_error_message", "$required_field" . __( " field value must be less than or equal to ", "wck" ) . "$number_max \n" ); return $message;' ), 10, 3 );
 				return true;
 			}
@@ -1039,10 +1070,7 @@ function wck_cfc_process_unserialized_batch() {
 	}
 
 	ignore_user_abort( true );
-
-	if (! ini_get( 'safe_mode' ) ) {
-		@set_time_limit( 0 );
-	}
+	@set_time_limit( 0 );
 
 	/* set number of posts that are processed in a batch !IMPORTANT IT IS ALSO SET IN THE wck_unserialized_page_callback() FUNCTION */
 	$per_batch = 30;
@@ -1181,7 +1209,7 @@ function wck_cpt_save_meta_boxes_ids( $post_id ){
 			}
 		}
 	}
-	
+
 	update_option( 'wck_meta_boxes_ids', $wck_meta_boxes_ids );
 }
 
@@ -1201,7 +1229,7 @@ function wck_serialized_update_from_unserialized( $replace, $object_id, $meta_ke
 	if( !empty( $wck_meta_boxes_ids ) ){
 		foreach( $wck_meta_boxes_ids as $wck_meta_boxes_id ){
 			$cfc_args = get_post_meta( $wck_meta_boxes_id, 'wck_cfc_args', true );
-			
+
 			if( !empty( $cfc_args[0] ) && !empty( $cfc_args[0]['meta-name'] ) && $cfc_args[0]['meta-name'] == $meta_key ){
 
 				/* get all post meta for the post id like it is done in get_post_meta() function  */
@@ -1255,5 +1283,24 @@ function wck_serialized_update_from_unserialized( $replace, $object_id, $meta_ke
 	}
 
 	return $replace;
+}
+
+/* make wck meta names protected so they are not saved by custom fields */
+add_filter( 'is_protected_meta', 'wck_cfc_protect_meta_keys', 10, 3 );
+function wck_cfc_protect_meta_keys( $protected, $meta_key, $meta_type ){
+	global $wck_objects, $post;
+	if( !empty( $wck_objects ) ){
+		foreach( $wck_objects as $wck_object ){
+			if( !empty( $wck_object['meta_array'] ) ){
+				foreach ( $wck_object['meta_array'] as $field ){
+					$field_meta_key = Wordpress_Creation_Kit::wck_generate_slug( $field['title'], $field );
+					/* take care of suffixes with pregmatch and we could also have the group name as a prefix to be unique */
+					if ( $meta_key == $field_meta_key || preg_match( '/'.$field_meta_key.'_\d+\z/', $meta_key ) || $meta_key == $wck_object['meta_name'].'_'.$field_meta_key || preg_match( '/'.$wck_object['meta_name'].'_'.$field_meta_key.'_\d+\z/', $meta_key ) )
+						return true;
+				}
+			}
+		}
+	}
+	return $protected;
 }
 ?>
