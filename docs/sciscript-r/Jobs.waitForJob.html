@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Wait for job status.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for Jobs.waitForJob {SciServer}"><tr><td>Jobs.waitForJob {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Wait for job status.
+</h2>
+
+<h3>Description</h3>
+
+<p>Queries regularly the job status and waits until the job is completed.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>Jobs.waitForJob(jobId, verbose=TRUE, pollTime = 5)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>jobId</code></td>
+<td>
+<p>id of job (integer).</p>
+</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+<p>if TRUE, will print &quot;wait&quot; messages on the screen while the job is still running. If FALSE, will suppress the printing of messages on the screen.</p>
+</td></tr>
+<tr valign="top"><td><code>pollTime</code></td>
+<td>
+<p>idle time interval (integer, in seconds) before querying again for the job status. Minimum value allowed is 5 seconds.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>Returns a list object containing the job definition after the job is finished.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp <br />
+Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://apps.sciserver.org/">http://apps.sciserver.org</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="Jobs.submitShellCommandJob.html">Jobs.submitShellCommandJob</a></code>,<code><a href="Jobs.getJobStatus.html">Jobs.getJobStatus</a></code>,<code><a href="Jobs.getDockerComputeDomains.html">Jobs.getDockerComputeDomains</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+Jobs.cancelJob(123)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

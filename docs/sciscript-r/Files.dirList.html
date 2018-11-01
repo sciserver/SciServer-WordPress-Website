@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: List directory contents</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for Files.dirList {SciServer}"><tr><td>Files.dirList {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+List directory contents
+</h2>
+
+<h3>Description</h3>
+
+<p>Lists the contents of a directory.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>Jobs.dirList(fileService, path, level=1, options="")</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>fileService</code></td>
+<td>
+<p>name of fileService (string), or object (list) that defines a file service. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</p>
+</td></tr>
+<tr valign="top"><td><code>path</code></td>
+<td>
+<p>String defining the path (in the remote file service) of the directory to be listed, starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume/directoryToBeListed.</p>
+</td></tr>
+<tr valign="top"><td><code>level</code></td>
+<td>
+<p>amount (int) of listed directory levels that are below or at the same level to that of the relativePath.</p>
+</td></tr>
+<tr valign="top"><td><code>options</code></td>
+<td>
+<p>string specifiying the file or directory patterns to match, based on the glob syntax</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>list containing the directory listing.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp <br />
+Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://apps.sciserver.org/">http://apps.sciserver.org</a><br />
+<a href="http://apps.sciserver.org/dashboard/files">http://apps.sciserver.org/dashboard/files</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="Files.getFileServices.html">Files.getFileServices</a></code>, <code><a href="Files.getFileServiceFromName.html">Files.getFileServiceFromName</a></code>,
+<code><a href="Files.delete.html">Files.delete</a></code>, <code><a href="Files.createDir.html">Files.createDir</a></code>,
+<code><a href="Files.upload.html">Files.upload</a></code>, <code><a href="Files.download.html">Files.download</a></code>, <code><a href="Files.createUserVolume.html">Files.createUserVolume</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+fileServices = Files.getFileServices(); dirs = Files.dirList(fileService=fileServices[[1]], path="rootVolume/userVolumeOwner/userVolume/directoryToBeListed", level=4)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

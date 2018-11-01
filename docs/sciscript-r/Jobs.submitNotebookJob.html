@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Submit notebook job</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for Jobs.submitNotebookJob {SciServer}"><tr><td>Jobs.submitNotebookJob {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Submit notebook job
+</h2>
+
+<h3>Description</h3>
+
+<p>Submits a Jupyter Notebook for execution (as an asynchronous job) inside a Docker compute domain.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>Jobs.submitNotebookJob(notebookPath, dockerComputeDomain=NULL, dockerImageName=NULL, userVolumes=NULL,  dataVolumes=NULL, resultsFolderPath="", parameters="", jobAlias= "")</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>notebookPath</code></td>
+<td>
+<p>path of the notebook within the filesystem mounted in SciServer-Compute (string). Example: notebookPath = '/home/idies/worskpace/Storage/myUserName/persistent/JupyterNotebook.ipynb'</p>
+</td></tr>
+<tr valign="top"><td><code>dockerComputeDomain</code></td>
+<td>
+<p>object (list) that defines a Docker compute domain. A list of these kind of objects available to the user is returned by the function Jobs.getDockerComputeDomains().</p>
+</td></tr>
+<tr valign="top"><td><code>dockerImageName</code></td>
+<td>
+<p>name (string) of the Docker image for executing the notebook. E.g.,  dockerImageName=&quot;Python (astro)&quot;. An array of available Docker images is defined as the 'images' property in the dockerComputeDomain object.</p>
+</td></tr>
+<tr valign="top"><td><code>userVolumes</code></td>
+<td>
+<p>a list with the names of user volumes (with optional write permissions) that will be mounted to the docker Image. E.g.: 
+userVolumes = list( list(name=&quot;JobsTestVolume&quot;, rootVolumeName=&quot;Storage&quot;, owner=&quot;myUserName&quot;, needsWriteAccess=TRUE), list(name=&quot;scratch&quot;, rootVolumeName=&quot;Temporary&quot;, owner=&quot;myUserName&quot;, needsWriteAccess=TRUE) ). A list of available user volumes can be found as the 'userVolumes' property in the dockerComputeDomain object. If userVolumes=Null, then all available user volumes are mounted, with 'needsWriteAccess' = TRUE if the user has Write permissions on the volume.</p>
+</td></tr>
+<tr valign="top"><td><code>dataVolumes</code></td>
+<td>
+<p>a list with the names of data volumes that will be mounted to the docker Image. E.g.: dataVolumes=list(list(name='SDSS DAS')). A list of available data volumes can be found as the 'volumes' property in the dockerComputeDomain list. If dataVolumes=NULL, then all available data volumes are mounted.</p>
+</td></tr>
+<tr valign="top"><td><code>resultsFolderPath</code></td>
+<td>
+<p>full path to results folder (string) where the original notebook is copied to and executed. E.g.: /home/idies/workspace/rootVolume/username/userVolume/jobsFolder. If not set, then a default folder will be set automatically.</p>
+</td></tr>
+<tr valign="top"><td><code>parameters</code></td>
+<td>
+<p>string containing parameters that the notebook might need during its execution. This string is written in the 'parameters.txt' file in the same directory level where the notebook is being executed.</p>
+</td></tr>
+<tr valign="top"><td><code>jobAlias</code></td>
+<td>
+<p>alias (string) of job, defined by the user.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>the job ID (integer)</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp <br />
+Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://apps.sciserver.org/">http://apps.sciserver.org</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="Jobs.submitShellCommandJob.html">Jobs.submitShellCommandJob</a></code>,<code><a href="Jobs.getJobStatus.html">Jobs.getJobStatus</a></code>,<code><a href="Jobs.getDockerComputeDomains.html">Jobs.getDockerComputeDomains</a></code>,<code><a href="Jobs.cancelJob.html">Jobs.cancelJob</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+jobId = Jobs.submitNotebookJob("/home/idies/workspace/Storage/myUserName/persistent/Notebook.ipynb")
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

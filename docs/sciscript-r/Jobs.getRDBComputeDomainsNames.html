@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get database domains names.</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for Jobs.getRDBComputeDomainsNames {SciServer}"><tr><td>Jobs.getRDBComputeDomainsNames {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Get database domains names.
+</h2>
+
+<h3>Description</h3>
+
+<p>Returns the names of the RDB compute domains available to the user.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>Jobs.getRDBComputeDomainsNames(rdbComputeDomains=NULL)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>rdbComputeDomains</code></td>
+<td>
+<p>a list of rdbComputeDomain objects, as returned by Jobs.getRDBComputeDomains(). If not set, then an extra internal call to Jobs.getRDBComputeDomains() is made.</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a list of strings, each being the name of a rdb compute domain available to the user.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp <br />
+Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://apps.sciserver.org/">http://apps.sciserver.org</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="Jobs.getRDBComputeDomains.html">Jobs.getRDBComputeDomains</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+rdbComputeDomainsNames = Jobs.getRDBComputeDomainsNames()
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

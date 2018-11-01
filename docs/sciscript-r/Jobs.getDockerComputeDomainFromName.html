@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get a DockerComputeDomain</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for Jobs.getDockerComputeDomainFromName {SciServer}"><tr><td>Jobs.getDockerComputeDomainFromName {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Get a DockerComputeDomain
+</h2>
+
+<h3>Description</h3>
+
+<p>Returns the names of the docker compute domains available to the user.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>Jobs.getDockerComputeDomainFromName(dockerComputeDomainName, dockerComputeDomains = NULL)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>dockerComputeDomainName</code></td>
+<td>
+<p>name of the DockerComputeDomainName, as shown within the results of Jobs.getDockerComputeDomains()</p>
+</td></tr>
+<tr valign="top"><td><code>dockerComputeDomains</code></td>
+<td>
+<p>a list of dockerComputeDomain objects (dictionaries), as returned by Jobs.getDockerComputeDomains(). If not set, then an internal call to Jobs.getDockerComputeDomains() is made.</p>
+</td></tr>  
+</table>
+
+
+<h3>Value</h3>
+
+<p>a DockerComputeDomain object (list) that defines a Docker compute domain. A list of these kind of objects available to the user is returned by the function Jobs.getDockerComputeDomains().</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp <br />
+Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://apps.sciserver.org/">http://apps.sciserver.org</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="Jobs.getDockerComputeDomains.html">Jobs.getDockerComputeDomains</a></code>.
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+dockerComputeDomain = Jobs.getDockerComputeDomainFromName("dockerComputeDomainAtJHU");
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get Jobs List</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for Jobs.getJobsList {SciServer}"><tr><td>Jobs.getJobsList {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Get Jobs List
+</h2>
+
+<h3>Description</h3>
+
+<p>Gets the list of Jobs submitted by the user.
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>Jobs.getJobsList(top=10, open=NULL, start=NULL, end=NULL, type="all")</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>top</code></td>
+<td>
+<p>top number of jobs (integer) returned. If top=NULL, then all jobs are returned.</p>
+</td></tr>
+<tr valign="top"><td><code>open</code></td>
+<td>
+<p>Boolean variable. If set to TRUE, then only returns jobs that have not finished executing and wrapped up  (status &lt;= FINISHED). If set to FALSE then only returnes jobs that are still running. If set to NULL, then returns both finished and unfinished jobs.</p>
+</td></tr>
+<tr valign="top"><td><code>start</code></td>
+<td>
+<p>The earliest date (inclusive) to search for jobs, in string format yyyy-MM-dd hh:mm:ss.SSS. If set to NULL, then there is no lower bound on date.</p>
+</td></tr>
+<tr valign="top"><td><code>end</code></td>
+<td>
+<p>The latest date (inclusive) to search for jobs, in string format yyyy-MM-dd hh:mm:ss.SSS. If set to NULL, then there is no upper bound on date.</p>
+</td></tr>
+<tr valign="top"><td><code>type</code></td>
+<td>
+<p>type (string) of jobs returned. Can take values of 'rdb' (for returning only relational database jobs), 'docker' (for returning only Docker jobs) and 'all' (all job types are returned).</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>a list containing the definitions of submitted jobs.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp <br />
+Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://apps.sciserver.org/">http://apps.sciserver.org</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="Jobs.submitNotebookJob.html">Jobs.submitNotebookJob</a></code>,<code><a href="Jobs.submitShellCommandJob.html">Jobs.submitShellCommandJob</a></code>,<code><a href="Jobs.getJobStatus.html">Jobs.getJobStatus</a></code>,<code><a href="Jobs.getDockerComputeDomains.html">Jobs.getDockerComputeDomains</a></code>,<code><a href="Jobs.cancelJob.html">Jobs.cancelJob</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+jobs = Jobs.getJobsList(top=2)
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

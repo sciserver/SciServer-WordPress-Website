@@ -36,6 +36,15 @@ You can query the SDSS database using <code><a href="SkyServer.sqlSearch.html">S
 <p><a href="http://skyserver.sdss.org/">SkyQuery</a>: Access to the <a href="http://voservices.net/skyquery">SkyQuery</a> astronomical database catalog cross-match.<br />
 You can upload your own astronomical source catalog into your own database using <code><a href="SkyQuery.uploadTable.html">SkyQuery.uploadTable</a></code>, and cross-match it againt many other public source catalogs by running asynchronous SQL queries jobs using <code><a href="SkyQuery.submitJob.html">SkyQuery.submitJob</a></code>.<br />
 </p>
+<p><a href="http://apps.sciserver.org/compute/jobs">Compute Jobs</a>: Submission of Jupyter notebooks or shell commands as jobs.<br />
+You can execute whole Jupyter notebooks and shell commands as asynchronous batch jobs, as well as synchronous jobs, by using <code><a href="Jobs.submitShellCommandJob.html">Jobs.submitShellCommandJob</a></code> and <code><a href="Jobs.submitNotebookJob.html">Jobs.submitNotebookJob</a></code>.<br />
+</p>
+<p><a href="http://apps.sciserver.org/sciquery-ui">SciQuery Jobs</a>: Submission of SQL queries.<br />
+You can execute synchronous or asynchronous SQL queries against Postgres and other database backends, by using <code><a href="Jobs.submitRDBQueryJob.html">Jobs.submitRDBQueryJob</a></code>.<br />
+</p>
+<p><a href="https://apps.sciserver.org/dashboard/files">Files</a>: Interaction with the SciServer file system.<br />
+You can upload and download data into your own file space in SciServer (e.g., <code><a href="Files.upload.html">Files.upload</a></code>, <code><a href="Files.download.html">Files.download</a></code><br />
+</p>
 
 <table summary="Rd table">
 <tr>
@@ -48,7 +57,7 @@ Type: </td><td style="text-align: left;"> Package</td>
 </tr>
 <tr>
  <td style="text-align: left;">
-Version: </td><td style="text-align: left;"> 1.10.0</td>
+Version: </td><td style="text-align: left;"> 2.0.0</td>
 </tr>
 <tr>
  <td style="text-align: left;">
@@ -71,5 +80,5 @@ Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
 <a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
 </p>
 
-<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 1.10.0 <a href="00Index.html">Index</a>]</div>
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
 </body></html>

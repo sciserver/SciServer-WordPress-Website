@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><title>R: Get UserVolumes info</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="R.css" />
+</head><body>
+
+<table width="100%" summary="page for Files.getUserVolumesInfo {SciServer}"><tr><td>Files.getUserVolumesInfo {SciServer}</td><td style="text-align: right;">R Documentation</td></tr></table>
+
+<h2>
+Get UserVolumes info
+</h2>
+
+<h3>Description</h3>
+
+<p>Gets the names and definitions of the UserVolumes available in a particular FileService
+</p>
+
+
+<h3>Usage</h3>
+
+<pre>Jobs.getUserVolumesInfo(fileService, rootVolumeName=NULL, verbose=TRUE)</pre>
+
+
+<h3>Arguments</h3>
+
+<table summary="R argblock">
+<tr valign="top"><td><code>fileService</code></td>
+<td>
+<p>name of fileService (string), or object (list) that defines a file service. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</p>
+</td></tr>
+<tr valign="top"><td><code>rootVolumeName</code></td>
+<td>
+<p>name of root Volume (string) for which the user volumes are fetched. If set to NULL, then user volumes in all root folders are fetched.</p>
+</td></tr>
+<tr valign="top"><td><code>verbose</code></td>
+<td>
+<p>boolean parameter defining whether warnings will be printed (set to TRUE) or not (set to FALSE).</p>
+</td></tr>
+</table>
+
+
+<h3>Value</h3>
+
+<p>list of lists, each of which containing the name and description of a user volume that a user is able to access.</p>
+
+
+<h3>Author(s)</h3>
+
+<p>Manuchehr Taghizadeh-Popp <br />
+Maintainer: Manuchehr Taghizadeh-Popp &lt;mtaghiza@jhu.edu&gt;
+</p>
+
+
+<h3>References</h3>
+
+<p><a href="http://www.sciserver.org">http://www.sciserver.org</a><br />
+<a href="http://apps.sciserver.org/">http://apps.sciserver.org</a><br />
+<a href="http://apps.sciserver.org/dashboard/files">http://apps.sciserver.org/dashboard/files</a><br />
+<a href="http://www.github.com/sciserver/SciScript-R">http://www.github.com/sciserver/SciScript-R</a>
+</p>
+
+
+<h3>See Also</h3>
+
+<p><code><a href="Files.getFileServices.html">Files.getFileServices</a></code>, <code><a href="Files.getRootVolumesInfo.html">Files.getRootVolumesInfo</a></code>
+</p>
+
+
+<h3>Examples</h3>
+
+<pre>
+fileServices = Files.getFileServices(); userVolumesInfo = Files.getUserVolumesInfo(fileServices[[1]])
+</pre>
+
+<hr /><div style="text-align: center;">[Package <em>SciServer</em> version 2.0.0 <a href="00Index.html">Index</a>]</div>
+</body></html>

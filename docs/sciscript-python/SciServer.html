@@ -1,32 +1,22 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
-
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>SciServer package &mdash; SciScript-Python 1.10.0 documentation</title>
-    
+    <title>SciServer package &#8212; SciScript-Python 2.0.0 documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
-    <script type="text/javascript">
-      var DOCUMENTATION_OPTIONS = {
-        URL_ROOT:    './',
-        VERSION:     '1.10.0',
-        COLLAPSE_INDEX: false,
-        FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
-      };
-    </script>
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="SciScript-Python 1.10.0 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Welcome to SciScript Python documentation!" href="index.html" /> 
-  </head>
-  <body role="document">
+  </head><body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -39,7 +29,7 @@
         <li class="right" >
           <a href="index.html" title="Welcome to SciScript Python documentation!"
              accesskey="P">previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">SciScript-Python 1.10.0 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">SciScript-Python 2.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>  
 
@@ -54,35 +44,45 @@
 SciServer (<a class="reference external" href="http://www.sciserver.org">http://www.sciserver.org</a>) provides a new online framework for data-intensive scientifc computing in the cloud,
 where the motto is to bring the computation close where the data is stored, and allow seamless access and sharing of big data sets within the scientific community.</p>
 <p>Some SciServer tools you can access with this package:</p>
-<ul>
+<ul class="simple">
 <li><dl class="first docutils">
-<dt><a class="reference external" href="http://portal.sciserver.org">Login Portal</a>: Single sign-on portal to all SciServer applications.</dt>
-<dd><p class="first last">Although some tools accept anonymous access, you can use Authentication.login to login and access the tools and your own data and environment (after registering in the Login Portal). If you are running this package in a Jupyter Notebook in the SciServer-Compute environment, the use of Authentication.login is not necessary since it&#8217;s done automatically.</p>
-</dd>
+<dt><a class="reference external" href="https://portal.sciserver.org">Login Portal</a>: Single sign-on portal to all SciServer applications.</dt>
+<dd>Although some tools accept anonymous access, you can use Authentication.login to login and access the tools and your own data and environment (after registering in the Login Portal). If you are running this package in a Jupyter Notebook in the SciServer-Compute environment, the use of Authentication.login is not necessary since it’s done automatically.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><a class="reference external" href="http://skyserver.sdss.org/CasJobs/">CasJobs</a>: Database storage and querying.</dt>
-<dd><p class="first last">You can have access big databases, as well as save your data tables in your own database called &#8216;MyDB&#8217;. The user can run synchronous or asynchronous SQL queries and get the result back as an R data-frame (using CasJobs.executeQuery or CasJobs.submitJob, respectively). Uploading of CSV files or R data-frames into a database table can be done using CasJobs.uploadCSVToTable and CasJobs.uploadDataFrameToTable, respectively.</p>
-</dd>
+<dt><a class="reference external" href="https://skyserver.sdss.org/CasJobs/">CasJobs</a>: Database storage and querying.</dt>
+<dd>You can have access big databases, as well as save your data tables in your own database called ‘MyDB’. The user can run synchronous or asynchronous SQL queries and get the result back as an R data-frame (using CasJobs.executeQuery or CasJobs.submitJob, respectively). Uploading of CSV files or R data-frames into a database table can be done using CasJobs.uploadCSVToTable and CasJobs.uploadDataFrameToTable, respectively.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><a class="reference external" href="http://www.scidrive.org/">SciDrive</a>: Drag-and-drop file storage and sharing.</dt>
-<dd><p class="first last">You can create directories in SciDrive using SciDrive.createContainer, upload a file to SciDrive using SciDrive.upload, and share its URL with your collaborators by using SciDrive.publicUrl.</p>
-</dd>
+<dt><a class="reference external" href="https://www.scidrive.org/">SciDrive</a>: Drag-and-drop file storage and sharing.</dt>
+<dd>You can create directories in SciDrive using SciDrive.createContainer, upload a file to SciDrive using SciDrive.upload, and share its URL with your collaborators by using SciDrive.publicUrl.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><a class="reference external" href="http://skyserver.sdss.org/">SkyServer</a>: Access to the SDSS astronomical survey.</dt>
-<dd><p class="first last">You can query the SDSS database using SkyServer.sqlSearch, run cone searches using SkyServer.radialSearch, or get cutout images from the sky using SkyServer.getJpegImgCutout, between other tasks.</p>
-</dd>
+<dt><a class="reference external" href="https://skyserver.sdss.org/">SkyServer</a>: Access to the SDSS astronomical survey.</dt>
+<dd>You can query the SDSS database using SkyServer.sqlSearch, run cone searches using SkyServer.radialSearch, or get cutout images from the sky using SkyServer.getJpegImgCutout, between other tasks.</dd>
 </dl>
 </li>
 <li><dl class="first docutils">
-<dt><a class="reference external" href="http://www.voservices.net/skyquery">SkyQuery</a>: Cross-match of astronomical source catalogs.</dt>
-<dd><p class="first last">You can use this scalable database system for uploading your own catalogs and cross-matching them against huge astronomical source catalogs, or even cross-matching huge catalogs against each other!. Use SkyQuery.submitJob to run the cross-match, and use SkyQuery.listAllDatasets, SkyQuery.listDatasetTables and SkyQuery.listTableColumns to browse the catalogs and database schema.</p>
-</dd>
+<dt><a class="reference external" href="https://www.voservices.net/skyquery">SkyQuery</a>: Cross-match of astronomical source catalogs.</dt>
+<dd>You can use this scalable database system for uploading your own catalogs and cross-matching them against huge astronomical source catalogs, or even cross-matching huge catalogs against each other!. Use SkyQuery.submitJob to run the cross-match, and use SkyQuery.listAllDatasets, SkyQuery.listDatasetTables and SkyQuery.listTableColumns to browse the catalogs and database schema.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://apps.sciserver.org/compute/jobs">Compute Jobs</a>: Submission of Jupyter notebooks or shell commands as jobs</dt>
+<dd>You can execute whole Jupyter notebooks and shell commands as asynchronous batch jobs, as well as synchronous jobs.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://apps.sciserver.org/sciquery-ui">SciQuery Jobs</a>: Submission of SQL queries.</dt>
+<dd>You can execute synchronous or s synchronous SQL queries against Postgres and other database backends.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://apps.sciserver.org/dashboard/files">Files</a>: Interaction with the SciServer file system.</dt>
+<dd>You can upload, and download data into your own file space in SciServer, as well as share data with your collaborators, between other things.</dd>
 </dl>
 </li>
 </ul>
@@ -93,9 +93,21 @@ where the motto is to bring the computation close where the data is stored, and 
 </ul>
 <p><strong>Maintainer</strong>: Manuchehr Taghizadeh-Popp &lt;<a class="reference external" href="mailto:mtaghiza&#37;&#52;&#48;jhu&#46;edu">mtaghiza<span>&#64;</span>jhu<span>&#46;</span>edu</a>&gt;</p>
 <p><strong>Authors</strong>: Gerard Lemson &lt;<a class="reference external" href="mailto:glemson1&#37;&#52;&#48;jhu&#46;edu">glemson1<span>&#64;</span>jhu<span>&#46;</span>edu</a>&gt;, Manuchehr Taghizadeh-Popp &lt;<a class="reference external" href="mailto:mtaghiza&#37;&#52;&#48;jhu&#46;edu">mtaghiza<span>&#64;</span>jhu<span>&#46;</span>edu</a>&gt;</p>
-<p><strong>Version</strong>: sciserver-v1.10.0</p>
+<p><strong>Version</strong>: sciserver-v2.0.0</p>
 <div class="section" id="module-SciServer.CasJobs">
 <span id="sciserver-casjobs-module"></span><h2>SciServer.CasJobs module<a class="headerlink" href="#module-SciServer.CasJobs" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="SciServer.CasJobs.Task">
+<em class="property">class </em><code class="descclassname">SciServer.CasJobs.</code><code class="descname">Task</code><a class="headerlink" href="#SciServer.CasJobs.Task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class TaskName stores the name of the task that executes the API call.</p>
+<dl class="attribute">
+<dt id="SciServer.CasJobs.Task.name">
+<code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#SciServer.CasJobs.Task.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
 <dl class="function">
 <dt id="SciServer.CasJobs.cancelJob">
 <code class="descclassname">SciServer.CasJobs.</code><code class="descname">cancelJob</code><span class="sig-paren">(</span><em>jobId</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.cancelJob" title="Permalink to this definition">¶</a></dt>
@@ -104,13 +116,13 @@ where the motto is to bring the computation close where the data is stored, and 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> &#8211; id of job (integer)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> – id of job (integer)</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns True if the job was canceled successfully.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">response = CasJobs.cancelJob(CasJobs.submitJob(&#8220;select 1&#8221;))</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">response = CasJobs.cancelJob(CasJobs.submitJob(“select 1”))</td>
 </tr>
 </tbody>
 </table>
@@ -129,28 +141,28 @@ where the motto is to bring the computation close where the data is stored, and 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>sql</strong> &#8211; sql query (string)</li>
-<li><strong>context</strong> &#8211; database context (string)</li>
-<li><strong>format</strong> &#8211; <p>parameter (string) that specifies the return type:</p>
-<p>&#8216;pandas&#8217;: pandas.DataFrame.</p>
-<p>&#8216;json&#8217;: a JSON string containing the query results.</p>
-<p>&#8216;dict&#8217;: a dictionary created from the JSON string containing the query results.</p>
-<p>&#8216;csv&#8217;: a csv string.</p>
-<p>&#8216;readable&#8217;: an object of type io.StringIO, which has the .read() method and wraps a csv string that can be passed into pandas.read_csv for example.</p>
-<p>&#8216;StringIO&#8217;: an object of type io.StringIO, which has the .read() method and wraps a csv string that can be passed into pandas.read_csv for example.</p>
-<p>&#8216;fits&#8217;: an object of type io.BytesIO, which has the .read() method and wraps the result in fits format.</p>
-<p>&#8216;BytesIO&#8217;: an object of type io.BytesIO, which has the .read() method and wraps the result in fits format.</p>
+<li><strong>sql</strong> – sql query (string)</li>
+<li><strong>context</strong> – database context (string)</li>
+<li><strong>format</strong> – <p>parameter (string) that specifies the return type:</p>
+<p>’pandas’: pandas.DataFrame.</p>
+<p>’json’: a JSON string containing the query results.</p>
+<p>’dict’: a dictionary created from the JSON string containing the query results.</p>
+<p>’csv’: a csv string.</p>
+<p>’readable’: an object of type io.StringIO, which has the .read() method and wraps a csv string that can be passed into pandas.read_csv for example.</p>
+<p>’StringIO’: an object of type io.StringIO, which has the .read() method and wraps a csv string that can be passed into pandas.read_csv for example.</p>
+<p>’fits’: an object of type io.BytesIO, which has the .read() method and wraps the result in fits format.</p>
+<p>’BytesIO’: an object of type io.BytesIO, which has the .read() method and wraps the result in fits format.</p>
 </li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the query result table, in a format defined by the &#8216;format&#8217; input parameter.</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the query result table, in a format defined by the ‘format’ input parameter.</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error. Throws an exception if parameter &#8216;format&#8217; is not correctly specified.</p>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error. Throws an exception if parameter ‘format’ is not correctly specified.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">table = CasJobs.executeQuery(sql=&#8221;select 1 as foo, 2 as bar&#8221;,format=&#8221;pandas&#8221;, context=&#8221;MyDB&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">table = CasJobs.executeQuery(sql=”select 1 as foo, 2 as bar”,format=”pandas”, context=”MyDB”)</p>
 </td>
 </tr>
 </tbody>
@@ -169,13 +181,13 @@ where the motto is to bring the computation close where the data is stored, and 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> &#8211; id of job (integer)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> – id of job (integer)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns a dictionary object containing the job status and related metadata. The &#8220;Status&#8221; field can be equal to 0 (Ready), 1 (Started), 2 (Canceling), 3(Canceled), 4 (Failed) or 5 (Finished). If jobId is the empty string, then returns a list with the statuses of all previous jobs.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns a dictionary object containing the job status and related metadata. The “Status” field can be equal to 0 (Ready), 1 (Started), 2 (Canceling), 3(Canceled), 4 (Failed) or 5 (Finished). If jobId is the empty string, then returns a list with the statuses of all previous jobs.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">status = CasJobs.getJobStatus(CasJobs.submitJob(&#8220;select 1&#8221;))</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">status = CasJobs.getJobStatus(CasJobs.submitJob(“select 1”))</td>
 </tr>
 </tbody>
 </table>
@@ -194,8 +206,8 @@ where the motto is to bring the computation close where the data is stored, and 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>queryString</strong> &#8211; sql query (string)</li>
-<li><strong>context</strong> &#8211; database context (string)</li>
+<li><strong>queryString</strong> – sql query (string)</li>
+<li><strong>context</strong> – database context (string)</li>
 </ul>
 </td>
 </tr>
@@ -205,7 +217,7 @@ where the motto is to bring the computation close where the data is stored, and 
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">array = CasJobs.getNumpyArrayFromQuery(&#8220;select 1 as foo&#8221;, context=&#8221;MyDB&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">array = CasJobs.getNumpyArrayFromQuery(“select 1 as foo”, context=”MyDB”)</p>
 </td>
 </tr>
 </tbody>
@@ -225,8 +237,8 @@ where the motto is to bring the computation close where the data is stored, and 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>queryString</strong> &#8211; sql query (string)</li>
-<li><strong>context</strong> &#8211; database context (string)</li>
+<li><strong>queryString</strong> – sql query (string)</li>
+<li><strong>context</strong> – database context (string)</li>
 </ul>
 </td>
 </tr>
@@ -236,7 +248,7 @@ where the motto is to bring the computation close where the data is stored, and 
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">df = CasJobs.getPandasDataFrameFromQuery(&#8220;select 1 as foo&#8221;, context=&#8221;MyDB&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">df = CasJobs.getPandasDataFrameFromQuery(“select 1 as foo”, context=”MyDB”)</p>
 </td>
 </tr>
 </tbody>
@@ -277,13 +289,13 @@ where the motto is to bring the computation close where the data is stored, and 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>context</strong> &#8211; database context (string)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>context</strong> – database context (string)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The result is a json object with format [{&#8220;Date&#8221;:seconds,&#8221;Name&#8221;:&#8221;TableName&#8221;,&#8221;Rows&#8221;:int,&#8221;Size&#8221;,int},..]</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">The result is a json object with format [{“Date”:seconds,”Name”:”TableName”,”Rows”:int,”Size”,int},..]</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">tables = CasJobs.getTables(&#8220;MyDB&#8221;)</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">tables = CasJobs.getTables(“MyDB”)</td>
 </tr>
 </tbody>
 </table>
@@ -302,8 +314,8 @@ where the motto is to bring the computation close where the data is stored, and 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>sql</strong> &#8211; sql query (string)</li>
-<li><strong>context</strong> &#8211; database context (string)</li>
+<li><strong>sql</strong> – sql query (string)</li>
+<li><strong>context</strong> – database context (string)</li>
 </ul>
 </td>
 </tr>
@@ -313,7 +325,7 @@ where the motto is to bring the computation close where the data is stored, and 
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">jobid = CasJobs.submitJob(&#8220;select 1 as foo&#8221;,&#8221;MyDB&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">jobid = CasJobs.submitJob(“select 1 as foo”,”MyDB”)</p>
 </td>
 </tr>
 </tbody>
@@ -333,9 +345,9 @@ where the motto is to bring the computation close where the data is stored, and 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>csvData</strong> &#8211; a CSV table in string format.</li>
-<li><strong>tableName</strong> &#8211; name of CasJobs table to be created.</li>
-<li><strong>context</strong> &#8211; database context (string)</li>
+<li><strong>csvData</strong> – a CSV table in string format.</li>
+<li><strong>tableName</strong> – name of CasJobs table to be created.</li>
+<li><strong>context</strong> – database context (string)</li>
 </ul>
 </td>
 </tr>
@@ -345,7 +357,7 @@ where the motto is to bring the computation close where the data is stored, and 
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">csv = CasJobs.getPandasDataFrameFromQuery(&#8220;select 1 as foo&#8221;, context=&#8221;MyDB&#8221;).to_csv().encode(&#8220;utf8&#8221;); response = CasJobs.uploadCSVDataToTable(csv, &#8220;NewTableFromDataFrame&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">csv = CasJobs.getPandasDataFrameFromQuery(“select 1 as foo”, context=”MyDB”).to_csv().encode(“utf8”); response = CasJobs.uploadCSVDataToTable(csv, “NewTableFromDataFrame”)</p>
 </td>
 </tr>
 </tbody>
@@ -365,9 +377,9 @@ where the motto is to bring the computation close where the data is stored, and 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>dataFrame</strong> &#8211; Pandas data frame containg the data (pandas.core.frame.DataFrame)</li>
-<li><strong>tableName</strong> &#8211; name of CasJobs table to be created.</li>
-<li><strong>context</strong> &#8211; database context (string)</li>
+<li><strong>dataFrame</strong> – Pandas data frame containg the data (pandas.core.frame.DataFrame)</li>
+<li><strong>tableName</strong> – name of CasJobs table to be created.</li>
+<li><strong>context</strong> – database context (string)</li>
 </ul>
 </td>
 </tr>
@@ -377,7 +389,7 @@ where the motto is to bring the computation close where the data is stored, and 
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">response = CasJobs.uploadPandasDataFrameToTable(CasJobs.getPandasDataFrameFromQuery(&#8220;select 1 as foo&#8221;, context=&#8221;MyDB&#8221;), &#8220;NewTableFromDataFrame&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">response = CasJobs.uploadPandasDataFrameToTable(CasJobs.getPandasDataFrameFromQuery(“select 1 as foo”, context=”MyDB”), “NewTableFromDataFrame”)</p>
 </td>
 </tr>
 </tbody>
@@ -390,25 +402,26 @@ where the motto is to bring the computation close where the data is stored, and 
 
 <dl class="function">
 <dt id="SciServer.CasJobs.waitForJob">
-<code class="descclassname">SciServer.CasJobs.</code><code class="descname">waitForJob</code><span class="sig-paren">(</span><em>jobId</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.waitForJob" title="Permalink to this definition">¶</a></dt>
-<dd><p>Queries the job status from casjobs every 2 seconds and waits for the casjobs job to return a status of 3, 4, or 5 (Cancelled, Failed or Finished, respectively).</p>
+<code class="descclassname">SciServer.CasJobs.</code><code class="descname">waitForJob</code><span class="sig-paren">(</span><em>jobId</em>, <em>verbose=False</em>, <em>pollTime=5</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.CasJobs.waitForJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries regularly the job status and waits until the job is completed.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>jobId</strong> &#8211; id of job (integer)</li>
-<li><strong>verbose</strong> &#8211; if True, will print &#8220;wait&#8221; messages on the screen while the job is not done. If False, will suppress printing messages on the screen.</li>
+<li><strong>jobId</strong> – id of job (integer)</li>
+<li><strong>verbose</strong> – if True, will print “wait” messages on the screen while the job is still running. If False, will suppress the printing of messages on the screen.</li>
+<li><strong>pollTime</strong> – idle time interval (integer, in seconds) before querying again for the job status. Minimum value allowed is 5 seconds.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">After the job is finished, returns a dictionary object containing the job status and related metadata. The &#8220;Status&#8221; field can be equal to 0 (Ready), 1 (Started), 2 (Canceling), 3(Canceled), 4 (Failed) or 5 (Finished).</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">After the job is finished, returns a dictionary object containing the job status and related metadata. The “Status” field can be equal to 0 (Ready), 1 (Started), 2 (Canceling), 3(Canceled), 4 (Failed) or 5 (Finished).</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">CasJobs.waitForJob(CasJobs.submitJob(&#8220;select 1&#8221;))</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">CasJobs.waitForJob(CasJobs.submitJob(“select 1”))</p>
 </td>
 </tr>
 </tbody>
@@ -428,9 +441,9 @@ where the motto is to bring the computation close where the data is stored, and 
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>fileName</strong> &#8211; path to the local Fits file to be created (string)</li>
-<li><strong>queryString</strong> &#8211; sql query (string)</li>
-<li><strong>context</strong> &#8211; database context (string)</li>
+<li><strong>fileName</strong> – path to the local Fits file to be created (string)</li>
+<li><strong>queryString</strong> – sql query (string)</li>
+<li><strong>context</strong> – database context (string)</li>
 </ul>
 </td>
 </tr>
@@ -440,7 +453,7 @@ where the motto is to bring the computation close where the data is stored, and 
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the CasJobs API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">CasJobs.writeFitsFileFromQuery(&#8220;/home/user/myFile.fits&#8221;,&#8221;select 1 as foo&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">CasJobs.writeFitsFileFromQuery(“/home/user/myFile.fits”,”select 1 as foo”)</p>
 </td>
 </tr>
 </tbody>
@@ -454,18 +467,6 @@ where the motto is to bring the computation close where the data is stored, and 
 </div>
 <div class="section" id="module-SciServer.Config">
 <span id="sciserver-config-module"></span><h2>SciServer.Config module<a class="headerlink" href="#module-SciServer.Config" title="Permalink to this headline">¶</a></h2>
-<p>The SciServer.Config module contains important parameters for the correct functioning of the SciServer package.</p>
-<p>Although these parameters must be set/defined by the admin or user before the installation of the package, they can also be accessed and changed on-the-fly while on the python session.</p>
-<ul class="simple">
-<li><strong>Config.CasJobsRESTUri</strong>: defines the base URL of the CasJobs web API (string). E.g., &#8220;<a class="reference external" href="https://skyserver.sdss.org/CasJobs/RestApi">https://skyserver.sdss.org/CasJobs/RestApi</a>&#8220;</li>
-<li><strong>Config.AuthenticationURL</strong>: defines the base URL of the Authentication web service API (string). E.g., &#8220;<a class="reference external" href="https://portal.sciserver.org/login-portal/keystone/v3/tokens">https://portal.sciserver.org/login-portal/keystone/v3/tokens</a>&#8220;</li>
-<li><strong>Config.SciDriveHost</strong>: defines the base URL of the SciDrive web service API (string). E.g., &#8220;<a class="reference external" href="https://www.scidrive.org">https://www.scidrive.org</a>&#8220;</li>
-<li><strong>Config.SkyQueryUrl</strong>: defines the base URL of the SkyQuery web service API (string). E.g., &#8220;<a class="reference external" href="http://voservices.net/skyquery/Api/V1">http://voservices.net/skyquery/Api/V1</a>&#8220;</li>
-<li><strong>Config.SkyServerWSurl</strong>: defines the base URL of the SkyServer web service API (string). E.g., &#8220;<a class="reference external" href="https://skyserver.sdss.org">https://skyserver.sdss.org</a>&#8220;</li>
-<li><strong>Config.DataRelease</strong>: defines the SDSS data release (string), to be used to build the full SkyServer API url along with Config.SkyServerWSurl. E.g., &#8220;DR13&#8221;</li>
-<li><strong>Config.KeystoneTokenPath</strong>: defines the local path (string) to the file containing the user&#8217;s authentication token in the SciServer-Compute environment. E.g., &#8220;/home/idies/keystone.token&#8221;. Unlikely to change since it is hardcoded in SciServer-Compute.</li>
-<li><strong>Config.version</strong>: defines the SciServer release version tag (string), to which this package belongs. E.g., &#8220;sciserver-v1.9.3&#8221;</li>
-</ul>
 <dl class="function">
 <dt id="SciServer.Config.isSciServerComputeEnvironment">
 <code class="descclassname">SciServer.Config.</code><code class="descname">isSciServerComputeEnvironment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Config.isSciServerComputeEnvironment" title="Permalink to this definition">¶</a></dt>
@@ -481,15 +482,21 @@ where the motto is to bring the computation close where the data is stored, and 
 </dd></dl>
 
 </div>
-<div class="section" id="sciserver-authentication-module">
-<h2>SciServer.Authentication module<a class="headerlink" href="#sciserver-authentication-module" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-SciServer.Authentication"></span><dl class="class">
+<div class="section" id="module-SciServer.Authentication">
+<span id="sciserver-authentication-module"></span><h2>SciServer.Authentication module<a class="headerlink" href="#module-SciServer.Authentication" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
 <dt id="SciServer.Authentication.KeystoneUser">
 <em class="property">class </em><code class="descclassname">SciServer.Authentication.</code><code class="descname">KeystoneUser</code><a class="headerlink" href="#SciServer.Authentication.KeystoneUser" title="Permalink to this definition">¶</a></dt>
-<dd><p>The class KeystoneUser stores the &#8216;id&#8217; and &#8216;name&#8217; of the user.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class KeystoneUser stores the ‘id’ and ‘name’ of the user.</p>
 <dl class="attribute">
 <dt id="SciServer.Authentication.KeystoneUser.id">
 <code class="descname">id</code><em class="property"> = None</em><a class="headerlink" href="#SciServer.Authentication.KeystoneUser.id" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="SciServer.Authentication.KeystoneUser.token">
+<code class="descname">token</code><em class="property"> = None</em><a class="headerlink" href="#SciServer.Authentication.KeystoneUser.token" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="attribute">
@@ -502,7 +509,8 @@ where the motto is to bring the computation close where the data is stored, and 
 <dl class="class">
 <dt id="SciServer.Authentication.Token">
 <em class="property">class </em><code class="descclassname">SciServer.Authentication.</code><code class="descname">Token</code><a class="headerlink" href="#SciServer.Authentication.Token" title="Permalink to this definition">¶</a></dt>
-<dd><p>The class token stores the authentication token of the user in a particular session.</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class token stores the authentication token of the user in a particular session.</p>
 <dl class="attribute">
 <dt id="SciServer.Authentication.Token.value">
 <code class="descname">value</code><em class="property"> = None</em><a class="headerlink" href="#SciServer.Authentication.Token.value" title="Permalink to this definition">¶</a></dt>
@@ -517,7 +525,7 @@ where the motto is to bring the computation close where the data is stored, and 
 <p class="first admonition-title">Warning</p>
 <p class="last">Deprecated. Use Authentication.getToken instead.</p>
 </div>
-<p>Returns the users keystone token passed into the python instance with the &#8211;ident argument.</p>
+<p>Returns the users keystone token passed into the python instance with the –ident argument.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -542,7 +550,7 @@ where the motto is to bring the computation close where the data is stored, and 
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> &#8211; Sciserver&#8217;s authentication token (string) for the user.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> – Sciserver’s authentication token (string) for the user.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns a KeystoneUser object, which stores the name and id of the user.</td>
 </tr>
@@ -562,7 +570,7 @@ where the motto is to bring the computation close where the data is stored, and 
 <dt id="SciServer.Authentication.getToken">
 <code class="descclassname">SciServer.Authentication.</code><code class="descname">getToken</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Authentication.getToken" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the SciServer authentication token of the user. First, will try to return Authentication.token.value.
-If Authentication.token.value is not set, Authentication.getToken will try to return the token value in the python instance argument variable &#8220;&#8211;ident&#8221;.
+If Authentication.token.value is not set, Authentication.getToken will try to return the token value in the python instance argument variable “–ident”.
 If this variable does not exist, will try to return the token stored in Config.KeystoneTokenFilePath. Will return a None value if all previous steps fail.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -602,19 +610,19 @@ If this variable does not exist, will try to return the token stored in Config.K
 
 <dl class="function">
 <dt id="SciServer.Authentication.login">
-<code class="descclassname">SciServer.Authentication.</code><code class="descname">login</code><span class="sig-paren">(</span><em>UserName</em>, <em>Password</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Authentication.login" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">SciServer.Authentication.</code><code class="descname">login</code><span class="sig-paren">(</span><em>UserName=None</em>, <em>Password=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Authentication.login" title="Permalink to this definition">¶</a></dt>
 <dd><p>Logs the user into SciServer and returns the authentication token.
 This function is useful when SciScript-Python library methods are executed outside the SciServer-Compute environment.
-In this case, the session authentication token does not exist (and therefore can&#8217;t be automatically recognized),
+In this case, the session authentication token does not exist (and therefore can’t be automatically recognized),
 so the user has to use Authentication.login in order to log into SciServer manually and get the authentication token.
-Authentication.login also sets the token value in the python instance argument variable &#8220;&#8211;ident&#8221;, and as the local object Authentication.token (of class Authentication.Token).</p>
+Authentication.login also sets the token value in the python instance argument variable “–ident”, and as the local object Authentication.token (of class Authentication.Token).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>UserName</strong> &#8211; name of the user (string)</li>
-<li><strong>Password</strong> &#8211; password of the user (string)</li>
+<li><strong>UserName</strong> – name of the user (string). If not set, then a user name prompt will show.</li>
+<li><strong>Password</strong> – password of the user (string). If not set, then a password prompt will show.</li>
 </ul>
 </td>
 </tr>
@@ -624,7 +632,7 @@ Authentication.login also sets the token value in the python instance argument v
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the Authentication URL returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">token = Authentication.login(&#8216;loginName&#8217;,&#8217;loginPassword&#8217;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">token1 = Authentication.login(); token2 = Authentication.login(‘loginName’,’loginPassword’);</p>
 </td>
 </tr>
 </tbody>
@@ -642,14 +650,14 @@ Authentication.login also sets the token value in the python instance argument v
 <p class="first admonition-title">Warning</p>
 <p class="last">Deprecated. Use Authentication.setToken instead.</p>
 </div>
-<p>Sets the token as the &#8211;ident argument</p>
+<p>Sets the token as the –ident argument</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_token</strong> &#8211; authentication token (string)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_token</strong> – authentication token (string)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Authentication.setKeystoneToken(&#8220;myToken&#8221;)</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Authentication.setKeystoneToken(“myToken”)</td>
 </tr>
 </tbody>
 </table>
@@ -662,14 +670,14 @@ Authentication.login also sets the token value in the python instance argument v
 <dl class="function">
 <dt id="SciServer.Authentication.setToken">
 <code class="descclassname">SciServer.Authentication.</code><code class="descname">setToken</code><span class="sig-paren">(</span><em>_token</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Authentication.setToken" title="Permalink to this definition">¶</a></dt>
-<dd><p>Sets the SciServer authentication token of the user in the variable Authentication.token.value, as well as in the python instance argument variable &#8220;&#8211;ident&#8221;.</p>
+<dd><p>Sets the SciServer authentication token of the user in the variable Authentication.token.value, as well as in the python instance argument variable “–ident”.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_token</strong> &#8211; Sciserver&#8217;s authentication token for the user (string)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_token</strong> – Sciserver’s authentication token for the user (string)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Authentication.setToken(&#8216;myToken&#8217;)</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Authentication.setToken(‘myToken’)</td>
 </tr>
 </tbody>
 </table>
@@ -680,16 +688,17 @@ Authentication.login also sets the token value in the python instance argument v
 </dd></dl>
 
 </div>
-<div class="section" id="sciserver-loginportal-module">
-<h2>SciServer.LoginPortal module<a class="headerlink" href="#sciserver-loginportal-module" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-SciServer.LoginPortal"></span><dl class="class">
+<div class="section" id="module-SciServer.LoginPortal">
+<span id="sciserver-loginportal-module"></span><h2>SciServer.LoginPortal module<a class="headerlink" href="#module-SciServer.LoginPortal" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
 <dt id="SciServer.LoginPortal.KeystoneUser">
 <em class="property">class </em><code class="descclassname">SciServer.LoginPortal.</code><code class="descname">KeystoneUser</code><a class="headerlink" href="#SciServer.LoginPortal.KeystoneUser" title="Permalink to this definition">¶</a></dt>
-<dd><div class="admonition warning">
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<div class="admonition warning">
 <p class="first admonition-title">Warning</p>
 <p class="last">Deprecated. Use SciServer.Authentication.KeystoneUser instead.</p>
 </div>
-<p>The class KeystoneUser stores the &#8216;id&#8217; and &#8216;name&#8217; of the user.</p>
+<p>The class KeystoneUser stores the ‘id’ and ‘name’ of the user.</p>
 <dl class="attribute">
 <dt id="SciServer.LoginPortal.KeystoneUser.id">
 <code class="descname">id</code><em class="property"> = 'KeystoneID'</em><a class="headerlink" href="#SciServer.LoginPortal.KeystoneUser.id" title="Permalink to this definition">¶</a></dt>
@@ -709,7 +718,7 @@ Authentication.login also sets the token value in the python instance argument v
 <p class="first admonition-title">Warning</p>
 <p class="last">Deprecated. Use Authentication.getToken instead.</p>
 </div>
-<p>Returns the users keystone token passed into the python instance with the &#8211;ident argument.</p>
+<p>Returns the users keystone token passed into the python instance with the –ident argument.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -738,7 +747,7 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> &#8211; Sciserver&#8217;s authentication token (string) for the user.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>token</strong> – Sciserver’s authentication token (string) for the user.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns a KeystoneUser object, which stores the name and id of the user.</td>
 </tr>
@@ -762,7 +771,7 @@ Authentication.login also sets the token value in the python instance argument v
 <p class="last">Deprecated. Use SciServer.Authentication.getToken instead.</p>
 </div>
 <p>Returns the SciServer authentication token of the user. First, will try to return Authentication.token.value.
-If Authentication.token.value is not set, Authentication.getToken will try to return the token value in the python instance argument variable &#8220;&#8211;ident&#8221;.
+If Authentication.token.value is not set, Authentication.getToken will try to return the token value in the python instance argument variable “–ident”.
 If this variable does not exist, will try to return the token stored in Config.KeystoneTokenFilePath. Will return a None value if all previous steps fail.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
@@ -813,16 +822,16 @@ If this variable does not exist, will try to return the token stored in Config.K
 </div>
 <p>Logs the user into SciServer and returns the authentication token.
 This function is useful when SciScript-Python library methods are executed outside the SciServer-Compute environment.
-In this case, the session authentication token does not exist (and therefore can&#8217;t be automatically recognized),
+In this case, the session authentication token does not exist (and therefore can’t be automatically recognized),
 so the user has to use Authentication.login in order to log into SciServer manually and get the authentication token.
-Authentication.login also sets the token value in the python instance argument variable &#8220;&#8211;ident&#8221;, and as the local object Authentication.token (of class Authentication.Token).</p>
+Authentication.login also sets the token value in the python instance argument variable “–ident”, and as the local object Authentication.token (of class Authentication.Token).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>UserName</strong> &#8211; name of the user (string)</li>
-<li><strong>Password</strong> &#8211; password of the user (string)</li>
+<li><strong>UserName</strong> – name of the user (string)</li>
+<li><strong>Password</strong> – password of the user (string)</li>
 </ul>
 </td>
 </tr>
@@ -832,7 +841,7 @@ Authentication.login also sets the token value in the python instance argument v
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the Authentication URL returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">token = Authentication.login(&#8216;loginName&#8217;,&#8217;loginPassword&#8217;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">token = Authentication.login(‘loginName’,’loginPassword’)</p>
 </td>
 </tr>
 </tbody>
@@ -850,14 +859,14 @@ Authentication.login also sets the token value in the python instance argument v
 <p class="first admonition-title">Warning</p>
 <p class="last">Deprecated. Use Authentication.setToken instead.</p>
 </div>
-<p>Sets the token as the &#8211;ident argument</p>
+<p>Sets the token as the –ident argument</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_token</strong> &#8211; authentication token (string)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>_token</strong> – authentication token (string)</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Authentication.setKeystoneToken(&#8220;myToken&#8221;)</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">Authentication.setKeystoneToken(“myToken”)</td>
 </tr>
 </tbody>
 </table>
@@ -868,9 +877,21 @@ Authentication.login also sets the token value in the python instance argument v
 </dd></dl>
 
 </div>
-<div class="section" id="sciserver-scidrive-module">
-<h2>SciServer.SciDrive module<a class="headerlink" href="#sciserver-scidrive-module" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-SciServer.SciDrive"></span><dl class="function">
+<div class="section" id="module-SciServer.SciDrive">
+<span id="sciserver-scidrive-module"></span><h2>SciServer.SciDrive module<a class="headerlink" href="#module-SciServer.SciDrive" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="SciServer.SciDrive.Task">
+<em class="property">class </em><code class="descclassname">SciServer.SciDrive.</code><code class="descname">Task</code><a class="headerlink" href="#SciServer.SciDrive.Task" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>The class TaskName stores the name of the task that executes the API call.</p>
+<dl class="attribute">
+<dt id="SciServer.SciDrive.Task.name">
+<code class="descname">name</code><em class="property"> = None</em><a class="headerlink" href="#SciServer.SciDrive.Task.name" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
 <dt id="SciServer.SciDrive.createContainer">
 <code class="descclassname">SciServer.SciDrive.</code><code class="descname">createContainer</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SciDrive.createContainer" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a container (directory) in SciDrive</p>
@@ -878,13 +899,13 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; path of the directory in SciDrive.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – path of the directory in SciDrive.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns True if the container (directory) was created successfully.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">response = SciDrive.createContainer(&#8220;MyDirectory&#8221;)</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">response = SciDrive.createContainer(“MyDirectory”)</td>
 </tr>
 </tbody>
 </table>
@@ -902,12 +923,12 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; path of the file or container (directory) in SciDrive.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – path of the file or container (directory) in SciDrive.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns True if the file or container (directory) was deleted successfully.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.
-:example: response = SciDrive.delete(&#8220;path/to/SciDrive/file.csv&#8221;)</td>
+:example: response = SciDrive.delete(“path/to/SciDrive/file.csv”)</td>
 </tr>
 </tbody>
 </table>
@@ -925,13 +946,13 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; path of the directory (or file ) in SciDrive.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – path of the directory (or file ) in SciDrive.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a dictionary containing info and metadata of the directory (or file).</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">dirList = SciDrive.directoryList(&#8220;path/to/SciDrive/directory&#8221;)</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">dirList = SciDrive.directoryList(“path/to/SciDrive/directory”)</td>
 </tr>
 </tbody>
 </table>
@@ -950,19 +971,19 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>path</strong> &#8211; path of the file (or directory) in SciDrive.</li>
-<li><strong>format</strong> &#8211; type of the returned object. Can be &#8220;StringIO&#8221; (io.StringIO object containing readable text), &#8220;BytesIO&#8221; (io.BytesIO object containing readable binary data), &#8220;response&#8221; ( the HTTP response as an object of class requests.Response) or &#8220;text&#8221; (a text string). If the parameter &#8216;localFilePath&#8217; is defined, then the &#8216;format&#8217; parameter is not used and the file is downloaded to the local file system instead.</li>
-<li><strong>localFilePath</strong> &#8211; local path of the file to be downloaded. If &#8216;localFilePath&#8217; is defined, then the &#8216;format&#8217; parameter is not used.</li>
+<li><strong>path</strong> – path of the file (or directory) in SciDrive.</li>
+<li><strong>format</strong> – type of the returned object. Can be “StringIO” (io.StringIO object containing readable text), “BytesIO” (io.BytesIO object containing readable binary data), “response” ( the HTTP response as an object of class requests.Response) or “text” (a text string). If the parameter ‘localFilePath’ is defined, then the ‘format’ parameter is not used and the file is downloaded to the local file system instead.</li>
+<li><strong>localFilePath</strong> – local path of the file to be downloaded. If ‘localFilePath’ is defined, then the ‘format’ parameter is not used.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">If the &#8216;localFilePath&#8217; parameter is defined, then it will return True when the file is downloaded successfully in the local file system. If the &#8216;localFilePath&#8217; is not defined, then the type of the returned object depends on the value of the &#8216;format&#8217; parameter (either io.StringIO, io.BytesIO, requests.Response or string).</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">If the ‘localFilePath’ parameter is defined, then it will return True when the file is downloaded successfully in the local file system. If the ‘localFilePath’ is not defined, then the type of the returned object depends on the value of the ‘format’ parameter (either io.StringIO, io.BytesIO, requests.Response or string).</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">csvString = SciDrive.download(&#8220;path/to/SciDrive/file.csv&#8221;, format=&#8221;text&#8221;);</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">csvString = SciDrive.download(“path/to/SciDrive/file.csv”, format=”text”);</p>
 </td>
 </tr>
 </tbody>
@@ -981,13 +1002,13 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> &#8211; path of the file (or directory) in SciDrive.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – path of the file (or directory) in SciDrive.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">URL of a file in SciDrive (string).</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">url = SciDrive.publicUrl(&#8220;path/to/SciDrive/file.csv&#8221;)</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">url = SciDrive.publicUrl(“path/to/SciDrive/file.csv”)</td>
 </tr>
 </tbody>
 </table>
@@ -1006,9 +1027,9 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>path</strong> &#8211; desired file path in SciDrive (string).</li>
-<li><strong>data</strong> &#8211; data to be uploaded into SciDrive. If the &#8216;localFilePath&#8217; parameter is set, then the local file will be uploaded instead.</li>
-<li><strong>localFilePath</strong> &#8211; path to the local file to be uploaded (string).</li>
+<li><strong>path</strong> – desired file path in SciDrive (string).</li>
+<li><strong>data</strong> – data to be uploaded into SciDrive. If the ‘localFilePath’ parameter is set, then the local file will be uploaded instead.</li>
+<li><strong>localFilePath</strong> – path to the local file to be uploaded (string).</li>
 </ul>
 </td>
 </tr>
@@ -1018,7 +1039,7 @@ Authentication.login also sets the token value in the python instance argument v
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SciDrive API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">response = SciDrive.upload(&#8220;/SciDrive/path/to/file.csv&#8221;, localFilePath=&#8221;/local/path/to/file.csv&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">response = SciDrive.upload(“/SciDrive/path/to/file.csv”, localFilePath=”/local/path/to/file.csv”)</p>
 </td>
 </tr>
 </tbody>
@@ -1030,9 +1051,9 @@ Authentication.login also sets the token value in the python instance argument v
 </dd></dl>
 
 </div>
-<div class="section" id="sciserver-skyserver-module">
-<h2>SciServer.SkyServer module<a class="headerlink" href="#sciserver-skyserver-module" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-SciServer.SkyServer"></span><dl class="function">
+<div class="section" id="module-SciServer.SkyServer">
+<span id="sciserver-skyserver-module"></span><h2>SciServer.SkyServer module<a class="headerlink" href="#module-SciServer.SkyServer" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
 <dt id="SciServer.SkyServer.getJpegImgCutout">
 <code class="descclassname">SciServer.SkyServer.</code><code class="descname">getJpegImgCutout</code><span class="sig-paren">(</span><em>ra</em>, <em>dec</em>, <em>scale=0.7</em>, <em>width=512</em>, <em>height=512</em>, <em>opt=''</em>, <em>query=''</em>, <em>dataRelease=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyServer.getJpegImgCutout" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets a rectangular image cutout from a region of the sky in SDSS, centered at (ra,dec). Return type is numpy.ndarray.</p>
@@ -1041,32 +1062,32 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>ra</strong> &#8211; Right Ascension of the image&#8217;s center.</li>
-<li><strong>dec</strong> &#8211; Declination of the image&#8217;s center.</li>
-<li><strong>scale</strong> &#8211; scale of the image, measured in [arcsec/pix]</li>
-<li><strong>width</strong> &#8211; Right Ascension of the image&#8217;s center.</li>
-<li><strong>ra</strong> &#8211; Right Ascension of the image&#8217;s center.</li>
-<li><strong>height</strong> &#8211; Height of the image, measured in [pix].</li>
-<li><strong>opt</strong> &#8211; <p>Optional drawing options, expressed as concatenation of letters (string). The letters options are</p>
-<p>&#8220;G&#8221;: Grid. Draw a N-S E-W grid through the center</p>
-<p>&#8220;L&#8221;: Label. Draw the name, scale, ra, and dec on image.</p>
-<p>&#8220;P PhotoObj. Draw a small cicle around each primary photoObj.</p>
-<p>&#8220;S: SpecObj. Draw a small square around each specObj.</p>
-<p>&#8220;O&#8221;: Outline. Draw the outline of each photoObj.</p>
-<p>&#8220;B&#8221;: Bounding Box. Draw the bounding box of each photoObj.</p>
-<p>&#8220;F&#8221;: Fields. Draw the outline of each field.</p>
-<p>&#8220;M&#8221;: Masks. Draw the outline of each mask considered to be important.</p>
-<p>&#8220;Q&#8221;: Plates. Draw the outline of each plate.</p>
-<p>&#8220;I&#8221;: Invert. Invert the image (B on W).</p>
+<li><strong>ra</strong> – Right Ascension of the image’s center.</li>
+<li><strong>dec</strong> – Declination of the image’s center.</li>
+<li><strong>scale</strong> – scale of the image, measured in [arcsec/pix]</li>
+<li><strong>width</strong> – Right Ascension of the image’s center.</li>
+<li><strong>ra</strong> – Right Ascension of the image’s center.</li>
+<li><strong>height</strong> – Height of the image, measured in [pix].</li>
+<li><strong>opt</strong> – <p>Optional drawing options, expressed as concatenation of letters (string). The letters options are</p>
+<p>”G”: Grid. Draw a N-S E-W grid through the center</p>
+<p>”L”: Label. Draw the name, scale, ra, and dec on image.</p>
+<p>”P PhotoObj. Draw a small cicle around each primary photoObj.</p>
+<p>”S: SpecObj. Draw a small square around each specObj.</p>
+<p>”O”: Outline. Draw the outline of each photoObj.</p>
+<p>”B”: Bounding Box. Draw the bounding box of each photoObj.</p>
+<p>”F”: Fields. Draw the outline of each field.</p>
+<p>”M”: Masks. Draw the outline of each mask considered to be important.</p>
+<p>”Q”: Plates. Draw the outline of each plate.</p>
+<p>”I”: Invert. Invert the image (B on W).</p>
 <p>(see <a class="reference external" href="http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx">http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx</a>)</p>
 </li>
-<li><strong>query</strong> &#8211; <p>Optional string. Marks with inverted triangles on the image the position of user defined objects. The (RA,Dec) coordinates of these object can be given by three means:</p>
+<li><strong>query</strong> – <p>Optional string. Marks with inverted triangles on the image the position of user defined objects. The (RA,Dec) coordinates of these object can be given by three means:</p>
 <ol class="arabic">
-<li>query is a SQL command of format &#8220;SELECT Id, RA, Dec, FROM Table&#8221;.</li>
+<li>query is a SQL command of format “SELECT Id, RA, Dec, FROM Table”.</li>
 <li>query is list of objects. A header with RA and DEC columns must be included. Columns must be separated by tabs, spaces, commas or semicolons. The list may contain as many columns as wished.</li>
 <li><dl class="first docutils">
 <dt>query is a string following the pattern: ObjType Band (low_mag, high_mag).</dt>
-<dd>ObjType: S | G | P marks Stars, Galaxies or PhotoPrimary objects.<p class="last">Band: U | G | R | I | Z | A restricts marks to objects with Band BETWEEN low_mag AND high_mag Band &#8216;A&#8217; will mark all objects within the specified magnitude range in any band (ORs composition).</p>
+<dd>ObjType: S | G | P marks Stars, Galaxies or PhotoPrimary objects.<p class="last">Band: U | G | R | I | Z | A restricts marks to objects with Band BETWEEN low_mag AND high_mag Band ‘A’ will mark all objects within the specified magnitude range in any band (ORs composition).</p>
 </dd>
 </dl>
 </li>
@@ -1078,7 +1099,7 @@ Authentication.login also sets the token value in the python instance argument v
 <p>(see <a class="reference external" href="http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx">http://skyserver.sdss.org/public/en/tools/chart/chartinfo.aspx</a>)</p>
 </div></blockquote>
 </li>
-<li><strong>dataRelease</strong> &#8211; SDSS data release string. Example: dataRelease=&#8217;DR13&#8217;. Default value already set in SciServer.Config.DataRelease</li>
+<li><strong>dataRelease</strong> – SDSS data release string. Example: dataRelease=’DR13’. Default value already set in SciServer.Config.DataRelease</li>
 </ul>
 </td>
 </tr>
@@ -1088,7 +1109,7 @@ Authentication.login also sets the token value in the python instance argument v
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the SkyServer API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">img = SkyServer.getJpegImgCutout(ra=197.614455642896, dec=18.438168853724, width=512, height=512, scale=0.4, opt=&#8221;OG&#8221;, query=&#8221;SELECT TOP 100 p.objID, p.ra, p.dec, p.r FROM fGetObjFromRectEq(197.6,18.4,197.7,18.5) n, PhotoPrimary p WHERE n.objID=p.objID&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">img = SkyServer.getJpegImgCutout(ra=197.614455642896, dec=18.438168853724, width=512, height=512, scale=0.4, opt=”OG”, query=”SELECT TOP 100 p.objID, p.ra, p.dec, p.r FROM fGetObjFromRectEq(197.6,18.4,197.7,18.5) n, PhotoPrimary p WHERE n.objID=p.objID”)</p>
 </td>
 </tr>
 </tbody>
@@ -1104,21 +1125,21 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>objId</strong> &#8211; SDSS ObjId.</li>
-<li><strong>specObjId</strong> &#8211; SDSS SpecObjId.</li>
-<li><strong>apogee_id</strong> &#8211; ID idetifying Apogee target object.</li>
-<li><strong>apstar_id</strong> &#8211; unique ID for combined apogee star spectrum.</li>
-<li><strong>ra</strong> &#8211; right ascention.</li>
-<li><strong>dec</strong> &#8211; declination.</li>
-<li><strong>plate</strong> &#8211; SDSS plate number.</li>
-<li><strong>mjd</strong> &#8211; Modified Julian Date of observation.</li>
-<li><strong>fiber</strong> &#8211; SDSS fiber number.</li>
-<li><strong>run</strong> &#8211; SDSS run number.</li>
-<li><strong>rerun</strong> &#8211; SDSS rerun number.</li>
-<li><strong>camcol</strong> &#8211; SDSS camera column.</li>
-<li><strong>field</strong> &#8211; SDSS field number.</li>
-<li><strong>obj</strong> &#8211; The object id within a field.</li>
-<li><strong>dataRelease</strong> &#8211; SDSS data release string. Example: dataRelease=&#8217;DR13&#8217;. Default value already set in SciServer.Config.DataRelease</li>
+<li><strong>objId</strong> – SDSS ObjId.</li>
+<li><strong>specObjId</strong> – SDSS SpecObjId.</li>
+<li><strong>apogee_id</strong> – ID idetifying Apogee target object.</li>
+<li><strong>apstar_id</strong> – unique ID for combined apogee star spectrum.</li>
+<li><strong>ra</strong> – right ascention.</li>
+<li><strong>dec</strong> – declination.</li>
+<li><strong>plate</strong> – SDSS plate number.</li>
+<li><strong>mjd</strong> – Modified Julian Date of observation.</li>
+<li><strong>fiber</strong> – SDSS fiber number.</li>
+<li><strong>run</strong> – SDSS run number.</li>
+<li><strong>rerun</strong> – SDSS rerun number.</li>
+<li><strong>camcol</strong> – SDSS camera column.</li>
+<li><strong>field</strong> – SDSS field number.</li>
+<li><strong>obj</strong> – The object id within a field.</li>
+<li><strong>dataRelease</strong> – SDSS data release string. Example: dataRelease=’DR13’. Default value already set in SciServer.Config.DataRelease</li>
 </ul>
 </td>
 </tr>
@@ -1142,19 +1163,19 @@ Authentication.login also sets the token value in the python instance argument v
 <dl class="function">
 <dt id="SciServer.SkyServer.radialSearch">
 <code class="descclassname">SciServer.SkyServer.</code><code class="descname">radialSearch</code><span class="sig-paren">(</span><em>ra</em>, <em>dec</em>, <em>radius=1</em>, <em>coordType='equatorial'</em>, <em>whichPhotometry='optical'</em>, <em>limit='10'</em>, <em>dataRelease=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyServer.radialSearch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Runs a query in the SDSS database that searches for all objects within a certain radius from a point in the sky, and retrieves the result table as a Panda&#8217;s dataframe.</p>
+<dd><p>Runs a query in the SDSS database that searches for all objects within a certain radius from a point in the sky, and retrieves the result table as a Panda’s dataframe.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>ra</strong> &#8211; Right Ascension of the image&#8217;s center.</li>
-<li><strong>dec</strong> &#8211; Declination of the image&#8217;s center.</li>
-<li><strong>radius</strong> &#8211; Search radius around the (ra,dec) coordinate in the sky. Measured in arcminutes.</li>
-<li><strong>coordType</strong> &#8211; Type of celestial coordinate system. Can be set to &#8220;equatorial&#8221; or &#8220;galactic&#8221;.</li>
-<li><strong>whichPhotometry</strong> &#8211; Type of retrieved data. Can be set to &#8220;optical&#8221; or &#8220;infrared&#8221;.</li>
-<li><strong>limit</strong> &#8211; Maximum number of rows in the result table (string). If set to &#8220;0&#8221;, then the function will return all rows.</li>
-<li><strong>dataRelease</strong> &#8211; SDSS data release string. Example: dataRelease=&#8217;DR13&#8217;. Default value already set in SciServer.Config.DataRelease</li>
+<li><strong>ra</strong> – Right Ascension of the image’s center.</li>
+<li><strong>dec</strong> – Declination of the image’s center.</li>
+<li><strong>radius</strong> – Search radius around the (ra,dec) coordinate in the sky. Measured in arcminutes.</li>
+<li><strong>coordType</strong> – Type of celestial coordinate system. Can be set to “equatorial” or “galactic”.</li>
+<li><strong>whichPhotometry</strong> – Type of retrieved data. Can be set to “optical” or “infrared”.</li>
+<li><strong>limit</strong> – Maximum number of rows in the result table (string). If set to “0”, then the function will return all rows.</li>
+<li><strong>dataRelease</strong> – SDSS data release string. Example: dataRelease=’DR13’. Default value already set in SciServer.Config.DataRelease</li>
 </ul>
 </td>
 </tr>
@@ -1178,20 +1199,20 @@ Authentication.login also sets the token value in the python instance argument v
 <dl class="function">
 <dt id="SciServer.SkyServer.rectangularSearch">
 <code class="descclassname">SciServer.SkyServer.</code><code class="descname">rectangularSearch</code><span class="sig-paren">(</span><em>min_ra</em>, <em>max_ra</em>, <em>min_dec</em>, <em>max_dec</em>, <em>coordType='equatorial'</em>, <em>whichPhotometry='optical'</em>, <em>limit='10'</em>, <em>dataRelease=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyServer.rectangularSearch" title="Permalink to this definition">¶</a></dt>
-<dd><p>Runs a query in the SDSS database that searches for all objects within a certain rectangular box defined on the the sky, and retrieves the result table as a Panda&#8217;s dataframe.</p>
+<dd><p>Runs a query in the SDSS database that searches for all objects within a certain rectangular box defined on the the sky, and retrieves the result table as a Panda’s dataframe.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>min_ra</strong> &#8211; Minimum value of Right Ascension coordinate that defines the box boundaries on the sky.</li>
-<li><strong>max_ra</strong> &#8211; Maximum value of Right Ascension coordinate that defines the box boundaries on the sky.</li>
-<li><strong>min_dec</strong> &#8211; Minimum value of Declination coordinate that defines the box boundaries on the sky.</li>
-<li><strong>max_dec</strong> &#8211; Maximum value of Declination coordinate that defines the box boundaries on the sky.</li>
-<li><strong>coordType</strong> &#8211; Type of celestial coordinate system. Can be set to &#8220;equatorial&#8221; or &#8220;galactic&#8221;.</li>
-<li><strong>whichPhotometry</strong> &#8211; Type of retrieved data. Can be set to &#8220;optical&#8221; or &#8220;infrared&#8221;.</li>
-<li><strong>limit</strong> &#8211; Maximum number of rows in the result table (string). If set to &#8220;0&#8221;, then the function will return all rows.</li>
-<li><strong>dataRelease</strong> &#8211; SDSS data release string. Example: dataRelease=&#8217;DR13&#8217;. Default value already set in SciServer.Config.DataRelease</li>
+<li><strong>min_ra</strong> – Minimum value of Right Ascension coordinate that defines the box boundaries on the sky.</li>
+<li><strong>max_ra</strong> – Maximum value of Right Ascension coordinate that defines the box boundaries on the sky.</li>
+<li><strong>min_dec</strong> – Minimum value of Declination coordinate that defines the box boundaries on the sky.</li>
+<li><strong>max_dec</strong> – Maximum value of Declination coordinate that defines the box boundaries on the sky.</li>
+<li><strong>coordType</strong> – Type of celestial coordinate system. Can be set to “equatorial” or “galactic”.</li>
+<li><strong>whichPhotometry</strong> – Type of retrieved data. Can be set to “optical” or “infrared”.</li>
+<li><strong>limit</strong> – Maximum number of rows in the result table (string). If set to “0”, then the function will return all rows.</li>
+<li><strong>dataRelease</strong> – SDSS data release string. Example: dataRelease=’DR13’. Default value already set in SciServer.Config.DataRelease</li>
 </ul>
 </td>
 </tr>
@@ -1221,8 +1242,8 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>sql</strong> &#8211; a string containing the sql query</li>
-<li><strong>dataRelease</strong> &#8211; SDSS data release (string). E.g, &#8216;DR13&#8217;. Default value already set in SciServer.Config.DataRelease</li>
+<li><strong>sql</strong> – a string containing the sql query</li>
+<li><strong>dataRelease</strong> – SDSS data release (string). E.g, ‘DR13’. Default value already set in SciServer.Config.DataRelease</li>
 </ul>
 </td>
 </tr>
@@ -1232,7 +1253,7 @@ Authentication.login also sets the token value in the python instance argument v
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the SkyServer API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">df = SkyServer.sqlSearch(sql=&#8221;select 1&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">df = SkyServer.sqlSearch(sql=”select 1”)</p>
 </td>
 </tr>
 </tbody>
@@ -1244,9 +1265,9 @@ Authentication.login also sets the token value in the python instance argument v
 </dd></dl>
 
 </div>
-<div class="section" id="sciserver-skyquery-module">
-<h2>SciServer.SkyQuery module<a class="headerlink" href="#sciserver-skyquery-module" title="Permalink to this headline">¶</a></h2>
-<span class="target" id="module-SciServer.SkyQuery"></span><dl class="function">
+<div class="section" id="module-SciServer.SkyQuery">
+<span id="sciserver-skyquery-module"></span><h2>SciServer.SkyQuery module<a class="headerlink" href="#module-SciServer.SkyQuery" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
 <dt id="SciServer.SkyQuery.cancelJob">
 <code class="descclassname">SciServer.SkyQuery.</code><code class="descname">cancelJob</code><span class="sig-paren">(</span><em>jobId</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.cancelJob" title="Permalink to this definition">¶</a></dt>
 <dd><p>Cancels a single job (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
@@ -1254,13 +1275,13 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> &#8211; the ID of the job, which is obtained at the moment of submitting the job.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> – the ID of the job, which is obtained at the moment of submitting the job.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns True if the job was cancelled successfully.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">isCanceled = SkyQuery.cancelJob(SkyQuery.submitJob(&#8220;select 1 as foo&#8221;))</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">isCanceled = SkyQuery.cancelJob(SkyQuery.submitJob(“select 1 as foo”))</td>
 </tr>
 </tbody>
 </table>
@@ -1279,8 +1300,8 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tableName</strong> &#8211; name of table (string) within dataset.</li>
-<li><strong>datasetName</strong> &#8211; name of dataset or database context (string).</li>
+<li><strong>tableName</strong> – name of table (string) within dataset.</li>
+<li><strong>datasetName</strong> – name of dataset or database context (string).</li>
 </ul>
 </td>
 </tr>
@@ -1290,7 +1311,7 @@ Authentication.login also sets the token value in the python instance argument v
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">result = SkyQuery.dropTable(&#8220;myTable&#8221;, datasetName=&#8221;MyDB&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">result = SkyQuery.dropTable(“myTable”, datasetName=”MyDB”)</p>
 </td>
 </tr>
 </tbody>
@@ -1309,13 +1330,13 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>datasetName</strong> &#8211; name of dataset (string).</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>datasetName</strong> – name of dataset (string).</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">returns a dictionary containing the dataset information.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">info = SkyQuery.getDatasetInfo(&#8220;MyDB&#8221;)</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">info = SkyQuery.getDatasetInfo(“MyDB”)</td>
 </tr>
 </tbody>
 </table>
@@ -1333,13 +1354,13 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> &#8211; the ID of the job (string), which is obtained at the moment of submitting the job.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> – the ID of the job (string), which is obtained at the moment of submitting the job.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a dictionary with the job status and other related metadata.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">status = SkyQuery.getJobStatus(SkyQuery.submitJob(&#8220;select 1 as foo&#8221;))</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">status = SkyQuery.getJobStatus(SkyQuery.submitJob(“select 1 as foo”))</td>
 </tr>
 </tbody>
 </table>
@@ -1353,25 +1374,18 @@ Authentication.login also sets the token value in the python instance argument v
 <dt id="SciServer.SkyQuery.getQueueInfo">
 <code class="descclassname">SciServer.SkyQuery.</code><code class="descname">getQueueInfo</code><span class="sig-paren">(</span><em>queue</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.getQueueInfo" title="Permalink to this definition">¶</a></dt>
 <dd><blockquote>
-<div><p>Returns information about a particular job queue (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
+<div>Returns information about a particular job queue (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</div></blockquote>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">param queue:</th><td class="field-body">queue name (string)</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>queue</strong> – queue name (string)</td>
 </tr>
-</tbody>
-</table>
-</div></blockquote>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a dictionary containing information associated to the queue.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a dictionary containing information associated to the queue.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
 </tr>
-<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">queueInfo = SkyQuery.getQueueInfo(&#8216;quick&#8217;)</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">queueInfo = SkyQuery.getQueueInfo(‘quick’)</td>
 </tr>
 </tbody>
 </table>
@@ -1390,9 +1404,9 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tableName</strong> &#8211; name of table (string) within dataset.</li>
-<li><strong>datasetName</strong> &#8211; name of dataset or database context (string).</li>
-<li><strong>top</strong> &#8211; number of top rows retrieved (integer).</li>
+<li><strong>tableName</strong> – name of table (string) within dataset.</li>
+<li><strong>datasetName</strong> – name of dataset or database context (string).</li>
+<li><strong>top</strong> – number of top rows retrieved (integer).</li>
 </ul>
 </td>
 </tr>
@@ -1402,7 +1416,7 @@ Authentication.login also sets the token value in the python instance argument v
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">table = SkyQuery.getTable(&#8220;myTable&#8221;, datasetName=&#8221;MyDB&#8221;, top=10)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">table = SkyQuery.getTable(“myTable”, datasetName=”MyDB”, top=10)</p>
 </td>
 </tr>
 </tbody>
@@ -1422,8 +1436,8 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tableName</strong> &#8211; name of table (string) within dataset.</li>
-<li><strong>datasetName</strong> &#8211; name of dataset (string).</li>
+<li><strong>tableName</strong> – name of table (string) within dataset.</li>
+<li><strong>datasetName</strong> – name of dataset (string).</li>
 </ul>
 </td>
 </tr>
@@ -1433,7 +1447,7 @@ Authentication.login also sets the token value in the python instance argument v
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">info = SkyQuery.getTableInfo(&#8220;myTable&#8221;, datasetName=&#8221;MyDB&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">info = SkyQuery.getTableInfo(“myTable”, datasetName=”MyDB”)</p>
 </td>
 </tr>
 </tbody>
@@ -1474,13 +1488,13 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>datasetName</strong> &#8211; name of dataset (string).</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>datasetName</strong> – name of dataset (string).</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">returns a list containing the tables and associated descriptions/metadata.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">tables = SkyQuery.listDatasetTables(&#8220;MyDB&#8221;)</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">tables = SkyQuery.listDatasetTables(“MyDB”)</td>
 </tr>
 </tbody>
 </table>
@@ -1498,13 +1512,13 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>queue</strong> &#8211; queue name (string). Can be set to &#8216;quick&#8217; for a quick job, or &#8216;long&#8217; for a long job.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>queue</strong> – queue name (string). Can be set to ‘quick’ for a quick job, or ‘long’ for a long job.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">returns job definitions as a list object.</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">jobsList = SkyQuery.listJobs(&#8216;quick&#8217;)</td>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">jobsList = SkyQuery.listJobs(‘quick’)</td>
 </tr>
 </tbody>
 </table>
@@ -1545,8 +1559,8 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>tableName</strong> &#8211; name of table (string) within dataset.</li>
-<li><strong>datasetName</strong> &#8211; name of dataset (string).</li>
+<li><strong>tableName</strong> – name of table (string) within dataset.</li>
+<li><strong>datasetName</strong> – name of dataset (string).</li>
 </ul>
 </td>
 </tr>
@@ -1556,7 +1570,7 @@ Authentication.login also sets the token value in the python instance argument v
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">columns = SkyQuery.listTableColumns(&#8220;myTable&#8221;, datasetName=&#8221;MyDB&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">columns = SkyQuery.listTableColumns(“myTable”, datasetName=”MyDB”)</p>
 </td>
 </tr>
 </tbody>
@@ -1576,8 +1590,8 @@ Authentication.login also sets the token value in the python instance argument v
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>query</strong> &#8211; sql query (string)</li>
-<li><strong>queue</strong> &#8211; queue name (string). Can be set to &#8216;quick&#8217; for a quick job, or &#8216;long&#8217; for a long job.</li>
+<li><strong>query</strong> – sql query (string)</li>
+<li><strong>queue</strong> – queue name (string). Can be set to ‘quick’ for a quick job, or ‘long’ for a long job.</li>
 </ul>
 </td>
 </tr>
@@ -1587,7 +1601,7 @@ Authentication.login also sets the token value in the python instance argument v
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">jobId = SkyQuery.submitJob(&#8216;select 1 as foo&#8217;, &#8220;quick&#8221;)</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">jobId = SkyQuery.submitJob(‘select 1 as foo’, “quick”)</p>
 </td>
 </tr>
 </tbody>
@@ -1601,53 +1615,48 @@ Authentication.login also sets the token value in the python instance argument v
 <dl class="function">
 <dt id="SciServer.SkyQuery.uploadTable">
 <code class="descclassname">SciServer.SkyQuery.</code><code class="descname">uploadTable</code><span class="sig-paren">(</span><em>uploadData</em>, <em>tableName</em>, <em>datasetName='MyDB'</em>, <em>format='csv'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.uploadTable" title="Permalink to this definition">¶</a></dt>
-<dd><blockquote>
-<div><p>Uploads a data table into a database (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">param uploadData:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">data table, for now accepted in CSV string format.</td>
-</tr>
-<tr class="field-even field"><th class="field-name" colspan="2">param tableName:</th></tr>
-<tr class="field-even field"><td>&nbsp;</td><td class="field-body">name of table (string) within dataset.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name" colspan="2">param datasetName:</th></tr>
-<tr class="field-odd field"><td>&nbsp;</td><td class="field-body">name of dataset or database context (string).</td>
-</tr>
-<tr class="field-even field"><th class="field-name">param format:</th><td class="field-body">format of the &#8216;data&#8217; parameter. Set to &#8216;csv&#8217; for now.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">return:</th><td class="field-body">returns True if the table was uploaded successfully.</td>
-</tr>
-<tr class="field-even field"><th class="field-name">raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</td>
-</tr>
-<tr class="field-odd field"><th class="field-name">example:</th><td class="field-body">result = SkyQuery.uploadTable(&#8220;Column1,Column2</td>
-</tr>
-</tbody>
-</table>
-</div></blockquote>
-<p>4.5,5.5
-&#8221;, tableName=&#8221;myTable&#8221;, datasetName=&#8221;MyDB&#8221;, format=&#8221;csv&#8221;)</p>
-<blockquote>
-<div><div class="admonition seealso">
-<p class="first admonition-title">See also</p>
-<p class="last">SkyQuery.listQueues, SkyQuery.listAllDatasets, SkyQuery.getDatasetInfo, SkyQuery.listDatasetTables, SkyQuery.getTableInfo, SkyQuery.getTable, SkyQuery.submitJob</p>
-</div>
-</div></blockquote>
-</dd></dl>
-
-<dl class="function">
-<dt id="SciServer.SkyQuery.waitForJob">
-<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">waitForJob</code><span class="sig-paren">(</span><em>jobId</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.waitForJob" title="Permalink to this definition">¶</a></dt>
-<dd><p>Queries the job status from SkyQuery every 2 seconds and waits for the SkyQuery job to be completed.</p>
+<dd><p>Uploads a data table into a database (more info in <a class="reference external" href="http://www.voservices.net/skyquery">http://www.voservices.net/skyquery</a>).</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>jobId</strong> &#8211; id of job (integer)</li>
-<li><strong>verbose</strong> &#8211; if True, will print &#8220;wait&#8221; messages on the screen while the job is not done. If False, will suppress printing messages on the screen.</li>
+<li><strong>uploadData</strong> – data table, for now accepted in CSV string format.</li>
+<li><strong>tableName</strong> – name of table (string) within dataset.</li>
+<li><strong>datasetName</strong> – name of dataset or database context (string).</li>
+<li><strong>format</strong> – format of the ‘data’ parameter. Set to ‘csv’ for now.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">returns True if the table was uploaded successfully.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">result = SkyQuery.uploadTable(“Column1,Column2n4.5,5.5n”, tableName=”myTable”, datasetName=”MyDB”, format=”csv”)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">SkyQuery.listQueues, SkyQuery.listAllDatasets, SkyQuery.getDatasetInfo, SkyQuery.listDatasetTables, SkyQuery.getTableInfo, SkyQuery.getTable, SkyQuery.submitJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.SkyQuery.waitForJob">
+<code class="descclassname">SciServer.SkyQuery.</code><code class="descname">waitForJob</code><span class="sig-paren">(</span><em>jobId</em>, <em>verbose=False</em>, <em>pollTime=5</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.SkyQuery.waitForJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries regularly the job status and waits until the job is completed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>jobId</strong> – id of job (integer)</li>
+<li><strong>verbose</strong> – if True, will print “wait” messages on the screen while the job is still running. If False, will suppress the printing of messages on the screen.</li>
+<li><strong>pollTime</strong> – idle time interval (integer, in seconds) before querying again for the job status. Minimum value allowed is 5 seconds.</li>
 </ul>
 </td>
 </tr>
@@ -1657,7 +1666,7 @@ Authentication.login also sets the token value in the python instance argument v
 <tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the SkyQuery API returns an error.</p>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">SkyQuery.waitForJob(SkyQuery.submitJob(&#8220;select 1&#8221;))</p>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">SkyQuery.waitForJob(SkyQuery.submitJob(“select 1”))</p>
 </td>
 </tr>
 </tbody>
@@ -1665,6 +1674,867 @@ Authentication.login also sets the token value in the python instance argument v
 <div class="admonition seealso">
 <p class="first admonition-title">See also</p>
 <p class="last">SkyQuery.submitJob, SkyQuery.getJobStatus.</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-SciServer.Files">
+<span id="sciserver-files-module"></span><h2>SciServer.Files module<a class="headerlink" href="#module-SciServer.Files" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="SciServer.Files.createDir">
+<code class="descclassname">SciServer.Files.</code><code class="descname">createDir</code><span class="sig-paren">(</span><em>fileService</em>, <em>path</em>, <em>quiet=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.createDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileService</strong> – name of fileService (string), or object (dictionary) that defines a file service. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>path</strong> – path (in the remote file service) to the directory (string), starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume/directory</li>
+<li><strong>quiet</strong> – If set to False, it will throw an error if the directory already exists. If set to True. it will not throw an error.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the FileService API returns an error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServices = Files.getFileServices(); Files.createDir(fileServices[0], “myRootVolume”,”myUserVolume”, “myNewDir”);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices(), Files.getFileServiceFromName, Files.delete, Files.upload, Files.download, Files.dirList</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.createUserVolume">
+<code class="descclassname">SciServer.Files.</code><code class="descname">createUserVolume</code><span class="sig-paren">(</span><em>fileService</em>, <em>path</em>, <em>quiet=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.createUserVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a user volume.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileService</strong> – name of fileService (string), or object (dictionary) that defines the file service that contains the user volume. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>path</strong> – path (in the remote file service) to the user volume (string), starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume</li>
+<li><strong>quiet</strong> – if set to False, will throw an error if the User Volume already exists. If True, won’t throw an error.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the FileService API returns an error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServices = Files.getFileServices(); Files.createUserVolume(fileServices[0], “volumes”,”newUserVolume”);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices(), Files.getFileServiceFromName, Files.delete, Files.upload, Files.download, Files.dirList</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.delete">
+<code class="descclassname">SciServer.Files.</code><code class="descname">delete</code><span class="sig-paren">(</span><em>fileService</em>, <em>path</em>, <em>quiet=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.delete" title="Permalink to this definition">¶</a></dt>
+<dd><p>Deletes a directory or file in the File System.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileService</strong> – name of fileService (string), or object (dictionary) that defines a file service. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>path</strong> – String defining the path (in the remote fileService) of the file or directory to be deleted, starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume/fileToBeDeleted.txt.</li>
+<li><strong>quiet</strong> – If set to False, it will throw an error if the file does not exist. If set to True. it will not throw an error.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the FileService API returns an error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServices = Files.getFileServices(); isDeleted = Files.delete(“/myUselessFile.txt”,”persistent”,”myUserName”, fileServices[0]);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices(), Files.getFileServiceFromName, Files.createDir, Files.upload, Files.download, Files.dirList</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.deleteUserVolume">
+<code class="descclassname">SciServer.Files.</code><code class="descname">deleteUserVolume</code><span class="sig-paren">(</span><em>fileService</em>, <em>path</em>, <em>quiet=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.deleteUserVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete a user volume.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileService</strong> – name of fileService (string), or object (dictionary) that defines the file service that contains the root volume. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>path</strong> – path (in the remote file service) to the user volume (string), starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume</li>
+<li><strong>quiet</strong> – If set to False, it will throw an error if user volume does not exists. If set to True. it will not throw an error.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the FileService API returns an error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServices = Files.getFileServices(); Files.deleteUserVolume(“volumes”,”newUserVolume”,fileServices[0]);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices(), Files.getFileServiceFromName, Files.delete, Files.upload, Files.download, Files.dirList</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.dirList">
+<code class="descclassname">SciServer.Files.</code><code class="descname">dirList</code><span class="sig-paren">(</span><em>fileService</em>, <em>path</em>, <em>level=1</em>, <em>options=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.dirList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Lists the contents of a directory.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileService</strong> – name of fileService (string), or object (dictionary) that defines a file service. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>path</strong> – String defining the path (in the remote file service) of the directory to be listed, starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume/directoryToBeListed.</li>
+<li><strong>level</strong> – amount (int) of listed directory levels that are below or at the same level to that of the relativePath.</li>
+<li><strong>options</strong> – string of file filtering options.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">dictionary containing the directory listing.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the FileService API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServices = Files.getFileServices(); dirs = Files.dirList(“/”,”persistent”,”myUserName”, fileServices[0], 2);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices(), Files.getFileServiceFromName, Files.delete, Files.upload, Files.download, Files.createDir</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.download">
+<code class="descclassname">SciServer.Files.</code><code class="descname">download</code><span class="sig-paren">(</span><em>fileService</em>, <em>path</em>, <em>localFilePath=None</em>, <em>format='txt'</em>, <em>quiet=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.download" title="Permalink to this definition">¶</a></dt>
+<dd><p>Downloads a file from the remote file system into the local file system, or returns the file content as an object in several formats.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileService</strong> – name of fileService (string), or object (dictionary) that defines a file service. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>path</strong> – String defining the path (in the remote file service) of the file to be downloaded, starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume/fileToBeDownloaded.txt.</li>
+<li><strong>localFilePath</strong> – local destination path of the file to be downloaded. If set to None, then an object of format ‘format’ will be returned.</li>
+<li><strong>format</strong> – name (string) of the returned object’s type (if localFilePath is not defined). This parameter can be “StringIO” (io.StringIO object containing readable text), “BytesIO” (io.BytesIO object containing readable binary data), “response” ( the HTTP response as an object of class requests.Response) or “txt” (a text string). If the parameter ‘localFilePath’ is defined, then the ‘format’ parameter is not used and the file is downloaded to the local file system instead.</li>
+<li><strong>userVolumeOwner</strong> – name (string) of owner of the volume. Can be left undefined if requester is the owner of the volume.</li>
+<li><strong>quiet</strong> – If set to False, it will throw an error if the file already exists. If set to True. it will not throw an error.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">If the ‘localFilePath’ parameter is defined, then it will return True when the file is downloaded successfully in the local file system. If the ‘localFilePath’ is not defined, then the type of the returned object depends on the value of the ‘format’ parameter (either io.StringIO, io.BytesIO, requests.Response or string).</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the FileService API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServices = Files.getFileServices(); isDownloaded = Files.upload(“/myUploadedFile.txt”,”persistent”,”myUserName”, fileServices[0], localFilePath=”/myDownloadedFile.txt”);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices(), Files.getFileServiceFromName, Files.createDir, Files.delete, Files.upload, Files.dirList</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.getFileServiceFromName">
+<code class="descclassname">SciServer.Files.</code><code class="descname">getFileServiceFromName</code><span class="sig-paren">(</span><em>fileServiceName</em>, <em>fileServices=None</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.getFileServiceFromName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a FileService object, given its registered name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileServiceName</strong> – name of the FileService, as shown within the results of Files.getFileServices()</li>
+<li><strong>fileServices</strong> – a list of FileService objects (dictionaries), as returned by Files.getFileServices(). If not set, then an extra internal call to Jobs.getFileServices() is made.</li>
+<li><strong>verbose</strong> – boolean parameter defining whether warnings will be printed (set to True) or not (set to False).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a FileService object (dictionary) that defines a FileService. A list of these kind of objects available to the user is returned by the function Jobs.getFileServices(). If no fileService can be found, then returns None.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the RACM API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileService = Files.getFileServiceFromName(‘FileServiceAtJHU’);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.getFileServices">
+<code class="descclassname">SciServer.Files.</code><code class="descname">getFileServices</code><span class="sig-paren">(</span><em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.getFileServices" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the definitions of file services that a user is able to access. A FileService represents a file system that contains root volumes accessible to the user for public/private data storage. Within each rootVolume, users can create sharable userVolumes for storing files.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>verbose</strong> – boolean parameter defining whether warnings will be printed (set to True) or not (set to False).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of dictionaries, where each dictionary represents the description of a FileService that the user is able to access.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the RACM API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">fileServices = Files.getFileServices();</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServiceFromName</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.getFileServicesNames">
+<code class="descclassname">SciServer.Files.</code><code class="descname">getFileServicesNames</code><span class="sig-paren">(</span><em>fileServices=None</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.getFileServicesNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the names and description of the fileServices available to the user.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileServices</strong> – a list of FileService objects (dictionaries), as returned by Files.getFileServices(). If not set, then an extra internal call to Jobs.getFileServices() is made.</li>
+<li><strong>verbose</strong> – boolean parameter defining whether warnings will be printed (set to True) or not (set to False).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">an array of dicts, where each dict has the name and description of a file service available to the user.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the RACM API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServiceNames = Files.getFileServicesNames();</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.getRootVolumesInfo">
+<code class="descclassname">SciServer.Files.</code><code class="descname">getRootVolumesInfo</code><span class="sig-paren">(</span><em>fileService</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.getRootVolumesInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the names and descriptions of root volumes available to the user in a particular FileService.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileService</strong> – name of fileService (string), or object (dictionary) that defines a file service. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>verbose</strong> – boolean parameter defining whether warnings will be printed (set to True) or not (set to False).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of dictionaries, where each dictionary contains the name and description of a root volume.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the RACM API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServices = Files.getFileServices(); rootVolumesInfo = getRootVolumesInfo(fileServices[0])</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getUserVolumesInfo</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.getUserVolumesInfo">
+<code class="descclassname">SciServer.Files.</code><code class="descname">getUserVolumesInfo</code><span class="sig-paren">(</span><em>fileService</em>, <em>rootVolumeName=None</em>, <em>verbose=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.getUserVolumesInfo" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the names definitions the RootVolumes available in a particular FileService, and  of the file services that a user is able to access.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileService</strong> – name of fileService (string), or object (dictionary) that defines a file service. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>rootVolumeName</strong> – name of root Volume (string) for which the user volumes are fetched. If set to None, then user volumes in all root folders are fetched.</li>
+<li><strong>verbose</strong> – boolean parameter defining whether warnings will be printed (set to True) or not (set to False).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">list of dictionaries, where each dictionary contains the name and description of a root volumes that a user is able to access.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the RACM API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServices = Files.getFileServices(); rootVolumeNames = Files.getUserVolumesInfo(fileServices[0])</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getRootVolumes,</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.move">
+<code class="descclassname">SciServer.Files.</code><code class="descname">move</code><span class="sig-paren">(</span><em>fileService</em>, <em>path</em>, <em>destinationFileService</em>, <em>destinationPath</em>, <em>replaceExisting=True</em>, <em>doCopy=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Moves or copies a file or folder.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileService</strong> – name of fileService (string), or object (dictionary) that defines a file service. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>path</strong> – String defining the origin path (in the remote fileService) of the file or directory to be copied/moved, starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume/fileToBeMoved.txt.</li>
+<li><strong>destinationFileService</strong> – name of fileService (string), or object (dictionary) that defines a destination file service (where the file is moved/copied into). A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>destinationRelativePath</strong> – String defining the destination path (in the remote destinationFileService) of the file or directory to be copied/moved, starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume/recentlyMovedFile.txt.</li>
+<li><strong>replaceExisting</strong> – If set to False, it will throw an error if the file already exists, If set to True, it will not throw and eeror in that case.</li>
+<li><strong>doCopy</strong> – if set to True, then it will copy the file or folder. If set to False, then the file or folder will be moved.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the FileService API returns an error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServices = Files.getFileServices(); isDownloaded = Files.upload(“/myUploadedFile.txt”,”persistent”,”myUserName”, fileServices[0], localFilePath=”/myDownloadedFile.txt”);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices(), Files.getFileServiceFromName, Files.createDir, Files.delete, Files.upload, Files.dirList</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.shareUserVolume">
+<code class="descclassname">SciServer.Files.</code><code class="descname">shareUserVolume</code><span class="sig-paren">(</span><em>fileService</em>, <em>path</em>, <em>sharedWith</em>, <em>allowedActions</em>, <em>type='USER'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.shareUserVolume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Shares a user volume with another user or group</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileService</strong> – name of fileService (string), or object (dictionary) that defines a file service. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>path</strong> – String defining the path (in the remote fileService) of the user volume to be shared, starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume.</li>
+<li><strong>sharedWith</strong> – name (string) of user or group that the user volume is shared with.</li>
+<li><strong>allowedActions</strong> – array of strings defining actions the user or group is allowed to do with respect to the shared user volume. E.g.: [“read”,”write”,”grant”,”delete”]. The “grant” action means that the user or group can also share the user volume with another user or group. The “delete” action meand ability to delete the user volume (use with care).</li>
+<li><strong>type</strong> – type (string) of the entity defined by the “sharedWith” parameter. Can be set to “USER” or “GROUP”.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the FileService API returns an error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServices = Files.shareUserVolume(); isDeleted = Files.delete(“/myUselessFile.txt”,”persistent”,”myUserName”, fileServices[0]);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices(), Files.getFilrmsieServiceFromName, Files.createDir, Files.upload, Files.download, Files.dirList</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.splitPath">
+<code class="descclassname">SciServer.Files.</code><code class="descname">splitPath</code><span class="sig-paren">(</span><em>path</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.splitPath" title="Permalink to this definition">¶</a></dt>
+<dd><p>Splits a path of the form rootVolume/userVolumeOwner/userVolume/relativePath/… into its 4 components: rootVolume, userVolumeOwner, userVolume, and relativePath.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>path</strong> – file system path (string), starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume/relativePath…</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a tuple containing the four components: (rootVolume, userVolumeOwner, userVolume, relativePath)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the FileService API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">fileServices = Files.getFileServices(); Files.createUserVolume(fileServices[0], “volumes”,”newUserVolume”);</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices(), Files.getFileServiceFromName</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Files.upload">
+<code class="descclassname">SciServer.Files.</code><code class="descname">upload</code><span class="sig-paren">(</span><em>fileService</em>, <em>path</em>, <em>data=''</em>, <em>localFilePath=None</em>, <em>quiet=True</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Files.upload" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uploads data or a local file into a path defined in the file system.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>fileService</strong> – name of fileService (string), or object (dictionary) that defines a file service. A list of these kind of objects available to the user is returned by the function Files.getFileServices().</li>
+<li><strong>path</strong> – path (in the remote file service) to the destination file (string), starting from the root volume level. Example: rootVolume/userVolumeOwner/userVolume/destinationFile.txt</li>
+<li><strong>data</strong> – string containing data to be uploaded, in case localFilePath is not set.</li>
+<li><strong>localFilePath</strong> – path to a local file to be uploaded (string),</li>
+<li><strong>userVolumeOwner</strong> – name (string) of owner of the userVolume. Can be left undefined if requester is the owner of the user volume.</li>
+<li><strong>quiet</strong> – If set to False, it will throw an error if the file already exists. If set to True. it will not throw an error.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the FileService API returns an error.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">fileServices = Files.getFileServices(); Files.upload(fileServices[0], “myRootVolume”, “myUserVolume”, “/myUploadedFile.txt”, None, None, localFilePath=”/myFile.txt”);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getFileServices(), Files.getFileServiceFromName, Files.createDir, Files.delete, Files.download, Files.dirList</p>
+</div>
+</dd></dl>
+
+</div>
+<div class="section" id="module-SciServer.Jobs">
+<span id="sciserver-jobs-module"></span><h2>SciServer.Jobs module<a class="headerlink" href="#module-SciServer.Jobs" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="SciServer.Jobs.cancelJob">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">cancelJob</code><span class="sig-paren">(</span><em>jobId</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.cancelJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cancels the execution of a job.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> – Id of the job (integer)</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the HTTP request to the Authentication URL returns an error. Throws an exception if the HTTP request to the JOBM API returns an error.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">job = Jobs.submitShellCommandJob(Jobs.getDockerComputeDomains()[0],’pwd’, ‘Python (astro)’); isCanceled = Jobs.cancelJob(job.get(‘id’));</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.submitNotebookJob, Jobs.getJobStatus, Jobs.getDockerComputeDomains.</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.getDockerComputeDomainFromName">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">getDockerComputeDomainFromName</code><span class="sig-paren">(</span><em>dockerComputeDomainName</em>, <em>dockerComputeDomains=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.getDockerComputeDomainFromName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a DockerComputeDomain object, given its registered name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dockerComputeDomainName</strong> – name of the DockerComputeDomainName, as shown within the results of Jobs.getDockerComputeDomains()</li>
+<li><strong>dockerComputeDomains</strong> – a list of dockerComputeDomain objects (dictionaries), as returned by Jobs.getDockerComputeDomains(). If not set, then an internal call to Jobs.getDockerComputeDomains() is made.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a DockerComputeDomain object (dictionary) that defines a Docker compute domain. A list of these kind of objects available to the user is returned by the function Jobs.getDockerComputeDomains().</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the JOBM API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">dockerComputeDomain = Jobs.getDockerComputeDomainFromName(‘dockerComputeDomainAtJHU’);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.getDockerComputeDomains, Jobs.getRDBComputeDomains, Jobs.getRDBComputeDomainFromName</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.getDockerComputeDomains">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">getDockerComputeDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.getDockerComputeDomains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of all registered Docker compute domains that the user has access to.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of dictionaries, each one containing the definition of a Docker compute domain.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the JOBM API returns an error.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">dockerComputeDomains = Jobs.getDockerComputeDomains();</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.submitShellCommandJob, Jobs.getJobStatus, Jobs.getRDBComputeDomains, Jobs.cancelJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.getDockerComputeDomainsNames">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">getDockerComputeDomainsNames</code><span class="sig-paren">(</span><em>dockerComputeDomains=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.getDockerComputeDomainsNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the names of the docker compute domains available to the user.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>dockerComputeDomains</strong> – a list of dockerComputeDomain objects (dictionaries), as returned by Jobs.getDockerComputeDomains(). If not set, then an extra internal call to Jobs.getDockerComputeDomains() is made.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an array of strings, each being the name of a docker compute domain available to the user.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the RACM API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">dockerComputeDomainsNames = Files.getDockerComputeDomainsNames();</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getDockerComputeDomains</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.getJobDescription">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">getJobDescription</code><span class="sig-paren">(</span><em>jobId</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.getJobDescription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the definition of the job,</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> – Id of job</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dictionary containing the description or definition of the job.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the HTTP request to the Authentication URL returns an error, and if the HTTP request to the JOBM API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">job1 = Jobs.submitShellCommandJob(Jobs.getDockerComputeDomains()[0],’pwd’, ‘Python (astro)’); job2 = Jobs.getJobDescription(job1.get(‘id’));</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.submitShellCommandJob, Jobs.getJobStatus, Jobs.getDockerComputeDomains, Jobs.cancelJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.getJobStatus">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">getJobStatus</code><span class="sig-paren">(</span><em>jobId</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.getJobStatus" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a dictionary with the job status as an integer value, together with its semantic meaning. The integer value is a power of 2, that is, 1:PENDING, 2:QUEUED, 4:ACCEPTED, 8:STARTED, 16:FINISHED, 32:SUCCESS, 64:ERROR and 128:CANCELED</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>jobId</strong> – Id of job (integer).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">dictionary with the integer value of the job status, as well as its semantic meaning.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the HTTP request to the Authentication URL returns an error, and if the HTTP request to the JOBM API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">jobId = Jobs.submitShellCommandJob(Jobs.getDockerComputeDomains()[0],’pwd’, ‘Python (astro)’); status = Jobs.getJobStatus(jobId);</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.submitShellCommandJob, Jobs.getJobStatus, Jobs.getDockerComputeDomains, Jobs.cancelJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.getJobsList">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">getJobsList</code><span class="sig-paren">(</span><em>top=10</em>, <em>open=None</em>, <em>start=None</em>, <em>end=None</em>, <em>type='all'</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.getJobsList" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the list of Jobs submitted by the user.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>top</strong> – top number of jobs (integer) returned. If top=None, then all jobs are returned.</li>
+<li><strong>open</strong> – If set to ‘True’, then only returns jobs that have not finished executing and wrapped up  (status &lt;= FINISHED). If set to ‘False’ then only returnes jobs that are still running. If set to ‘None’, then returns both finished and unfinished jobs.</li>
+<li><strong>start</strong> – The earliest date (inclusive) to search for jobs, in string format yyyy-MM-dd hh:mm:ss.SSS. If set to ‘None’, then there is no lower bound on date.</li>
+<li><strong>end</strong> – The latest date (inclusive) to search for jobs, in string format yyyy-MM-dd hh:mm:ss.SSS. If set to ‘None’, then there is no upper bound on date.</li>
+<li><strong>type</strong> – type (string) of jobs returned. Can take values of ‘rdb’ (for returning only relational database jobs), ‘docker’ (for returning only Docker jobs) and ‘all’ (all job types are returned).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a list of dictionaries, each one containing the definition of a submitted job.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the Authentication URL returns an error, and if the HTTP request to the JOBM API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">jobs = Jobs.getJobsList(top=2);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.submitNotebookJob, Jobs.submitShellCommandJob, Jobs.getJobStatus, Jobs.getDockerComputeDomains, Jobs.cancelJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.getRDBComputeDomainFromName">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">getRDBComputeDomainFromName</code><span class="sig-paren">(</span><em>rdbComputeDomainName</em>, <em>rdbComputeDomains=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.getRDBComputeDomainFromName" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns an RDBComputeDomain object, given its registered name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>rdbComputeDomainName</strong> – name of the RDBComputeDomainName, as shown within the results of Jobs.getRDBComputeDomains()</li>
+<li><strong>rdbComputeDomains</strong> – a list of rdbComputeDomain objects (dictionaries), as returned by Jobs.getRDBComputeDomains(). If not set, then an extra internal call to Jobs.getRDBComputeDomains() is made.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">an RDBComputeDomain object (dictionary) that defines an RDB compute domain. A list of these kind of objects available to the user is returned by the function Jobs.getRDBComputeDomains().</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the JOBM API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">rdbComputeDomain = Jobs.getRDBComputeDomainFromName(‘rdbComputeDomainAtJHU’);</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.getDockerComputeDomains, Jobs.getRDBComputeDomains, Jobs.getDockerComputeDomainFromName</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.getRDBComputeDomains">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">getRDBComputeDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.getRDBComputeDomains" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets a list of all registered Relational Database (RDB) compute domains that the user has access to.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of dictionaries, each one containing the definition of an RDB compute domain.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the JOBM API returns an error.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Example:</th><td class="field-body">rdbComputeDomains = Jobs.getRDBComputeDomains();</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.submitShellCommandJob, Jobs.getJobStatus, Jobs.getDockerComputeDomains, Jobs.cancelJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.getRDBComputeDomainsNames">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">getRDBComputeDomainsNames</code><span class="sig-paren">(</span><em>rdbComputeDomains=None</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.getRDBComputeDomainsNames" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the names of the RDB compute domains available to the user.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>rdbComputeDomains</strong> – a list of rdbComputeDomain objects (dictionaries), as returned by Jobs.getRDBComputeDomains(). If not set, then an extra internal call to Jobs.getRDBComputeDomains() is made.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">an array of strings, each being the name of a rdb compute domain available to the user.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the RACM API returns an error.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body">dockerComputeDomainsNames = Files.getDockerComputeDomainsNames();</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Files.getRDBComputeDomains</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.submitNotebookJob">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">submitNotebookJob</code><span class="sig-paren">(</span><em>notebookPath</em>, <em>dockerComputeDomain=None</em>, <em>dockerImageName=None</em>, <em>userVolumes=None</em>, <em>dataVolumes=None</em>, <em>resultsFolderPath=''</em>, <em>parameters=''</em>, <em>jobAlias=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.submitNotebookJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submits a Jupyter Notebook for execution (as an asynchronous job) inside a Docker compute domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>notebookPath</strong> – path of the notebook within the filesystem mounted in SciServer-Compute (string). Example: notebookPath = ‘/home/idies/worskpace/persistent/JupyterNotebook.ipynb’</li>
+<li><strong>dockerComputeDomain</strong> – object (dictionary) that defines a Docker compute domain. A list of these kind of objects available to the user is returned by the function Jobs.getDockerComputeDomains().</li>
+<li><strong>dockerImageName</strong> – name (string) of the Docker image for executing the notebook. E.g.,  dockerImageName=”Python (astro)”. An array of available Docker images is defined as the ‘images’ property in the dockerComputeDomain object.</li>
+<li><strong>userVolumes</strong> – a list with the names of user volumes (with optional write permissions) that will be mounted to the docker Image. E.g.: userVolumes = [{‘name’:’persistent’, ‘needsWriteAccess’:False},{‘name’:’scratch’, , ‘needsWriteAccess’:True}] . A list of available user volumes can be found as the ‘userVolumes’ property in the dockerComputeDomain object. If userVolumes=None, then all available user volumes are mounted, with ‘needsWriteAccess’ = True if the user has Write permissions on the volume.</li>
+<li><strong>dataVolumes</strong> – a list with the names of data volumes that will be mounted to the docker Image. E.g.: dataVolumes=[{“name”:”SDSS_DAS”}, {“name”:”Recount”}]. A list of available data volumes can be found as the ‘volumes’ property in the dockerComputeDomain object. If dataVolumes=None, then all available data volumes are mounted.</li>
+<li><strong>resultsFolderPath</strong> – full path to results folder (string) where the original notebook is copied to and executed. E.g.: /home/idies/workspace/rootVolume/username/userVolume/jobsFolder. If not set, then a default folder will be set automatically.</li>
+<li><strong>parameters</strong> – string containing parameters that the notebook might need during its execution. This string is written in the ‘parameters.txt’ file in the same directory level where the notebook is being executed.</li>
+<li><strong>jobAlias</strong> – alias (string) of job, defined by the user.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the job ID (int)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the Authentication URL returns an error. Throws an exception if the HTTP request to the JOBM API returns an error, or if the volumes defined by the user are not available in the Docker compute domain.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">dockerComputeDomain = Jobs.getDockerComputeDomains()[0]; job = Jobs.submitNotebookJob(‘/home/idies/workspace/persistent/Notebook.ipynb’, dockerComputeDomain, ‘Python (astro)’, [{‘name’:’persistent’},{‘name’:’scratch’, ‘needsWriteAccess’:True}], [{‘name’:’SDSS_DAS’}], ‘param1=1nparam2=2nparam3=3’,’myNewJob’)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.submitShellCommandJob, Jobs.getJobStatus, Jobs.getDockerComputeDomains, Jobs.cancelJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.submitRDBQueryJob">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">submitRDBQueryJob</code><span class="sig-paren">(</span><em>sqlQuery</em>, <em>rdbComputeDomain=None</em>, <em>databaseContextName=None</em>, <em>resultsName='queryResults'</em>, <em>resultsFolderPath=''</em>, <em>jobAlias=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.submitRDBQueryJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submits a sql query for execution (as an asynchronous job) inside a relational database (RDB) compute domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>sqlQuery</strong> – sql query (string)</li>
+<li><strong>rdbComputeDomain</strong> – object (dictionary) that defines a relational database (RDB) compute domain. A list of these kind of objects available to the user is returned by the function Jobs.getRDBComputeDomains().</li>
+<li><strong>databaseContextName</strong> – database context name (string) on which the sql query is executed.</li>
+<li><strong>resultsName</strong> – name (string) of the table or file (without file type ending) that contains the query result. In case the sql query has multiple statements, should be set to a list of names (e.g., [‘result1’,’result2’]).</li>
+<li><strong>resultsFolderPath</strong> – full path to results folder (string) where query output tables are written into. E.g.: /home/idies/workspace/rootVOlume/username/userVolume/jobsFolder . If not set, then a default folder will be set automatically.</li>
+<li><strong>jobAlias</strong> – alias (string) of job, defined by the user.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a dictionary containing the definition of the submitted job.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the Authentication URL returns an error. Throws an exception if the HTTP request to the JOBM API returns an error, or if the volumes defined by the user are not available in the Docker compute domain.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">job = Jobs.submitRDBQueryJob(‘select 1’;,None, None, ‘myQueryResults’, ‘myNewJob’)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.submitNotebookJob, Jobs.submitShellCommandJob, Jobs.getJobStatus, Jobs.getDockerComputeDomains, Jobs.cancelJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.submitShellCommandJob">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">submitShellCommandJob</code><span class="sig-paren">(</span><em>shellCommand</em>, <em>dockerComputeDomain=None</em>, <em>dockerImageName=None</em>, <em>userVolumes=None</em>, <em>dataVolumes=None</em>, <em>resultsFolderPath=''</em>, <em>jobAlias=''</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.submitShellCommandJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Submits a shell command for execution (as an asynchronous job) inside a Docker compute domain.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>shellCommand</strong> – shell command (string) defined by the user.</li>
+<li><strong>dockerComputeDomain</strong> – object (dictionary) that defines a Docker compute domain. A list of these kind of objects available to the user is returned by the function Jobs.getDockerComputeDomains().</li>
+<li><strong>dockerImageName</strong> – name (string) of the Docker image for executing the notebook. E.g.,  dockerImageName=”Python (astro)”. An array of available Docker images is defined as the ‘images’ property in the dockerComputeDomain object.</li>
+<li><strong>userVolumes</strong> – a list with the names of user volumes (with optional write permissions) that will be mounted to the docker Image.
+E.g., userVolumes = [{‘name’:’persistent’, ‘needsWriteAccess’:False},{‘name’:’scratch’, , ‘needsWriteAccess’:True}]
+A list of available user volumes can be found as the ‘userVolumes’ property in the dockerComputeDomain object. If userVolumes=None, then all available user volumes are mounted, with ‘needsWriteAccess’ = True if the user has Write permissions on the volume.</li>
+<li><strong>dataVolumes</strong> – a list with the names of data volumes that will be mounted to the docker Image.
+E.g., dataVolumes=[{“name”:”SDSS_DAS”}, {“name”:”Recount”}].
+A list of available data volumes can be found as the ‘volumes’ property in the dockerComputeDomain object. If dataVolumes=None, then all available data volumes are mounted.</li>
+<li><strong>resultsFolderPath</strong> – full path to results folder (string) where the shell command is executed. E.g.: /home/idies/workspace/rootVolume/username/userVolume/jobsFolder. If not set, then a default folder will be set automatically.</li>
+<li><strong>jobAlias</strong> – alias (string) of job, defined by the user.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">the job ID (int)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the HTTP request to the Authentication URL returns an error. Throws an exception if the HTTP request to the JOBM API returns an error, or if the volumes defined by the user are not available in the Docker compute domain.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">dockerComputeDomain = Jobs.getDockerComputeDomains()[0]; job = Jobs.submitShellCommandJob(‘pwd’, dockerComputeDomain, ‘Python (astro)’, [{‘name’:’persistent’},{‘name’:’scratch’, ‘needsWriteAccess’:True}], [{‘name’:’SDSS_DAS’}], ‘myNewJob’)</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.submitNotebookJob, Jobs.getJobStatus, Jobs.getDockerComputeDomains, Jobs.cancelJob</p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="SciServer.Jobs.waitForJob">
+<code class="descclassname">SciServer.Jobs.</code><code class="descname">waitForJob</code><span class="sig-paren">(</span><em>jobId</em>, <em>verbose=False</em>, <em>pollTime=5</em><span class="sig-paren">)</span><a class="headerlink" href="#SciServer.Jobs.waitForJob" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries regularly the job status and waits until the job is completed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>jobId</strong> – id of job (integer)</li>
+<li><strong>verbose</strong> – if True, will print “wait” messages on the screen while the job is still running. If False, will suppress the printing of messages on the screen.</li>
+<li><strong>pollTime</strong> – idle time interval (integer, in seconds) before querying again for the job status. Minimum value allowed is 5 seconds.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">After the job is finished, returns a dictionary object containing the job definition.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><p class="first">Throws an exception if the user is not logged into SciServer (use Authentication.login for that purpose). Throws an exception if the HTTP request to the JOBM API returns an error.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"><p class="first last">dockerComputeDomain = Jobs.getDockerComputeDomains()[0]; job = Jobs.submitShellCommandJob(dockerComputeDomain,’pwd’, ‘Python (astro)’);Jobs.waitForJob(job.get(‘id’))</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<p class="last">Jobs.getJobStatus, Jobs.getDockerComputeDomains, Jobs.submitNotebookJob, Jobs.submitShellCommandJob</p>
 </div>
 </dd></dl>
 
@@ -1682,11 +2552,13 @@ Authentication.login also sets the token value in the python instance argument v
 <li><a class="reference internal" href="#">SciServer package</a><ul>
 <li><a class="reference internal" href="#module-SciServer.CasJobs">SciServer.CasJobs module</a></li>
 <li><a class="reference internal" href="#module-SciServer.Config">SciServer.Config module</a></li>
-<li><a class="reference internal" href="#sciserver-authentication-module">SciServer.Authentication module</a></li>
-<li><a class="reference internal" href="#sciserver-loginportal-module">SciServer.LoginPortal module</a></li>
-<li><a class="reference internal" href="#sciserver-scidrive-module">SciServer.SciDrive module</a></li>
-<li><a class="reference internal" href="#sciserver-skyserver-module">SciServer.SkyServer module</a></li>
-<li><a class="reference internal" href="#sciserver-skyquery-module">SciServer.SkyQuery module</a></li>
+<li><a class="reference internal" href="#module-SciServer.Authentication">SciServer.Authentication module</a></li>
+<li><a class="reference internal" href="#module-SciServer.LoginPortal">SciServer.LoginPortal module</a></li>
+<li><a class="reference internal" href="#module-SciServer.SciDrive">SciServer.SciDrive module</a></li>
+<li><a class="reference internal" href="#module-SciServer.SkyServer">SciServer.SkyServer module</a></li>
+<li><a class="reference internal" href="#module-SciServer.SkyQuery">SciServer.SkyQuery module</a></li>
+<li><a class="reference internal" href="#module-SciServer.Files">SciServer.Files module</a></li>
+<li><a class="reference internal" href="#module-SciServer.Jobs">SciServer.Jobs module</a></li>
 </ul>
 </li>
 </ul>
@@ -1697,18 +2569,20 @@ Authentication.login also sets the token value in the python instance argument v
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/SciServer.txt"
+      <li><a href="_sources/SciServer.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
+    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <div><input type="text" name="q" /></div>
-      <div><input type="submit" value="Go" /></div>
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
+    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -1727,12 +2601,12 @@ Authentication.login also sets the token value in the python instance argument v
         <li class="right" >
           <a href="index.html" title="Welcome to SciScript Python documentation!"
              >previous</a> |</li>
-        <li class="nav-item nav-item-0"><a href="index.html">SciScript-Python 1.10.0 documentation</a> &raquo;</li> 
+        <li class="nav-item nav-item-0"><a href="index.html">SciScript-Python 2.0.0 documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-        &copy; Copyright 2017, SciServer.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.4.5.
+        &#169; Copyright 2018, SciServer.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.5.
     </div>
   </body>
 </html>
